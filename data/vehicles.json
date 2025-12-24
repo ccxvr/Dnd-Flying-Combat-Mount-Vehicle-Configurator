@@ -1,0 +1,29 @@
+[
+  {
+    "id": "imperial_sky_frigate",
+    "name": "Imperial Sky Frigate",
+    "type": "Vehicle",
+    "size": "Huge",
+    "strength": 24,
+    "dex": 10,
+    "con": 18,
+    "agility": 2,
+    "baseAC": 16,
+    "baseHP": 420,
+    "fly": { "standard": 50, "max": 150 },
+	"crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "bow_gunner", "label": "Bow Gunner" },
+	  { "id": "port_gunner", "label": "Port Gunner" },
+	  { "id": "starboard_gunner", "label": "Starboard Gunner" },
+	  { "id": "top_gunner", "label": "Top Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "bow", "label": "Bow Cannon", "size": "L", "arc": "Front", "crewGroup": "bow_gunner" },
+      { "id": "port", "label": "Port Broadside", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "starboard", "label": "Starboard Broadside", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+      { "id": "top", "label": "Flak Mount", "size": "M", "arc": "Front/Back", "crewGroup": "top_gunner" }
+    ],
+    "traits": ["long_range_fire_control"]
+  }
+]

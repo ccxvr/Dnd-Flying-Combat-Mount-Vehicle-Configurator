@@ -1,0 +1,295 @@
+[
+  {
+    "id": "small_missile",
+    "name": "Small Missile",
+    "size": "S",
+    "weight": 10,
+    "damage": "6d6 force",
+    "range": "120 ft",
+    "ability": "dex",
+    "traits": ["consumable", "seeking_16"]
+  },
+
+  {
+    "id": "medium_missile",
+    "name": "Medium Missile",
+    "size": "M",
+    "weight": 20,
+    "damage": "6d12 force",
+    "range": "120 ft",
+    "ability": "dex",
+    "traits": ["consumable", "seeking_13"]
+  },
+
+  {
+    "id": "rocket",
+    "name": "Rocket",
+    "size": "XS",
+    "weight": 4,
+    "damage": "3d8 force",
+    "range": "120 ft",
+    "ability": "dex",
+    "traits": ["consumable", "imprecise"]
+  },
+
+  {
+    "id": "bomb_s",
+    "name": "Small Bomb",
+    "size": "S",
+    "weight": 20,
+    "damage": "4d6 force",
+    "range": "Special (speed / 10 × height)",
+    "ability": "dex",
+    "traits": ["consumable"]
+  },
+
+  {
+    "id": "bomb_m",
+    "name": "Medium Bomb",
+    "size": "M",
+    "weight": 50,
+    "damage": "10d6 force",
+    "range": "Special (speed / 10 × height)",
+    "ability": "dex",
+    "traits": ["consumable"]
+  },
+
+  {
+    "id": "bomb_l",
+    "name": "Large Bomb",
+    "size": "L",
+    "weight": 200,
+    "damage": "22d6 force",
+    "range": "Special (speed / 10 × height)",
+    "ability": "dex",
+    "traits": ["consumable"]
+  },
+
+  {
+    "id": "revolving_carbine",
+    "name": "Revolving Carbine",
+    "size": "S",
+    "weight": 20,
+    "damage": "4d6 piercing",
+    "range": "120 / 200 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_6"]
+  },
+
+  {
+    "id": "splinter_repeater",
+    "name": "Splinter Repeater",
+    "size": "S",
+    "weight": 20,
+    "damage": "5d4 piercing",
+    "range": "60 / 120 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_10"]
+  },
+
+  {
+    "id": "arc_caster",
+    "name": "Arc Caster",
+    "size": "M",
+    "weight": 60,
+    "damage": "8d8 lightning",
+    "range": "100 ft line",
+    "ability": "dex",
+    "traits": ["charges_2"]
+  },
+
+  {
+    "id": "bug_zapper",
+    "name": "Bug Zapper",
+    "size": "S",
+    "weight": 30,
+    "damage": "1d4 lightning",
+    "range": "40 / 80 ft",
+    "ability": "dex",
+    "traits": ["charges_8", "multishot_4", "anti_arthropod"]
+  },
+
+  {
+    "id": "arcane_blaster",
+    "name": "Arcane Blaster",
+    "size": "M",
+    "weight": 80,
+    "damage": "1d10 force",
+    "range": "60 / 120 ft",
+    "ability": "dex",
+    "traits": ["charges_4", "multishot_3"]
+  },
+
+  {
+    "id": "culverin_2lb",
+    "name": "Culverin (2 lb)",
+    "size": "M",
+    "weight": 50,
+    "damage": "3d12 bludgeoning",
+    "range": "240 / 480 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1"]
+  },
+
+  {
+    "id": "rifled_culverin_2lb",
+    "name": "Rifled Culverin (2 lb)",
+    "size": "M",
+    "weight": 60,
+    "damage": "3d12 bludgeoning",
+    "range": "240 / 480 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1", "rifled"]
+  },
+
+  {
+    "id": "scorpio",
+    "name": "Scorpio",
+    "size": "L",
+    "weight": 55,
+    "damage": "3d10 bludgeoning",
+    "range": "100 / 200 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1"]
+  },
+
+  {
+    "id": "cannon_6lb",
+    "name": "Cannon (6 lb)",
+    "size": "L",
+    "weight": 70,
+    "damage": "1d20 bludgeoning",
+    "range": "120 / 240 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1"]
+  },
+
+  {
+    "id": "rifled_cannon_6lb",
+    "name": "Rifled Cannon (6 lb)",
+    "size": "L",
+    "weight": 80,
+    "damage": "1d20 bludgeoning",
+    "range": "120 / 240 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1", "rifled"]
+  },
+
+  {
+    "id": "flak_cannon",
+    "name": "Flak Cannon",
+    "size": "L",
+    "weight": 80,
+    "damage": "4d8 piercing (Dex save half)",
+    "range": "80 / 140 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1", "area"]
+  },
+
+  {
+    "id": "ballista",
+    "name": "Ballista",
+    "size": "XL",
+    "weight": 100,
+    "damage": "4d10 piercing",
+    "range": "120 / 480 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1", "big_game_hunter"]
+  },
+
+  {
+    "id": "mangonel",
+    "name": "Mangonel",
+    "size": "XL",
+    "weight": 200,
+    "damage": "5d10 bludgeoning",
+    "range": "200 / 800 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1", "siege"]
+  },
+
+  {
+    "id": "bombard",
+    "name": "Bombard",
+    "size": "XL",
+    "weight": 500,
+    "damage": "5d20 force",
+    "range": "480 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1", "imprecise", "siege"]
+  },
+
+  {
+    "id": "light_crossbow",
+    "name": "Light Crossbow",
+    "size": "XS",
+    "weight": 5,
+    "damage": "1d8 piercing",
+    "range": "80 / 320 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1"]
+  },
+
+  {
+    "id": "Heavy_crossbow",
+    "name": "Heavy Crossbow",
+    "size": "S",
+    "weight": 18,
+    "damage": "1d10 piercing",
+    "range": "100 / 400 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1"]
+  },
+  
+    {
+    "id": "repeater_crossbow",
+    "name": "Repeater Crossbow",
+    "size": "XS",
+    "weight": 5,
+    "damage": "1d6 piercing",
+    "range": "80 / 320 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_5"]
+  },
+  
+    {
+    "id": "rifle",
+    "name": "Rifle",
+    "size": "S",
+    "weight": 8,
+    "damage": "2d10 piercing",
+    "range": "80 / 240 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1"]
+  },
+  
+    {
+    "id": "auto_rifle",
+    "name": "Autorifle",
+    "size": "S",
+    "weight": 9,
+    "damage": "2d6 piercing",
+    "range": "80 / 160 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_10", "multishot_2"]
+  },
+
+  {
+    "id": "pistol",
+    "name": "pistol",
+    "size": "XS",
+    "weight": 4,
+    "damage": "1d10 piercing",
+    "range": "40 / 80 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_1"]
+  },
+
+  {
+    "id": "none",
+    "name": "— None —",
+    "size": "XS",
+    "weight": 0,
+    "traits": []
+  }
+]

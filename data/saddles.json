@@ -1,0 +1,310 @@
+[
+  {
+    "id": "standard_medium_saddle",
+    "name": "Standard Medium Saddle",
+    "weight": 15,
+    "seats": 1,
+    "notes": "Seats 1 (Small character only).",
+    "allowedSizes": ["Medium"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_s_1", "label": "Driver Mount 1", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_s_2", "label": "Driver Mount 2", "size": "S", "arc": "Direct Front", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "standard_large_saddle",
+    "name": "Standard Large Saddle",
+    "weight": 30,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_s_1", "label": "Driver Mount 1", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_s_2", "label": "Driver Mount 2", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_fb", "label": "Driver Utility Mount", "size": "XS", "arc": "Front/Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "standard_huge_saddle",
+    "name": "Standard Huge Saddle",
+    "weight": 80,
+    "seats": 2,
+    "allowedSizes": ["Huge"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_1", "label": "Driver Mount 1", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_m_2", "label": "Driver Mount 2", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "fwd_xs_1", "label": "Front Mount 1", "size": "XS", "arc": "Front", "crewGroup": "driver" },
+      { "id": "fwd_xs_2", "label": "Front Mount 2", "size": "XS", "arc": "Front", "crewGroup": "driver" },
+
+      { "id": "gun_s_back", "label": "Gunner Mount", "size": "S", "arc": "Direct Back", "crewGroup": "gunner" },
+      { "id": "gun_xs_back", "label": "Rear Utility Mount", "size": "XS", "arc": "Back", "crewGroup": "gunner" }
+    ]
+  },
+
+  {
+    "id": "standard_wyvern_saddle",
+    "name": "Standard Wyvern Saddle",
+    "weight": 40,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountTags": ["wyvern"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_1", "label": "Driver Mount 1", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_m_2", "label": "Driver Mount 2", "size": "M", "arc": "Direct Front", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "flat_head_wyvern_saddle",
+    "name": "Flat-Head Wyvern Saddle",
+    "weight": 20,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["flat_head_wyvern"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "fwd_xs_1", "label": "Front Mount 1", "size": "XS", "arc": "Front", "crewGroup": "driver" },
+      { "id": "fwd_xs_2", "label": "Front Mount 2", "size": "XS", "arc": "Front", "crewGroup": "driver" },
+      { "id": "fwd_xs_3", "label": "Front Mount 3", "size": "XS", "arc": "Front", "crewGroup": "driver" },
+      { "id": "fwd_xs_4", "label": "Front Mount 4", "size": "XS", "arc": "Front", "crewGroup": "driver" },
+      { "id": "fwd_xs_5", "label": "Front Mount 5", "size": "XS", "arc": "Front", "crewGroup": "driver" },
+
+      { "id": "gun_s_back", "label": "Gunner Mount", "size": "S", "arc": "Direct Back", "crewGroup": "gunner" },
+      { "id": "gun_xs_back", "label": "Rear Utility Mount", "size": "XS", "arc": "Back", "crewGroup": "gunner" }
+    ]
+  },
+
+  {
+    "id": "cliff_wyvern_saddle",
+    "name": "Cliff Wyvern Saddle",
+    "weight": 40,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["cliff_wyvern"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_l_front", "label": "Driver Heavy Mount", "size": "L", "arc": "Direct Front", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "great_royal_wyvern_saddle",
+    "name": "Great Royal Wyvern Saddle",
+    "weight": 120,
+    "seats": 3,
+    "allowedSizes": ["Huge"],
+    "allowedMountIds": ["great_royal_wyvern"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "mid_gunner", "label": "Middle Gunner" },
+      { "id": "back_gunner", "label": "Back Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_1", "label": "Driver Mount 1", "size": "M", "arc": "Front", "crewGroup": "driver" },
+      { "id": "drv_m_2", "label": "Driver Mount 2", "size": "M", "arc": "Front", "crewGroup": "driver" },
+
+      { "id": "mid_l_fb", "label": "Middle Gunner Mount", "size": "L", "arc": "Front/Back", "crewGroup": "mid_gunner" },
+
+      { "id": "back_m", "label": "Back Gunner Mount", "size": "M", "arc": "Direct Back", "crewGroup": "back_gunner" },
+      { "id": "back_xs_1", "label": "Back Mount 1", "size": "XS", "arc": "Back", "crewGroup": "back_gunner" },
+      { "id": "back_xs_2", "label": "Back Mount 2", "size": "XS", "arc": "Back", "crewGroup": "back_gunner" }
+    ]
+  },
+
+  {
+    "id": "pteranodon_saddle",
+    "name": "Pteranodon Saddle",
+    "weight": 10,
+    "seats": 1,
+    "notes": "Seats 1 (Small character only).",
+    "allowedSizes": ["Medium"],
+    "allowedMountIds": ["pteranodon"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_s_front", "label": "Driver Mount", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_fb", "label": "Utility Mount", "size": "XS", "arc": "Front/Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "giant_locust_saddle",
+    "name": "Giant Locust Saddle",
+    "weight": 40,
+    "seats": 2,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["giant_locust"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_front", "label": "Driver Mount", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "gun_s_fb", "label": "Gunner Mount", "size": "S", "arc": "Front/Back", "crewGroup": "gunner" }
+    ]
+  },
+
+  {
+    "id": "giant_beetle_saddle",
+    "name": "Giant Beetle Saddle",
+    "weight": 20,
+    "seats": 1,
+    "allowedSizes": ["Medium"],
+    "allowedMountIds": ["giant_beetle"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_fb", "label": "Driver Mount", "size": "M", "arc": "Front/Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "giant_eagle_saddle",
+    "name": "Giant Eagle Saddle",
+    "weight": 20,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["giant_eagle"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_front", "label": "Driver Mount", "size": "M", "arc": "Front", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "imperial_knight_saddle",
+    "name": "Imperial Knight Saddle",
+    "weight": 30,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountTags": ["griffon"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_front", "label": "Driver Main Mount", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "fwd_s_1", "label": "Front Mount 1", "size": "S", "arc": "Front", "crewGroup": "driver" },
+      { "id": "fwd_s_2", "label": "Front Mount 2", "size": "S", "arc": "Front", "crewGroup": "driver" },
+      { "id": "drv_xs_fb", "label": "Utility Mount", "size": "XS", "arc": "Front/Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "flying_whale_saddle",
+    "name": "Flying Whale Saddle",
+    "weight": 200,
+    "seats": 6,
+    "allowedSizes": ["Gargantuan"],
+    "allowedMountIds": ["flying_whale"],
+    "notes": "Driver has no mounts.",
+    "crewGroups": [
+      { "id": "pilot", "label": "Pilot" },
+      { "id": "port_bow", "label": "Gunner (Port Bow)" },
+      { "id": "star_bow", "label": "Gunner (Starboard Bow)" },
+      { "id": "port_stern", "label": "Gunner (Port Stern)" },
+      { "id": "star_stern", "label": "Gunner (Starboard Stern)" },
+      { "id": "mid_gunner", "label": "Gunner (Middle)" }
+    ],
+    "mountingPoints": [
+      { "id": "port_bow_m", "label": "Port Bow (M)", "size": "M", "arc": "Front", "crewGroup": "port_bow" },
+      { "id": "port_bow_s1", "label": "Port Bow (S1)", "size": "S", "arc": "Side", "crewGroup": "port_bow" },
+      { "id": "port_bow_s2", "label": "Port Bow (S2)", "size": "S", "arc": "Side", "crewGroup": "port_bow" },
+
+      { "id": "star_bow_m", "label": "Starboard Bow (M)", "size": "M", "arc": "Front", "crewGroup": "star_bow" },
+      { "id": "star_bow_s1", "label": "Starboard Bow (S1)", "size": "S", "arc": "Side", "crewGroup": "star_bow" },
+      { "id": "star_bow_s2", "label": "Starboard Bow (S2)", "size": "S", "arc": "Side", "crewGroup": "star_bow" },
+
+      { "id": "port_stern_m", "label": "Port Stern (M)", "size": "M", "arc": "Back", "crewGroup": "port_stern" },
+      { "id": "port_stern_s1", "label": "Port Stern (S1)", "size": "S", "arc": "Side", "crewGroup": "port_stern" },
+      { "id": "port_stern_s2", "label": "Port Stern (S2)", "size": "S", "arc": "Side", "crewGroup": "port_stern" },
+
+      { "id": "star_stern_m", "label": "Starboard Stern (M)", "size": "M", "arc": "Back", "crewGroup": "star_stern" },
+      { "id": "star_stern_s1", "label": "Starboard Stern (S1)", "size": "S", "arc": "Side", "crewGroup": "star_stern" },
+      { "id": "star_stern_s2", "label": "Starboard Stern (S2)", "size": "S", "arc": "Side", "crewGroup": "star_stern" },
+
+      { "id": "mid_l_front_1", "label": "Middle Heavy Front 1 (L)", "size": "L", "arc": "Direct Front", "crewGroup": "mid_gunner" },
+      { "id": "mid_l_front_2", "label": "Middle Heavy Front 2 (L)", "size": "L", "arc": "Direct Front", "crewGroup": "mid_gunner" },
+      { "id": "mid_l_back_1", "label": "Middle Heavy Back 1 (L)", "size": "L", "arc": "Direct Back", "crewGroup": "mid_gunner" },
+      { "id": "mid_l_back_2", "label": "Middle Heavy Back 2 (L)", "size": "L", "arc": "Direct Back", "crewGroup": "mid_gunner" }
+    ]
+  },
+
+  {
+    "id": "flying_manta_saddle",
+    "name": "Flying Manta Saddle",
+    "weight": 30,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountTags": ["flying_manta"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_1", "label": "Driver Mount 1", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_m_2", "label": "Driver Mount 2", "size": "M", "arc": "Direct Front", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "large_scavver_saddle",
+    "name": "Large Scavver Saddle",
+    "weight": 20,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["large_scavver"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_xs_1", "label": "Driver Mount 1", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_2", "label": "Driver Mount 2", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_3", "label": "Driver Mount 3", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_4", "label": "Driver Mount 4", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_5", "label": "Driver Mount 5", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_6", "label": "Driver Mount 6", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "vahkrel_saddle",
+    "name": "Vah’k’rel Saddle",
+    "weight": 30,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["vahkrel"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_s_1", "label": "Driver Mount 1", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_s_2", "label": "Driver Mount 2", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_1", "label": "Driver Mount 3", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_2", "label": "Driver Mount 4", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_3", "label": "Driver Mount 5", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_4", "label": "Driver Mount 6", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" }
+    ]
+  }
+]

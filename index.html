@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <title>Flying Combat Configurator</title>
+
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background: #eee;
+      padding: 20px;
+    }
+    select, input {
+      margin-bottom: 10px;
+      width: 260px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .statblock {
+      background: #fdf1dc;
+      border: 2px solid #922610;
+      padding: 12px;
+      max-width: 700px;
+    }
+    h2 {
+      margin: 0;
+      color: #922610;
+    }
+    hr {
+      border: none;
+      border-top: 2px solid #922610;
+    }
+
+    @media print {
+      body * { visibility: hidden; }
+      .statblock, .statblock * {
+        visibility: visible;
+      }
+      .statblock {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Flying Combat Configurator</h1>
+
+<div class="section">
+  <h3>Base (Mount or Vehicle)</h3>
+  <select id="baseSelect"></select>
+</div>
+
+<div class="section" id="saddleSection">
+  <h3>Saddle (Mount Only)</h3>
+  <select id="saddleSelect"></select>
+</div>
+
+<div class="section">
+  <h3>Crew Stats</h3>
+  <div id="crewUI"></div>
+</div>
+
+<div class="section">
+  <h3>Weapons</h3>
+  <div id="weaponsUI"></div>
+</div>
+
+<div class="section">
+  <button onclick="render()">Generate Stat Block</button>
+  <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<hr>
+
+<div id="statblock" class="statblock"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
