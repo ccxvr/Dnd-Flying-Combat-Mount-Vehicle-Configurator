@@ -4,6 +4,9 @@
     "name": "Imperial Sky Frigate",
     "type": "Vehicle",
     "size": "Huge",
+	"climbRate": "1",
+    "acceleration": "1d4",
+    "points": 390,
     "strength": 24,
     "dex": 10,
     "con": 18,
@@ -27,3 +30,4 @@
     "traits": ["long_range_fire_control"]
   }
 ]
+
