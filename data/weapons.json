@@ -2,6 +2,7 @@
   {
     "id": "small_missile",
     "name": "Small Missile",
+    "points": 10,
     "size": "S",
     "weight": 10,
     "damage": "8d6 force",
@@ -13,6 +14,7 @@
   {
     "id": "medium_missile",
     "name": "Medium Missile",
+    "points": 15,
     "size": "M",
     "weight": 20,
     "damage": "10d12 force",
@@ -24,6 +26,7 @@
   {
     "id": "rocket",
     "name": "Rocket",
+    "points": 4,
     "size": "XS",
     "weight": 4,
     "damage": "3d8 force",
@@ -35,6 +38,7 @@
   {
     "id": "bomb_s",
     "name": "Small Bomb",
+    "points": 10,
     "size": "S",
     "weight": 20,
     "damage": "6d6 force",
@@ -46,6 +50,7 @@
   {
     "id": "bomb_m",
     "name": "Medium Bomb",
+    "points": 20,
     "size": "M",
     "weight": 50,
     "damage": "10d6 force",
@@ -57,6 +62,7 @@
   {
     "id": "bomb_l",
     "name": "Large Bomb",
+    "points": 50,
     "size": "L",
     "weight": 200,
     "damage": "22d6 force",
@@ -68,6 +74,7 @@
   {
     "id": "revolving_carbine",
     "name": "Revolving Carbine",
+    "points": 25,
     "size": "S",
     "weight": 20,
     "damage": "4d6 piercing",
@@ -79,6 +86,7 @@
   {
     "id": "splinter_repeater",
     "name": "Splinter Repeater",
+    "points": 20,
     "size": "S",
     "weight": 20,
     "damage": "5d4 piercing",
@@ -90,6 +98,7 @@
   {
     "id": "arc_caster",
     "name": "Arc Caster",
+    "points": 80,
     "size": "M",
     "weight": 60,
     "damage": "8d8 lightning",
@@ -101,6 +110,7 @@
   {
     "id": "bug_zapper",
     "name": "Bug Zapper",
+    "points": 15,
     "size": "S",
     "weight": 30,
     "damage": "1d4 lightning",
@@ -112,6 +122,7 @@
   {
     "id": "arcane_blaster",
     "name": "Arcane Blaster",
+    "points": 30,
     "size": "M",
     "weight": 80,
     "damage": "1d10 force",
@@ -123,6 +134,7 @@
   {
     "id": "culverin_2lb",
     "name": "Culverin (2 lb)",
+    "points": 40,
     "size": "M",
     "weight": 50,
     "damage": "3d12 bludgeoning",
@@ -134,6 +146,7 @@
   {
     "id": "rifled_culverin_2lb",
     "name": "Rifled Culverin (2 lb)",
+    "points": 50,
     "size": "M",
     "weight": 60,
     "damage": "3d12 bludgeoning",
@@ -145,6 +158,7 @@
   {
     "id": "scorpio",
     "name": "Scorpio",
+    "points": 30,
     "size": "L",
     "weight": 55,
     "damage": "3d10 bludgeoning",
@@ -156,9 +170,10 @@
   {
     "id": "cannon_6lb",
     "name": "Cannon (6 lb)",
+    "points": 60,
     "size": "L",
     "weight": 70,
-    "damage": "1d20 bludgeoning",
+    "damage": "2d20 bludgeoning",
     "range": "120 / 240 ft",
     "ability": "dex",
     "traits": ["ammunition", "reload_1"]
@@ -167,9 +182,10 @@
   {
     "id": "rifled_cannon_6lb",
     "name": "Rifled Cannon (6 lb)",
+    "points": 80,
     "size": "L",
     "weight": 80,
-    "damage": "1d20 bludgeoning",
+    "damage": "2d20 bludgeoning",
     "range": "120 / 240 ft",
     "ability": "dex",
     "traits": ["ammunition", "reload_1", "rifled"]
@@ -178,6 +194,7 @@
   {
     "id": "flak_cannon",
     "name": "Flak Cannon",
+    "points": 100,
     "size": "L",
     "weight": 80,
     "damage": "4d8 piercing (Dex save half)",
@@ -189,6 +206,7 @@
   {
     "id": "ballista",
     "name": "Ballista",
+    "points": 70,
     "size": "XL",
     "weight": 100,
     "damage": "4d10 piercing",
@@ -200,6 +218,7 @@
   {
     "id": "mangonel",
     "name": "Mangonel",
+    "points": 90,
     "size": "XL",
     "weight": 200,
     "damage": "5d10 bludgeoning",
@@ -211,6 +230,7 @@
   {
     "id": "bombard",
     "name": "Bombard",
+    "points": 120,
     "size": "XL",
     "weight": 500,
     "damage": "5d20 force",
@@ -222,6 +242,7 @@
   {
     "id": "light_crossbow",
     "name": "Light Crossbow",
+    "points": 10,
     "size": "XS",
     "weight": 5,
     "damage": "1d8 piercing",
@@ -233,6 +254,7 @@
   {
     "id": "Heavy_crossbow",
     "name": "Heavy Crossbow",
+    "points": 15,
     "size": "S",
     "weight": 18,
     "damage": "1d10 piercing",
@@ -244,6 +266,7 @@
     {
     "id": "repeater_crossbow",
     "name": "Repeater Crossbow",
+    "points": 15,
     "size": "XS",
     "weight": 5,
     "damage": "1d6 piercing",
@@ -255,6 +278,7 @@
     {
     "id": "rifle",
     "name": "Rifle",
+    "points": 20,
     "size": "S",
     "weight": 8,
     "damage": "2d10 piercing",
@@ -266,6 +290,7 @@
     {
     "id": "auto_rifle",
     "name": "Autorifle",
+    "points": 20,
     "size": "S",
     "weight": 9,
     "damage": "2d6 piercing",
@@ -277,6 +302,7 @@
   {
     "id": "pistol",
     "name": "pistol",
+    "points": 10,
     "size": "XS",
     "weight": 4,
     "damage": "1d10 piercing",
@@ -288,9 +314,11 @@
   {
     "id": "none",
     "name": "— None —",
+    "points": 0,
     "size": "XS",
     "weight": 0,
     "traits": []
   }
 ]
+
 
