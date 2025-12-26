@@ -106,7 +106,7 @@
   },
     {
     "id": "extra_weapon_hardpoint_S_frontback",
-    "name": "Extra Weapon Hardpoint XS Front/Back",
+    "name": "Extra Weapon Hardpoint S Front/Back",
     "points": 50,
     "desc": "Adds one S hardpoint with a front/back arc.",
     "requires": { "baseType": ["Vehicle","Mount"] },
