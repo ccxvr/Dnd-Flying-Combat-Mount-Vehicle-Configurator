@@ -4,7 +4,7 @@
     "name": "Small Missile",
     "size": "S",
     "weight": 10,
-    "damage": "6d6 force",
+    "damage": "8d6 force",
     "range": "120 ft",
     "ability": "dex",
     "traits": ["consumable", "seeking_16"]
@@ -15,7 +15,7 @@
     "name": "Medium Missile",
     "size": "M",
     "weight": 20,
-    "damage": "6d12 force",
+    "damage": "10d12 force",
     "range": "120 ft",
     "ability": "dex",
     "traits": ["consumable", "seeking_13"]
@@ -37,10 +37,10 @@
     "name": "Small Bomb",
     "size": "S",
     "weight": 20,
-    "damage": "4d6 force",
+    "damage": "6d6 force",
     "range": "Special (speed / 10 × height)",
     "ability": "dex",
-    "traits": ["consumable"]
+    "traits": ["consumable", "siege"]
   },
 
   {
@@ -51,7 +51,7 @@
     "damage": "10d6 force",
     "range": "Special (speed / 10 × height)",
     "ability": "dex",
-    "traits": ["consumable"]
+    "traits": ["consumable", "siege"]
   },
 
   {
@@ -62,7 +62,7 @@
     "damage": "22d6 force",
     "range": "Special (speed / 10 × height)",
     "ability": "dex",
-    "traits": ["consumable"]
+    "traits": ["consumable", "siege"]
   },
 
   {
@@ -293,3 +293,4 @@
     "traits": []
   }
 ]
+
