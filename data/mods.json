@@ -202,7 +202,7 @@
   {
     "id": "wyvern_barding_kit",
     "name": "Wyvern Barding Kit",
-    "points": 20,
+    "points": 40,
     "desc": "Designed specifically for wyverns; grants Tough Skin.",
     "requires": { "baseType": ["Mount"], "tags": ["wyvern"] },
     "effects": {
