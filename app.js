@@ -2,6 +2,7 @@ let mounts = []
 let vehicles = []
 let saddles = []
 let weapons = []
+let mods = []
 let TRAITS = {}
 
 const SIZE_ORDER = ["XS", "S", "M", "L", "XL"]
@@ -29,7 +30,10 @@ let config = {
   proficiencies: {},
 
   // crewGroupId -> { dexMod, profBonus }
-  crewStats: {}
+  crewStats: {},
+
+  // list of mod ids applied
+  mods: []
 }
 
 /* ---------- LOAD DATA ---------- */
@@ -41,11 +45,13 @@ async function loadData() {
     const saddlesRes = await fetch("data/saddles.json"); if (!saddlesRes.ok) throw new Error("saddles.json not found")
     const weaponsRes = await fetch("data/weapons.json"); if (!weaponsRes.ok) throw new Error("weapons.json not found")
     const traitsRes = await fetch("data/traits.json"); if (!traitsRes.ok) throw new Error("traits.json not found")
+    const modsRes = await fetch("data/mods.json"); if (!modsRes.ok) throw new Error("mods.json not found")
 
     mounts = await mountsRes.json()
     vehicles = await vehiclesRes.json()
     saddles = await saddlesRes.json()
     weapons = await weaponsRes.json()
+    mods = await modsRes.json()
 
     const traitsJson = await traitsRes.json()
 
@@ -110,12 +116,14 @@ function selectBase(id) {
   config.mounts = {}
   config.proficiencies = {}
   config.crewStats = {}
+  config.mods = []
 
   document.getElementById("saddleSection").style.display = config.mount ? "block" : "none"
 
   if (config.mount) setupMount()
   else setupVehicle()
 
+  setupModsUI() // NEW
   render()
 }
 
@@ -127,20 +135,12 @@ function setupMount() {
 
   const mountTags = config.mount.tags || []
 
-  // Saddle restrictions supported:
-  // - allowedSizes: ["Large", ...] (required)
-  // - allowedMountIds: ["white_wyvern", ...] (optional)
-  // - allowedMountTags: ["wyvern", "griffon", ...] (optional)
-  //
-  // Matching rule:
-  // - Size must match
-  // - If any restriction exists (ids or tags), must match at least one of them
   const validSaddles = saddles
     .filter(s => (s.allowedSizes || []).includes(config.mount.size))
     .filter(s => {
       const hasIds = Array.isArray(s.allowedMountIds) && s.allowedMountIds.length > 0
       const hasTags = Array.isArray(s.allowedMountTags) && s.allowedMountTags.length > 0
-      if (!hasIds && !hasTags) return true // generic saddle
+      if (!hasIds && !hasTags) return true
       const byIdOk = hasIds && s.allowedMountIds.includes(config.mount.id)
       const byTagOk = hasTags && s.allowedMountTags.some(t => mountTags.includes(t))
       return byIdOk || byTagOk
@@ -161,10 +161,12 @@ function setupMount() {
 
   saddleSelect.onchange = () => {
     selectSaddle(saddleSelect.value)
+    setupModsUI()
     render()
   }
 
   selectSaddle(validSaddles[0].id)
+  setupModsUI()
   render()
 }
 
@@ -173,14 +175,14 @@ function selectSaddle(id) {
   if (!config.saddle) return
 
   setupCrewUI(getCrewGroups())
-  setupWeapons(getMountingPoints())
+  setupWeapons(getDerivedMountingPoints())
 }
 
 /* ---------- VEHICLES ---------- */
 
 function setupVehicle() {
   setupCrewUI(getCrewGroups())
-  setupWeapons(getMountingPoints())
+  setupWeapons(getDerivedMountingPoints())
 }
 
 /* ---------- CREW ---------- */
@@ -225,13 +227,191 @@ function setCrewPB(groupId, val) {
   render()
 }
 
-/* ---------- MOUNTING POINTS / WEAPONS ---------- */
+/* ---------- MODS ---------- */
 
-function getMountingPoints() {
-  if (config.vehicle) return config.vehicle.mountingPoints || []
-  if (config.saddle) return config.saddle.mountingPoints || []
-  return []
+// Expected mods.json entries (example schema):
+// {
+//   "id":"reinforced_rigging",
+//   "name":"Reinforced Rigging",
+//   "points":2,
+//   "desc":"...optional...",
+//   "requires": { "baseType": ["Mount","Vehicle"], "tags":["wyvern"], "ids":["white_wyvern"] },
+//   "effects": {
+//      "addTraits":["tough_skin"],
+//      "addMountingPoints":[{...}],
+//      "statBonuses": { "baseAC": 1, "baseHP": 10, "strength": 2, "agility": 1, "carryMultiplier": 1 },
+//      "flyBonus": { "standard": 10, "max": 30 },
+//      "set": { "acceleration":"2d6", "climbRate":"1/2" }
+//   }
+// }
+
+function baseKind() {
+  return config.vehicle ? "Vehicle" : "Mount"
 }
+function baseTags() {
+  return (config.mount?.tags || config.vehicle?.tags || [])
+}
+function baseId() {
+  return config.base?.id || ""
+}
+
+function modById(id) {
+  return mods.find(m => m.id === id) || null
+}
+
+function isModAllowed(mod) {
+  if (!mod) return false
+  const req = mod.requires || {}
+
+  if (Array.isArray(req.baseType) && req.baseType.length) {
+    if (!req.baseType.includes(baseKind())) return false
+  }
+  if (Array.isArray(req.ids) && req.ids.length) {
+    if (!req.ids.includes(baseId())) return false
+  }
+  if (Array.isArray(req.tags) && req.tags.length) {
+    const tags = baseTags()
+    if (!req.tags.some(t => tags.includes(t))) return false
+  }
+  return true
+}
+
+function setupModsUI() {
+  const modsSection = document.getElementById("modsSection")
+  const modsSelect = document.getElementById("modsSelect")
+  const modsList = document.getElementById("modsList")
+
+  // If your HTML doesn’t have these yet, add them (see snippet below).
+  if (!modsSection || !modsSelect || !modsList) return
+
+  modsSection.style.display = "block"
+  modsSelect.innerHTML = ""
+
+  const available = mods.filter(isModAllowed)
+  if (available.length === 0) {
+    modsSelect.innerHTML = `<option value="">(No mods available)</option>`
+  } else {
+    available.forEach(m => {
+      modsSelect.innerHTML += `<option value="${m.id}">${m.name} (${m.points || 0} pts)</option>`
+    })
+  }
+
+  renderModsList()
+  // Also refresh weapons if mods add mounting points
+  setupWeapons(getDerivedMountingPoints())
+}
+
+function addSelectedMod() {
+  const sel = document.getElementById("modsSelect")
+  if (!sel || !sel.value) return
+  const id = sel.value
+  if (config.mods.includes(id)) return
+  config.mods.push(id)
+  renderModsList()
+  setupWeapons(getDerivedMountingPoints())
+  render()
+}
+
+function removeMod(id) {
+  config.mods = config.mods.filter(x => x !== id)
+  renderModsList()
+  setupWeapons(getDerivedMountingPoints())
+  render()
+}
+
+function renderModsList() {
+  const modsList = document.getElementById("modsList")
+  if (!modsList) return
+
+  if (!config.mods.length) {
+    modsList.innerHTML = `<em>No mods selected.</em>`
+    return
+  }
+
+  modsList.innerHTML = config.mods
+    .map(id => {
+      const m = modById(id)
+      if (!m) return ""
+      return `
+        <div style="margin-bottom:6px;">
+          <strong>${m.name}</strong> (${m.points || 0} pts)
+          <button onclick="removeMod('${m.id}')" style="margin-left:8px;">Remove</button>
+          ${m.desc ? `<div style="font-size:0.9em; opacity:0.9;">${m.desc}</div>` : ""}
+        </div>
+      `
+    })
+    .join("")
+}
+
+function applyModsToBase(base) {
+  // clone
+  const b = JSON.parse(JSON.stringify(base || {}))
+  b.traits = Array.isArray(b.traits) ? [...b.traits] : []
+  b.fly = b.fly || { standard: 0, max: 0 }
+
+  for (const id of config.mods) {
+    const m = modById(id)
+    if (!m || !isModAllowed(m)) continue
+    const fx = m.effects || {}
+
+    // add traits
+    if (Array.isArray(fx.addTraits)) {
+      for (const t of fx.addTraits) if (t && !b.traits.includes(t)) b.traits.push(t)
+    }
+
+    // numeric stat bonuses
+    if (fx.statBonuses && typeof fx.statBonuses === "object") {
+      for (const k of Object.keys(fx.statBonuses)) {
+        const delta = +fx.statBonuses[k]
+        if (!Number.isFinite(delta)) continue
+        b[k] = (Number(b[k]) || 0) + delta
+      }
+    }
+
+    // fly bonus
+    if (fx.flyBonus && typeof fx.flyBonus === "object") {
+      if (Number.isFinite(+fx.flyBonus.standard)) b.fly.standard = (b.fly.standard || 0) + (+fx.flyBonus.standard)
+      if (Number.isFinite(+fx.flyBonus.max)) b.fly.max = (b.fly.max || 0) + (+fx.flyBonus.max)
+    }
+
+    // set/override fields
+    if (fx.set && typeof fx.set === "object") {
+      for (const k of Object.keys(fx.set)) b[k] = fx.set[k]
+    }
+  }
+
+  return b
+}
+
+function getDerivedBase() {
+  return applyModsToBase(config.base)
+}
+
+function getDerivedMountingPoints() {
+  // start from saddle/vehicle
+  let points = []
+  if (config.vehicle) points = (config.vehicle.mountingPoints || []).map(p => ({ ...p }))
+  else if (config.saddle) points = (config.saddle.mountingPoints || []).map(p => ({ ...p }))
+
+  // add mod mounting points
+  for (const id of config.mods) {
+    const m = modById(id)
+    if (!m || !isModAllowed(m)) continue
+    const add = m.effects?.addMountingPoints
+    if (Array.isArray(add)) {
+      for (const mp of add) {
+        if (!mp || !mp.id) continue
+        // avoid collisions
+        const uniqueId = points.some(p => p.id === mp.id) ? `${mp.id}_${m.id}` : mp.id
+        points.push({ ...mp, id: uniqueId })
+      }
+    }
+  }
+
+  return points
+}
+
+/* ---------- MOUNTING POINTS / WEAPONS ---------- */
 
 function weaponById(id) {
   return weapons.find(w => w.id === id) || null
@@ -246,6 +426,7 @@ function maxQtyFor(mpSize, weaponSize) {
 
 function setupWeapons(mountingPoints) {
   const ui = document.getElementById("weaponsUI")
+  if (!ui) return
   ui.innerHTML = ""
 
   mountingPoints.forEach(mp => {
@@ -255,7 +436,7 @@ function setupWeapons(mountingPoints) {
     const fittingWeapons = weapons.filter(w => maxQtyFor(mp.size, w.size) >= 1)
 
     const weaponOptions = fittingWeapons
-      .map(w => `<option value="${w.id}" ${config.mounts[mp.id].weaponId === w.id ? "selected" : ""}>${w.name}</option>`)
+      .map(w => `<option value="${w.id}" ${config.mounts[mp.id].weaponId === w.id ? "selected" : ""}>${w.name} (${w.points || 0} pts)</option>`)
       .join("")
 
     const currentWeapon = weaponById(config.mounts[mp.id].weaponId)
@@ -303,7 +484,7 @@ function setMountWeapon(slot, weaponId) {
   if (weaponId === "none") config.mounts[slot].qty = 0
   else config.mounts[slot].qty = Math.max(1, config.mounts[slot].qty || 1)
 
-  setupWeapons(getMountingPoints())
+  setupWeapons(getDerivedMountingPoints())
   render()
 }
 
@@ -322,12 +503,33 @@ function setProf(slot, value) {
 
 function loadWeight() {
   let total = 0
-  if (config.saddle) total += config.saddle.weight
+  if (config.saddle) total += (config.saddle.weight || 0)
   Object.values(config.mounts).forEach(sel => {
     const w = weaponById(sel.weaponId)
     if (!w || w.id === "none") return
     total += (w.weight || 0) * (sel.qty || 0)
   })
+  return total
+}
+
+/* ---------- POINT COST ---------- */
+
+function totalPoints() {
+  let total = 0
+  if (config.base) total += (config.base.points || 0)
+  if (config.saddle) total += (config.saddle.points || 0)
+
+  for (const id of config.mods) {
+    const m = modById(id)
+    if (m) total += (m.points || 0)
+  }
+
+  Object.values(config.mounts).forEach(sel => {
+    const w = weaponById(sel.weaponId)
+    if (!w || w.id === "none") return
+    total += (w.points || 0) * (sel.qty || 0)
+  })
+
   return total
 }
 
@@ -349,7 +551,7 @@ function traitLabel(traitId) {
     .replace(/\b\w/g, c => c.toUpperCase())
 }
 
-/* ---------- ACTION RENDERER (supports: attack, save, text) ---------- */
+/* ---------- ACTION RENDERER ---------- */
 
 function renderNativeAction(a) {
   if (!a || !a.name) return ""
@@ -395,8 +597,6 @@ function renderNativeAction(a) {
   return `<strong>${a.name}.</strong> ${a.text || ""}<br>`
 }
 
-/* ---------- SECTION RENDER HELPERS ---------- */
-
 function renderActionSection(title, list) {
   if (!Array.isArray(list) || list.length === 0) return ""
   let out = `<strong>${title}</strong><br>`
@@ -410,39 +610,46 @@ function renderActionSection(title, list) {
 function render() {
   if (!config.base) return
 
-  const payload = loadWeight()
-  const cap = capacity(config.base)
+  const derived = getDerivedBase()
 
-  let agility = config.base.agility
-  let maxSpeed = config.base.fly.max
+  const payload = loadWeight()
+  const cap = capacity(derived)
+
+  let agility = derived.agility
+  let maxSpeed = derived.fly?.max ?? 0
   let enc = "Normal"
   let agilityWarning = null
 
   if (payload > cap * 0.5) {
     enc = "Encumbered"
-    agility = Math.ceil(config.base.agility / 2)
+    agility = Math.ceil((derived.agility || 0) / 2)
     agilityWarning = "⚠ Agility halved due to load"
   }
   if (payload > cap) {
     enc = "Heavily Encumbered"
-    maxSpeed -= 20
+    maxSpeed = Math.max(0, (maxSpeed || 0) - 20)
   }
   if (payload > cap * 1.5) enc = "Overloaded"
 
+  const pts = totalPoints()
+
   let html = `
-    <h2>${config.base.name}</h2>
-    <em>${config.base.size} ${config.base.type}</em>
+    <h2>${derived.name}</h2>
+    <em>${derived.size} ${derived.type}</em><br>
+    <strong>Point Cost</strong> ${pts} pts
     <hr>
 
-    <strong>Armor Class</strong> ${config.base.baseAC}<br>
-    <strong>Hit Points</strong> ${config.base.baseHP}<br>
-    <strong>Speed</strong> fly ${config.base.fly.standard} ft. (max ${maxSpeed} ft.)<br>
+    <strong>Armor Class</strong> ${derived.baseAC}<br>
+    <strong>Hit Points</strong> ${derived.baseHP}<br>
+    <strong>Speed</strong> fly ${derived.fly?.standard ?? 0} ft. (max ${maxSpeed} ft.)<br>
+    <strong>Climb Rate</strong> ${derived.climbRate ?? "—"}<br>
+    <strong>Acceleration</strong> ${derived.acceleration ?? "—"}<br>
 
     <hr>
 
-    STR ${config.base.strength} (${abilityMod(config.base.strength)})
-    DEX ${config.base.dex} (${abilityMod(config.base.dex)})
-    CON ${config.base.con} (${abilityMod(config.base.con)})
+    STR ${derived.strength} (${abilityMod(derived.strength)})
+    DEX ${derived.dex} (${abilityMod(derived.dex)})
+    CON ${derived.con} (${abilityMod(derived.con)})
 
     <hr>
 
@@ -452,15 +659,15 @@ function render() {
     <hr>
   `
 
-  // ✅ All native action types supported
-  html += renderActionSection("Actions", config.base.actions)
-  html += renderActionSection("Bonus Actions", config.base.bonusActions)
-  html += renderActionSection("Reactions", config.base.reactions)
-  html += renderActionSection("Legendary Actions", config.base.legendaryActions)
+  // Native action types
+  html += renderActionSection("Actions", derived.actions)
+  html += renderActionSection("Bonus Actions", derived.bonusActions)
+  html += renderActionSection("Reactions", derived.reactions)
+  html += renderActionSection("Legendary Actions", derived.legendaryActions)
 
-  // Mounted weapons section
+  // Mounted weapons
   html += `<strong>Mounted Weapons</strong><br>`
-  const points = getMountingPoints()
+  const points = getDerivedMountingPoints()
   const groups = getCrewGroups()
 
   for (let mp of points) {
@@ -482,17 +689,18 @@ function render() {
       Attack: +${atk} to hit<br>
       Hit: ${w.damage}<br>
       Range: ${w.range || "—"}<br>
-      Traits: ${traitsText}<br><br>
+      Traits: ${traitsText}<br>
+      Points: ${(w.points || 0) * sel.qty} pts<br><br>
     `
   }
 
-  // Traits descriptions
-  if (Array.isArray(config.base.traits) && config.base.traits.length) {
+  // Traits
+  if (Array.isArray(derived.traits) && derived.traits.length) {
     html += `<hr><strong>Traits</strong><br>`
-    config.base.traits.forEach(t => {
+    derived.traits.forEach(t => {
       const tr = TRAITS[t]
       if (tr) html += `<strong>${tr.name}.</strong> ${tr.desc}<br>`
-      else html += `<strong>${traitLabel(t)}.</strong><br>` // fallback shows missing ids
+      else html += `<strong>${traitLabel(t)}.</strong><br>`
     })
   }
 
