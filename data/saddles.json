@@ -2,6 +2,7 @@
   {
     "id": "standard_medium_saddle",
     "name": "Standard Medium Saddle",
+    "points": 0,
     "weight": 15,
     "seats": 1,
     "notes": "Seats 1 (Small character only).",
@@ -18,6 +19,7 @@
   {
     "id": "standard_large_saddle",
     "name": "Standard Large Saddle",
+    "points": 0,
     "weight": 30,
     "seats": 1,
     "allowedSizes": ["Large"],
@@ -34,6 +36,7 @@
   {
     "id": "standard_huge_saddle",
     "name": "Standard Huge Saddle",
+    "points": 0,
     "weight": 80,
     "seats": 2,
     "allowedSizes": ["Huge"],
@@ -55,6 +58,7 @@
   {
     "id": "standard_wyvern_saddle",
     "name": "Standard Wyvern Saddle",
+    "points": 10,
     "weight": 40,
     "seats": 1,
     "allowedSizes": ["Large"],
@@ -71,6 +75,7 @@
   {
     "id": "flat_head_wyvern_saddle",
     "name": "Flat-Head Wyvern Saddle",
+    "points": 5,
     "weight": 20,
     "seats": 1,
     "allowedSizes": ["Large"],
@@ -94,6 +99,7 @@
   {
     "id": "cliff_wyvern_saddle",
     "name": "Cliff Wyvern Saddle",
+    "points": 10,
     "weight": 40,
     "seats": 1,
     "allowedSizes": ["Large"],
@@ -109,6 +115,7 @@
   {
     "id": "great_royal_wyvern_saddle",
     "name": "Great Royal Wyvern Saddle",
+    "points": 50,
     "weight": 120,
     "seats": 3,
     "allowedSizes": ["Huge"],
@@ -133,6 +140,7 @@
   {
     "id": "pteranodon_saddle",
     "name": "Pteranodon Saddle",
+    "points": 0,
     "weight": 10,
     "seats": 1,
     "notes": "Seats 1 (Small character only).",
@@ -150,6 +158,7 @@
   {
     "id": "giant_locust_saddle",
     "name": "Giant Locust Saddle",
+    "points": 0,
     "weight": 40,
     "seats": 2,
     "allowedSizes": ["Large"],
@@ -167,6 +176,7 @@
   {
     "id": "giant_beetle_saddle",
     "name": "Giant Beetle Saddle",
+    "points": 0,
     "weight": 20,
     "seats": 1,
     "allowedSizes": ["Medium"],
@@ -182,6 +192,7 @@
   {
     "id": "giant_eagle_saddle",
     "name": "Giant Eagle Saddle",
+    "points": 0,
     "weight": 20,
     "seats": 1,
     "allowedSizes": ["Large"],
@@ -197,6 +208,7 @@
   {
     "id": "imperial_knight_saddle",
     "name": "Imperial Knight Saddle",
+    "points": 10,
     "weight": 30,
     "seats": 1,
     "allowedSizes": ["Large"],
@@ -215,6 +227,7 @@
   {
     "id": "flying_whale_saddle",
     "name": "Flying Whale Saddle",
+    "points": 50,
     "weight": 200,
     "seats": 6,
     "allowedSizes": ["Gargantuan"],
@@ -255,6 +268,7 @@
   {
     "id": "flying_manta_saddle",
     "name": "Flying Manta Saddle",
+    "points": 5,
     "weight": 30,
     "seats": 1,
     "allowedSizes": ["Large"],
@@ -271,6 +285,7 @@
   {
     "id": "large_scavver_saddle",
     "name": "Large Scavver Saddle",
+    "points": 0,
     "weight": 20,
     "seats": 1,
     "allowedSizes": ["Large"],
@@ -291,6 +306,7 @@
   {
     "id": "vahkrel_saddle",
     "name": "Vah’k’rel Saddle",
+    "points": 15,
     "weight": 30,
     "seats": 1,
     "allowedSizes": ["Large"],
@@ -308,3 +324,4 @@
     ]
   }
 ]
+
