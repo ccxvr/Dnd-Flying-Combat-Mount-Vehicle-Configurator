@@ -706,7 +706,7 @@ function render() {
 
   document.getElementById("statblock").innerHTML = html
 }
-
+/*------Roll20 exporter----*/
 function buildRoll20Export() {
   const base = config.base;
   const points = getMountingPoints();
@@ -787,4 +787,5 @@ async function exportRoll20JSON() {
 /* ---------- START ---------- */
 
 loadData()
+
 
