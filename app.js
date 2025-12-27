@@ -764,6 +764,9 @@ function buildRoll20Export() {
   const points = getDerivedMountingPoints();
   const groups = getCrewGroups();
 
+  // ✅ compute encumbrance-derived agility/speed for export
+  const enc = derivedEncumbrance(base);
+
   // build mounted weapons list
   const mountedWeapons = [];
   for (const mp of points) {
@@ -808,8 +811,8 @@ function buildRoll20Export() {
 
     // ✅ add mod descriptions for importer
     mods: exportModObjects(config.mods),
-  
-    // stats (derived)
+
+    // stats (derived = matches UI, including encumbrance-adjusted agility)
     stats: {
       ac: base.baseAC,
       hp: base.baseHP,
@@ -817,19 +820,19 @@ function buildRoll20Export() {
       dex: base.dex,
       con: base.con,
       agility: enc.agility
-
     },
 
     movement: {
       fly: base.fly?.standard ?? 0,
-      fly_max: base.fly?.max ?? 0,
+      fly_max: enc.maxSpeed ?? (base.fly?.max ?? 0),   // ✅ apply heavy encumbrance speed reduction if any
       climb_rate: base.climbRate ?? "—",
       acceleration: base.acceleration ?? "—"
     },
 
     encumbrance: {
-      carried_weight: loadWeight(),
-      capacity: capacity(base)
+      carried_weight: enc.payload,
+      capacity: enc.cap,
+      state: enc.enc
     },
 
     // ✅ export trait descriptions
@@ -859,6 +862,7 @@ async function exportRoll20JSON() {
 /* ---------- START ---------- */
 
 loadData()
+
 
 
 
