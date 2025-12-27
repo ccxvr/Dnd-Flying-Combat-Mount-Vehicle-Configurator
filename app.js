@@ -714,7 +714,7 @@ function exportModObjects(modIds) {
   return modIds
     .filter(Boolean)
     .map(id => {
-      const m = modById(id); // you already have this helper in app.js
+      const m = modById(id);
       return {
         id,
         name: m?.name || id,
@@ -737,12 +737,12 @@ function exportTraitObjects(traitIds) {
     });
 }
 
-function buildRoll20Export(mods: exportModObjects(config.mods),
-) {
-  const base = getDerivedBase();
+function buildRoll20Export() {
+  const base = getDerivedBase();                 // export what you render (mods applied)
   const points = getDerivedMountingPoints();
   const groups = getCrewGroups();
 
+  // build mounted weapons list
   const mountedWeapons = [];
   for (const mp of points) {
     const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
@@ -774,14 +774,20 @@ function buildRoll20Export(mods: exportModObjects(config.mods),
   return {
     schema: "flying-combat-config-v1",
 
+    // identity
     baseId: config.base?.id || "",
     baseName: base.name,
     baseType: base.type,
     baseSize: base.size,
 
+    // loadout
     saddleId: config.saddle?.id || null,
     modIds: [...config.mods],
 
+    // ✅ add mod descriptions for importer
+    mods: exportModObjects(config.mods),
+
+    // stats (derived)
     stats: {
       ac: base.baseAC,
       hp: base.baseHP,
@@ -830,6 +836,7 @@ async function exportRoll20JSON() {
 /* ---------- START ---------- */
 
 loadData()
+
 
 
 
