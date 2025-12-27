@@ -77,7 +77,7 @@
   "dex": 16,
   "con": 12,
   "agility": 5,
-  "baseAC": 16,
+  "baseAC": 15,
   "baseHP": 120,
   "fly": { "standard": 70, "max": 210 },
   "crewGroups": [
@@ -90,7 +90,8 @@
     { "id": "wing_right", "label": "Right Ordnance Rack", "size": "S", "arc": "Front", "crewGroup": "driver" },
     { "id": "turret", "label": "Ordnance Launcher Turret", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
   ],
-  "traits": ["hover", "ordnance_only_rockets_missiles_bombs"]
+  "traits": ["hover", "ordnance_only_rockets_missiles_bombs"],
+  "weaponAllowlist": ["small_missile", "medium_missile", "rocket", "bomb_s", "bomb_m", "bomb_l"]
 },
   {
   "id": "goblin_winged_rocket",
@@ -203,6 +204,7 @@
     "traits": ["long_range_fire_control", "damage_treshold_10"]
   }
 ]
+
 
 
 
