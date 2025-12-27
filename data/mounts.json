@@ -1117,5 +1117,278 @@
         "damage": "3d6 + 4 slashing"
       }
     ]
+  },
+  {
+    "id": "dwarven_griffon",
+    "tags": ["griffon"],
+    "name": "Dwarven Griffon",
+    "type": "Monstrosity (Mount)",
+    "size": "Large",
+    "climbRate": "1/2",
+    "acceleration": "2d8",
+    "points": 110,
+    "strength": 22,
+    "dex": 13,
+    "con": 20,
+    "agility": 3,
+    "baseAC": 13,
+    "baseHP": 90,
+    "carryMultiplier": 2,
+    "fly": { "standard": 80, "max": 240 },
+    "traits": ["keen_sight", "bred_for_combat"],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "kind": "text",
+        "text": "The griffon makes two attacks: one with its beak and one with its claws."
+      },
+      {
+        "name": "Beak",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 8,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "1d10 + 6 piercing"
+      },
+      {
+        "name": "Claws",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 8,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "2d6 + 6 slashing"
+      }
+    ]
+  },
+  {
+    "id": "lesser_griffon",
+    "tags": ["griffon"],
+    "name": "Lesser Griffon",
+    "type": "Monstrosity (Mount)",
+    "size": "Large",
+    "climbRate": "1/2",
+    "acceleration": "2d10",
+    "points": 75,
+    "strength": 18,
+    "dex": 17,
+    "con": 16,
+    "agility": 7,
+    "baseAC": 13,
+    "baseHP": 55,
+    "carryMultiplier": 2,
+    "fly": { "standard": 80, "max": 240 },
+    "traits": ["keen_sight"],
+    "actions": [
+      {
+        "name": "Multiattack",
+        "kind": "text",
+        "text": "The griffon makes two attacks: one with its beak and one with its claws."
+      },
+      {
+        "name": "Beak",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 6,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "1d8 + 4 piercing"
+      },
+      {
+        "name": "Claws",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 6,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "2d4 + 4 slashing"
+      }
+    ]
+  },
+  {
+    "id": "star_wyvern",
+    "tags": ["wyvern"],
+    "name": "Star Wyvern",
+    "type": "Dragon (Mount)",
+    "size": "Large",
+    "climbRate": "1/2",
+    "acceleration": "1d8",
+    "points": 200,
+    "strength": 18,
+    "dex": 18,
+    "con": 16,
+    "agility": 7,
+    "baseAC": 15,
+    "baseHP": 180,
+    "carryMultiplier": 2,
+    "fly": { "standard": 80, "max": 240 },
+    "traits": [],
+    "actions": [
+      {
+        "name": "Bite",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 6,
+        "reach": "10 ft",
+        "target": "one target",
+        "damage": "2d6 + 4 piercing"
+      },
+      {
+        "name": "Tail Sting",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 6,
+        "reach": "10 ft",
+        "target": "one target",
+        "damage": "2d6 + 4 piercing",
+        "extra": "plus 3d6 poison damage"
+      },
+      {
+        "name": "Fireball",
+        "kind": "save",
+        "save": { "ability": "DEX", "dc": 14 },
+        "area": "20-foot-radius sphere",
+        "range": "120 ft",
+        "onFail": "8d6 fire",
+        "onSave": "half damage"
+      },
+      {
+        "name": "Fire Cone",
+        "kind": "save",
+        "save": { "ability": "DEX", "dc": 14 },
+        "area": "30-foot cone",
+        "onFail": "6d6 fire",
+        "onSave": "half damage"
+      }
+    ]
+  },
+  {
+    "id": "manticore",
+    "tags": ["manticore"],
+    "name": "Manticore",
+    "type": "Monstrosity (Mount)",
+    "size": "Large",
+    "climbRate": "1/2",
+    "acceleration": "2d8",
+    "points": 70,
+    "strength": 16,
+    "dex": 14,
+    "con": 16,
+    "agility": 4,
+    "baseAC": 14,
+    "baseHP": 50,
+    "carryMultiplier": 2,
+    "fly": { "standard": 60, "max": 180 },
+    "traits": [],
+    "actions": [
+      {
+        "name": "Bite",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 5,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "1d8 + 3 piercing"
+      },
+      {
+        "name": "Claws",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 5,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "2d6 + 3 slashing"
+      },
+      {
+        "name": "Sting",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 5,
+        "reach": "10 ft",
+        "target": "one target",
+        "damage": "1d10 + 3 piercing",
+        "extra": "plus 2d6 poison damage"
+      }
+    ]
+  },
+  {
+    "id": "cocatrice",
+    "tags": ["cocatrice"],
+    "name": "Cocatrice",
+    "type": "Monstrosity (Mount)",
+    "size": "Large",
+    "climbRate": "1/2",
+    "acceleration": "2d10",
+    "points": 65,
+    "strength": 16,
+    "dex": 16,
+    "con": 14,
+    "agility": 6,
+    "baseAC": 13,
+    "baseHP": 45,
+    "carryMultiplier": 2,
+    "fly": { "standard": 60, "max": 180 },
+    "traits": ["keen_sight"],
+    "actions": [
+      {
+        "name": "Beak",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 6,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "1d8 + 3 piercing"
+      },
+      {
+        "name": "Talons",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 6,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "2d4 + 3 slashing"
+      },
+      {
+        "name": "Petrifying Gaze",
+        "kind": "save",
+        "save": { "ability": "DEX", "dc": 13 },
+        "area": "15-foot cone",
+        "onFail": "agility halved (save ends at end of each of the target’s turns)",
+        "onSave": "no effect",
+        "notes": "On a failed save, the target can repeat the save at the end of each of its turns, ending the effect on a success."
+      }
+    ]
+  },
+  {
+    "id": "vargeist",
+    "tags": ["bat", "undead"],
+    "name": "Vargeist",
+    "type": "Beast (Mount)",
+    "size": "Large",
+    "climbRate": "1",
+    "acceleration": "1d10",
+    "points": 60,
+    "strength": 15,
+    "dex": 16,
+    "con": 12,
+    "agility": 7,
+    "baseAC": 13,
+    "baseHP": 45,
+    "carryMultiplier": 2,
+    "fly": { "standard": 50, "max": 150 },
+    "traits": ["shyish_focai"],
+    "actions": [
+      {
+        "name": "Bite",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 5,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "2d6 + 2 piercing"
+      }
+    ]
   }
 ]
+
