@@ -4,7 +4,7 @@
     "name": "Imperial Sky Frigate",
     "type": "Vehicle",
     "size": "Huge",
-	"climbRate": "1",
+    "climbRate": "1",
     "acceleration": "1d4",
     "points": 390,
     "strength": 24,
@@ -14,12 +14,12 @@
     "baseAC": 16,
     "baseHP": 420,
     "fly": { "standard": 50, "max": 150 },
-	"crewGroups": [
+    "crewGroups": [
       { "id": "driver", "label": "Driver" },
       { "id": "bow_gunner", "label": "Bow Gunner" },
-	  { "id": "port_gunner", "label": "Port Gunner" },
-	  { "id": "starboard_gunner", "label": "Starboard Gunner" },
-	  { "id": "top_gunner", "label": "Top Gunner" }
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "starboard_gunner", "label": "Starboard Gunner" },
+      { "id": "top_gunner", "label": "Top Gunner" }
     ],
     "mountingPoints": [
       { "id": "bow", "label": "Bow Cannon", "size": "L", "arc": "Front", "crewGroup": "bow_gunner" },
@@ -28,6 +28,115 @@
       { "id": "top", "label": "Flak Mount", "size": "M", "arc": "Front/Back", "crewGroup": "top_gunner" }
     ],
     "traits": ["long_range_fire_control"]
+  },
+  {
+    "id": "gyrocopter",
+    "name": "Gyrocopter",
+    "type": "Vehicle",
+    "size": "Large",
+    "climbRate": "1",
+    "acceleration": "1d6",
+    "points": 180,
+    "strength": 20,
+    "dex": 14,
+    "con": 16,
+    "agility": 4,
+    "baseAC": 18,
+    "baseHP": 200,
+    "fly": { "standard": 60, "max": 180 },
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "nose", "label": "Nose Mount", "size": "L", "arc": "Front", "crewGroup": "driver" },
+      { "id": "wing_left", "label": "Left Forward Mount", "size": "S", "arc": "Front", "crewGroup": "driver" },
+      { "id": "wing_right", "label": "Right Forward Mount", "size": "S", "arc": "Front", "crewGroup": "driver" },
+      { "id": "turret", "label": "Turret Mount", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
+    ],
+    "traits": ["hover"]
+  },
+  {
+    "id": "imperial_air_carrier",
+    "name": "Imperial Air Carrier",
+    "type": "Vehicle",
+    "size": "Gargantuan",
+    "climbRate": "1/2",
+    "acceleration": "1d4",
+    "points": 900,
+    "strength": 30,
+    "dex": 8,
+    "con": 22,
+    "agility": 1,
+    "baseAC": 16,
+    "baseHP": 800,
+    "fly": { "standard": 40, "max": 120 },
+    "crewGroups": [
+      { "id": "driver", "label": "Helm Crew" },
+      { "id": "fore_gunner", "label": "Fore Gunner" },
+      { "id": "aft_gunner", "label": "Aft Gunner" },
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "starboard_gunner", "label": "Starboard Gunner" },
+      { "id": "dorsal_gunner", "label": "Dorsal Gunner" },
+      { "id": "ventral_gunner", "label": "Ventral Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "xl_fore_1", "label": "Forward Heavy Battery (I)", "size": "XL", "arc": "Front", "crewGroup": "fore_gunner" },
+      { "id": "xl_fore_2", "label": "Forward Heavy Battery (II)", "size": "XL", "arc": "Front", "crewGroup": "fore_gunner" },
+
+      { "id": "xl_aft_1", "label": "Aft Heavy Battery (I)", "size": "XL", "arc": "Back", "crewGroup": "aft_gunner" },
+      { "id": "xl_aft_2", "label": "Aft Heavy Battery (II)", "size": "XL", "arc": "Back", "crewGroup": "aft_gunner" },
+
+      { "id": "l_port_1", "label": "Port Battery (I)", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "l_port_2", "label": "Port Battery (II)", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "l_port_3", "label": "Port Battery (III)", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+
+      { "id": "l_starboard_1", "label": "Starboard Battery (I)", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+      { "id": "l_starboard_2", "label": "Starboard Battery (II)", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+      { "id": "l_starboard_3", "label": "Starboard Battery (III)", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+
+      { "id": "l_dorsal", "label": "Dorsal Flak Grid", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" },
+      { "id": "l_ventral", "label": "Ventral Flak Grid", "size": "L", "arc": "Front/Back", "crewGroup": "ventral_gunner" }
+    ],
+    "traits": ["carrier"]
+  },
+  {
+    "id": "dwarven_sky_fortress",
+    "name": "Dwarven Sky Fortress",
+    "type": "Vehicle",
+    "size": "Huge",
+    "climbRate": "1",
+    "acceleration": "1d4",
+    "points": 650,
+    "strength": 26,
+    "dex": 8,
+    "con": 22,
+    "agility": 2,
+    "baseAC": 20,
+    "baseHP": 600,
+    "fly": { "standard": 45, "max": 135 },
+    "crewGroups": [
+      { "id": "driver", "label": "Helm" },
+      { "id": "xl_gunner", "label": "Siege Gunner" },
+      { "id": "fore_port_gunner", "label": "Fore-Port Gunner" },
+      { "id": "fore_starboard_gunner", "label": "Fore-Starboard Gunner" },
+      { "id": "mid_port_gunner", "label": "Mid-Port Gunner" },
+      { "id": "mid_starboard_gunner", "label": "Mid-Starboard Gunner" },
+      { "id": "aft_port_gunner", "label": "Aft-Port Gunner" },
+      { "id": "aft_starboard_gunner", "label": "Aft-Starboard Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "xl_bow", "label": "Adamantine Siege Cannon", "size": "XL", "arc": "Front", "crewGroup": "xl_gunner" },
+
+      { "id": "m_fore_port", "label": "Fore-Port Emplacement", "size": "M", "arc": "Front/Port", "crewGroup": "fore_port_gunner" },
+      { "id": "m_fore_starboard", "label": "Fore-Starboard Emplacement", "size": "M", "arc": "Front/Starboard", "crewGroup": "fore_starboard_gunner" },
+
+      { "id": "m_mid_port", "label": "Mid-Port Emplacement", "size": "M", "arc": "Port", "crewGroup": "mid_port_gunner" },
+      { "id": "m_mid_starboard", "label": "Mid-Starboard Emplacement", "size": "M", "arc": "Starboard", "crewGroup": "mid_starboard_gunner" },
+
+      { "id": "m_aft_port", "label": "Aft-Port Emplacement", "size": "M", "arc": "Back/Port", "crewGroup": "aft_port_gunner" },
+      { "id": "m_aft_starboard", "label": "Aft-Starboard Emplacement", "size": "M", "arc": "Back/Starboard", "crewGroup": "aft_starboard_gunner" }
+    ],
+    "traits": []
   }
 ]
-
