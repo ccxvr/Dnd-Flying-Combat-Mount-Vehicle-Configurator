@@ -27,7 +27,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_XS_front", "label": "Mod Hardpoint XS front", "arc": "Front", "size": "XS", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_XS_front", "label": "Mod Hardpoint XS front", "arc": "Front", "size": "XS", "crewGroup": "driver" }
       ]
     }
   },
@@ -39,7 +39,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_XS_back", "label": "Mod Hardpoint XS back", "arc": "Back", "size": "XS", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_XS_back", "label": "Mod Hardpoint XS back", "arc": "Back", "size": "XS", "crewGroup": "driver" }
       ]
     }
   },
@@ -51,7 +51,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_XS_frontback", "label": "Mod Hardpoint XS front/back", "arc": "Front/Back", "size": "XS", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_XS_frontback", "label": "Mod Hardpoint XS front/back", "arc": "Front/Back", "size": "XS", "crewGroup": "driver" }
       ]
     }
   },
@@ -63,7 +63,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_XS_directfront", "label": "Mod Hardpoint XS direct front", "arc": "Direct Front", "size": "XS", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_XS_directfront", "label": "Mod Hardpoint XS direct front", "arc": "Direct Front", "size": "XS", "crewGroup": "driver" }
       ]
     }
   },
@@ -75,7 +75,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_XS_directback", "label": "Mod Hardpoint XS direct back", "arc": "Direct Back", "size": "XS", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_XS_directback", "label": "Mod Hardpoint XS direct back", "arc": "Direct Back", "size": "XS", "crewGroup": "driver" }
       ]
     }
   },
@@ -87,7 +87,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_S_front", "label": "Mod Hardpoint S front", "arc": "Front", "size": "S", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_S_front", "label": "Mod Hardpoint S front", "arc": "Front", "size": "S", "crewGroup": "driver" }
       ]
     }
   },
@@ -99,7 +99,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_S_back", "label": "Mod Hardpoint S back", "arc": "Back", "size": "S", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_S_back", "label": "Mod Hardpoint S back", "arc": "Back", "size": "S", "crewGroup": "driver" }
       ]
     }
   },
@@ -111,7 +111,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_S_frontback", "label": "Mod Hardpoint S front/back", "arc": "Front/Back", "size": "S", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_S_frontback", "label": "Mod Hardpoint S front/back", "arc": "Front/Back", "size": "S", "crewGroup": "driver" }
       ]
     }
   },
@@ -123,7 +123,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_S_directfront", "label": "Mod Hardpoint S direct front", "arc": "Direct Front", "size": "S", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_S_directfront", "label": "Mod Hardpoint S direct front", "arc": "Direct Front", "size": "S", "crewGroup": "driver" }
       ]
     }
   },
@@ -135,7 +135,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_S_directback", "label": "Mod Hardpoint S direct back", "arc": "Direct Back", "size": "S", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_S_directback", "label": "Mod Hardpoint S direct back", "arc": "Direct Back", "size": "S", "crewGroup": "driver" }
       ]
     }
   },
@@ -147,7 +147,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_M_front", "label": "Mod Hardpoint M front", "arc": "Front", "size": "M", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_M_front", "label": "Mod Hardpoint M front", "arc": "Front", "size": "M", "crewGroup": "driver" }
       ]
     }
   },
@@ -159,7 +159,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_M_back", "label": "Mod Hardpoint M back", "arc": "Back", "size": "M", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_M_back", "label": "Mod Hardpoint M back", "arc": "Back", "size": "M", "crewGroup": "driver" }
       ]
     }
   },
@@ -171,7 +171,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_M_frontback", "label": "Mod Hardpoint M front/back", "arc": "Front/Back", "size": "M", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_M_frontback", "label": "Mod Hardpoint M front/back", "arc": "Front/Back", "size": "M", "crewGroup": "driver" }
       ]
     }
   },
@@ -183,7 +183,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_M_directfront", "label": "Mod Hardpoint M direct front", "arc": "Direct Front", "size": "M", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_M_directfront", "label": "Mod Hardpoint M direct front", "arc": "Direct Front", "size": "M", "crewGroup": "driver" }
       ]
     }
   },
@@ -195,7 +195,7 @@
     "requires": { "baseType": ["Vehicle","Mount"] },
     "effects": {
       "addMountingPoints": [
-        { "id": "mod_hardpoint_M_directback", "label": "Mod Hardpoint M direct back", "arc": "Direct Back", "size": "M", "crewGroup": "operator" }
+        { "id": "mod_hardpoint_M_directback", "label": "Mod Hardpoint M direct back", "arc": "Direct Back", "size": "M", "crewGroup": "driver" }
       ]
     }
   },
