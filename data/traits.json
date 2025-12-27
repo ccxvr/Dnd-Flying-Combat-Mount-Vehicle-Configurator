@@ -5,6 +5,26 @@
     "desc": "While carrying a trained rider, this mount has advantage on checks to avoid stalls or forced maneuvers."
   },
     {
+    "id": "damage_treshold_5",
+    "name": "Damage Treshold 5",
+    "desc": "If the vehicle takes 5 or less damage, it takes 0 damage instead."
+  },
+      {
+    "id": "damage_treshold_10",
+    "name": "Damage Treshold 10",
+    "desc": "If the vehicle takes 10 or less damage, it takes 0 damage instead."
+  },
+        {
+    "id": "damage_treshold_15",
+    "name": "Damage Treshold 15",
+    "desc": "If the vehicle takes 15 or less damage, it takes 0 damage instead."
+  },
+        {
+    "id": "kamikaze",
+    "name": "Kamikaze",
+    "desc": "If you move through another creature, vehicle, or object space, you both take 20d6 Force damage (this damage is doubled against structures)."
+  },
+    {
     "id": "carrier",
     "name": "Carrier",
     "desc": "This vehicle is equipped with facilities to rearm spent consumable weapons when other mounts or vehicles land on it."
@@ -145,5 +165,6 @@
     "desc": "The creature has resistance to poison damage."
   }
 ]
+
 
 
