@@ -5,9 +5,6 @@
     "name": "Test Do Not Use",
     "type": "Test (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "2d6",
-    "points": 12,
     "strength": 20,
     "dex": 20,
     "con": 20,
@@ -15,18 +12,19 @@
     "baseAC": 20,
     "baseHP": 200,
     "carryMultiplier": 2,
-    "fly": { "standard": 80, "max": 240 },
+    "fly": { "standard": 80, "max": 240, "acceleration": "2d6", "climbRate": "1/2" },
+    "flight": { "speed": 80, "max": 240, "acceleration": "2d6", "climbRate": "1/2", "points": 12 },
     "traits": [],
     "actions": [
       {
         "name": "Attack",
-		"kind": "attack",
+        "kind": "attack",
         "type": "melee",
         "toHit": 0,
         "reach": "10 ft",
         "target": "one target",
         "damage": "2d6 + 4 piercing",
-		"extra": "plus 3d6 poison damage"
+        "extra": "plus 3d6 poison damage"
       },
       {
         "name": "Flak Burst",
@@ -38,7 +36,7 @@
         "onSave": "half damage",
         "notes": "A creature that is Huge or larger has disadvantage on this save."
       },
-	  {
+      {
         "name": "Stunning Roar",
         "kind": "save",
         "save": { "ability": "CON", "dc": 15 },
@@ -46,7 +44,7 @@
         "onFail": { "damage": "2d6 thunder", "condition": "stunned (until end of its next turn)" },
         "onSave": { "damage": "half", "condition": "none" }
       },
-	  {
+      {
         "name": "Dive Bomb",
         "kind": "text",
         "text": "If the mount moves at least 40 feet straight toward a target and then hits with a melee attack on the same turn, the target takes an extra 2d8 bludgeoning damage and must succeed on a DC 14 Strength saving throw or be knocked prone."
@@ -59,9 +57,6 @@
     "name": "White Wyvern",
     "type": "Dragon (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "1d8",
-    "points": 190,
     "strength": 18,
     "dex": 18,
     "con": 16,
@@ -69,12 +64,13 @@
     "baseAC": 15,
     "baseHP": 168,
     "carryMultiplier": 2,
-    "fly": { "standard": 80, "max": 240 },
+    "fly": { "standard": 80, "max": 240, "acceleration": "1d8", "climbRate": "1/2" },
+    "flight": { "speed": 80, "max": 240, "acceleration": "1d8", "climbRate": "1/2", "points": 190 },
     "traits": ["knights_partner"],
     "actions": [
       {
         "name": "Bite",
-		"kind": "attack",
+        "kind": "attack",
         "type": "melee",
         "toHit": 6,
         "reach": "10 ft",
@@ -83,7 +79,7 @@
       },
       {
         "name": "Tail Sting",
-		"kind": "attack",
+        "kind": "attack",
         "type": "melee",
         "toHit": 6,
         "reach": "10 ft",
@@ -99,9 +95,6 @@
     "name": "Giant Beetle",
     "type": "Beast (Mount)",
     "size": "Huge",
-	"climbRate": "1",
-    "acceleration": "1d4",
-    "points": 100,
     "strength": 14,
     "dex": 10,
     "con": 18,
@@ -109,7 +102,8 @@
     "baseAC": 15,
     "baseHP": 114,
     "carryMultiplier": 4,
-    "fly": { "standard": 30, "max": 90 },
+    "fly": { "standard": 30, "max": 90, "acceleration": "1d4", "climbRate": "1" },
+    "flight": { "speed": 30, "max": 90, "acceleration": "1d4", "climbRate": "1", "points": 100 },
     "traits": ["hover"],
     "actions": [
       {
@@ -123,16 +117,12 @@
       }
     ]
   },
-
   {
     "id": "cliff_wyvern",
     "tags": ["wyvern"],
     "name": "Cliff Wyvern",
     "type": "Dragon (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "2d6",
-    "points": 130,
     "strength": 14,
     "dex": 17,
     "con": 14,
@@ -140,54 +130,22 @@
     "baseAC": 13,
     "baseHP": 97,
     "carryMultiplier": 2,
-    "fly": { "standard": 80, "max": 240 },
+    "fly": { "standard": 80, "max": 240, "acceleration": "2d6", "climbRate": "1/2" },
+    "flight": { "speed": 80, "max": 240, "acceleration": "2d6", "climbRate": "1/2", "points": 130 },
     "traits": [],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes two attacks: one with its bite and one with its stinger. While flying, it can replace one attack with its claws."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 piercing"
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 3 slashing"
-      },
-      {
-        "name": "Stinger",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 piercing",
-        "extra": "The target must make a DC 15 Constitution saving throw, taking 7d6 poison damage on a failed save, or half as much on a success."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes two attacks: one with its bite and one with its stinger. While flying, it can replace one attack with its claws." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 3 piercing" },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d8 + 3 slashing" },
+      { "name": "Stinger", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 3 piercing", "extra": "The target must make a DC 15 Constitution saving throw, taking 7d6 poison damage on a failed save, or half as much on a success." }
     ]
   },
-
   {
     "id": "rattle_wyvern",
     "tags": ["wyvern"],
     "name": "Rattle Wyvern",
     "type": "Dragon (Mount)",
     "size": "Medium",
-	"climbRate": "1/2",
-    "acceleration": "1d8",
-    "points": 40,
     "strength": 13,
     "dex": 18,
     "con": 14,
@@ -195,36 +153,20 @@
     "baseAC": 13,
     "baseHP": 58,
     "carryMultiplier": 1,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "1d8", "climbRate": "1/2" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "1d8", "climbRate": "1/2", "points": 40 },
     "traits": ["spiky"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes two attacks with its bite."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d6 + 4 piercing",
-        "extra": "plus 4d6 poison damage; DC 13 Constitution save or paralyzed until the end of the wyvern’s next turn."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes two attacks with its bite." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "1d6 + 4 piercing", "extra": "plus 4d6 poison damage; DC 13 Constitution save or paralyzed until the end of the wyvern’s next turn." }
     ]
   },
-
   {
     "id": "giant_dragonfly",
     "tags": ["insect"],
     "name": "Giant Nasamite Dragonfly",
     "type": "Beast (Mount)",
     "size": "Large",
-	"climbRate": "1",
-    "acceleration": "1d6",
-    "points": 90,
     "strength": 8,
     "dex": 18,
     "con": 11,
@@ -232,35 +174,15 @@
     "baseAC": 16,
     "baseHP": 40,
     "carryMultiplier": 2,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "1d6", "climbRate": "1" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "1d6", "climbRate": "1", "points": 90 },
     "traits": ["hover", "drone"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d4 + 4 piercing",
-		"extra": "plus 1d6 acid damage"
-      },
-      {
-        "name": "Spit",
-        "kind": "attack",
-        "attackType": "ranged",
-        "toHit": 6,
-        "range": "30/60 ft",
-        "target": "one target",
-        "damage": "2d8 acid plus 1d6 fire"
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d4 + 4 piercing", "extra": "plus 1d6 acid damage" },
+      { "name": "Spit", "kind": "attack", "attackType": "ranged", "toHit": 6, "range": "30/60 ft", "target": "one target", "damage": "2d8 acid plus 1d6 fire" }
     ],
     "reactions": [
-      {
-        "name": "Uncanny Dodge",
-        "kind": "text",
-        "text": "The dragonfly halves the damage it takes from an attack that it can see."
-      }
+      { "name": "Uncanny Dodge", "kind": "text", "text": "The dragonfly halves the damage it takes from an attack that it can see." }
     ]
   },
 
@@ -270,9 +192,6 @@
     "name": "Fell Wyvern",
     "type": "Dragon (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "1d6",
-    "points": 170,
     "strength": 19,
     "dex": 10,
     "con": 16,
@@ -280,27 +199,12 @@
     "baseAC": 14,
     "baseHP": 127,
     "carryMultiplier": 2,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "1d6", "climbRate": "1/2" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "1d6", "climbRate": "1/2", "points": 170 },
     "traits": ["static_charge"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 4 piercing plus 4d8 lightning"
-      },
-      {
-        "name": "Discharge",
-        "kind": "save",
-        "save": { "ability": "CON", "dc": 14 },
-        "area": "60 ft radius",
-        "onFail": "6d8 lightning",
-        "onSave": "half damage",
-        "notes": "Creatures that fail are knocked prone. Recharge 5–6."
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "2d8 + 4 piercing plus 4d8 lightning" },
+      { "name": "Discharge", "kind": "save", "save": { "ability": "CON", "dc": 14 }, "area": "60 ft radius", "onFail": "6d8 lightning", "onSave": "half damage", "notes": "Creatures that fail are knocked prone. Recharge 5–6." }
     ]
   },
 
@@ -310,9 +214,6 @@
     "name": "Green Wyvern (Horned Wyvern)",
     "type": "Dragon (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "1d6",
-    "points": 180,
     "strength": 19,
     "dex": 8,
     "con": 18,
@@ -320,33 +221,13 @@
     "baseAC": 15,
     "baseHP": 144,
     "carryMultiplier": 4,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "1d6", "climbRate": "1/2" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "1d6", "climbRate": "1/2", "points": 180 },
     "traits": ["powerful_build"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes one Bite attack and one Sting attack."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 4 piercing"
-      },
-      {
-        "name": "Sting",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 4 piercing plus 7d6 poison",
-        "extra": "Target is poisoned until the start of the wyvern’s next turn."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes one Bite attack and one Sting attack." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "2d8 + 4 piercing" },
+      { "name": "Sting", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing plus 7d6 poison", "extra": "Target is poisoned until the start of the wyvern’s next turn." }
     ]
   },
 
@@ -356,9 +237,6 @@
     "name": "Savage Wyvern",
     "type": "Dragon (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "1d8",
-    "points": 185,
     "strength": 20,
     "dex": 9,
     "con": 16,
@@ -366,33 +244,13 @@
     "baseAC": 15,
     "baseHP": 136,
     "carryMultiplier": 2,
-    "fly": { "standard": 80, "max": 240 },
+    "fly": { "standard": 80, "max": 240, "acceleration": "1d8", "climbRate": "1/2" },
+    "flight": { "speed": 80, "max": 240, "acceleration": "1d8", "climbRate": "1/2", "points": 185 },
     "traits": ["tough_skin", "bonded_hunter"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes one Bite attack and one Sting attack."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 4 piercing"
-      },
-      {
-        "name": "Sting",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 8,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d8 + 5 piercing plus 5d6 poison",
-        "extra": "Target is poisoned until the start of the wyvern’s next turn."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes one Bite attack and one Sting attack." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "2d8 + 4 piercing" },
+      { "name": "Sting", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "10 ft", "target": "one target", "damage": "2d8 + 5 piercing plus 5d6 poison", "extra": "Target is poisoned until the start of the wyvern’s next turn." }
     ]
   },
 
@@ -402,9 +260,6 @@
     "name": "Vulture Wyvern",
     "type": "Dragon (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "2d4",
-    "points": 130,
     "strength": 16,
     "dex": 12,
     "con": 14,
@@ -412,24 +267,12 @@
     "baseAC": 14,
     "baseHP": 98,
     "carryMultiplier": 2,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "2d4", "climbRate": "1/2" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "2d4", "climbRate": "1/2", "points": 130 },
     "traits": [],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes one Bite attack."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 3 piercing plus 7d6 necrotic",
-        "extra": "DC 14 Constitution save or the target cannot regain hit points until treated with greater restoration or similar magic."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes one Bite attack." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d8 + 3 piercing plus 7d6 necrotic", "extra": "DC 14 Constitution save or the target cannot regain hit points until treated with greater restoration or similar magic." }
     ]
   },
 
@@ -439,9 +282,6 @@
     "name": "Blood Wyvern",
     "type": "Dragon (Mount)",
     "size": "Huge",
-	"climbRate": "1/4",
-    "acceleration": "1d4",
-    "points": 220,
     "strength": 21,
     "dex": 10,
     "con": 20,
@@ -449,45 +289,22 @@
     "baseAC": 12,
     "baseHP": 187,
     "carryMultiplier": 4,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "1d4", "climbRate": "1/4" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "1d4", "climbRate": "1/4", "points": 220 },
     "traits": [],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes one Bite attack and two Claw attacks."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 8,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 5 piercing",
-        "extra": "After biting a creature other than a construct or undead, the wyvern regains 2d10 + 10 hit points."
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 8,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "4d6 + 5 slashing",
-        "extra": "Large or smaller creatures are grappled."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes one Bite attack and two Claw attacks." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "5 ft", "target": "one target", "damage": "2d8 + 5 piercing", "extra": "After biting a creature other than a construct or undead, the wyvern regains 2d10 + 10 hit points." },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "10 ft", "target": "one target", "damage": "4d6 + 5 slashing", "extra": "Large or smaller creatures are grappled." }
     ]
   },
-    {
+
+  {
     "id": "black_wyvern",
     "tags": ["wyvern"],
     "name": "Black Wyvern",
     "type": "Dragon (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "2d6",
-    "points": 145,
     "strength": 17,
     "dex": 16,
     "con": 14,
@@ -495,35 +312,21 @@
     "baseAC": 14,
     "baseHP": 107,
     "carryMultiplier": 2,
-    "fly": { "standard": 80, "max": 240 },
+    "fly": { "standard": 80, "max": 240, "acceleration": "2d6", "climbRate": "1/2" },
+    "flight": { "speed": 80, "max": 240, "acceleration": "2d6", "climbRate": "1/2", "points": 145 },
     "traits": ["immune_poisoned", "resist_acid", "resist_poison"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes two Bite attacks."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 3 piercing plus 5d6 acid",
-        "extra": "The target is poisoned until the start of the wyvern’s next turn."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes two Bite attacks." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "1d8 + 3 piercing plus 5d6 acid", "extra": "The target is poisoned until the start of the wyvern’s next turn." }
     ]
   },
+
   {
     "id": "imperial_griffon",
     "tags": ["griffon"],
     "name": "Imperial Griffon",
     "type": "Monstrosity (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "2d8",
-    "points": 90,
     "strength": 20,
     "dex": 15,
     "con": 18,
@@ -531,43 +334,22 @@
     "baseAC": 12,
     "baseHP": 66,
     "carryMultiplier": 2,
-    "fly": { "standard": 80, "max": 240 },
+    "fly": { "standard": 80, "max": 240, "acceleration": "2d8", "climbRate": "1/2" },
+    "flight": { "speed": 80, "max": 240, "acceleration": "2d8", "climbRate": "1/2", "points": 90 },
     "traits": ["keen_sight", "bred_for_combat"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The griffon makes two attacks: one with its beak and one with its claws."
-      },
-      {
-        "name": "Beak",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 5 piercing"
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 5 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The griffon makes two attacks: one with its beak and one with its claws." },
+      { "name": "Beak", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "1d8 + 5 piercing" },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "2d6 + 5 slashing" }
     ]
   },
+
   {
     "id": "flat_head_wyvern",
     "tags": ["wyvern"],
     "name": "Flat-Head Wyvern",
     "type": "Dragon (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "2d6",
-    "points": 120,
     "strength": 17,
     "dex": 16,
     "con": 14,
@@ -575,44 +357,22 @@
     "baseAC": 15,
     "baseHP": 97,
     "carryMultiplier": 2,
-    "fly": { "standard": 80, "max": 240 },
+    "fly": { "standard": 80, "max": 240, "acceleration": "2d6", "climbRate": "1/2" },
+    "flight": { "speed": 80, "max": 240, "acceleration": "2d6", "climbRate": "1/2", "points": 120 },
     "traits": [],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes two attacks: one with its bite and one with its claws. While flying, it can use its claws twice."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d8 + 3 piercing",
-        "extra": "The target must make a DC 15 Constitution saving throw, taking 7d6 poison damage on a failed save, or half as much on a successful one."
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 3 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes two attacks: one with its bite and one with its claws. While flying, it can use its claws twice." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d8 + 3 piercing", "extra": "The target must make a DC 15 Constitution saving throw, taking 7d6 poison damage on a failed save, or half as much on a successful one." },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d8 + 3 slashing" }
     ]
   },
+
   {
     "id": "great_royal_wyvern",
     "tags": ["wyvern"],
     "name": "Great Royal Wyvern",
     "type": "Dragon (Mount)",
     "size": "Huge",
-	"climbRate": "1/2",
-    "acceleration": "1d6",
-    "points": 290,
     "strength": 21,
     "dex": 12,
     "con": 20,
@@ -620,80 +380,29 @@
     "baseAC": 19,
     "baseHP": 190,
     "carryMultiplier": 4,
-    "fly": { "standard": 80, "max": 240 },
+    "fly": { "standard": 80, "max": 240, "acceleration": "1d6", "climbRate": "1/2" },
+    "flight": { "speed": 80, "max": 240, "acceleration": "1d6", "climbRate": "1/2", "points": 290 },
     "traits": ["immune_poison", "immune_poisoned", "legendary_resistance_3day"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes three attacks: two with its bite and one with its stinger. While flying, it can use its claws in place of one or both bite attacks."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 10,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "4d6 + 5 piercing",
-        "extra": "The target must succeed on a DC 15 Strength saving throw or be grappled."
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 10,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "4d8 + 5 slashing"
-      },
-      {
-        "name": "Stinger",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 10,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "3d6 + 5 piercing",
-        "extra": "The target must make a DC 15 Constitution saving throw, taking 11d6 poison damage on a failed save, or half as much on a successful one. If the target fails the save, it is poisoned; at the start of its next turn it takes 1d6 poison damage and can repeat the save. The effect lasts until it succeeds or dies."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes three attacks: two with its bite and one with its stinger. While flying, it can use its claws in place of one or both bite attacks." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "10 ft", "target": "one target", "damage": "4d6 + 5 piercing", "extra": "The target must succeed on a DC 15 Strength saving throw or be grappled." },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "5 ft", "target": "one target", "damage": "4d8 + 5 slashing" },
+      { "name": "Stinger", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "10 ft", "target": "one target", "damage": "3d6 + 5 piercing", "extra": "The target must make a DC 15 Constitution saving throw, taking 11d6 poison damage on a failed save, or half as much on a successful one. If the target fails the save, it is poisoned; at the start of its next turn it takes 1d6 poison damage and can repeat the save. The effect lasts until it succeeds or dies." }
     ],
     "legendaryActions": [
-      {
-        "name": "Detect",
-        "kind": "text",
-        "text": "The wyvern makes a Wisdom (Perception) check."
-      },
-      {
-        "name": "Move",
-        "kind": "text",
-        "text": "The wyvern moves as if it were its turn."
-      },
-      {
-        "name": "Sting (Costs 3 Actions)",
-        "kind": "text",
-        "text": "The wyvern makes a stinger attack."
-      },
-      {
-        "name": "Wing Attack (Costs 2 Actions)",
-        "kind": "save",
-        "save": { "ability": "DEX", "dc": 18 },
-        "area": "10 ft radius",
-        "onFail": "2d6 + 5 bludgeoning and knocked prone",
-        "onSave": "no effect",
-        "notes": "The wyvern can then fly up to half its flying speed."
-      }
+      { "name": "Detect", "kind": "text", "text": "The wyvern makes a Wisdom (Perception) check." },
+      { "name": "Move", "kind": "text", "text": "The wyvern moves as if it were its turn." },
+      { "name": "Sting (Costs 3 Actions)", "kind": "text", "text": "The wyvern makes a stinger attack." },
+      { "name": "Wing Attack (Costs 2 Actions)", "kind": "save", "save": { "ability": "DEX", "dc": 18 }, "area": "10 ft radius", "onFail": "2d6 + 5 bludgeoning and knocked prone", "onSave": "no effect", "notes": "The wyvern can then fly up to half its flying speed." }
     ]
   },
+
   {
     "id": "flying_whale",
     "tags": ["flying_whale"],
     "name": "Flying Whale",
     "type": "Beast (Mount)",
     "size": "Gargantuan",
-	"climbRate": "1/4",
-    "acceleration": "1d4",
-    "points": 310,
     "strength": 26,
     "dex": 8,
     "con": 20,
@@ -701,45 +410,22 @@
     "baseAC": 15,
     "baseHP": 224,
     "carryMultiplier": 8,
-    "fly": { "standard": 40, "max": 120 },
+    "fly": { "standard": 40, "max": 120, "acceleration": "1d4", "climbRate": "1/4" },
+    "flight": { "speed": 40, "max": 120, "acceleration": "1d4", "climbRate": "1/4", "points": 310 },
     "traits": ["echolocation", "hold_breath_90min", "keen_hearing"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The whale makes two attacks: one with its bite and one with its tail."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 11,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "3d8 + 8 piercing",
-        "extra": "If the target is Large or smaller, it must succeed on a DC 14 Dexterity saving throw or be swallowed. A swallowed creature has total cover and takes 1d6 acid damage at the start of each of the whale’s turns. If the whale takes 30 damage or more in a single turn from a creature inside it, it must succeed on a DC 16 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures (which fall prone within 10 feet). If the whale dies, a swallowed creature can escape by using 20 feet of movement, exiting prone."
-      },
-      {
-        "name": "Tail",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 11,
-        "reach": "15 ft",
-        "target": "one target",
-        "damage": "3d6 + 8 bludgeoning",
-        "extra": "Or 6d6 + 16 bludgeoning damage if the target is an object."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The whale makes two attacks: one with its bite and one with its tail." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 11, "reach": "5 ft", "target": "one target", "damage": "3d8 + 8 piercing", "extra": "If the target is Large or smaller, it must succeed on a DC 14 Dexterity saving throw or be swallowed. A swallowed creature has total cover and takes 1d6 acid damage at the start of each of the whale’s turns. If the whale takes 30 damage or more in a single turn from a creature inside it, it must succeed on a DC 16 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures (which fall prone within 10 feet). If the whale dies, a swallowed creature can escape by using 20 feet of movement, exiting prone." },
+      { "name": "Tail", "kind": "attack", "attackType": "melee", "toHit": 11, "reach": "15 ft", "target": "one target", "damage": "3d6 + 8 bludgeoning", "extra": "Or 6d6 + 16 bludgeoning damage if the target is an object." }
     ]
   },
+
   {
     "id": "flying_manta",
     "tags": ["flying_manta"],
     "name": "Flying Manta",
     "type": "Beast (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "2d8",
-    "points": 100,
     "strength": 10,
     "dex": 16,
     "con": 14,
@@ -747,29 +433,20 @@
     "baseAC": 14,
     "baseHP": 68,
     "carryMultiplier": 2,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "2d8", "climbRate": "1/2" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "2d8", "climbRate": "1/2", "points": 100 },
     "traits": ["water_breathing"],
     "actions": [
-      {
-        "name": "Ram",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 bludgeoning"
-      }
+      { "name": "Ram", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 bludgeoning" }
     ]
   },
+
   {
     "id": "brown_scavver",
     "tags": ["scavver"],
     "name": "Brown Scavver",
     "type": "Monstrosity (Mount)",
     "size": "Large",
-	"climbRate": "1",
-    "acceleration": "1d8",
-    "points": 55,
     "strength": 18,
     "dex": 15,
     "con": 17,
@@ -777,30 +454,20 @@
     "baseAC": 13,
     "baseHP": 51,
     "carryMultiplier": 2,
-    "fly": { "standard": 40, "max": 120 },
+    "fly": { "standard": 40, "max": 120, "acceleration": "1d8", "climbRate": "1" },
+    "flight": { "speed": 40, "max": 120, "acceleration": "1d8", "climbRate": "1", "points": 55 },
     "traits": ["unusual_nature"],
     "actions": [
-      {
-        "name": "Swallowing Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 4 piercing",
-        "extra": "If the target is Medium or smaller, it must succeed on a DC 13 Dexterity saving throw or be swallowed. The scavver can have one creature swallowed at a time. A swallowed creature is blinded and restrained, has total cover, and takes 3d8 poison damage at the start of each of the scavver’s turns. If the scavver takes 15 damage or more in a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate the swallowed creature, which falls prone within 10 feet. If the scavver dies, a swallowed creature can escape by using 10 feet of movement, exiting prone."
-      }
+      { "name": "Swallowing Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "If the target is Medium or smaller, it must succeed on a DC 13 Dexterity saving throw or be swallowed. The scavver can have one creature swallowed at a time. A swallowed creature is blinded and restrained, has total cover, and takes 3d8 poison damage at the start of each of the scavver’s turns. If the scavver takes 15 damage or more in a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate the swallowed creature, which falls prone within 10 feet. If the scavver dies, a swallowed creature can escape by using 10 feet of movement, exiting prone." }
     ]
   },
+
   {
     "id": "night_scavver",
     "tags": ["scavver"],
     "name": "Night Scavver",
     "type": "Monstrosity (Mount)",
     "size": "Huge",
-	"climbRate": "1/2",
-    "acceleration": "1d6",
-    "points": 140,
     "strength": 20,
     "dex": 15,
     "con": 17,
@@ -808,30 +475,20 @@
     "baseAC": 14,
     "baseHP": 114,
     "carryMultiplier": 4,
-    "fly": { "standard": 40, "max": 120 },
+    "fly": { "standard": 40, "max": 120, "acceleration": "1d6", "climbRate": "1/2" },
+    "flight": { "speed": 40, "max": 120, "acceleration": "1d6", "climbRate": "1/2", "points": 140 },
     "traits": ["unusual_nature"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 8,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "4d10 + 5 piercing",
-        "extra": "The attack is made with advantage if the target is a creature that is missing any hit points."
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "10 ft", "target": "one target", "damage": "4d10 + 5 piercing", "extra": "The attack is made with advantage if the target is a creature that is missing any hit points." }
     ]
   },
+
   {
     "id": "void_scavver",
     "tags": ["scavver"],
     "name": "Void Scavver",
     "type": "Monstrosity (Mount)",
     "size": "Huge",
-	"climbRate": "1/2",
-    "acceleration": "1d6",
-    "points": 180,
     "strength": 22,
     "dex": 16,
     "con": 19,
@@ -839,40 +496,23 @@
     "baseAC": 15,
     "baseHP": 157,
     "carryMultiplier": 4,
-    "fly": { "standard": 40, "max": 120 },
+    "fly": { "standard": 40, "max": 120, "acceleration": "1d6", "climbRate": "1/2" },
+    "flight": { "speed": 40, "max": 120, "acceleration": "1d6", "climbRate": "1/2", "points": 180 },
     "traits": ["unusual_nature"],
     "actions": [
-      {
-        "name": "Swallowing Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 10,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "6d12 + 6 piercing",
-        "extra": "If the target is Large or smaller, it must succeed on a DC 16 Dexterity saving throw or be swallowed. The scavver can have one creature swallowed at a time. A swallowed creature is blinded and restrained, has total cover, and takes 2d10 acid damage at the start of each of the scavver’s turns. If the scavver takes 25 damage or more in a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate the swallowed creature, which falls prone within 10 feet. If the scavver dies, a swallowed creature can escape by using 10 feet of movement, exiting prone."
-      }
+      { "name": "Swallowing Bite", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "10 ft", "target": "one target", "damage": "6d12 + 6 piercing", "extra": "If the target is Large or smaller, it must succeed on a DC 16 Dexterity saving throw or be swallowed. The scavver can have one creature swallowed at a time. A swallowed creature is blinded and restrained, has total cover, and takes 2d10 acid damage at the start of each of the scavver’s turns. If the scavver takes 25 damage or more in a single turn from a creature inside it, it must succeed on a DC 20 Constitution saving throw at the end of that turn or regurgitate the swallowed creature, which falls prone within 10 feet. If the scavver dies, a swallowed creature can escape by using 10 feet of movement, exiting prone." }
     ],
     "bonusActions": [
-      {
-        "name": "Ray of Fear (Recharge 4–6)",
-        "kind": "save",
-        "save": { "ability": "WIS", "dc": 16 },
-        "range": "60 ft",
-        "onFail": "frightened until the start of the scavver’s next turn",
-        "onSave": "no effect"
-      }
+      { "name": "Ray of Fear (Recharge 4–6)", "kind": "save", "save": { "ability": "WIS", "dc": 16 }, "range": "60 ft", "onFail": "frightened until the start of the scavver’s next turn", "onSave": "no effect" }
     ]
   },
+
   {
     "id": "gray_scavver",
     "tags": ["scavver"],
     "name": "Gray Scavver",
     "type": "Monstrosity (Mount)",
     "size": "Medium",
-	"climbRate": "1/2",
-    "acceleration": "2d8",
-    "points": 20,
     "strength": 16,
     "dex": 13,
     "con": 15,
@@ -880,30 +520,20 @@
     "baseAC": 12,
     "baseHP": 19,
     "carryMultiplier": 1,
-    "fly": { "standard": 40, "max": 120 },
+    "fly": { "standard": 40, "max": 120, "acceleration": "2d8", "climbRate": "1/2" },
+    "flight": { "speed": 40, "max": 120, "acceleration": "2d8", "climbRate": "1/2", "points": 20 },
     "traits": ["unusual_nature"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 3 piercing",
-        "extra": "The attack is made with advantage if the target is a creature that is missing any hit points."
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "1d8 + 3 piercing", "extra": "The attack is made with advantage if the target is a creature that is missing any hit points." }
     ]
   },
-    {
+
+  {
     "id": "hippogriff",
     "tags": ["hippogriff"],
     "name": "Hippogriff",
     "type": "Monstrosity (Mount)",
     "size": "Large",
-	"climbRate": "2",
-    "acceleration": "2d8",
-    "points": 30,
     "strength": 17,
     "dex": 13,
     "con": 13,
@@ -911,34 +541,21 @@
     "baseAC": 11,
     "baseHP": 26,
     "carryMultiplier": 2,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "2d8", "climbRate": "2" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "2d8", "climbRate": "2", "points": 30 },
     "traits": ["flyby"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The hippogriff makes two Rend attacks."
-      },
-      {
-        "name": "Rend",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 3 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The hippogriff makes two Rend attacks." },
+      { "name": "Rend", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "1d8 + 3 slashing" }
     ]
   },
+
   {
     "id": "pteranodon",
     "tags": ["pteranodon", "dinosaur"],
     "name": "Pteranodon",
     "type": "Beast (Mount)",
     "size": "Medium",
-	"climbRate": "1",
-    "acceleration": "2d6",
-    "points": 15,
     "strength": 12,
     "dex": 15,
     "con": 10,
@@ -946,29 +563,20 @@
     "baseAC": 13,
     "baseHP": 13,
     "carryMultiplier": 1,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "2d6", "climbRate": "1" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "2d6", "climbRate": "1", "points": 15 },
     "traits": ["flyby"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 4,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 2 piercing"
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 4, "reach": "5 ft", "target": "one target", "damage": "1d8 + 2 piercing" }
     ]
   },
+
   {
     "id": "nasamite_giant_locust",
     "tags": ["insect"],
     "name": "Nasamite Giant Locust",
     "type": "Beast (Mount)",
     "size": "Large",
-	"climbRate": "2",
-    "acceleration": "1d8",
-    "points": 60,
     "strength": 17,
     "dex": 11,
     "con": 14,
@@ -976,39 +584,21 @@
     "baseAC": 14,
     "baseHP": 45,
     "carryMultiplier": 2,
-    "fly": { "standard": 40, "max": 120 },
+    "fly": { "standard": 40, "max": 120, "acceleration": "1d8", "climbRate": "2" },
+    "flight": { "speed": 40, "max": 120, "acceleration": "1d8", "climbRate": "2", "points": 60 },
     "traits": ["tunneler", "drone", "hover", "resist_acid", "resist_fire"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 slashing plus 1d6 acid"
-      },
-      {
-        "name": "Acid Spray (Recharge 6)",
-        "kind": "save",
-        "save": { "ability": "DEX", "dc": 12 },
-        "area": "30-foot-long, 5-foot-wide line",
-        "range": "self",
-        "onFail": "4d6 acid",
-        "onSave": "half damage",
-        "notes": "Recharge 6."
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 slashing plus 1d6 acid" },
+      { "name": "Acid Spray (Recharge 6)", "kind": "save", "save": { "ability": "DEX", "dc": 12 }, "area": "30-foot-long, 5-foot-wide line", "range": "self", "onFail": "4d6 acid", "onSave": "half damage", "notes": "Recharge 6." }
     ]
   },
+
   {
     "id": "giant_eagle",
     "tags": ["giant_eagle"],
     "name": "Giant Eagle",
     "type": "Beast (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "2d10",
-    "points": 30,
     "strength": 16,
     "dex": 17,
     "con": 13,
@@ -1016,43 +606,22 @@
     "baseAC": 13,
     "baseHP": 26,
     "carryMultiplier": 2,
-    "fly": { "standard": 80, "max": 240 },
+    "fly": { "standard": 80, "max": 240, "acceleration": "2d10", "climbRate": "1/2" },
+    "flight": { "speed": 80, "max": 240, "acceleration": "2d10", "climbRate": "1/2", "points": 30 },
     "traits": ["keen_sight"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The eagle makes two attacks: one with its beak and one with its talons."
-      },
-      {
-        "name": "Beak",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d6 + 3 piercing"
-      },
-      {
-        "name": "Talons",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The eagle makes two attacks: one with its beak and one with its talons." },
+      { "name": "Beak", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "1d6 + 3 piercing" },
+      { "name": "Talons", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 slashing" }
     ]
   },
+
   {
     "id": "giant_owl",
     "tags": ["giant_owl"],
     "name": "Giant Owl",
     "type": "Beast (Mount)",
     "size": "Large",
-	"climbRate": "1",
-    "acceleration": "1d10",
-    "points": 25,
     "strength": 13,
     "dex": 15,
     "con": 12,
@@ -1060,29 +629,20 @@
     "baseAC": 12,
     "baseHP": 19,
     "carryMultiplier": 2,
-    "fly": { "standard": 60, "max": 180 },
+    "fly": { "standard": 60, "max": 180, "acceleration": "1d10", "climbRate": "1" },
+    "flight": { "speed": 60, "max": 180, "acceleration": "1d10", "climbRate": "1", "points": 25 },
     "traits": ["flyby", "keen_hearing_and_sight"],
     "actions": [
-      {
-        "name": "Talons",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 3,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 1 slashing"
-      }
+      { "name": "Talons", "kind": "attack", "attackType": "melee", "toHit": 3, "reach": "5 ft", "target": "one target", "damage": "2d6 + 1 slashing" }
     ]
   },
+
   {
     "id": "vahkrel",
     "tags": ["demon", "fiend"],
     "name": "Vah'k'rel",
     "type": "Fiend (Mount)",
     "size": "Large",
-	"climbRate": "1/2",
-    "acceleration": "2d8",
-    "points": 130,
     "strength": 19,
     "dex": 16,
     "con": 17,
@@ -1090,33 +650,13 @@
     "baseAC": 17,
     "baseHP": 93,
     "carryMultiplier": 2,
-    "fly": { "standard": 40, "max": 120 },
+    "fly": { "standard": 40, "max": 120, "acceleration": "2d8", "climbRate": "1/2" },
+    "flight": { "speed": 40, "max": 120, "acceleration": "2d8", "climbRate": "1/2", "points": 130 },
     "traits": ["fearsome_and_fearless", "aura_frighten_dc15_120ft", "pounce"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The Vah'k'rel makes two attacks: one with its bite and one with its claws."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "3d8 + 4 piercing"
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "3d6 + 4 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The Vah'k'rel makes two attacks: one with its bite and one with its claws." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "3d8 + 4 piercing" },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "3d6 + 4 slashing" }
     ]
   }
 ]
-
