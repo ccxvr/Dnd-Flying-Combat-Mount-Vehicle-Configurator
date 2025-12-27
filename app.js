@@ -708,8 +708,8 @@ function render() {
 }
 /*------Roll20 exporter----*/
 function buildRoll20Export() {
-  const base = config.base;
-  const points = getMountingPoints();
+  const base = getDerivedBase();                 // ✅ export what you render (mods applied)
+  const points = getDerivedMountingPoints();     // ✅ correct function
   const groups = getCrewGroups();
 
   // build mounted weapons list
@@ -718,7 +718,7 @@ function buildRoll20Export() {
     const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
     if (!sel.qty || sel.weaponId === "none") continue;
 
-    const w = weapons.find(x => x.id === sel.weaponId);
+    const w = weaponById(sel.weaponId);
     if (!w) continue;
 
     const crewGroupId = mp.crewGroup || groups[0].id;
@@ -727,7 +727,11 @@ function buildRoll20Export() {
     const atk = (crew.dexMod || 0) + (proficient ? (crew.profBonus || 0) : 0);
 
     mountedWeapons.push({
+      mountPointId: mp.id,
+      mountPointLabel: mp.label,
+      crewGroupId,
       name: w.name,
+      weaponId: w.id,
       qty: sel.qty,
       arc: mp.arc,
       attackBonus: atk,
@@ -737,15 +741,20 @@ function buildRoll20Export() {
     });
   }
 
-  // custom flight fields (support either fly.acceleration/climb OR flight object)
-  const accel = base.fly?.acceleration ?? base.flight?.acceleration ?? 0;
-  const climb = base.fly?.climb ?? base.flight?.climb ?? 0;
-
   return {
     schema: "flying-combat-config-v1",
-    name: base.name,
-    meta: { size: base.size, type: base.type, tags: base.tags || [] },
 
+    // identity (IMPORTANT for token image stability later)
+    baseId: config.base?.id || "",
+    baseName: base.name,
+    baseType: base.type,
+    baseSize: base.size,
+
+    // loadout
+    saddleId: config.saddle?.id || null,
+    modIds: [...config.mods],
+
+    // stats (derived = matches UI)
     stats: {
       ac: base.baseAC,
       hp: base.baseHP,
@@ -758,8 +767,8 @@ function buildRoll20Export() {
     movement: {
       fly: base.fly?.standard ?? 0,
       fly_max: base.fly?.max ?? 0,
-      acceleration: accel,
-      climb_rate: climb
+      climb_rate: base.climbRate ?? "—",
+      acceleration: base.acceleration ?? "—"
     },
 
     encumbrance: {
@@ -774,6 +783,10 @@ function buildRoll20Export() {
     legendaryActions: Array.isArray(base.legendaryActions) ? base.legendaryActions : [],
 
     mountedWeapons,
+
+    // optional: store crew inputs so import can reconstruct attack bonuses
+    crewStats: JSON.parse(JSON.stringify(config.crewStats || {})),
+    proficiencies: JSON.parse(JSON.stringify(config.proficiencies || {}))
   };
 }
 
@@ -784,8 +797,10 @@ async function exportRoll20JSON() {
 }
 
 
+
 /* ---------- START ---------- */
 
 loadData()
+
 
 
