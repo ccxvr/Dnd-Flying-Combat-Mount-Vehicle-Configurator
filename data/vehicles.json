@@ -111,7 +111,7 @@
     "strength": 26,
     "dex": 8,
     "con": 22,
-    "agility": 2,
+    "agility": 1,
     "baseAC": 20,
     "baseHP": 600,
     "fly": { "standard": 45, "max": 135 },
@@ -140,4 +140,5 @@
     "traits": []
   }
 ]
+
 
