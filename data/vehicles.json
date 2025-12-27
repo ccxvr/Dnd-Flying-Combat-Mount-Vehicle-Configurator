@@ -24,7 +24,7 @@
       { "id": "wing_right", "label": "Right Forward Mount", "size": "S", "arc": "Front", "crewGroup": "driver" },
       { "id": "turret", "label": "Turret Mount", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
     ],
-    "traits": ["hover","drone"]
+    "traits": ["hover","drone", "damage_treshold_5"]
   },
     {
     "id": "dwarven_sky_fortress",
@@ -63,8 +63,44 @@
       { "id": "m_aft_port", "label": "Aft-Port Emplacement", "size": "M", "arc": "Back/Port", "crewGroup": "aft_port_gunner" },
       { "id": "m_aft_starboard", "label": "Aft-Starboard Emplacement", "size": "M", "arc": "Back/Starboard", "crewGroup": "aft_starboard_gunner" }
     ],
-    "traits": []
+    "traits": ["damage_treshold_15"]
   },
+  {
+  "id": "goblin_winged_rocket",
+  "name": "Goblin Winged Rocket",
+  "type": "Vehicle",
+  "size": "Medium",
+  "climbRate": "1",
+  "acceleration": "1d8",
+  "points": 40,
+  "strength": 12,
+  "dex": 16,
+  "con": 10,
+  "agility": 6,
+  "baseAC": 15,
+  "baseHP": 15,
+  "fly": { "standard": 100, "max": 300 },
+  "crewGroups": [
+    { "id": "pilot", "label": "Pilot" }
+  ],
+  "mountingPoints": [
+    {
+      "id": "front_left",
+      "label": "Front Mount (Left)",
+      "size": "M",
+      "arc": "Front",
+      "crewGroup": "pilot"
+    },
+    {
+      "id": "front_right",
+      "label": "Front Mount (Right)",
+      "size": "M",
+      "arc": "Front",
+      "crewGroup": "pilot"
+    }
+  ],
+  "traits": ["kamikaze"]
+},
   {
     "id": "imperial_sky_carrier",
     "name": "Imperial Sky Carrier",
@@ -107,7 +143,7 @@
       { "id": "l_dorsal", "label": "Dorsal Flak Grid", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" },
       { "id": "l_ventral", "label": "Ventral Flak Grid", "size": "L", "arc": "Front/Back", "crewGroup": "ventral_gunner" }
     ],
-    "traits": ["carrier"]
+    "traits": ["carrier", "damage_treshold_10"]
   },
    {
     "id": "imperial_sky_frigate",
@@ -137,9 +173,10 @@
       { "id": "starboard", "label": "Starboard Broadside", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
       { "id": "top", "label": "Flak Mount", "size": "M", "arc": "Front/Back", "crewGroup": "top_gunner" }
     ],
-    "traits": ["long_range_fire_control"]
+    "traits": ["long_range_fire_control", "damage_treshold_10"]
   }
 ]
+
 
 
 
