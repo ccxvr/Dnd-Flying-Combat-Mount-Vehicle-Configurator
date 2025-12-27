@@ -19,7 +19,7 @@
       { "id": "gunner", "label": "Gunner" }
     ],
     "mountingPoints": [
-      { "id": "nose", "label": "Nose Mount", "size": "L", "arc": "Front", "crewGroup": "driver" },
+      { "id": "nose", "label": "Nose Mount", "size": "L", "arc": "Direct Front", "crewGroup": "driver" },
       { "id": "wing_left", "label": "Left Forward Mount", "size": "S", "arc": "Front", "crewGroup": "driver" },
       { "id": "wing_right", "label": "Right Forward Mount", "size": "S", "arc": "Front", "crewGroup": "driver" },
       { "id": "turret", "label": "Turret Mount", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
@@ -65,6 +65,33 @@
     ],
     "traits": ["damage_treshold_15"]
   },
+{
+  "id": "goblin_gyrorocket",
+  "name": "Goblin Gyrorocket",
+  "type": "Vehicle",
+  "size": "Large",
+  "climbRate": "1",
+  "acceleration": "1d6",
+  "points": 120,
+  "strength": 16,
+  "dex": 16,
+  "con": 12,
+  "agility": 5,
+  "baseAC": 16,
+  "baseHP": 120,
+  "fly": { "standard": 70, "max": 210 },
+  "crewGroups": [
+    { "id": "driver", "label": "Driver" },
+    { "id": "gunner", "label": "Gunner" }
+  ],
+  "mountingPoints": [
+    { "id": "nose", "label": "Nose Ordnance Rack", "size": "L", "arc": "Direct Front", "crewGroup": "driver" },
+    { "id": "wing_left", "label": "Left Ordnance Rack", "size": "S", "arc": "Front", "crewGroup": "driver" },
+    { "id": "wing_right", "label": "Right Ordnance Rack", "size": "S", "arc": "Front", "crewGroup": "driver" },
+    { "id": "turret", "label": "Ordnance Launcher Turret", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
+  ],
+  "traits": ["hover", "ordnance_only_rockets_missiles_bombs"]
+},
   {
   "id": "goblin_winged_rocket",
   "name": "Goblin Winged Rocket",
@@ -176,6 +203,7 @@
     "traits": ["long_range_fire_control", "damage_treshold_10"]
   }
 ]
+
 
 
 
