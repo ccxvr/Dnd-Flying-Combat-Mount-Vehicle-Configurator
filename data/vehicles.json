@@ -54,7 +54,7 @@
       { "id": "wing_right", "label": "Right Forward Mount", "size": "S", "arc": "Front", "crewGroup": "driver" },
       { "id": "turret", "label": "Turret Mount", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
     ],
-    "traits": ["hover"]
+    "traits": ["hover","drone"]
   },
   {
     "id": "imperial_air_carrier",
@@ -140,3 +140,4 @@
     "traits": []
   }
 ]
+
