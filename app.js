@@ -707,6 +707,84 @@ function render() {
   document.getElementById("statblock").innerHTML = html
 }
 
+function buildRoll20Export() {
+  const base = config.base;
+  const points = getMountingPoints();
+  const groups = getCrewGroups();
+
+  // build mounted weapons list
+  const mountedWeapons = [];
+  for (const mp of points) {
+    const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
+    if (!sel.qty || sel.weaponId === "none") continue;
+
+    const w = weapons.find(x => x.id === sel.weaponId);
+    if (!w) continue;
+
+    const crewGroupId = mp.crewGroup || groups[0].id;
+    const crew = config.crewStats[crewGroupId] || { dexMod: 0, profBonus: 0 };
+    const proficient = !!config.proficiencies[mp.id];
+    const atk = (crew.dexMod || 0) + (proficient ? (crew.profBonus || 0) : 0);
+
+    mountedWeapons.push({
+      name: w.name,
+      qty: sel.qty,
+      arc: mp.arc,
+      attackBonus: atk,
+      damage: w.damage,
+      range: w.range || "",
+      traits: Array.isArray(w.traits) ? w.traits : []
+    });
+  }
+
+  // custom flight fields (support either fly.acceleration/climb OR flight object)
+  const accel = base.fly?.acceleration ?? base.flight?.acceleration ?? 0;
+  const climb = base.fly?.climb ?? base.flight?.climb ?? 0;
+
+  return {
+    schema: "flying-combat-config-v1",
+    name: base.name,
+    meta: { size: base.size, type: base.type, tags: base.tags || [] },
+
+    stats: {
+      ac: base.baseAC,
+      hp: base.baseHP,
+      str: base.strength,
+      dex: base.dex,
+      con: base.con,
+      agility: base.agility
+    },
+
+    movement: {
+      fly: base.fly?.standard ?? 0,
+      fly_max: base.fly?.max ?? 0,
+      acceleration: accel,
+      climb_rate: climb
+    },
+
+    encumbrance: {
+      carried_weight: loadWeight(),
+      capacity: capacity(base)
+    },
+
+    traits: Array.isArray(base.traits) ? base.traits : [],
+    actions: Array.isArray(base.actions) ? base.actions : [],
+    bonusActions: Array.isArray(base.bonusActions) ? base.bonusActions : [],
+    reactions: Array.isArray(base.reactions) ? base.reactions : [],
+    legendaryActions: Array.isArray(base.legendaryActions) ? base.legendaryActions : [],
+
+    mountedWeapons,
+  };
+}
+
+async function exportRoll20JSON() {
+  const payload = buildRoll20Export();
+  await navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+  alert("Roll20 export JSON copied to clipboard!");
+}
+
+
 /* ---------- START ---------- */
 
 loadData()
+
