@@ -85,10 +85,10 @@
     { "id": "gunner", "label": "Gunner" }
   ],
   "mountingPoints": [
-    { "id": "nose", "label": "Nose Ordnance Rack", "size": "L", "arc": "Direct Front", "crewGroup": "driver" },
-    { "id": "wing_left", "label": "Left Ordnance Rack", "size": "S", "arc": "Front", "crewGroup": "driver" },
-    { "id": "wing_right", "label": "Right Ordnance Rack", "size": "S", "arc": "Front", "crewGroup": "driver" },
-    { "id": "turret", "label": "Ordnance Launcher Turret", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
+    { "id": "nose", "label": "Nose Ordnance Rack", "size": "XL", "arc": "Direct Front", "crewGroup": "driver" },
+    { "id": "wing_left", "label": "Left Ordnance Rack", "size": "M", "arc": "Front", "crewGroup": "driver" },
+    { "id": "wing_right", "label": "Right Ordnance Rack", "size": "M", "arc": "Front", "crewGroup": "driver" },
+    { "id": "turret", "label": "Ordnance Launcher Turret", "size": "L", "arc": "Front/Back", "crewGroup": "gunner" }
   ],
   "traits": ["hover", "ordnance_only_rockets_missiles_bombs"],
   "weaponAllowlist": ["small_missile", "medium_missile", "rocket", "bomb_s", "bomb_m", "bomb_l"]
@@ -204,6 +204,7 @@
     "traits": ["long_range_fire_control", "damage_treshold_10"]
   }
 ]
+
 
 
 
