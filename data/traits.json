@@ -5,6 +5,11 @@
     "desc": "While carrying a trained rider, this mount has advantage on checks to avoid stalls or forced maneuvers."
   },
     {
+    "id": "carrier",
+    "name": "Carrier",
+    "desc": "This vehicle is equipped with facilities to rearm spent consumable weapons when other mounts or vehicles land on it."
+  },
+    {
     "id": "shyish_focai",
     "name": "Shyish Focai",
     "desc": "Whenever a necromancy spell is cast while within 10ft of the vargeist, roll 1d10 on a 10, the spell is automatically upcast by one level."
@@ -140,4 +145,5 @@
     "desc": "The creature has resistance to poison damage."
   }
 ]
+
 
