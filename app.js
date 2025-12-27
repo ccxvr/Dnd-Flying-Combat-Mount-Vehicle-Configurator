@@ -808,10 +808,6 @@ function buildRoll20Export() {
 
     // ✅ add mod descriptions for importer
     mods: exportModObjects(config.mods),
-
-    //agility
-      const base = getDerivedBase();
-      const enc = derivedEncumbrance(base);
   
     // stats (derived)
     stats: {
@@ -863,6 +859,7 @@ async function exportRoll20JSON() {
 /* ---------- START ---------- */
 
 loadData()
+
 
 
 
