@@ -709,6 +709,20 @@ function render() {
 
 /*------Roll20 exporter----*/
 
+function exportModObjects(modIds) {
+  if (!Array.isArray(modIds)) return [];
+  return modIds
+    .filter(Boolean)
+    .map(id => {
+      const m = modById(id); // you already have this helper in app.js
+      return {
+        id,
+        name: m?.name || id,
+        desc: m?.desc || ""
+      };
+    });
+}
+
 function exportTraitObjects(traitIds) {
   if (!Array.isArray(traitIds)) return [];
   return traitIds
@@ -723,7 +737,8 @@ function exportTraitObjects(traitIds) {
     });
 }
 
-function buildRoll20Export() {
+function buildRoll20Export(mods: exportModObjects(config.mods),
+) {
   const base = getDerivedBase();
   const points = getDerivedMountingPoints();
   const groups = getCrewGroups();
@@ -815,6 +830,7 @@ async function exportRoll20JSON() {
 /* ---------- START ---------- */
 
 loadData()
+
 
 
 
