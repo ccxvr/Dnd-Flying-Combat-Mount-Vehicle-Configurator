@@ -56,6 +56,38 @@ function traitLabel(traitId) {
     .replace(/\b\w/g, c => c.toUpperCase());
 }
 
+/**
+ * Weapon restrictions:
+ * If the derived base (vehicle/mount) has `weaponAllowlist: ["id1","id2",...]`,
+ * only those weapon ids may be selected on any mounting point.
+ */
+function getWeaponAllowlist() {
+  const derived = getDerivedBase?.() || config.base || {};
+  const list = derived.weaponAllowlist;
+  return Array.isArray(list) && list.length ? list : null;
+}
+
+function isWeaponAllowed(weaponId) {
+  const allow = getWeaponAllowlist();
+  if (!allow) return true;
+  return allow.includes(weaponId);
+}
+
+function sanitizeIllegalSelections() {
+  const allow = getWeaponAllowlist();
+  if (!allow) return;
+
+  for (const slot of Object.keys(config.mounts || {})) {
+    const sel = config.mounts[slot];
+    if (!sel) continue;
+    if (sel.weaponId && sel.weaponId !== "none" && !allow.includes(sel.weaponId)) {
+      sel.weaponId = "none";
+      sel.qty = 0;
+      config.proficiencies[slot] = false;
+    }
+  }
+}
+
 /* ---------- LOAD DATA ---------- */
 
 async function loadData() {
@@ -353,6 +385,9 @@ function applyModsToBase(base) {
   b.traits = Array.isArray(b.traits) ? [...b.traits] : [];
   b.fly = b.fly || { standard: 0, max: 0 };
 
+  // Preserve optional weapon allowlist if present
+  if (Array.isArray(b.weaponAllowlist)) b.weaponAllowlist = [...b.weaponAllowlist];
+
   for (const id of config.mods) {
     const m = modById(id);
     if (!m || !isModAllowed(m)) continue;
@@ -426,11 +461,18 @@ function setupWeapons(mountingPoints) {
   if (!ui) return;
   ui.innerHTML = "";
 
+  // Enforce allowlist whenever we rebuild the UI (mods/base changes, etc.)
+  sanitizeIllegalSelections();
+
+  const allow = getWeaponAllowlist();
+
   mountingPoints.forEach(mp => {
     if (!config.mounts[mp.id]) config.mounts[mp.id] = { weaponId: "none", qty: 0 };
     if (config.proficiencies[mp.id] === undefined) config.proficiencies[mp.id] = false;
 
-    const fittingWeapons = weapons.filter(w => maxQtyFor(mp.size, w.size) >= 1);
+    const fittingWeapons = weapons
+      .filter(w => maxQtyFor(mp.size, w.size) >= 1)
+      .filter(w => !allow || allow.includes(w.id)); // ✅ vehicle/mount allowlist restriction
 
     const weaponOptions = fittingWeapons
       .map(w => `<option value="${w.id}" ${config.mounts[mp.id].weaponId === w.id ? "selected" : ""}>${w.name} (${w.points || 0} pts)</option>`)
@@ -438,8 +480,17 @@ function setupWeapons(mountingPoints) {
 
     const currentWeapon = weaponById(config.mounts[mp.id].weaponId);
     let qtyOptions = `<option value="0">0</option>`;
-    if (currentWeapon && currentWeapon.id !== "none") {
-      const maxQ = maxQtyFor(mp.size, currentWeapon.size);
+
+    // If current selection is illegal under allowlist, clear it
+    if (currentWeapon && currentWeapon.id !== "none" && !isWeaponAllowed(currentWeapon.id)) {
+      config.mounts[mp.id].weaponId = "none";
+      config.mounts[mp.id].qty = 0;
+    }
+
+    const refreshedWeapon = weaponById(config.mounts[mp.id].weaponId);
+
+    if (refreshedWeapon && refreshedWeapon.id !== "none") {
+      const maxQ = maxQtyFor(mp.size, refreshedWeapon.size);
       if (config.mounts[mp.id].qty > maxQ) config.mounts[mp.id].qty = maxQ;
       if (config.mounts[mp.id].qty === 0) config.mounts[mp.id].qty = 1;
 
@@ -451,6 +502,10 @@ function setupWeapons(mountingPoints) {
     const crewGroups = getCrewGroups();
     const crewGroupId = mp.crewGroup || crewGroups[0].id;
     const crewGroupLabel = (crewGroups.find(g => g.id === crewGroupId) || crewGroups[0]).label;
+
+    const restrictionNote = allow
+      ? `<div style="font-size:0.9em; opacity:0.85;"><em>Restricted Loadout:</em> this platform can only equip specific ordnance.</div>`
+      : "";
 
     ui.innerHTML += `
       <strong>${mp.label} (${mp.arc})</strong><br>
@@ -469,12 +524,20 @@ function setupWeapons(mountingPoints) {
         <option value="no" ${config.proficiencies[mp.id] ? "" : "selected"}>Not Proficient</option>
         <option value="yes" ${config.proficiencies[mp.id] ? "selected" : ""}>Proficient</option>
       </select>
+      ${restrictionNote}
       <br><br>
     `;
   });
 }
 
 function setMountWeapon(slot, weaponId) {
+  // Hard block: don’t allow selecting non-allowlisted weapons
+  if (weaponId !== "none" && !isWeaponAllowed(weaponId)) {
+    alert("That weapon cannot be equipped on this platform.");
+    setupWeapons(getDerivedMountingPoints());
+    return;
+  }
+
   config.mounts[slot] = config.mounts[slot] || { weaponId: "none", qty: 0 };
   config.mounts[slot].weaponId = weaponId;
 
@@ -727,6 +790,9 @@ function buildRoll20Export() {
     const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
     if (!sel.qty || sel.weaponId === "none") continue;
 
+    // Fail-safe: don't export illegal selections
+    if (!isWeaponAllowed(sel.weaponId)) continue;
+
     const w = weaponById(sel.weaponId);
     if (!w) continue;
 
@@ -783,6 +849,9 @@ function buildRoll20Export() {
       capacity: enc.cap,
       state: enc.enc
     },
+
+    // Include allowlist so downstream tools can validate too (safe to omit if not present)
+    weaponAllowlist: Array.isArray(base.weaponAllowlist) ? [...base.weaponAllowlist] : null,
 
     traits: exportTraitObjects(base.traits),
 
