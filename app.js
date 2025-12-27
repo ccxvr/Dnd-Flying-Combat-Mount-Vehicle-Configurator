@@ -535,6 +535,28 @@ function totalPoints() {
 
 /* ---------- HELPERS ---------- */
 
+function derivedEncumbrance(base) {
+  const payload = loadWeight();
+  const cap = capacity(base);
+
+  let agility = base.agility;
+  let maxSpeed = base.fly?.max ?? 0;
+  let enc = "Normal";
+
+  if (payload > cap * 0.5) {
+    enc = "Encumbered";
+    agility = Math.ceil((base.agility || 0) / 2);
+  }
+  if (payload > cap) {
+    enc = "Heavily Encumbered";
+    maxSpeed = Math.max(0, (maxSpeed || 0) - 20);
+  }
+  if (payload > cap * 1.5) enc = "Overloaded";
+
+  return { payload, cap, agility, maxSpeed, enc };
+}
+
+
 function abilityMod(score) {
   return Math.floor((score - 10) / 2)
 }
@@ -787,6 +809,10 @@ function buildRoll20Export() {
     // ✅ add mod descriptions for importer
     mods: exportModObjects(config.mods),
 
+    //agility
+      const base = getDerivedBase();
+      const enc = derivedEncumbrance(base);
+  
     // stats (derived)
     stats: {
       ac: base.baseAC,
@@ -794,7 +820,8 @@ function buildRoll20Export() {
       str: base.strength,
       dex: base.dex,
       con: base.con,
-      agility: base.agility
+      agility: enc.agility
+
     },
 
     movement: {
@@ -836,6 +863,7 @@ async function exportRoll20JSON() {
 /* ---------- START ---------- */
 
 loadData()
+
 
 
 
