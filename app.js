@@ -1,12 +1,12 @@
-let mounts = []
-let vehicles = []
-let saddles = []
-let weapons = []
-let mods = []
-let TRAITS = {}
+let mounts = [];
+let vehicles = [];
+let saddles = [];
+let weapons = [];
+let mods = [];
+let TRAITS = {};
 
-const SIZE_ORDER = ["XS", "S", "M", "L", "XL"]
-const SIZE_UNITS = { XS: 1, S: 2, M: 4, L: 8, XL: 16 }
+const SIZE_ORDER = ["XS", "S", "M", "L", "XL"];
+const SIZE_UNITS = { XS: 1, S: 2, M: 4, L: 8, XL: 16 };
 
 const SIZE_CAPACITY_MULT = {
   Tiny: 0.5,
@@ -15,7 +15,7 @@ const SIZE_CAPACITY_MULT = {
   Large: 2,
   Huge: 4,
   Gargantuan: 8
-}
+};
 
 let config = {
   base: null,
@@ -34,26 +34,46 @@ let config = {
 
   // list of mod ids applied
   mods: []
+};
+
+/* ---------- SMALL HELPERS ---------- */
+
+function abilityMod(score) {
+  const n = Number(score);
+  if (!Number.isFinite(n)) return 0;
+  return Math.floor((n - 10) / 2);
+}
+
+function capacity(base) {
+  const sizeMult = SIZE_CAPACITY_MULT[base.size] || 1;
+  const carryMult = base.carryMultiplier || 1;
+  return (Number(base.strength) || 0) * 15 * sizeMult * carryMult;
+}
+
+function traitLabel(traitId) {
+  return String(traitId)
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, c => c.toUpperCase());
 }
 
 /* ---------- LOAD DATA ---------- */
 
 async function loadData() {
   try {
-    const mountsRes = await fetch("data/mounts.json"); if (!mountsRes.ok) throw new Error("mounts.json not found")
-    const vehiclesRes = await fetch("data/vehicles.json"); if (!vehiclesRes.ok) throw new Error("vehicles.json not found")
-    const saddlesRes = await fetch("data/saddles.json"); if (!saddlesRes.ok) throw new Error("saddles.json not found")
-    const weaponsRes = await fetch("data/weapons.json"); if (!weaponsRes.ok) throw new Error("weapons.json not found")
-    const traitsRes = await fetch("data/traits.json"); if (!traitsRes.ok) throw new Error("traits.json not found")
-    const modsRes = await fetch("data/mods.json"); if (!modsRes.ok) throw new Error("mods.json not found")
+    const mountsRes = await fetch("data/mounts.json"); if (!mountsRes.ok) throw new Error("mounts.json not found");
+    const vehiclesRes = await fetch("data/vehicles.json"); if (!vehiclesRes.ok) throw new Error("vehicles.json not found");
+    const saddlesRes = await fetch("data/saddles.json"); if (!saddlesRes.ok) throw new Error("saddles.json not found");
+    const weaponsRes = await fetch("data/weapons.json"); if (!weaponsRes.ok) throw new Error("weapons.json not found");
+    const traitsRes = await fetch("data/traits.json"); if (!traitsRes.ok) throw new Error("traits.json not found");
+    const modsRes = await fetch("data/mods.json"); if (!modsRes.ok) throw new Error("mods.json not found");
 
-    mounts = await mountsRes.json()
-    vehicles = await vehiclesRes.json()
-    saddles = await saddlesRes.json()
-    weapons = await weaponsRes.json()
-    mods = await modsRes.json()
+    mounts = await mountsRes.json();
+    vehicles = await vehiclesRes.json();
+    saddles = await saddlesRes.json();
+    weapons = await weaponsRes.json();
+    mods = await modsRes.json();
 
-    const traitsJson = await traitsRes.json()
+    const traitsJson = await traitsRes.json();
 
     // Accept either:
     // 1) [{id,name,desc}, ...]
@@ -64,143 +84,150 @@ async function loadData() {
         traitsJson
           .filter(t => t && t.id)
           .map(t => [t.id, { name: t.name || t.id, desc: t.desc || "" }])
-      )
+      );
     } else if (traitsJson && typeof traitsJson === "object") {
       if (traitsJson.mountVehicleTraits && typeof traitsJson.mountVehicleTraits === "object") {
-        TRAITS = traitsJson.mountVehicleTraits
+        TRAITS = traitsJson.mountVehicleTraits;
       } else {
-        TRAITS = traitsJson
+        TRAITS = traitsJson;
       }
     } else {
-      TRAITS = {}
+      TRAITS = {};
     }
 
-    init()
+    init();
   } catch (e) {
-    console.error("DATA LOAD ERROR:", e)
-    const baseSelect = document.getElementById("baseSelect")
-    if (baseSelect) baseSelect.innerHTML = `<option>(Failed to load data — check console)</option>`
+    console.error("DATA LOAD ERROR:", e);
+    const baseSelect = document.getElementById("baseSelect");
+    if (baseSelect) baseSelect.innerHTML = `<option>(Failed to load data — check console)</option>`;
   }
 }
 
 /* ---------- INIT ---------- */
 
 function init() {
-  const select = document.getElementById("baseSelect")
-  select.innerHTML = ""
+  const select = document.getElementById("baseSelect");
+  select.innerHTML = "";
 
-  const allBases = [...mounts, ...vehicles]
+  const allBases = [...mounts, ...vehicles];
   if (allBases.length === 0) {
-    select.innerHTML = `<option>(No mounts/vehicles loaded)</option>`
-    return
+    select.innerHTML = `<option>(No mounts/vehicles loaded)</option>`;
+    return;
   }
 
   allBases.forEach(b => {
-    select.innerHTML += `<option value="${b.id}">${b.name} (${b.type})</option>`
-  })
+    select.innerHTML += `<option value="${b.id}">${b.name} (${b.type})</option>`;
+  });
 
-  select.onchange = () => selectBase(select.value)
-  selectBase(allBases[0].id)
-  render()
+  select.onchange = () => selectBase(select.value);
+  selectBase(allBases[0].id);
+  render();
 }
 
 /* ---------- BASE SELECTION ---------- */
 
 function selectBase(id) {
-  config.mount = mounts.find(m => m.id === id) || null
-  config.vehicle = vehicles.find(v => v.id === id) || null
-  config.base = config.mount || config.vehicle
+  config.mount = mounts.find(m => m.id === id) || null;
+  config.vehicle = vehicles.find(v => v.id === id) || null;
+  config.base = config.mount || config.vehicle;
 
-  if (config.vehicle) config.saddle = null
+  if (config.vehicle) config.saddle = null;
 
-  config.mounts = {}
-  config.proficiencies = {}
-  config.crewStats = {}
-  config.mods = []
+  config.mounts = {};
+  config.proficiencies = {};
+  config.crewStats = {};
+  config.mods = [];
 
-  document.getElementById("saddleSection").style.display = config.mount ? "block" : "none"
+  const saddleSection = document.getElementById("saddleSection");
+  if (saddleSection) saddleSection.style.display = config.mount ? "block" : "none";
 
-  if (config.mount) setupMount()
-  else setupVehicle()
+  if (config.mount) setupMount();
+  else setupVehicle();
 
-  setupModsUI() // NEW
-  render()
+  setupModsUI();
+  render();
 }
 
 /* ---------- MOUNTS ---------- */
 
 function setupMount() {
-  const saddleSelect = document.getElementById("saddleSelect")
-  saddleSelect.innerHTML = ""
+  const saddleSelect = document.getElementById("saddleSelect");
+  if (!saddleSelect) return;
 
-  const mountTags = config.mount.tags || []
+  saddleSelect.innerHTML = "";
+  const mountTags = config.mount.tags || [];
 
   const validSaddles = saddles
     .filter(s => (s.allowedSizes || []).includes(config.mount.size))
     .filter(s => {
-      const hasIds = Array.isArray(s.allowedMountIds) && s.allowedMountIds.length > 0
-      const hasTags = Array.isArray(s.allowedMountTags) && s.allowedMountTags.length > 0
-      if (!hasIds && !hasTags) return true
-      const byIdOk = hasIds && s.allowedMountIds.includes(config.mount.id)
-      const byTagOk = hasTags && s.allowedMountTags.some(t => mountTags.includes(t))
-      return byIdOk || byTagOk
-    })
+      const hasIds = Array.isArray(s.allowedMountIds) && s.allowedMountIds.length > 0;
+      const hasTags = Array.isArray(s.allowedMountTags) && s.allowedMountTags.length > 0;
+      if (!hasIds && !hasTags) return true;
+      const byIdOk = hasIds && s.allowedMountIds.includes(config.mount.id);
+      const byTagOk = hasTags && s.allowedMountTags.some(t => mountTags.includes(t));
+      return byIdOk || byTagOk;
+    });
 
   if (validSaddles.length === 0) {
-    saddleSelect.innerHTML = `<option value="">(No valid saddles)</option>`
-    config.saddle = null
-    document.getElementById("weaponsUI").innerHTML = "<em>No saddle available for this mount.</em>"
-    document.getElementById("crewUI").innerHTML = ""
-    render()
-    return
+    saddleSelect.innerHTML = `<option value="">(No valid saddles)</option>`;
+    config.saddle = null;
+
+    const weaponsUI = document.getElementById("weaponsUI");
+    if (weaponsUI) weaponsUI.innerHTML = "<em>No saddle available for this mount.</em>";
+
+    const crewUI = document.getElementById("crewUI");
+    if (crewUI) crewUI.innerHTML = "";
+
+    render();
+    return;
   }
 
   validSaddles.forEach(s => {
-    saddleSelect.innerHTML += `<option value="${s.id}">${s.name}</option>`
-  })
+    saddleSelect.innerHTML += `<option value="${s.id}">${s.name}</option>`;
+  });
 
   saddleSelect.onchange = () => {
-    selectSaddle(saddleSelect.value)
-    setupModsUI()
-    render()
-  }
+    selectSaddle(saddleSelect.value);
+    setupModsUI();
+    render();
+  };
 
-  selectSaddle(validSaddles[0].id)
-  setupModsUI()
-  render()
+  selectSaddle(validSaddles[0].id);
+  setupModsUI();
+  render();
 }
 
 function selectSaddle(id) {
-  config.saddle = saddles.find(s => s.id === id) || null
-  if (!config.saddle) return
+  config.saddle = saddles.find(s => s.id === id) || null;
+  if (!config.saddle) return;
 
-  setupCrewUI(getCrewGroups())
-  setupWeapons(getDerivedMountingPoints())
+  setupCrewUI(getCrewGroups());
+  setupWeapons(getDerivedMountingPoints());
 }
 
 /* ---------- VEHICLES ---------- */
 
 function setupVehicle() {
-  setupCrewUI(getCrewGroups())
-  setupWeapons(getDerivedMountingPoints())
+  setupCrewUI(getCrewGroups());
+  setupWeapons(getDerivedMountingPoints());
 }
 
 /* ---------- CREW ---------- */
 
 function getCrewGroups() {
-  if (config.vehicle && Array.isArray(config.vehicle.crewGroups)) return config.vehicle.crewGroups
-  if (config.saddle && Array.isArray(config.saddle.crewGroups)) return config.saddle.crewGroups
-  return [{ id: "operator", label: "Operator" }]
+  if (config.vehicle && Array.isArray(config.vehicle.crewGroups)) return config.vehicle.crewGroups;
+  if (config.saddle && Array.isArray(config.saddle.crewGroups)) return config.saddle.crewGroups;
+  return [{ id: "operator", label: "Operator" }];
 }
 
 function setupCrewUI(groups) {
-  const crewUI = document.getElementById("crewUI")
-  if (!crewUI) return
+  const crewUI = document.getElementById("crewUI");
+  if (!crewUI) return;
 
-  crewUI.innerHTML = ""
+  crewUI.innerHTML = "";
 
   groups.forEach(g => {
-    if (!config.crewStats[g.id]) config.crewStats[g.id] = { dexMod: 0, profBonus: 0 }
+    if (!config.crewStats[g.id]) config.crewStats[g.id] = { dexMod: 0, profBonus: 0 };
 
     crewUI.innerHTML += `
       <strong>${g.label}</strong><br>
@@ -211,249 +238,219 @@ function setupCrewUI(groups) {
       <input type="number" value="${config.crewStats[g.id].profBonus}" style="width:80px"
         onchange="setCrewPB('${g.id}', this.value)">
       <br><br>
-    `
-  })
+    `;
+  });
 }
 
 function setCrewDex(groupId, val) {
-  config.crewStats[groupId] = config.crewStats[groupId] || { dexMod: 0, profBonus: 0 }
-  config.crewStats[groupId].dexMod = +val
-  render()
+  config.crewStats[groupId] = config.crewStats[groupId] || { dexMod: 0, profBonus: 0 };
+  config.crewStats[groupId].dexMod = +val;
+  render();
 }
 
 function setCrewPB(groupId, val) {
-  config.crewStats[groupId] = config.crewStats[groupId] || { dexMod: 0, profBonus: 0 }
-  config.crewStats[groupId].profBonus = +val
-  render()
+  config.crewStats[groupId] = config.crewStats[groupId] || { dexMod: 0, profBonus: 0 };
+  config.crewStats[groupId].profBonus = +val;
+  render();
 }
 
 /* ---------- MODS ---------- */
 
-// Expected mods.json entries (example schema):
-// {
-//   "id":"reinforced_rigging",
-//   "name":"Reinforced Rigging",
-//   "points":2,
-//   "desc":"...optional...",
-//   "requires": { "baseType": ["Mount","Vehicle"], "tags":["wyvern"], "ids":["white_wyvern"] },
-//   "effects": {
-//      "addTraits":["tough_skin"],
-//      "addMountingPoints":[{...}],
-//      "statBonuses": { "baseAC": 1, "baseHP": 10, "strength": 2, "agility": 1, "carryMultiplier": 1 },
-//      "flyBonus": { "standard": 10, "max": 30 },
-//      "set": { "acceleration":"2d6", "climbRate":"1/2" }
-//   }
-// }
-
-function baseKind() {
-  return config.vehicle ? "Vehicle" : "Mount"
-}
-function baseTags() {
-  return (config.mount?.tags || config.vehicle?.tags || [])
-}
-function baseId() {
-  return config.base?.id || ""
-}
+function baseKind() { return config.vehicle ? "Vehicle" : "Mount"; }
+function baseTags() { return (config.mount?.tags || config.vehicle?.tags || []); }
+function baseId() { return config.base?.id || ""; }
 
 function modById(id) {
-  return mods.find(m => m.id === id) || null
+  return mods.find(m => m.id === id) || null;
 }
 
 function isModAllowed(mod) {
-  if (!mod) return false
-  const req = mod.requires || {}
+  if (!mod) return false;
+  const req = mod.requires || {};
 
   if (Array.isArray(req.baseType) && req.baseType.length) {
-    if (!req.baseType.includes(baseKind())) return false
+    if (!req.baseType.includes(baseKind())) return false;
   }
   if (Array.isArray(req.ids) && req.ids.length) {
-    if (!req.ids.includes(baseId())) return false
+    if (!req.ids.includes(baseId())) return false;
   }
   if (Array.isArray(req.tags) && req.tags.length) {
-    const tags = baseTags()
-    if (!req.tags.some(t => tags.includes(t))) return false
+    const tags = baseTags();
+    if (!req.tags.some(t => tags.includes(t))) return false;
   }
-  return true
+  return true;
 }
 
 function setupModsUI() {
-  const modsSection = document.getElementById("modsSection")
-  const modsSelect = document.getElementById("modsSelect")
-  const modsList = document.getElementById("modsList")
+  const modsSection = document.getElementById("modsSection");
+  const modsSelect = document.getElementById("modsSelect");
+  const modsList = document.getElementById("modsList");
 
-  // If your HTML doesn’t have these yet, add them (see snippet below).
-  if (!modsSection || !modsSelect || !modsList) return
+  if (!modsSection || !modsSelect || !modsList) return;
 
-  modsSection.style.display = "block"
-  modsSelect.innerHTML = ""
+  modsSection.style.display = "block";
+  modsSelect.innerHTML = "";
 
-  const available = mods.filter(isModAllowed)
+  const available = mods.filter(isModAllowed);
   if (available.length === 0) {
-    modsSelect.innerHTML = `<option value="">(No mods available)</option>`
+    modsSelect.innerHTML = `<option value="">(No mods available)</option>`;
   } else {
     available.forEach(m => {
-      modsSelect.innerHTML += `<option value="${m.id}">${m.name} (${m.points || 0} pts)</option>`
-    })
+      modsSelect.innerHTML += `<option value="${m.id}">${m.name} (${m.points || 0} pts)</option>`;
+    });
   }
 
-  renderModsList()
-  // Also refresh weapons if mods add mounting points
-  setupWeapons(getDerivedMountingPoints())
+  renderModsList();
+  setupWeapons(getDerivedMountingPoints());
 }
 
 function addSelectedMod() {
-  const sel = document.getElementById("modsSelect")
-  if (!sel || !sel.value) return
-  const id = sel.value
-  if (config.mods.includes(id)) return
-  config.mods.push(id)
-  renderModsList()
-  setupWeapons(getDerivedMountingPoints())
-  render()
+  const sel = document.getElementById("modsSelect");
+  if (!sel || !sel.value) return;
+
+  const id = sel.value;
+  if (config.mods.includes(id)) return;
+
+  config.mods.push(id);
+  renderModsList();
+  setupWeapons(getDerivedMountingPoints());
+  render();
 }
 
 function removeMod(id) {
-  config.mods = config.mods.filter(x => x !== id)
-  renderModsList()
-  setupWeapons(getDerivedMountingPoints())
-  render()
+  config.mods = config.mods.filter(x => x !== id);
+  renderModsList();
+  setupWeapons(getDerivedMountingPoints());
+  render();
 }
 
 function renderModsList() {
-  const modsList = document.getElementById("modsList")
-  if (!modsList) return
+  const modsList = document.getElementById("modsList");
+  if (!modsList) return;
 
   if (!config.mods.length) {
-    modsList.innerHTML = `<em>No mods selected.</em>`
-    return
+    modsList.innerHTML = `<em>No mods selected.</em>`;
+    return;
   }
 
   modsList.innerHTML = config.mods
     .map(id => {
-      const m = modById(id)
-      if (!m) return ""
+      const m = modById(id);
+      if (!m) return "";
       return `
         <div style="margin-bottom:6px;">
           <strong>${m.name}</strong> (${m.points || 0} pts)
           <button onclick="removeMod('${m.id}')" style="margin-left:8px;">Remove</button>
           ${m.desc ? `<div style="font-size:0.9em; opacity:0.9;">${m.desc}</div>` : ""}
         </div>
-      `
+      `;
     })
-    .join("")
+    .join("");
 }
 
 function applyModsToBase(base) {
-  // clone
-  const b = JSON.parse(JSON.stringify(base || {}))
-  b.traits = Array.isArray(b.traits) ? [...b.traits] : []
-  b.fly = b.fly || { standard: 0, max: 0 }
+  const b = JSON.parse(JSON.stringify(base || {}));
+  b.traits = Array.isArray(b.traits) ? [...b.traits] : [];
+  b.fly = b.fly || { standard: 0, max: 0 };
 
   for (const id of config.mods) {
-    const m = modById(id)
-    if (!m || !isModAllowed(m)) continue
-    const fx = m.effects || {}
+    const m = modById(id);
+    if (!m || !isModAllowed(m)) continue;
+    const fx = m.effects || {};
 
-    // add traits
     if (Array.isArray(fx.addTraits)) {
-      for (const t of fx.addTraits) if (t && !b.traits.includes(t)) b.traits.push(t)
+      for (const t of fx.addTraits) if (t && !b.traits.includes(t)) b.traits.push(t);
     }
 
-    // numeric stat bonuses
     if (fx.statBonuses && typeof fx.statBonuses === "object") {
       for (const k of Object.keys(fx.statBonuses)) {
-        const delta = +fx.statBonuses[k]
-        if (!Number.isFinite(delta)) continue
-        b[k] = (Number(b[k]) || 0) + delta
+        const delta = +fx.statBonuses[k];
+        if (!Number.isFinite(delta)) continue;
+        b[k] = (Number(b[k]) || 0) + delta;
       }
     }
 
-    // fly bonus
     if (fx.flyBonus && typeof fx.flyBonus === "object") {
-      if (Number.isFinite(+fx.flyBonus.standard)) b.fly.standard = (b.fly.standard || 0) + (+fx.flyBonus.standard)
-      if (Number.isFinite(+fx.flyBonus.max)) b.fly.max = (b.fly.max || 0) + (+fx.flyBonus.max)
+      if (Number.isFinite(+fx.flyBonus.standard)) b.fly.standard = (b.fly.standard || 0) + (+fx.flyBonus.standard);
+      if (Number.isFinite(+fx.flyBonus.max)) b.fly.max = (b.fly.max || 0) + (+fx.flyBonus.max);
     }
 
-    // set/override fields
     if (fx.set && typeof fx.set === "object") {
-      for (const k of Object.keys(fx.set)) b[k] = fx.set[k]
+      for (const k of Object.keys(fx.set)) b[k] = fx.set[k];
     }
   }
 
-  return b
+  return b;
 }
 
 function getDerivedBase() {
-  return applyModsToBase(config.base)
+  return applyModsToBase(config.base);
 }
 
 function getDerivedMountingPoints() {
-  // start from saddle/vehicle
-  let points = []
-  if (config.vehicle) points = (config.vehicle.mountingPoints || []).map(p => ({ ...p }))
-  else if (config.saddle) points = (config.saddle.mountingPoints || []).map(p => ({ ...p }))
+  let points = [];
+  if (config.vehicle) points = (config.vehicle.mountingPoints || []).map(p => ({ ...p }));
+  else if (config.saddle) points = (config.saddle.mountingPoints || []).map(p => ({ ...p }));
 
-  // add mod mounting points
   for (const id of config.mods) {
-    const m = modById(id)
-    if (!m || !isModAllowed(m)) continue
-    const add = m.effects?.addMountingPoints
+    const m = modById(id);
+    if (!m || !isModAllowed(m)) continue;
+    const add = m.effects?.addMountingPoints;
     if (Array.isArray(add)) {
       for (const mp of add) {
-        if (!mp || !mp.id) continue
-        // avoid collisions
-        const uniqueId = points.some(p => p.id === mp.id) ? `${mp.id}_${m.id}` : mp.id
-        points.push({ ...mp, id: uniqueId })
+        if (!mp || !mp.id) continue;
+        const uniqueId = points.some(p => p.id === mp.id) ? `${mp.id}_${m.id}` : mp.id;
+        points.push({ ...mp, id: uniqueId });
       }
     }
   }
 
-  return points
+  return points;
 }
 
-/* ---------- MOUNTING POINTS / WEAPONS ---------- */
+/* ---------- WEAPONS ---------- */
 
 function weaponById(id) {
-  return weapons.find(w => w.id === id) || null
+  return weapons.find(w => w.id === id) || null;
 }
 
 function maxQtyFor(mpSize, weaponSize) {
-  const mpUnits = SIZE_UNITS[mpSize] ?? 0
-  const wUnits = SIZE_UNITS[weaponSize] ?? 999
-  if (mpUnits === 0 || wUnits === 0) return 0
-  return Math.floor(mpUnits / wUnits)
+  const mpUnits = SIZE_UNITS[mpSize] ?? 0;
+  const wUnits = SIZE_UNITS[weaponSize] ?? 999;
+  if (mpUnits === 0 || wUnits === 0) return 0;
+  return Math.floor(mpUnits / wUnits);
 }
 
 function setupWeapons(mountingPoints) {
-  const ui = document.getElementById("weaponsUI")
-  if (!ui) return
-  ui.innerHTML = ""
+  const ui = document.getElementById("weaponsUI");
+  if (!ui) return;
+  ui.innerHTML = "";
 
   mountingPoints.forEach(mp => {
-    if (!config.mounts[mp.id]) config.mounts[mp.id] = { weaponId: "none", qty: 0 }
-    if (config.proficiencies[mp.id] === undefined) config.proficiencies[mp.id] = false
+    if (!config.mounts[mp.id]) config.mounts[mp.id] = { weaponId: "none", qty: 0 };
+    if (config.proficiencies[mp.id] === undefined) config.proficiencies[mp.id] = false;
 
-    const fittingWeapons = weapons.filter(w => maxQtyFor(mp.size, w.size) >= 1)
+    const fittingWeapons = weapons.filter(w => maxQtyFor(mp.size, w.size) >= 1);
 
     const weaponOptions = fittingWeapons
       .map(w => `<option value="${w.id}" ${config.mounts[mp.id].weaponId === w.id ? "selected" : ""}>${w.name} (${w.points || 0} pts)</option>`)
-      .join("")
+      .join("");
 
-    const currentWeapon = weaponById(config.mounts[mp.id].weaponId)
-    let qtyOptions = `<option value="0">0</option>`
+    const currentWeapon = weaponById(config.mounts[mp.id].weaponId);
+    let qtyOptions = `<option value="0">0</option>`;
     if (currentWeapon && currentWeapon.id !== "none") {
-      const maxQ = maxQtyFor(mp.size, currentWeapon.size)
-      if (config.mounts[mp.id].qty > maxQ) config.mounts[mp.id].qty = maxQ
-      if (config.mounts[mp.id].qty === 0) config.mounts[mp.id].qty = 1
+      const maxQ = maxQtyFor(mp.size, currentWeapon.size);
+      if (config.mounts[mp.id].qty > maxQ) config.mounts[mp.id].qty = maxQ;
+      if (config.mounts[mp.id].qty === 0) config.mounts[mp.id].qty = 1;
 
       qtyOptions = Array.from({ length: maxQ + 1 }, (_, i) =>
         `<option value="${i}" ${config.mounts[mp.id].qty === i ? "selected" : ""}>${i}</option>`
-      ).join("")
+      ).join("");
     }
 
-    const crewGroups = getCrewGroups()
-    const crewGroupId = mp.crewGroup || crewGroups[0].id
-    const crewGroupLabel = (crewGroups.find(g => g.id === crewGroupId) || crewGroups[0]).label
+    const crewGroups = getCrewGroups();
+    const crewGroupId = mp.crewGroup || crewGroups[0].id;
+    const crewGroupLabel = (crewGroups.find(g => g.id === crewGroupId) || crewGroups[0]).label;
 
     ui.innerHTML += `
       <strong>${mp.label} (${mp.arc})</strong><br>
@@ -473,67 +470,69 @@ function setupWeapons(mountingPoints) {
         <option value="yes" ${config.proficiencies[mp.id] ? "selected" : ""}>Proficient</option>
       </select>
       <br><br>
-    `
-  })
+    `;
+  });
 }
 
 function setMountWeapon(slot, weaponId) {
-  config.mounts[slot] = config.mounts[slot] || { weaponId: "none", qty: 0 }
-  config.mounts[slot].weaponId = weaponId
+  config.mounts[slot] = config.mounts[slot] || { weaponId: "none", qty: 0 };
+  config.mounts[slot].weaponId = weaponId;
 
-  if (weaponId === "none") config.mounts[slot].qty = 0
-  else config.mounts[slot].qty = Math.max(1, config.mounts[slot].qty || 1)
+  if (weaponId === "none") config.mounts[slot].qty = 0;
+  else config.mounts[slot].qty = Math.max(1, config.mounts[slot].qty || 1);
 
-  setupWeapons(getDerivedMountingPoints())
-  render()
+  setupWeapons(getDerivedMountingPoints());
+  render();
 }
 
 function setMountQty(slot, qty) {
-  config.mounts[slot] = config.mounts[slot] || { weaponId: "none", qty: 0 }
-  config.mounts[slot].qty = +qty
-  render()
+  config.mounts[slot] = config.mounts[slot] || { weaponId: "none", qty: 0 };
+  config.mounts[slot].qty = +qty;
+  render();
 }
 
 function setProf(slot, value) {
-  config.proficiencies[slot] = (value === "yes")
-  render()
+  config.proficiencies[slot] = (value === "yes");
+  render();
 }
 
-/* ---------- WEIGHT (CARRIED ONLY) ---------- */
+/* ---------- WEIGHT ---------- */
 
 function loadWeight() {
-  let total = 0
-  if (config.saddle) total += (config.saddle.weight || 0)
+  let total = 0;
+  if (config.saddle) total += (config.saddle.weight || 0);
+
   Object.values(config.mounts).forEach(sel => {
-    const w = weaponById(sel.weaponId)
-    if (!w || w.id === "none") return
-    total += (w.weight || 0) * (sel.qty || 0)
-  })
-  return total
+    const w = weaponById(sel.weaponId);
+    if (!w || w.id === "none") return;
+    total += (w.weight || 0) * (sel.qty || 0);
+  });
+
+  return total;
 }
 
 /* ---------- POINT COST ---------- */
 
 function totalPoints() {
-  let total = 0
-  if (config.base) total += (config.base.points || 0)
-  if (config.saddle) total += (config.saddle.points || 0)
+  let total = 0;
+  if (config.base) total += (config.base.points || 0);
+  if (config.saddle) total += (config.saddle.points || 0);
 
   for (const id of config.mods) {
-    const m = modById(id)
-    if (m) total += (m.points || 0)
+    const m = modById(id);
+    if (m) total += (m.points || 0);
   }
 
   Object.values(config.mounts).forEach(sel => {
-    const w = weaponById(sel.weaponId)
-    if (!w || w.id === "none") return
-    total += (w.points || 0) * (sel.qty || 0)
-  })
+    const w = weaponById(sel.weaponId);
+    if (!w || w.id === "none") return;
+    total += (w.points || 0) * (sel.qty || 0);
+  });
 
-  return total
+  return total;
 }
 
-/* ---------- HELPERS ---------- */
+/* ---------- ENCUMBRANCE (single source of truth) ---------- */
 
 function derivedEncumbrance(base) {
   const payload = loadWeight();
@@ -556,104 +555,70 @@ function derivedEncumbrance(base) {
   return { payload, cap, agility, maxSpeed, enc };
 }
 
-
-function abilityMod(score) {
-  return Math.floor((score - 10) / 2)
-}
-
-function capacity(base) {
-  const sizeMult = SIZE_CAPACITY_MULT[base.size] || 1
-  const carryMult = base.carryMultiplier || 1
-  return base.strength * 15 * sizeMult * carryMult
-}
-
-function traitLabel(traitId) {
-  return String(traitId)
-    .replace(/_/g, " ")
-    .replace(/\b\w/g, c => c.toUpperCase())
-}
-
 /* ---------- ACTION RENDERER ---------- */
 
 function renderNativeAction(a) {
-  if (!a || !a.name) return ""
+  if (!a || !a.name) return "";
 
   if (a.kind === "attack") {
-    let out = `<strong>${a.name}.</strong> `
-    const label = (a.attackType === "ranged" || a.type === "ranged") ? "Ranged Weapon Attack" : "Melee Weapon Attack"
-    out += `${label}: +${a.toHit} to hit, `
-    if (a.reach) out += `reach ${a.reach}, `
-    if (a.range) out += `range ${a.range}, `
-    out += `${a.target || "one target"}. `
-    out += `<em>Hit:</em> ${a.damage || "—"}`
-    if (a.extra) out += ` ${a.extra}`
-    if (a.notes) out += ` ${a.notes}`
-    return out + `<br>`
+    let out = `<strong>${a.name}.</strong> `;
+    const label = (a.attackType === "ranged" || a.type === "ranged") ? "Ranged Weapon Attack" : "Melee Weapon Attack";
+    out += `${label}: +${a.toHit} to hit, `;
+    if (a.reach) out += `reach ${a.reach}, `;
+    if (a.range) out += `range ${a.range}, `;
+    out += `${a.target || "one target"}. `;
+    out += `<em>Hit:</em> ${a.damage || "—"}`;
+    if (a.extra) out += ` ${a.extra}`;
+    if (a.notes) out += ` ${a.notes}`;
+    return out + `<br>`;
   }
 
   if (a.kind === "save") {
-    let out = `<strong>${a.name}.</strong> `
-    if (a.range) out += `Range ${a.range}. `
-    if (a.area) out += `Area ${a.area}. `
+    let out = `<strong>${a.name}.</strong> `;
+    if (a.range) out += `Range ${a.range}. `;
+    if (a.area) out += `Area ${a.area}. `;
 
-    const abil = a.save?.ability || "—"
-    const dc = a.save?.dc ?? "—"
-    out += `Each target must make a DC ${dc} ${abil} saving throw. `
+    const abil = a.save?.ability || "—";
+    const dc = a.save?.dc ?? "—";
+    out += `Each target must make a DC ${dc} ${abil} saving throw. `;
 
     const fmtOutcome = (x, fallback) => {
-      if (!x) return fallback
-      if (typeof x === "string") return x
-      let parts = []
-      if (x.damage) parts.push(x.damage === "half" ? "half damage" : x.damage)
-      if (x.condition) parts.push(x.condition)
-      if (x.effect) parts.push(x.effect)
-      return parts.length ? parts.join(", ") : fallback
-    }
+      if (!x) return fallback;
+      if (typeof x === "string") return x;
+      let parts = [];
+      if (x.damage) parts.push(x.damage === "half" ? "half damage" : x.damage);
+      if (x.condition) parts.push(x.condition);
+      if (x.effect) parts.push(x.effect);
+      return parts.length ? parts.join(", ") : fallback;
+    };
 
-    out += `<em>Failure:</em> ${fmtOutcome(a.onFail, "—")}. `
-    out += `<em>Success:</em> ${fmtOutcome(a.onSave, "—")}. `
-    if (a.notes) out += `${a.notes}`
-    return out + `<br>`
+    out += `<em>Failure:</em> ${fmtOutcome(a.onFail, "—")}. `;
+    out += `<em>Success:</em> ${fmtOutcome(a.onSave, "—")}. `;
+    if (a.notes) out += `${a.notes}`;
+    return out + `<br>`;
   }
 
-  return `<strong>${a.name}.</strong> ${a.text || ""}<br>`
+  return `<strong>${a.name}.</strong> ${a.text || ""}<br>`;
 }
 
 function renderActionSection(title, list) {
-  if (!Array.isArray(list) || list.length === 0) return ""
-  let out = `<strong>${title}</strong><br>`
-  for (const a of list) out += renderNativeAction(a)
-  out += `<br>`
-  return out
+  if (!Array.isArray(list) || list.length === 0) return "";
+  let out = `<strong>${title}</strong><br>`;
+  for (const a of list) out += renderNativeAction(a);
+  out += `<br>`;
+  return out;
 }
 
-/* ---------- RENDER ---------- */
+/* ---------- RENDER (uses derivedEncumbrance) ---------- */
 
 function render() {
-  if (!config.base) return
+  if (!config.base) return;
 
-  const derived = getDerivedBase()
+  const derived = getDerivedBase();
+  const enc = derivedEncumbrance(derived);
+  const pts = totalPoints();
 
-  const payload = loadWeight()
-  const cap = capacity(derived)
-
-  let agility = derived.agility
-  let maxSpeed = derived.fly?.max ?? 0
-  let enc = "Normal"
-  let agilityWarning = null
-
-  if (payload > cap * 0.5) {
-    enc = "Encumbered"
-    agility = Math.ceil((derived.agility || 0) / 2)
-    agilityWarning = "⚠ Agility halved due to load"
-  }
-  if (payload > cap) {
-    enc = "Heavily Encumbered"
-    maxSpeed = Math.max(0, (maxSpeed || 0) - 20)
-  }
-  if (payload > cap * 1.5) enc = "Overloaded"
-
-  const pts = totalPoints()
+  const agilityWarning = (enc.enc === "Encumbered") ? "⚠ Agility halved due to load" : null;
 
   let html = `
     <h2>${derived.name}</h2>
@@ -663,7 +628,7 @@ function render() {
 
     <strong>Armor Class</strong> ${derived.baseAC}<br>
     <strong>Hit Points</strong> ${derived.baseHP}<br>
-    <strong>Speed</strong> fly ${derived.fly?.standard ?? 0} ft. (max ${maxSpeed} ft.)<br>
+    <strong>Speed</strong> fly ${derived.fly?.standard ?? 0} ft. (max ${enc.maxSpeed} ft.)<br>
     <strong>Climb Rate</strong> ${derived.climbRate ?? "—"}<br>
     <strong>Acceleration</strong> ${derived.acceleration ?? "—"}<br>
 
@@ -675,36 +640,35 @@ function render() {
 
     <hr>
 
-    <strong>Agility</strong> ${agility}
+    <strong>Agility</strong> ${enc.agility}
     ${agilityWarning ? `<br><strong>${agilityWarning}</strong>` : ""}<br>
-    <strong>Encumbrance</strong> ${enc} (${payload} / ${cap} lb)
+    <strong>Encumbrance</strong> ${enc.enc} (${enc.payload} / ${enc.cap} lb)
     <hr>
-  `
+  `;
 
-  // Native action types
-  html += renderActionSection("Actions", derived.actions)
-  html += renderActionSection("Bonus Actions", derived.bonusActions)
-  html += renderActionSection("Reactions", derived.reactions)
-  html += renderActionSection("Legendary Actions", derived.legendaryActions)
+  html += renderActionSection("Actions", derived.actions);
+  html += renderActionSection("Bonus Actions", derived.bonusActions);
+  html += renderActionSection("Reactions", derived.reactions);
+  html += renderActionSection("Legendary Actions", derived.legendaryActions);
 
   // Mounted weapons
-  html += `<strong>Mounted Weapons</strong><br>`
-  const points = getDerivedMountingPoints()
-  const groups = getCrewGroups()
+  html += `<strong>Mounted Weapons</strong><br>`;
+  const points = getDerivedMountingPoints();
+  const groups = getCrewGroups();
 
   for (let mp of points) {
-    const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 }
-    const w = weaponById(sel.weaponId)
-    if (!w || w.id === "none" || !sel.qty) continue
+    const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
+    const w = weaponById(sel.weaponId);
+    if (!w || w.id === "none" || !sel.qty) continue;
 
-    const crewGroupId = mp.crewGroup || groups[0].id
-    const crew = config.crewStats[crewGroupId] || { dexMod: 0, profBonus: 0 }
-    const proficient = !!config.proficiencies[mp.id]
-    const atk = (crew.dexMod || 0) + (proficient ? (crew.profBonus || 0) : 0)
+    const crewGroupId = mp.crewGroup || groups[0].id;
+    const crew = config.crewStats[crewGroupId] || { dexMod: 0, profBonus: 0 };
+    const proficient = !!config.proficiencies[mp.id];
+    const atk = (crew.dexMod || 0) + (proficient ? (crew.profBonus || 0) : 0);
 
     const traitsText = Array.isArray(w.traits) && w.traits.length
       ? w.traits.map(traitLabel).join(", ")
-      : "—"
+      : "—";
 
     html += `
       <strong>${w.name}</strong> ×${sel.qty} (${mp.arc})<br>
@@ -713,23 +677,24 @@ function render() {
       Range: ${w.range || "—"}<br>
       Traits: ${traitsText}<br>
       Points: ${(w.points || 0) * sel.qty} pts<br><br>
-    `
+    `;
   }
 
-  // Traits
+  // Traits (with descriptions)
   if (Array.isArray(derived.traits) && derived.traits.length) {
-    html += `<hr><strong>Traits</strong><br>`
+    html += `<hr><strong>Traits</strong><br>`;
     derived.traits.forEach(t => {
-      const tr = TRAITS[t]
-      if (tr) html += `<strong>${tr.name}.</strong> ${tr.desc}<br>`
-      else html += `<strong>${traitLabel(t)}.</strong><br>`
-    })
+      const tr = TRAITS[t];
+      if (tr) html += `<strong>${tr.name}.</strong> ${tr.desc}<br>`;
+      else html += `<strong>${traitLabel(t)}.</strong><br>`;
+    });
   }
 
-  document.getElementById("statblock").innerHTML = html
+  const statblock = document.getElementById("statblock");
+  if (statblock) statblock.innerHTML = html;
 }
 
-/*------Roll20 exporter----*/
+/* ---------- ROLL20 EXPORTER ---------- */
 
 function exportModObjects(modIds) {
   if (!Array.isArray(modIds)) return [];
@@ -737,11 +702,7 @@ function exportModObjects(modIds) {
     .filter(Boolean)
     .map(id => {
       const m = modById(id);
-      return {
-        id,
-        name: m?.name || id,
-        desc: m?.desc || ""
-      };
+      return { id, name: m?.name || id, desc: m?.desc || "" };
     });
 }
 
@@ -751,23 +712,16 @@ function exportTraitObjects(traitIds) {
     .filter(Boolean)
     .map(id => {
       const tr = TRAITS?.[id];
-      return {
-        id,
-        name: tr?.name || traitLabel(id),
-        desc: tr?.desc || ""
-      };
+      return { id, name: tr?.name || traitLabel(id), desc: tr?.desc || "" };
     });
 }
 
 function buildRoll20Export() {
-  const base = getDerivedBase();                 // export what you render (mods applied)
+  const base = getDerivedBase(); // mods applied
+  const enc = derivedEncumbrance(base); // ✅ single source of truth for agility/speed
   const points = getDerivedMountingPoints();
   const groups = getCrewGroups();
 
-  // ✅ compute encumbrance-derived agility/speed for export
-  const enc = derivedEncumbrance(base);
-
-  // build mounted weapons list
   const mountedWeapons = [];
   for (const mp of points) {
     const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
@@ -799,32 +753,27 @@ function buildRoll20Export() {
   return {
     schema: "flying-combat-config-v1",
 
-    // identity
     baseId: config.base?.id || "",
     baseName: base.name,
     baseType: base.type,
     baseSize: base.size,
 
-    // loadout
     saddleId: config.saddle?.id || null,
     modIds: [...config.mods],
-
-    // ✅ add mod descriptions for importer
     mods: exportModObjects(config.mods),
 
-    // stats (derived = matches UI, including encumbrance-adjusted agility)
     stats: {
       ac: base.baseAC,
       hp: base.baseHP,
       str: base.strength,
       dex: base.dex,
       con: base.con,
-      agility: enc.agility
+      agility: enc.agility // ✅ encumbrance-adjusted
     },
 
     movement: {
       fly: base.fly?.standard ?? 0,
-      fly_max: enc.maxSpeed ?? (base.fly?.max ?? 0),   // ✅ apply heavy encumbrance speed reduction if any
+      fly_max: enc.maxSpeed ?? (base.fly?.max ?? 0),
       climb_rate: base.climbRate ?? "—",
       acceleration: base.acceleration ?? "—"
     },
@@ -835,7 +784,6 @@ function buildRoll20Export() {
       state: enc.enc
     },
 
-    // ✅ export trait descriptions
     traits: exportTraitObjects(base.traits),
 
     actions: Array.isArray(base.actions) ? base.actions : [],
@@ -856,18 +804,6 @@ async function exportRoll20JSON() {
   alert("Roll20 export JSON copied to clipboard!");
 }
 
-
-
-
 /* ---------- START ---------- */
 
-loadData()
-
-
-
-
-
-
-
-
-
+loadData();
