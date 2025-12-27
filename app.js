@@ -706,13 +706,28 @@ function render() {
 
   document.getElementById("statblock").innerHTML = html
 }
+
 /*------Roll20 exporter----*/
+
+function exportTraitObjects(traitIds) {
+  if (!Array.isArray(traitIds)) return [];
+  return traitIds
+    .filter(Boolean)
+    .map(id => {
+      const tr = TRAITS?.[id];
+      return {
+        id,
+        name: tr?.name || traitLabel(id),
+        desc: tr?.desc || ""
+      };
+    });
+}
+
 function buildRoll20Export() {
-  const base = getDerivedBase();                 // ✅ export what you render (mods applied)
-  const points = getDerivedMountingPoints();     // ✅ correct function
+  const base = getDerivedBase();
+  const points = getDerivedMountingPoints();
   const groups = getCrewGroups();
 
-  // build mounted weapons list
   const mountedWeapons = [];
   for (const mp of points) {
     const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
@@ -744,17 +759,14 @@ function buildRoll20Export() {
   return {
     schema: "flying-combat-config-v1",
 
-    // identity (IMPORTANT for token image stability later)
     baseId: config.base?.id || "",
     baseName: base.name,
     baseType: base.type,
     baseSize: base.size,
 
-    // loadout
     saddleId: config.saddle?.id || null,
     modIds: [...config.mods],
 
-    // stats (derived = matches UI)
     stats: {
       ac: base.baseAC,
       hp: base.baseHP,
@@ -776,7 +788,9 @@ function buildRoll20Export() {
       capacity: capacity(base)
     },
 
-    traits: Array.isArray(base.traits) ? base.traits : [],
+    // ✅ export trait descriptions
+    traits: exportTraitObjects(base.traits),
+
     actions: Array.isArray(base.actions) ? base.actions : [],
     bonusActions: Array.isArray(base.bonusActions) ? base.bonusActions : [],
     reactions: Array.isArray(base.reactions) ? base.reactions : [],
@@ -784,7 +798,6 @@ function buildRoll20Export() {
 
     mountedWeapons,
 
-    // optional: store crew inputs so import can reconstruct attack bonuses
     crewStats: JSON.parse(JSON.stringify(config.crewStats || {})),
     proficiencies: JSON.parse(JSON.stringify(config.proficiencies || {}))
   };
@@ -798,9 +811,11 @@ async function exportRoll20JSON() {
 
 
 
+
 /* ---------- START ---------- */
 
 loadData()
+
 
 
 
