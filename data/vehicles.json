@@ -66,6 +66,32 @@
     "traits": ["damage_treshold_15"]
   },
 {
+  "id": "elven_skyship",
+  "name": "Elven Skyship",
+  "type": "Vehicle",
+  "size": "Huge",
+  "climbRate": "1",
+  "acceleration": "1d6",
+  "points": 280,
+  "strength": 18,
+  "dex": 14,
+  "con": 16,
+  "agility": 4,
+  "baseAC": 14,
+  "baseHP": 300,
+  "fly": { "standard": 70, "max": 210 },
+  "crewGroups": [
+    { "id": "helm", "label": "Helm" },
+    { "id": "fore_gunner", "label": "Fore Gunner" },
+    { "id": "aft_gunner", "label": "Aft Gunner" }
+  ],
+  "mountingPoints": [
+    { "id": "xl_fore", "label": "Fore Heavy Mount", "size": "XL", "arc": "Front", "crewGroup": "fore_gunner" },
+    { "id": "xl_aft", "label": "Aft Heavy Mount", "size": "XL", "arc": "Back", "crewGroup": "aft_gunner" }
+  ],
+  "traits": ["damage_treshold_5"]
+},
+{
   "id": "goblin_gyrorocket",
   "name": "Goblin Gyrorocket",
   "type": "Vehicle",
@@ -204,6 +230,7 @@
     "traits": ["long_range_fire_control", "damage_treshold_10"]
   }
 ]
+
 
 
 
