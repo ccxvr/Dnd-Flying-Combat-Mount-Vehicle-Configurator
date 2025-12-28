@@ -5,6 +5,11 @@
     "desc": "While carrying a trained rider, this mount has advantage on checks to avoid stalls or forced maneuvers."
   },
     {
+    "id": "submarine",
+    "name": "Submarine",
+    "desc": "This vehicle provides clean air for its occupants when closed and sealed, whether underwater or in a hostile environment."
+  },
+    {
     "id": "AI",
     "name": "AI",
     "desc": "This vehicle is capable of autonomous initiative (AI) and can act without a pilot using its system characteristics."
@@ -240,6 +245,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
