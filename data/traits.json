@@ -5,6 +5,11 @@
     "desc": "While carrying a trained rider, this mount has advantage on checks to avoid stalls or forced maneuvers."
   },
     {
+    "id": "AI",
+    "name": "AI",
+    "desc": "This vehicle is capable of autonomous initiative (AI) and can act without a pilot using its system characteristics."
+  },
+    {
     "id": "ordnance_only_rockets_missiles_bombs",
     "name": "Limited Ordinance",
     "desc": "This Vehicle can only equip rockets, missiles, and bombs."
@@ -170,6 +175,7 @@
     "desc": "The creature has resistance to poison damage."
   }
 ]
+
 
 
 
