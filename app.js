@@ -243,7 +243,6 @@ function setupMount() {
       return byIdOk || byTagOk;
     });
 
-
   // Hard restriction: tentacles/limbs (NO_saddle-only mounts) may only use the NO_saddle saddle.
   if (isNoSaddleOnlyMount(config.mount)) {
     validSaddles = saddles.filter(s => s.id === "NO_saddle");
@@ -802,6 +801,21 @@ function render() {
     <strong>Encumbrance</strong> ${enc.enc} (${enc.payload} / ${enc.cap} lb)
     <hr>
   `;
+
+  /* ===== NEW: CREW STATS ON PRINTED SHEET ===== */
+  const crewGroups = getCrewGroups();
+  if (!config.crewStats) config.crewStats = {};
+  html += `<strong>Crew</strong><br>`;
+  crewGroups.forEach(g => {
+    const crew = config.crewStats[g.id] || { dexMod: 0, profBonus: 0 };
+    const dexMod = Number.isFinite(+crew.dexMod) ? +crew.dexMod : 0;
+    const pb = Number.isFinite(+crew.profBonus) ? +crew.profBonus : 0;
+    html += `
+      <strong>${g.label}</strong>: DEX mod ${dexMod >= 0 ? "+" : ""}${dexMod}, PB ${pb >= 0 ? "+" : ""}${pb}<br>
+    `;
+  });
+  html += `<hr>`;
+  /* ===== END NEW SECTION ===== */
 
   html += renderActionSection("Actions", derived.actions);
   html += renderActionSection("Bonus Actions", derived.bonusActions);
