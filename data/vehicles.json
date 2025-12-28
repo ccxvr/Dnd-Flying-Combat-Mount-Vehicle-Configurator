@@ -228,8 +228,7 @@
       { "id": "top", "label": "Flak Mount", "size": "M", "arc": "Front/Back", "crewGroup": "top_gunner" }
     ],
     "traits": ["long_range_fire_control", "damage_treshold_10"]
-  },
-    
+  },   
   {
     "id": "walker_mech",
     "name": "Walker Mech",
@@ -252,11 +251,12 @@
     "mountingPoints": [
       { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
       { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
-      { "id": "shoulder", "label": "Shoulder Mount", "size": "M", "arc": "Front/Back", "crewGroup": "systems" }
+      { "id": "shoulder", "label": "Shoulder Mount", "size": "M", "arc": "Front/Back", "crewGroup": "pilot" }
     ],
     "traits": ["damage_treshold_10", "AI"]
   }
 ]
+
 
 
 
