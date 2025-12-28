@@ -624,6 +624,74 @@
       { "id": "rear_xl_back", "label": "Rear Siege Mount (XL)", "size": "XL", "arc": "Direct Back", "crewGroup": "rear_gunner" }
     ]
   },
+  {
+    "id": "hydra_head_harness",
+    "name": "Hydra Head Harness",
+    "points": 30,
+    "weight": 55,
+    "seats": 1,
+    "notes": "Weapon harness for a hydra head (no rider seat).",
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["hydra_head"],
+    "crewGroups": [
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "head_m_front", "label": "Head Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "gunner" },
+      { "id": "head_s_f", "label": "Head Utility (S)", "size": "S", "arc": "Front", "crewGroup": "gunner" }
+    ]
+  },
+  {
+    "id": "snapping_hydra_head_harness",
+    "name": "Snapping Hydra Head Harness",
+    "points": 30,
+    "weight": 75,
+    "seats": 0,
+    "notes": "Weapon harness for a snapping hydra head (no rider seat).",
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["snapping_hydra_head"],
+    "crewGroups": [
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "head_l_front", "label": "Head Mount (L)", "size": "L", "arc": "Direct Front", "crewGroup": "gunner" }
+    ]
+  },
+  {
+    "id": "dracohydra_head_harness",
+    "name": "Dracohydra Head Harness",
+    "points": 25,
+    "weight": 65,
+    "seats": 1,
+    "notes": "Reinforced harness for a dracohydra head (no rider seat).",
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["dracohydra_head"],
+    "crewGroups": [
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "head_l_front", "label": "Head Heavy Mount (L)", "size": "L", "arc": "Direct Front", "crewGroup": "gunner" },
+      { "id": "head_xs_b", "label": "Head Utility (XS)", "size": "XS", "arc": "Back", "crewGroup": "gunner" }
+    ]
+  },
+  {
+    "id": "ironscale_hydra_head_harness",
+    "name": "Ironscale Hydra Head Harness",
+    "points": 100,
+    "weight": 190,
+    "seats": 1,
+    "notes": "Heavy weapon harness for an ironscale hydra head (no rider seat).",
+    "allowedSizes": ["Huge"],
+    "allowedMountIds": ["ironscale_hydra_head"],
+    "crewGroups": [
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "head_xl_front", "label": "Head Siege Mount (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "gunner" },
+      { "id": "head_m_fb", "label": "Head Secondary (M)", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
+    ]
+  },
+
       {
     "id": "NO_saddle",
     "name": "NO Saddle",
@@ -638,6 +706,7 @@
     ]
   }
 ]
+
 
 
 
