@@ -552,13 +552,14 @@
     { "id": "2_port", "label": "Port Auxiliary Battery 1", "size": "M", "arc": "Port", "crewGroup": "port_aux1_gunner" },
     { "id": "3_port", "label": "Port Auxiliary Battery 2", "size": "M", "arc": "Port", "crewGroup": "port_aux2_gunner" },
     { "id": "l_starboard", "label": "Starboard Battery", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
-    { "id": "2_starboard", "label": "Starboard Auxiliary Battery 1", "size": "M", "arc": "Port", "crewGroup": "starboard_aux1_gunner" },
-    { "id": "3_starboard", "label": "Starboard Auxiliary Battery 2", "size": "M", "arc": "Port", "crewGroup": "starboard_aux2_gunner" },
-    { "id": "m_top", "label": "Topside Flak Mount", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" }
+    { "id": "2_starboard", "label": "Starboard Auxiliary Battery 1", "size": "M", "arc": "Starboard", "crewGroup": "starboard_aux1_gunner" },
+    { "id": "3_starboard", "label": "Starboard Auxiliary Battery 2", "size": "M", "arc": "Starboard", "crewGroup": "starboard_aux2_gunner" },
+    { "id": "l_top", "label": "Topside Flak Mount", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" }
   ],
   "traits": ["carrier", "damage_treshold_10"]
 }
 ]
+
 
 
 
