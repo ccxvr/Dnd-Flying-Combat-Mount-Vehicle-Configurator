@@ -244,6 +244,20 @@
     "baseAC": 18,
     "baseHP": 280,
     "ground": { "standard": 40, "max": 120 },
+        "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The Walker Mech makes two Punch attacks.",
+        "name": "Rocket Jump", "kind": "text", "text": "The Walker Mech jumps up to 60ft."
+      },
+      {
+        "name": "Punch",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 9,
+        "reach": "10 ft",
+        "target": "one target",
+        "damage": "2d8 + 5 blugeoning damage"
+      }
+    ]
     "crewGroups": [
       { "id": "pilot", "label": "Pilot" },
       { "id": "systems", "label": "Systems" }
@@ -296,6 +310,18 @@
     "baseAC": 22,
     "baseHP": 580,
     "ground": { "standard": 30, "max": 90 },
+    "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The Final Defender makes two Plasma Sword attacks." },
+      {
+        "name": "Plasma Sword",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 12,
+        "reach": "30 ft",
+        "target": "one target",
+        "damage": "4d12 + 10 Slashing damage plus 4d6 Fire damage"
+      }
+    ]
     "crewGroups": [
       { "id": "pilot", "label": "Pilot" },
       { "id": "systems", "label": "Systems" }
@@ -327,6 +353,19 @@
     "ground": { "standard": 60, "max": 180 },
     "swim": { "standard": 60, "max": 180 },
     "burrow": { "standard": 10, "max": 30 },
+    "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The Mecha crab makes two Claw attacks." },
+      {
+        "name": "Claw",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 8,
+        "reach": "15 ft",
+        "target": "one target",
+        "damage": "2d8 + 5 blugeoning damage",
+        "extra": "The target must succeed on a DC 18 Str saving throw or be Grappled by the Mecha Crab."
+      }
+    ]
     "crewGroups": [
       { "id": "pilot", "label": "Pilot" },
       { "id": "gunner", "label": "Gunner" }
@@ -338,6 +377,7 @@
     "traits": ["damage_treshold_10"]
   }
 ]
+
 
 
 
