@@ -325,6 +325,8 @@
     "baseAC": 20,
     "baseHP": 200,
     "ground": { "standard": 60, "max": 180 },
+    "swim": { "standard": 60, "max": 180 },
+    "burrow": { "standard": 10, "max": 30 },
     "crewGroups": [
       { "id": "pilot", "label": "Pilot" },
       { "id": "gunner", "label": "Gunner" }
@@ -336,6 +338,7 @@
     "traits": ["damage_treshold_10"]
   }
 ]
+
 
 
 
