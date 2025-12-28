@@ -374,8 +374,192 @@
       { "id": "main_turret", "label": "Main Turret", "size": "L", "arc": "Front", "crewGroup": "gunner" }
     ],
     "traits": ["damage_treshold_10"]
-  }
+  },
+{
+  "id": "goblin_tin_can",
+  "name": "Goblin Tin Can",
+  "type": "Vehicle",
+  "size": "Large",
+  "climbRate": "1/4",
+  "acceleration": "1d8",
+  "points": 140,
+  "strength": 16,
+  "dex": 14,
+  "con": 14,
+  "agility": 6,
+  "baseAC": 16,
+  "baseHP": 120,
+  "ground": { "standard": 40, "max": 120 },
+  "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The Goblin Tin Can makes two Punch attacks."},
+      { "name": "Rocket Jump", "kind": "text", "text": "The Goblin Tin Can jumps up to 60ft."},
+      {
+        "name": "Punch",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 9,
+        "reach": "10 ft",
+        "target": "one target",
+        "damage": "2d6 + 3 blugeoning damage"
+      }
+    ],
+  "crewGroups": [
+    { "id": "pilot", "label": "Pilot" },
+    { "id": "gunner", "label": "Gunner" }
+  ],
+  "mountingPoints": [
+    { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "pilot" },
+    { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "pilot" },
+    { "id": "shoulder_rack", "label": "Shoulder Rack", "size": "L", "arc": "Front/Back", "crewGroup": "gunner" }
+  ],
+  "traits": ["damage_treshold_5"]
+},
+{
+  "id": "imperial_sea_carrier",
+  "name": "Imperial Sea Carrier",
+  "type": "Vehicle",
+  "size": "Gargantuan",
+  "climbRate": "0",
+  "acceleration": "1d4",
+  "points": 700,
+  "strength": 28,
+  "dex": 8,
+  "con": 22,
+  "agility": 1,
+  "baseAC": 17,
+  "baseHP": 850,
+  "swim": { "standard": 35, "max": 105 },
+  "crewGroups": [
+    { "id": "helm", "label": "Helm Crew" },
+    { "id": "fore_gunner", "label": "Fore Gunner" },
+    { "id": "port_gunner", "label": "Port Gunner" },
+    { "id": "starboard_gunner", "label": "Starboard Gunner" },
+    { "id": "dorsal_gunner", "label": "Topside Gunner" }
+  ],
+  "mountingPoints": [
+    { "id": "xl_fore", "label": "Forward Heavy Battery", "size": "XL", "arc": "Direct Front", "crewGroup": "fore_gunner" },
+
+    { "id": "l_port_1", "label": "Port Battery (I)", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+    { "id": "l_port_2", "label": "Port Battery (II)", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+
+    { "id": "l_starboard_1", "label": "Starboard Battery (I)", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+    { "id": "l_starboard_2", "label": "Starboard Battery (II)", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+
+    { "id": "m_dorsal", "label": "Topside Flak Mount", "size": "M", "arc": "Front/Back", "crewGroup": "dorsal_gunner" }
+  ],
+  "traits": ["carrier", "damage_treshold_10"]
+},
+{
+  "id": "imperial_ship_of_the_line",
+  "name": "Imperial Ship of the Line",
+  "type": "Vehicle",
+  "size": "Gargantuan",
+  "climbRate": "0",
+  "acceleration": "1d4",
+  "points": 920,
+  "strength": 30,
+  "dex": 6,
+  "con": 24,
+  "agility": 1,
+  "baseAC": 17,
+  "baseHP": 750,
+  "swim": { "standard": 30, "max": 90 },
+  "crewGroups": [
+    { "id": "helm", "label": "Helm Crew" },
+    { "id": "bow_gunner", "label": "Bow Gunner" },
+    { "id": "port_gunner", "label": "Port Broadside" },
+    { "id": "starboard_gunner", "label": "Starboard Broadside" },
+    { "id": "aft_gunner", "label": "Stern Gunner" }
+  ],
+  "mountingPoints": [
+    { "id": "xl_bow", "label": "Bow Siege Cannon", "size": "XL", "arc": "Direct Front", "crewGroup": "bow_gunner" },
+
+    { "id": "1_port", "label": "Port Broadside 1", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+    { "id": "2_port", "label": "Port Broadside 2", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+    { "id": "3_port", "label": "Port Broadside 3", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+    { "id": "4_port", "label": "Port Broadside 4", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+    { "id": "5_port", "label": "Port Broadside 5", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+    { "id": "6_port", "label": "Port Broadside 6", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      
+    { "id": "1_starboard", "label": "Starboard Broadside 1", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+    { "id": "2_starboard", "label": "Starboard Broadside 2", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+    { "id": "3_starboard", "label": "Starboard Broadside 3", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+    { "id": "4_starboard", "label": "Starboard Broadside 4", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+    { "id": "5_starboard", "label": "Starboard Broadside 5", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+    { "id": "6_starboard", "label": "Starboard Broadside 6", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+
+    { "id": "l_aft", "label": "Stern Chaser", "size": "L", "arc": "Back", "crewGroup": "aft_gunner" }
+  ],
+  "traits": ["long_range_fire_control", "damage_treshold_15"]
+}
+,
+{
+  "id": "elven_skipper",
+  "name": "Elven Skipper",
+  "type": "Vehicle",
+  "size": "Huge",
+  "climbRate": "0",
+  "acceleration": "1d6",
+  "points": 260,
+  "strength": 18,
+  "dex": 16,
+  "con": 14,
+  "agility": 5,
+  "baseAC": 15,
+  "baseHP": 340,
+  "swim": { "standard": 70, "max": 210 },
+  "crewGroups": [
+    { "id": "helm", "label": "Helm" },
+    { "id": "fore_gunner", "label": "Fore Gunner" },
+    { "id": "aft_gunner", "label": "Aft Gunner" }
+  ],
+  "mountingPoints": [
+    { "id": "1_fore", "label": "Fore Battery 1", "size": "L", "arc": "Front", "crewGroup": "fore_gunner" },
+    { "id": "1_aft", "label": "Aft Battery 1", "size": "L", "arc": "Back", "crewGroup": "aft_gunner" },
+    { "id": "2_fore", "label": "Fore Battery 2", "size": "L", "arc": "Front", "crewGroup": "fore_gunner" },
+    { "id": "2_aft", "label": "Aft Battery 2", "size": "L", "arc": "Back", "crewGroup": "aft_gunner" }
+  ],
+  "traits": ["damage_treshold_5"]
+}
+,
+{
+  "id": "elven_carrier",
+  "name": "Elven Wyvern Nest Ship",
+  "type": "Vehicle",
+  "size": "Huge",
+  "climbRate": "0",
+  "acceleration": "1d6",
+  "points":620,
+  "strength": 22,
+  "dex": 12,
+  "con": 18,
+  "agility": 3,
+  "baseAC": 16,
+  "baseHP": 520,
+  "swim": { "standard": 45, "max": 135 },
+  "crewGroups": [
+    { "id": "helm", "label": "Helm" },
+    { "id": "port_gunner", "label": "Port Gunner" },
+    { "id": "port_aux_1gunner", "label": "First AuxiliaryPort Gunner" },
+    { "id": "port_aux2_gunner", "label": "Second Auxiliary Port Gunner" },
+    { "id": "starboard_gunner", "label": "Starboard Gunner" },
+    { "id": "starboard_aux_gunner1", "label": "First Auxiliary Starboard Gunner" },
+    { "id": "starboard_aux_gunner2", "label": "Second Auxiliary Starboard Gunner" },
+    { "id": "dorsal_gunner", "label": "Topside Gunner" }
+  ],
+  "mountingPoints": [
+    { "id": "1_port", "label": "Port Battery", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+    { "id": "2_port", "label": "Port Auxiliary Battery 1", "size": "M", "arc": "Port", "crewGroup": "port_aux1_gunner" },
+    { "id": "3_port", "label": "Port Auxiliary Battery 2", "size": "M", "arc": "Port", "crewGroup": "port_aux2_gunner" },
+    { "id": "l_starboard", "label": "Starboard Battery", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+    { "id": "2_starboard", "label": "Starboard Auxiliary Battery 1", "size": "M", "arc": "Port", "crewGroup": "starboard_aux_gunner1" },
+    { "id": "3_starboard", "label": "Starboard Auxiliary Battery 2", "size": "M", "arc": "Port", "crewGroup": "starboard_aux_gunner2" },
+    { "id": "m_top", "label": "Topside Flak Mount", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" }
+  ],
+  "traits": ["carrier", "damage_treshold_10"]
+}
 ]
+
 
 
 
