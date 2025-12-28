@@ -365,7 +365,7 @@
       { "id": "driver", "label": "Driver" }
     ],
     "mountingPoints": [
-      { "id": "drv_S_front", "label": "Driver Mount (S)", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_s_front", "label": "Driver Mount (S)", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
       { "id": "drv_s_fb", "label": "Utility Mount (S)", "size": "S", "arc": "Front/Back", "crewGroup": "driver" }
     ]
   },
@@ -646,7 +646,7 @@
     "name": "Snapping Hydra Head Harness",
     "points": 30,
     "weight": 75,
-    "seats": 0,
+    "seats": 1,
     "notes": "Weapon harness for a snapping hydra head (no rider seat).",
     "allowedSizes": ["Large"],
     "allowedMountIds": ["snapping_hydra_head"],
@@ -693,7 +693,7 @@
   },
 
       {
-    "id": "NO_saddle",
+    "id": "no_saddle",
     "name": "NO Saddle",
     "points": 0,
     "weight": 0,
@@ -706,6 +706,7 @@
     ]
   }
 ]
+
 
 
 
