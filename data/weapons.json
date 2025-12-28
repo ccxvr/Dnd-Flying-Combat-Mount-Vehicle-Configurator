@@ -1,7 +1,7 @@
 [
   {
     "id": "small_missile",
-    "name": "Small Missile",
+    "name": "(S) Small Missile",
     "points": 10,
     "size": "S",
     "weight": 10,
@@ -13,7 +13,7 @@
 
   {
     "id": "medium_missile",
-    "name": "Medium Missile",
+    "name": "(M) Medium Missile",
     "points": 15,
     "size": "M",
     "weight": 20,
@@ -37,7 +37,7 @@
 
   {
     "id": "bomb_s",
-    "name": "Small Bomb",
+    "name": "(S) Small Bomb",
     "points": 10,
     "size": "S",
     "weight": 20,
@@ -49,7 +49,7 @@
 
   {
     "id": "bomb_m",
-    "name": "Medium Bomb",
+    "name": "(M) Medium Bomb",
     "points": 20,
     "size": "M",
     "weight": 50,
@@ -61,7 +61,7 @@
 
   {
     "id": "bomb_l",
-    "name": "Large Bomb",
+    "name": "(L) Large Bomb",
     "points": 50,
     "size": "L",
     "weight": 200,
@@ -73,7 +73,7 @@
 
   {
     "id": "revolving_carbine",
-    "name": "Revolving Carbine",
+    "name": "(S) Revolving Carbine",
     "points": 25,
     "size": "S",
     "weight": 80,
@@ -85,7 +85,7 @@
 
   {
     "id": "splinter_repeater",
-    "name": "Splinter Repeater",
+    "name": "(S) Splinter Repeater",
     "points": 30,
     "size": "S",
     "weight": 90,
@@ -97,7 +97,7 @@
 
   {
     "id": "arc_caster",
-    "name": "Arc Caster",
+    "name": "(M) Arc Caster",
     "points": 80,
     "size": "M",
     "weight": 170,
@@ -109,7 +109,7 @@
 
   {
     "id": "bug_zapper",
-    "name": "Bug Zapper",
+    "name": "(S) Bug Zapper",
     "points": 15,
     "size": "S",
     "weight": 60,
@@ -121,7 +121,7 @@
 
   {
     "id": "arcane_blaster",
-    "name": "Arcane Blaster",
+    "name": "(M) Arcane Blaster",
     "points": 30,
     "size": "M",
     "weight": 180,
@@ -133,7 +133,7 @@
 
     {
     "id": "ray_caster",
-    "name": "Ray Caster",
+    "name": "(M) Ray Caster",
     "points": 50,
     "size": "M",
     "weight": 180,
@@ -145,7 +145,7 @@
 
       {
     "id": "flamethrower",
-    "name": "Flamethrower",
+    "name": "(M) Flamethrower",
     "points": 80,
     "size": "M",
     "weight": 120,
@@ -157,7 +157,7 @@
 
         {
     "id": "antimaterial_rifle",
-    "name": "Antimaterial Rifle",
+    "name": "(M) Antimaterial Rifle",
     "points": 100,
     "size": "M",
     "weight": 100,
@@ -169,7 +169,7 @@
 
   {
     "id": "culverin_2lb",
-    "name": "Culverin (2 lb)",
+    "name": "(M) Culverin (2 lb)",
     "points": 40,
     "size": "M",
     "weight": 200,
@@ -181,7 +181,7 @@
 
   {
     "id": "rifled_culverin_2lb",
-    "name": "Rifled Culverin (2 lb)",
+    "name": "(M) Rifled Culverin (2 lb)",
     "points": 50,
     "size": "M",
     "weight": 230,
@@ -193,7 +193,7 @@
 
   {
     "id": "scorpio",
-    "name": "Scorpio",
+    "name": "(L) Scorpio",
     "points": 30,
     "size": "L",
     "weight": 155,
@@ -205,7 +205,7 @@
 
   {
     "id": "cannon_6lb",
-    "name": "Cannon (6 lb)",
+    "name": "(L) Cannon (6 lb)",
     "points": 60,
     "size": "L",
     "weight": 370,
@@ -217,7 +217,7 @@
 
   {
     "id": "rifled_cannon_6lb",
-    "name": "Rifled Cannon (6 lb)",
+    "name": "(L) Rifled Cannon (6 lb)",
     "points": 80,
     "size": "L",
     "weight": 400,
@@ -229,7 +229,7 @@
 
   {
     "id": "flak_cannon",
-    "name": "Flak Cannon",
+    "name": "(L) Flak Cannon",
     "points": 100,
     "size": "L",
     "weight": 420,
@@ -241,7 +241,7 @@
 
   {
     "id": "ballista",
-    "name": "Ballista",
+    "name": "(XL) Ballista",
     "points": 70,
     "size": "XL",
     "weight": 100,
@@ -253,7 +253,7 @@
 
   {
     "id": "mangonel",
-    "name": "Mangonel",
+    "name": "(XL) Mangonel",
     "points": 90,
     "size": "XL",
     "weight": 300,
@@ -265,7 +265,7 @@
 
   {
     "id": "bombard",
-    "name": "Bombard",
+    "name": "(XL) Bombard",
     "points": 120,
     "size": "XL",
     "weight": 1000,
@@ -277,7 +277,7 @@
 
   {
     "id": "light_crossbow",
-    "name": "Light Crossbow",
+    "name": "(XS) Light Crossbow",
     "points": 10,
     "size": "XS",
     "weight": 5,
@@ -289,7 +289,7 @@
 
   {
     "id": "Heavy_crossbow",
-    "name": "Heavy Crossbow",
+    "name": "(S) Heavy Crossbow",
     "points": 15,
     "size": "S",
     "weight": 18,
@@ -301,7 +301,7 @@
   
     {
     "id": "repeater_crossbow",
-    "name": "Repeater Crossbow",
+    "name": "(XS) Repeater Crossbow",
     "points": 15,
     "size": "XS",
     "weight": 10,
@@ -313,7 +313,7 @@
   
     {
     "id": "rifle",
-    "name": "Rifle",
+    "name": "(S) Rifle",
     "points": 20,
     "size": "S",
     "weight": 8,
@@ -325,7 +325,7 @@
   
     {
     "id": "auto_rifle",
-    "name": "Autorifle",
+    "name": "(S) Autorifle",
     "points": 20,
     "size": "S",
     "weight": 18,
@@ -337,7 +337,7 @@
 
   {
     "id": "pistol",
-    "name": "pistol",
+    "name": "(XS) Pistol",
     "points": 10,
     "size": "XS",
     "weight": 4,
@@ -349,7 +349,7 @@
 
   {
     "id": "thermal_lance",
-    "name": "Thermal Lance",
+    "name": "(M) Thermal Lance",
     "points": 50,
     "size": "M",
     "weight": 140,
@@ -359,6 +359,17 @@
     "traits": ["charges_5"]
   },
 
+  {
+    "id": "rotating_volley_gun",
+    "name": "(M) Rotating Volley Gun",
+    "points": 70,
+    "size": "M",
+    "weight": 180,
+    "damage": "1d6 piercing",
+    "range": "60 / 120 ft",
+    "ability": "dex",
+    "traits": ["ammunition", "reload_10", "multishot_5"]
+  },
   
   {
     "id": "none",
@@ -369,6 +380,7 @@
     "traits": []
   }
 ]
+
 
 
 
