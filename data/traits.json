@@ -222,12 +222,12 @@
   {
     "id": "head",
     "name": "Severable Head",
-    "desc": "This limb represents an independent head that acts and can be targeted separately; it can never move more than 30ft from its body and dies if the body is slain."
+    "desc": "This limb represents an independent head that acts and can be targeted separately; it can never move more than 30ft from its body, but it can move freely within that area, without following the movement rules and gaining altitude without losing speed. It dies if the body is slain."
   },
   {
     "id": "limb",
     "name": "Limb",
-    "desc": "This creature part is a limb of a larger creature and cannot be ridden or saddled, acts and can be targeted separately; it can never move more than 30ft from its body and dies if the body is slain."
+    "desc": "This creature part is a limb of a larger creature and cannot be ridden or saddled, acts and can be targeted separately; it can never move more than 60ft from its body, but it can move freely within that area, without following the movement rules and gaining altitude without losing speed. It dies if the body is slain."
   },
   {
     "id": "no saddle",
@@ -245,6 +245,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
