@@ -55,27 +55,30 @@
     ]
   },
 
-  {
-    "id": "standard_Gargantuan_saddle",
+    {
+    "id": "standard_gargantuan_saddle",
     "name": "Standard Gargantuan Saddle",
     "points": 0,
     "weight": 620,
     "seats": 4,
-    "allowedSizes": ["Huge"],
+    "allowedSizes": ["Gargantuan"],
     "crewGroups": [
-      { "id": "driver", "label": "Driver" },
+      { "id": "pilot", "label": "Pilot" },
       { "id": "front_gunner", "label": "Front Gunner" },
       { "id": "top_gunner", "label": "Top Gunner" },
-      { "id": "back_gunner", "label": "Back Gunner" }
+      { "id": "rear_gunner", "label": "Rear Gunner" }
     ],
     "mountingPoints": [
-      { "id": "fwd_xl_1", "label": "Front Mount 1", "size": "XL", "arc": "Direct Front", "crewGroup": "front_gunner" },
-      { "id": "fwd_m_1", "label": "Front Mount 2", "size": "M", "arc": "Front", "crewGroup": "front_gunner" },
-      { "id": "top_l_1", "label": "Top Mount 1", "size": "L", "arc": "Front/Back", "crewGroup": "top_gunner" },
-      { "id": "top_s_1", "label": "Top Mount 2", "size": "S", "arc": "Front/Back", "crewGroup": "top_gunner" },
+      { "id": "pilot_m_front", "label": "Pilot Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "pilot" },
 
-      { "id": "bak_l_back", "label": "Back Mount1", "size": "L", "arc": "Back", "crewGroup": "back_gunner" },
-      { "id": "bak_l_back", "label": "Back Mount2", "size": "L", "arc": "Back", "crewGroup": "back_gunner" }
+      { "id": "front_xl_front", "label": "Front Heavy Mount (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "front_gunner" },
+      { "id": "front_m_front", "label": "Front Mount (M)", "size": "M", "arc": "Front", "crewGroup": "front_gunner" },
+
+      { "id": "top_l_fb", "label": "Top Heavy Mount (L)", "size": "L", "arc": "Front/Back", "crewGroup": "top_gunner" },
+      { "id": "top_s_fb", "label": "Top Mount (S)", "size": "S", "arc": "Front/Back", "crewGroup": "top_gunner" },
+
+      { "id": "rear_l_back_1", "label": "Rear Mount 1 (L)", "size": "L", "arc": "Back", "crewGroup": "rear_gunner" },
+      { "id": "rear_l_back_2", "label": "Rear Mount 2 (L)", "size": "L", "arc": "Back", "crewGroup": "rear_gunner" }
     ]
   },
   
@@ -180,20 +183,20 @@
   },
 
   {
-    "id": "giant_locust_saddle",
-    "name": "Giant Locust Saddle",
+    "id": "nasamite_giant_locust_saddle",
+    "name": "Nasamite Giant Locust Saddle",
     "points": 0,
     "weight": 60,
     "seats": 2,
     "allowedSizes": ["Large"],
-    "allowedMountIds": ["giant_locust"],
+    "allowedMountIds": ["nasamite_giant_locust"],
     "crewGroups": [
       { "id": "driver", "label": "Driver" },
       { "id": "gunner", "label": "Gunner" }
     ],
     "mountingPoints": [
-      { "id": "drv_m_front", "label": "Driver Mount", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
-      { "id": "gun_s_fb", "label": "Gunner Mount", "size": "S", "arc": "Front/Back", "crewGroup": "gunner" }
+      { "id": "drv_m_front", "label": "Driver Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "gun_s_fb", "label": "Gunner Mount (S)", "size": "S", "arc": "Front/Back", "crewGroup": "gunner" }
     ]
   },
 
@@ -201,15 +204,17 @@
     "id": "giant_beetle_saddle",
     "name": "Giant Beetle Saddle",
     "points": 0,
-    "weight": 70,
-    "seats": 1,
-    "allowedSizes": ["Medium"],
+    "weight": 140,
+    "seats": 2,
+    "allowedSizes": ["Huge"],
     "allowedMountIds": ["giant_beetle"],
     "crewGroups": [
-      { "id": "driver", "label": "Driver" }
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" }
     ],
     "mountingPoints": [
-      { "id": "drv_m_fb", "label": "Driver Mount", "size": "M", "arc": "Front/Back", "crewGroup": "driver" }
+      { "id": "drv_m_fb", "label": "Driver Mount (M)", "size": "M", "arc": "Front/Back", "crewGroup": "driver" },
+      { "id": "gun_s_back", "label": "Gunner Mount (S)", "size": "S", "arc": "Back", "crewGroup": "gunner" }
     ]
   },
 
@@ -348,7 +353,278 @@
     ]
   },
   
-    {
+  {
+    "id": "cocatrice_saddle",
+    "name": "Cocatrice Saddle",
+    "points": 0,
+    "weight": 70,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["cocatrice"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_S_front", "label": "Driver Mount (S)", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_s_fb", "label": "Utility Mount (S)", "size": "S", "arc": "Front/Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "hippogriff_saddle",
+    "name": "Hippogriff Saddle",
+    "points": 0,
+    "weight": 70,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["hippogriff"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_fb", "label": "Utility Mount (M)", "size": "M", "arc": "Front/Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "manticore_saddle",
+    "name": "Manticore Saddle",
+    "points": 5,
+    "weight": 90,
+    "seats": 2,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["manticore"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_front", "label": "Driver Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "gun_s_back", "label": "Gunner Mount (S)", "size": "S", "arc": "Direct Back", "crewGroup": "gunner" },
+      { "id": "gun_xs_back", "label": "Gunner Utility (XS)", "size": "XS", "arc": "Back", "crewGroup": "gunner" }
+    ]
+  },
+
+  {
+    "id": "giant_owl_saddle",
+    "name": "Giant Owl Saddle",
+    "points": 0,
+    "weight": 20,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["giant_owl"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_front", "label": "Driver Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "giant_dragonfly_saddle",
+    "name": "Giant Dragonfly Rig",
+    "points": 5,
+    "weight": 35,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["giant_dragonfly"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_s_front", "label": "Driver Mount (S)", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_fb", "label": "Utility Mount (XS)", "size": "XS", "arc": "Front/Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "vargeist_saddle",
+    "name": "Vargeist Saddle",
+    "points": 0,
+    "weight": 60,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["vargeist"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_front", "label": "Driver Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_back", "label": "Utility Mount (XS)", "size": "XS", "arc": "Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "brown_scavver_saddle",
+    "name": "Brown Scavver Saddle",
+    "points": 0,
+    "weight": 85,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["brown_scavver"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_fb", "label": "Driver Mount (M)", "size": "M", "arc": "Front/Back", "crewGroup": "driver" },
+      { "id": "drv_xs_fb", "label": "Utility Mount (XS)", "size": "XS", "arc": "Front/Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "gray_scavver_saddle",
+    "name": "Gray Scavver Saddle",
+    "points": 0,
+    "weight": 25,
+    "seats": 1,
+    "allowedSizes": ["Medium"],
+    "allowedMountIds": ["gray_scavver"],
+    "notes": "Seats 1 (Small character only).",
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_s_front", "label": "Driver Mount (S)", "size": "S", "arc": "Direct Front", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "night_scavver_saddle",
+    "name": "Night Scavver Howdah",
+    "points": 10,
+    "weight": 320,
+    "seats": 3,
+    "allowedSizes": ["Huge"],
+    "allowedMountIds": ["night_scavver"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "left_gunner", "label": "Left Gunner" },
+      { "id": "right_gunner", "label": "Right Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_front", "label": "Driver Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "lft_s_side", "label": "Left Mount (S)", "size": "S", "arc": "Side", "crewGroup": "left_gunner" },
+      { "id": "rgt_s_side", "label": "Right Mount (S)", "size": "S", "arc": "Side", "crewGroup": "right_gunner" },
+      { "id": "drv_xs_back", "label": "Rear Utility (XS)", "size": "XS", "arc": "Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "void_scavver_saddle",
+    "name": "Void Scavver Howdah",
+    "points": 15,
+    "weight": 360,
+    "seats": 3,
+    "allowedSizes": ["Huge"],
+    "allowedMountIds": ["void_scavver"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" },
+      { "id": "rear_gunner", "label": "Rear Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_front", "label": "Driver Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "gun_l_fb", "label": "Gunner Heavy (L)", "size": "L", "arc": "Front/Back", "crewGroup": "gunner" },
+      { "id": "rear_s_back", "label": "Rear Mount (S)", "size": "S", "arc": "Direct Back", "crewGroup": "rear_gunner" }
+    ]
+  },
+
+  {
+    "id": "hydra_war_platform",
+    "name": "Hydra War Platform",
+    "points": 15,
+    "weight": 420,
+    "seats": 3,
+    "allowedSizes": ["Huge"],
+    "allowedMountIds": ["hydra", "dracohydra", "snapping_hydra"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "star_gunner", "label": "Starboard Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_front", "label": "Driver Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "port_s_side", "label": "Port Mount (S)", "size": "S", "arc": "Side", "crewGroup": "port_gunner" },
+      { "id": "star_s_side", "label": "Starboard Mount (S)", "size": "S", "arc": "Side", "crewGroup": "star_gunner" },
+      { "id": "drv_xs_back", "label": "Rear Utility (XS)", "size": "XS", "arc": "Back", "crewGroup": "driver" }
+    ]
+  },
+
+  {
+    "id": "ironscale_hydra_fortress_saddle",
+    "name": "Ironscale Hydra Fortress Saddle",
+    "points": 75,
+    "weight": 1100,
+    "seats": 5,
+    "allowedSizes": ["Gargantuan"],
+    "allowedMountIds": ["ironscale_hydra"],
+    "crewGroups": [
+      { "id": "pilot", "label": "Pilot" },
+      { "id": "front_gunner", "label": "Front Gunner" },
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "star_gunner", "label": "Starboard Gunner" },
+      { "id": "rear_gunner", "label": "Rear Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "pilot_m_front", "label": "Pilot Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "pilot" },
+      { "id": "front_xl_front", "label": "Front Heavy (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "front_gunner" },
+      { "id": "port_l_side", "label": "Port Heavy (L)", "size": "L", "arc": "Side", "crewGroup": "port_gunner" },
+      { "id": "star_l_side", "label": "Starboard Heavy (L)", "size": "L", "arc": "Side", "crewGroup": "star_gunner" },
+      { "id": "rear_l_back", "label": "Rear Heavy (L)", "size": "L", "arc": "Direct Back", "crewGroup": "rear_gunner" }
+    ]
+  },
+
+  {
+    "id": "juvenile_kraken_howdah",
+    "name": "Juvenile Kraken Howdah",
+    "points": 40,
+    "weight": 650,
+    "seats": 4,
+    "allowedSizes": ["Huge"],
+    "allowedMountIds": ["juvenile_kraken"],
+    "crewGroups": [
+      { "id": "pilot", "label": "Pilot" },
+      { "id": "front_gunner", "label": "Front Gunner" },
+      { "id": "mid_gunner", "label": "Mid Gunner" },
+      { "id": "rear_gunner", "label": "Rear Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "pilot_m_front", "label": "Pilot Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "pilot" },
+      { "id": "front_l_front", "label": "Front Heavy (L)", "size": "L", "arc": "Direct Front", "crewGroup": "front_gunner" },
+      { "id": "mid_m_fb", "label": "Mid Mount (M)", "size": "M", "arc": "Front/Back", "crewGroup": "mid_gunner" },
+      { "id": "rear_m_back", "label": "Rear Mount (M)", "size": "M", "arc": "Direct Back", "crewGroup": "rear_gunner" }
+    ]
+  },
+
+  {
+    "id": "kraken_fortress_howdah",
+    "name": "Kraken Fortress Howdah",
+    "points": 120,
+    "weight": 2200,
+    "seats": 6,
+    "allowedSizes": ["Gargantuan"],
+    "allowedMountIds": ["kraken"],
+    "crewGroups": [
+      { "id": "pilot", "label": "Pilot" },
+      { "id": "front_gunner", "label": "Front Gunner" },
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "star_gunner", "label": "Starboard Gunner" },
+      { "id": "top_gunner", "label": "Top Gunner" },
+      { "id": "rear_gunner", "label": "Rear Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "pilot_m_front", "label": "Pilot Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "pilot" },
+
+      { "id": "front_xl_front", "label": "Front Siege Mount (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "front_gunner" },
+      { "id": "port_l_side", "label": "Port Heavy (L)", "size": "L", "arc": "Side", "crewGroup": "port_gunner" },
+      { "id": "star_l_side", "label": "Starboard Heavy (L)", "size": "L", "arc": "Side", "crewGroup": "star_gunner" },
+
+      { "id": "top_l_fb", "label": "Top Heavy (L)", "size": "L", "arc": "Front/Back", "crewGroup": "top_gunner" },
+      { "id": "rear_xl_back", "label": "Rear Siege Mount (XL)", "size": "XL", "arc": "Direct Back", "crewGroup": "rear_gunner" }
+    ]
+  },
+      {
     "id": "NO_saddle",
     "name": "NO Saddle",
     "points": 0,
@@ -362,6 +638,7 @@
     ]
   }
 ]
+
 
 
 
