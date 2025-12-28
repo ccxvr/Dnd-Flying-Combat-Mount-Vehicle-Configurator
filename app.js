@@ -57,6 +57,20 @@ function traitLabel(traitId) {
 }
 
 /**
+ * Some mounts (e.g. tentacles/limbs) must use the special NO_saddle only.
+ * We treat any mount with:
+ * - tag "tentacle", OR
+ * - trait "no_saddle" or "no saddle"
+ * as "NO_saddle-only".
+ */
+function isNoSaddleOnlyMount(mount) {
+  if (!mount) return false;
+  const tags = Array.isArray(mount.tags) ? mount.tags : [];
+  const traits = Array.isArray(mount.traits) ? mount.traits : [];
+  return tags.includes("tentacle") || traits.includes("no_saddle") || traits.includes("no saddle");
+}
+
+/**
  * Movement helpers:
  * Supports bases that define:
  *  - fly:    {standard, max}
@@ -218,7 +232,7 @@ function setupMount() {
   saddleSelect.innerHTML = "";
   const mountTags = config.mount.tags || [];
 
-  const validSaddles = saddles
+  let validSaddles = saddles
     .filter(s => (s.allowedSizes || []).includes(config.mount.size))
     .filter(s => {
       const hasIds = Array.isArray(s.allowedMountIds) && s.allowedMountIds.length > 0;
@@ -228,6 +242,12 @@ function setupMount() {
       const byTagOk = hasTags && s.allowedMountTags.some(t => mountTags.includes(t));
       return byIdOk || byTagOk;
     });
+
+
+  // Hard restriction: tentacles/limbs (NO_saddle-only mounts) may only use the NO_saddle saddle.
+  if (isNoSaddleOnlyMount(config.mount)) {
+    validSaddles = saddles.filter(s => s.id === "NO_saddle");
+  }
 
   if (validSaddles.length === 0) {
     saddleSelect.innerHTML = `<option value="">(No valid saddles)</option>`;
@@ -276,8 +296,14 @@ function setupVehicle() {
 /* ---------- CREW ---------- */
 
 function getCrewGroups() {
-  if (config.vehicle && Array.isArray(config.vehicle.crewGroups)) return config.vehicle.crewGroups;
-  if (config.saddle && Array.isArray(config.saddle.crewGroups)) return config.saddle.crewGroups;
+  // Vehicles can define their own crew groups
+  if (config.vehicle && Array.isArray(config.vehicle.crewGroups) && config.vehicle.crewGroups.length) {
+    return config.vehicle.crewGroups;
+  }
+  // Saddles can define their own crew groups; if the array is empty, fall back safely
+  if (config.saddle && Array.isArray(config.saddle.crewGroups) && config.saddle.crewGroups.length) {
+    return config.saddle.crewGroups;
+  }
   return [{ id: "operator", label: "Operator" }];
 }
 
