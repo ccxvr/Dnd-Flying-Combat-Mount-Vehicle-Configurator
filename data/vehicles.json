@@ -448,7 +448,7 @@
   "mountingPoints": [
     { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" }
   ],
-  "traits": ["damage_treshold_10", "fire_immunity"]
+  "traits": ["damage_treshold_10", "immune_fire"]
 },
 {
   "id": "imperial_sea_carrier",
@@ -595,6 +595,7 @@
   "traits": ["carrier", "damage_treshold_10"]
 }
 ]
+
 
 
 
