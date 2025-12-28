@@ -131,6 +131,42 @@
     "traits": ["charges_4", "multishot_3"]
   },
 
+    {
+    "id": "ray_caster",
+    "name": "Ray Caster",
+    "points": 50,
+    "size": "M",
+    "weight": 180,
+    "damage": "2d6 radiant",
+    "range": "80 / 160 ft",
+    "ability": "dex",
+    "traits": ["charges_4", "multishot_3"]
+  },
+
+      {
+    "id": "flamethrower",
+    "name": "Flamethrower",
+    "points": 80,
+    "size": "M",
+    "weight": 120,
+    "damage": "8d6 fire",
+    "range": "60 ft cone",
+    "ability": "dex",
+    "traits": ["charges_4"]
+  },
+
+        {
+    "id": "antimaterial_rifle",
+    "name": "Antimaterial Rifle",
+    "points": 100,
+    "size": "M",
+    "weight": 100,
+    "damage": "6d6 Necrotic",
+    "range": "200 / 400 ft",
+    "ability": "dex",
+    "traits": ["charges_2"]
+  },
+
   {
     "id": "culverin_2lb",
     "name": "Culverin (2 lb)",
@@ -312,6 +348,19 @@
   },
 
   {
+    "id": "thermal_lance",
+    "name": "Thermal Lance",
+    "points": 50,
+    "size": "M",
+    "weight": 140,
+    "damage": "4d10 fire",
+    "range": "10 / 20 ft",
+    "ability": "dex",
+    "traits": ["charges_5"]
+  },
+
+  
+  {
     "id": "none",
     "name": "— None —",
     "points": 0,
@@ -320,6 +369,7 @@
     "traits": []
   }
 ]
+
 
 
 
