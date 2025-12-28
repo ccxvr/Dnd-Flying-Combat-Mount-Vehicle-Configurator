@@ -1141,7 +1141,7 @@
         "target": "one target",
         "damage": "2d8 + 5 piercing"
       }
-    ]
+    ],
     "traits": ["amphibious", "head"]
   },
   {
@@ -1339,6 +1339,7 @@
     ]
   }
 ]
+
 
 
 
