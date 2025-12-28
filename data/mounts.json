@@ -1203,9 +1203,9 @@
     ]
   },
           {
-    "id": "juvenale_kraken_tentacle",
+    "id": "juvenile_kraken_tentacle",
     "tags": ["kraken", "titan", "tentacle"],
-    "name": "Kraken Tentacle",
+    "name": "Juvenile Kraken Tentacle",
     "type": "Monstrosity (Titan) (Limb)",
     "size": "Large",
     "climbRate": "0",
@@ -1339,6 +1339,7 @@
     ]
   }
 ]
+
 
 
 
