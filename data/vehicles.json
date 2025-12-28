@@ -373,7 +373,7 @@
       { "id": "pintle_mount", "label": "Pintle Mount", "size": "S", "arc": "Direct Front", "crewGroup": "pilot" },
       { "id": "main_turret", "label": "Main Turret", "size": "L", "arc": "Front", "crewGroup": "gunner" }
     ],
-    "traits": ["damage_treshold_10"]
+    "traits": ["damage_treshold_10", "submarine"]
   },
 {
   "id": "goblin_tin_can",
@@ -595,6 +595,7 @@
   "traits": ["carrier", "damage_treshold_10"]
 }
 ]
+
 
 
 
