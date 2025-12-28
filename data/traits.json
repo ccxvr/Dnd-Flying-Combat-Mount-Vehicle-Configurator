@@ -173,8 +173,64 @@
     "id": "resist_poison",
     "name": "Resistance: Poison",
     "desc": "The creature has resistance to poison damage."
+  },
+  {
+    "id": "acidic_blood",
+    "name": "Acidic Blood",
+    "desc": "When the creature takes slashing or piercing damage, each creature within 5 feet takes 2d6 acid damage."
+  },
+  {
+    "id": "damage_immune_acid",
+    "name": "Immunity: Acid",
+    "desc": "The creature is immune to acid damage."
+  },
+  {
+    "id": "multiple_heads_5",
+    "name": "Multiple Heads (5)",
+    "desc": "The creature has five heads. It has advantage on saving throws against being blinded, charmed, deafened, frightened, stunned, or knocked unconscious. When the creature enters the battlefield, position 5 (creature name) Head within 30ft of it."
+  },
+  {
+    "id": "wakeful",
+    "name": "Wakeful",
+    "desc": "While the creature sleeps, at least one of its heads is awake."
+  },
+  {
+    "id": "legendary_resistance_4day",
+    "name": "Legendary Resistance (4/Day)",
+    "desc": "If the creature fails a saving throw, it can choose to succeed instead."
+  },
+  {
+    "id": "siege_monster",
+    "name": "Siege Monster",
+    "desc": "The creature deals double damage to objects and structures."
+  },
+  {
+    "id": "freedom_of_movement",
+    "name": "Freedom of Movement",
+    "desc": "The creature ignores difficult terrain, and magical effects cannot reduce its speed or cause it to be restrained."
+  },
+  {
+    "id": "head",
+    "name": "Severable Head",
+    "desc": "This limb represents an independent head that acts and can be targeted separately; it can never move more than 30ft from its body and dies if the body is slain."
+  },
+  {
+    "id": "limb",
+    "name": "Limb",
+    "desc": "This creature part is a limb of a larger creature and cannot be ridden or saddled, acts and can be targeted separately; it can never move more than 30ft from its body and dies if the body is slain."
+  },
+  {
+    "id": "no saddle",
+    "name": "No Saddle",
+    "desc": "This creature or limb cannot be fitted with a saddle or ridden."
+  },
+  {
+    "id": "tentacles_6",
+    "name": "Six Tentacles",
+    "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
