@@ -16,13 +16,10 @@
     "baseHP": 107,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": ["immune_poisoned", "resist_acid", "resist_poison"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes two Bite attacks."
-      },
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes two Bite attacks." },
       {
         "name": "Bite",
         "kind": "attack",
@@ -52,13 +49,10 @@
     "baseHP": 187,
     "carryMultiplier": 4,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": [],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes one Bite attack and two Claw attacks."
-      },
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes one Bite attack and two Claw attacks." },
       {
         "name": "Bite",
         "kind": "attack",
@@ -98,6 +92,7 @@
     "baseHP": 51,
     "carryMultiplier": 2,
     "fly": { "standard": 40, "max": 120 },
+    "swim": { "standard": 40, "max": 120 },
     "traits": ["unusual_nature"],
     "actions": [
       {
@@ -129,6 +124,7 @@
     "baseHP": 97,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": [],
     "actions": [
       {
@@ -136,24 +132,8 @@
         "kind": "text",
         "text": "The wyvern makes two attacks: one with its bite and one with its stinger. While flying, it can replace one attack with its claws."
       },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 piercing"
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 3 slashing"
-      },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 3 piercing" },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d8 + 3 slashing" },
       {
         "name": "Stinger",
         "kind": "attack",
@@ -183,26 +163,11 @@
     "baseHP": 45,
     "carryMultiplier": 2,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": ["keen_sight"],
     "actions": [
-      {
-        "name": "Beak",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 3 piercing"
-      },
-      {
-        "name": "Talons",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d4 + 3 slashing"
-      },
+      { "name": "Beak", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "1d8 + 3 piercing" },
+      { "name": "Talons", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d4 + 3 slashing" },
       {
         "name": "Petrifying Gaze",
         "kind": "save",
@@ -231,31 +196,12 @@
     "baseHP": 90,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": ["keen_sight", "bred_for_combat"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The griffon makes two attacks: one with its beak and one with its claws."
-      },
-      {
-        "name": "Beak",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 8,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d10 + 6 piercing"
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 8,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 6 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The griffon makes two attacks: one with its beak and one with its claws." },
+      { "name": "Beak", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "5 ft", "target": "one target", "damage": "1d10 + 6 piercing" },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "5 ft", "target": "one target", "damage": "2d6 + 6 slashing" }
     ]
   },
   {
@@ -275,17 +221,10 @@
     "baseHP": 127,
     "carryMultiplier": 2,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": ["static_charge"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 4 piercing plus 4d8 lightning"
-      },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "2d8 + 4 piercing plus 4d8 lightning" },
       {
         "name": "Discharge",
         "kind": "save",
@@ -314,6 +253,7 @@
     "baseHP": 97,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": [],
     "actions": [
       {
@@ -331,15 +271,7 @@
         "damage": "2d8 + 3 piercing",
         "extra": "The target must make a DC 15 Constitution saving throw, taking 7d6 poison damage on a failed save, or half as much on a successful one."
       },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 3 slashing"
-      }
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d8 + 3 slashing" }
     ]
   },
   {
@@ -359,17 +291,10 @@
     "baseHP": 68,
     "carryMultiplier": 2,
     "fly": { "standard": 60, "max": 180 },
+    "swim": { "standard": 60, "max": 180 },
     "traits": ["water_breathing"],
     "actions": [
-      {
-        "name": "Ram",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 bludgeoning"
-      }
+      { "name": "Ram", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 bludgeoning" }
     ]
   },
   {
@@ -389,13 +314,10 @@
     "baseHP": 224,
     "carryMultiplier": 8,
     "fly": { "standard": 40, "max": 120 },
+    "swim": { "standard": 40, "max": 120 },
     "traits": ["echolocation", "hold_breath_90min", "keen_hearing"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The whale makes two attacks: one with its bite and one with its tail."
-      },
+      { "name": "Multiattack", "kind": "text", "text": "The whale makes two attacks: one with its bite and one with its tail." },
       {
         "name": "Bite",
         "kind": "attack",
@@ -406,16 +328,7 @@
         "damage": "3d8 + 8 piercing",
         "extra": "If the target is Large or smaller, it must succeed on a DC 14 Dexterity saving throw or be swallowed. A swallowed creature has total cover and takes 1d6 acid damage at the start of each of the whale’s turns. If the whale takes 30 damage or more in a single turn from a creature inside it, it must succeed on a DC 16 Constitution saving throw at the end of that turn or regurgitate all swallowed creatures (which fall prone within 10 feet). If the whale dies, a swallowed creature can escape by using 20 feet of movement, exiting prone."
       },
-      {
-        "name": "Tail",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 11,
-        "reach": "15 ft",
-        "target": "one target",
-        "damage": "3d6 + 8 bludgeoning",
-        "extra": "Or 6d6 + 16 bludgeoning damage if the target is an object."
-      }
+      { "name": "Tail", "kind": "attack", "attackType": "melee", "toHit": 11, "reach": "15 ft", "target": "one target", "damage": "3d6 + 8 bludgeoning", "extra": "Or 6d6 + 16 bludgeoning damage if the target is an object." }
     ]
   },
   {
@@ -435,17 +348,10 @@
     "baseHP": 114,
     "carryMultiplier": 4,
     "fly": { "standard": 30, "max": 90 },
+    "ground": { "standard": 15, "max": 45 },
     "traits": ["hover"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 4,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 2 piercing"
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 4, "reach": "5 ft", "target": "one target", "damage": "2d6 + 2 piercing" }
     ]
   },
   {
@@ -465,31 +371,12 @@
     "baseHP": 26,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": ["keen_sight"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The eagle makes two attacks: one with its beak and one with its talons."
-      },
-      {
-        "name": "Beak",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d6 + 3 piercing"
-      },
-      {
-        "name": "Talons",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The eagle makes two attacks: one with its beak and one with its talons." },
+      { "name": "Beak", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "1d6 + 3 piercing" },
+      { "name": "Talons", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 slashing" }
     ]
   },
   {
@@ -509,34 +396,14 @@
     "baseHP": 40,
     "carryMultiplier": 2,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": ["hover", "drone"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d4 + 4 piercing",
-        "extra": "plus 1d6 acid damage"
-      },
-      {
-        "name": "Spit",
-        "kind": "attack",
-        "attackType": "ranged",
-        "toHit": 6,
-        "range": "30/60 ft",
-        "target": "one target",
-        "damage": "2d8 acid plus 1d6 fire"
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d4 + 4 piercing", "extra": "plus 1d6 acid damage" },
+      { "name": "Spit", "kind": "attack", "attackType": "ranged", "toHit": 6, "range": "30/60 ft", "target": "one target", "damage": "2d8 acid plus 1d6 fire" }
     ],
     "reactions": [
-      {
-        "name": "Uncanny Dodge",
-        "kind": "text",
-        "text": "The dragonfly halves the damage it takes from an attack that it can see."
-      }
+      { "name": "Uncanny Dodge", "kind": "text", "text": "The dragonfly halves the damage it takes from an attack that it can see." }
     ]
   },
   {
@@ -556,17 +423,10 @@
     "baseHP": 19,
     "carryMultiplier": 2,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": ["flyby", "keen_hearing_and_sight"],
     "actions": [
-      {
-        "name": "Talons",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 3,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 1 slashing"
-      }
+      { "name": "Talons", "kind": "attack", "attackType": "melee", "toHit": 3, "reach": "5 ft", "target": "one target", "damage": "2d6 + 1 slashing" }
     ]
   },
   {
@@ -586,18 +446,10 @@
     "baseHP": 19,
     "carryMultiplier": 1,
     "fly": { "standard": 40, "max": 120 },
+    "swim": { "standard": 40, "max": 120 },
     "traits": ["unusual_nature"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 3 piercing",
-        "extra": "The attack is made with advantage if the target is a creature that is missing any hit points."
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "1d8 + 3 piercing", "extra": "The attack is made with advantage if the target is a creature that is missing any hit points." }
     ]
   },
   {
@@ -617,68 +469,19 @@
     "baseHP": 190,
     "carryMultiplier": 4,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": ["immune_poison", "immune_poisoned", "legendary_resistance_3day"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes three attacks: two with its bite and one with its stinger. While flying, it can use its claws in place of one or both bite attacks."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 10,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "4d6 + 5 piercing",
-        "extra": "The target must succeed on a DC 15 Strength saving throw or be grappled."
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 10,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "4d8 + 5 slashing"
-      },
-      {
-        "name": "Stinger",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 10,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "3d6 + 5 piercing",
-        "extra": "The target must make a DC 15 Constitution saving throw, taking 11d6 poison damage on a failed save, or half as much on a successful one. If the target fails the save, it is poisoned; at the start of its next turn it takes 1d6 poison damage and can repeat the save. The effect lasts until it succeeds or dies."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes three attacks: two with its bite and one with its stinger. While flying, it can use its claws in place of one or both bite attacks." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "10 ft", "target": "one target", "damage": "4d6 + 5 piercing", "extra": "The target must succeed on a DC 15 Strength saving throw or be grappled." },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "5 ft", "target": "one target", "damage": "4d8 + 5 slashing" },
+      { "name": "Stinger", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "10 ft", "target": "one target", "damage": "3d6 + 5 piercing", "extra": "The target must make a DC 15 Constitution saving throw, taking 11d6 poison damage on a failed save, or half as much on a successful one. If the target fails the save, it is poisoned; at the start of its next turn it takes 1d6 poison damage and can repeat the save. The effect lasts until it succeeds or dies." }
     ],
     "legendaryActions": [
-      {
-        "name": "Detect",
-        "kind": "text",
-        "text": "The wyvern makes a Wisdom (Perception) check."
-      },
-      {
-        "name": "Move",
-        "kind": "text",
-        "text": "The wyvern moves as if it were its turn."
-      },
-      {
-        "name": "Sting (Costs 3 Actions)",
-        "kind": "text",
-        "text": "The wyvern makes a stinger attack."
-      },
-      {
-        "name": "Wing Attack (Costs 2 Actions)",
-        "kind": "save",
-        "save": { "ability": "DEX", "dc": 18 },
-        "area": "10 ft radius",
-        "onFail": "2d6 + 5 bludgeoning and knocked prone",
-        "onSave": "no effect",
-        "notes": "The wyvern can then fly up to half its flying speed."
-      }
+      { "name": "Detect", "kind": "text", "text": "The wyvern makes a Wisdom (Perception) check." },
+      { "name": "Move", "kind": "text", "text": "The wyvern moves as if it were its turn." },
+      { "name": "Sting (Costs 3 Actions)", "kind": "text", "text": "The wyvern makes a stinger attack." },
+      { "name": "Wing Attack (Costs 2 Actions)", "kind": "save", "save": { "ability": "DEX", "dc": 18 }, "area": "10 ft radius", "onFail": "2d6 + 5 bludgeoning and knocked prone", "onSave": "no effect", "notes": "The wyvern can then fly up to half its flying speed." }
     ]
   },
   {
@@ -698,32 +501,12 @@
     "baseHP": 144,
     "carryMultiplier": 4,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": ["powerful_build"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes one Bite attack and one Sting attack."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 4 piercing"
-      },
-      {
-        "name": "Sting",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 4 piercing plus 7d6 poison",
-        "extra": "Target is poisoned until the start of the wyvern’s next turn."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes one Bite attack and one Sting attack." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "2d8 + 4 piercing" },
+      { "name": "Sting", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing plus 7d6 poison", "extra": "Target is poisoned until the start of the wyvern’s next turn." }
     ]
   },
   {
@@ -743,22 +526,11 @@
     "baseHP": 26,
     "carryMultiplier": 2,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": ["flyby"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The hippogriff makes two Rend attacks."
-      },
-      {
-        "name": "Rend",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 3 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The hippogriff makes two Rend attacks." },
+      { "name": "Rend", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "1d8 + 3 slashing" }
     ]
   },
   {
@@ -778,31 +550,12 @@
     "baseHP": 66,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": ["keen_sight", "bred_for_combat"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The griffon makes two attacks: one with its beak and one with its claws."
-      },
-      {
-        "name": "Beak",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 5 piercing"
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 5 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The griffon makes two attacks: one with its beak and one with its claws." },
+      { "name": "Beak", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "1d8 + 5 piercing" },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "2d6 + 5 slashing" }
     ]
   },
   {
@@ -822,31 +575,12 @@
     "baseHP": 55,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": ["keen_sight"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The griffon makes two attacks: one with its beak and one with its claws."
-      },
-      {
-        "name": "Beak",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 4 piercing"
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d4 + 4 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The griffon makes two attacks: one with its beak and one with its claws." },
+      { "name": "Beak", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "1d8 + 4 piercing" },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d4 + 4 slashing" }
     ]
   },
   {
@@ -866,36 +600,12 @@
     "baseHP": 50,
     "carryMultiplier": 2,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": [],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 3 piercing"
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 slashing"
-      },
-      {
-        "name": "Sting",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "1d10 + 3 piercing",
-        "extra": "plus 2d6 poison damage"
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "1d8 + 3 piercing" },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 slashing" },
+      { "name": "Sting", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "10 ft", "target": "one target", "damage": "1d10 + 3 piercing", "extra": "plus 2d6 poison damage" }
     ]
   },
   {
@@ -915,27 +625,12 @@
     "baseHP": 45,
     "carryMultiplier": 2,
     "fly": { "standard": 40, "max": 120 },
+    "ground": { "standard": 20, "max": 60 },
+    "burrow": { "standard": 10, "max": 30 },
     "traits": ["tunneler", "drone", "hover", "resist_acid", "resist_fire"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 slashing plus 1d6 acid"
-      },
-      {
-        "name": "Acid Spray (Recharge 6)",
-        "kind": "save",
-        "save": { "ability": "DEX", "dc": 12 },
-        "area": "30-foot-long, 5-foot-wide line",
-        "range": "self",
-        "onFail": "4d6 acid",
-        "onSave": "half damage",
-        "notes": "Recharge 6."
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 slashing plus 1d6 acid" },
+      { "name": "Acid Spray (Recharge 6)", "kind": "save", "save": { "ability": "DEX", "dc": 12 }, "area": "30-foot-long, 5-foot-wide line", "range": "self", "onFail": "4d6 acid", "onSave": "half damage", "notes": "Recharge 6." }
     ]
   },
   {
@@ -955,18 +650,10 @@
     "baseHP": 114,
     "carryMultiplier": 4,
     "fly": { "standard": 40, "max": 120 },
+    "swim": { "standard": 40, "max": 120 },
     "traits": ["unusual_nature"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 8,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "4d10 + 5 piercing",
-        "extra": "The attack is made with advantage if the target is a creature that is missing any hit points."
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "10 ft", "target": "one target", "damage": "4d10 + 5 piercing", "extra": "The attack is made with advantage if the target is a creature that is missing any hit points." }
     ]
   },
   {
@@ -986,17 +673,10 @@
     "baseHP": 13,
     "carryMultiplier": 1,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": ["flyby"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 4,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d8 + 2 piercing"
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 4, "reach": "5 ft", "target": "one target", "damage": "1d8 + 2 piercing" }
     ]
   },
   {
@@ -1016,23 +696,11 @@
     "baseHP": 58,
     "carryMultiplier": 1,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": ["spiky"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes two attacks with its bite."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "1d6 + 4 piercing",
-        "extra": "plus 4d6 poison damage; DC 13 Constitution save or paralyzed until the end of the wyvern’s next turn."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes two attacks with its bite." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "1d6 + 4 piercing", "extra": "plus 4d6 poison damage; DC 13 Constitution save or paralyzed until the end of the wyvern’s next turn." }
     ]
   },
   {
@@ -1052,32 +720,12 @@
     "baseHP": 136,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": ["tough_skin", "bonded_hunter"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes one Bite attack and one Sting attack."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 4 piercing"
-      },
-      {
-        "name": "Sting",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 8,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d8 + 5 piercing plus 5d6 poison",
-        "extra": "Target is poisoned until the start of the wyvern’s next turn."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes one Bite attack and one Sting attack." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "2d8 + 4 piercing" },
+      { "name": "Sting", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "10 ft", "target": "one target", "damage": "2d8 + 5 piercing plus 5d6 poison", "extra": "Target is poisoned until the start of the wyvern’s next turn." }
     ]
   },
   {
@@ -1097,44 +745,13 @@
     "baseHP": 180,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": [],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 4 piercing"
-      },
-      {
-        "name": "Tail Sting",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 4 piercing",
-        "extra": "plus 3d6 poison damage"
-      },
-      {
-        "name": "Fireball",
-        "kind": "save",
-        "save": { "ability": "DEX", "dc": 14 },
-        "area": "20-foot-radius sphere",
-        "range": "120 ft",
-        "onFail": "8d6 fire",
-        "onSave": "half damage"
-      },
-      {
-        "name": "Fire Cone",
-        "kind": "save",
-        "save": { "ability": "DEX", "dc": 14 },
-        "area": "30-foot cone",
-        "onFail": "6d6 fire",
-        "onSave": "half damage"
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing" },
+      { "name": "Tail Sting", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" },
+      { "name": "Fireball", "kind": "save", "save": { "ability": "DEX", "dc": 14 }, "area": "20-foot-radius sphere", "range": "120 ft", "onFail": "8d6 fire", "onSave": "half damage" },
+      { "name": "Fire Cone", "kind": "save", "save": { "ability": "DEX", "dc": 14 }, "area": "30-foot cone", "onFail": "6d6 fire", "onSave": "half damage" }
     ]
   },
   {
@@ -1154,41 +771,13 @@
     "baseHP": 200,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": [],
     "actions": [
-      {
-        "name": "Attack",
-        "kind": "attack",
-        "type": "melee",
-        "toHit": 0,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 4 piercing",
-        "extra": "plus 3d6 poison damage"
-      },
-      {
-        "name": "Flak Burst",
-        "kind": "save",
-        "save": { "ability": "DEX", "dc": 14 },
-        "area": "20-foot-radius sphere",
-        "range": "80 ft",
-        "onFail": "4d8 piercing",
-        "onSave": "half damage",
-        "notes": "A creature that is Huge or larger has disadvantage on this save."
-      },
-      {
-        "name": "Stunning Roar",
-        "kind": "save",
-        "save": { "ability": "CON", "dc": 15 },
-        "area": "30-foot cone",
-        "onFail": { "damage": "2d6 thunder", "condition": "stunned (until end of its next turn)" },
-        "onSave": { "damage": "half", "condition": "none" }
-      },
-      {
-        "name": "Dive Bomb",
-        "kind": "text",
-        "text": "If the mount moves at least 40 feet straight toward a target and then hits with a melee attack on the same turn, the target takes an extra 2d8 bludgeoning damage and must succeed on a DC 14 Strength saving throw or be knocked prone."
-      }
+      { "name": "Attack", "kind": "attack", "type": "melee", "toHit": 0, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" },
+      { "name": "Flak Burst", "kind": "save", "save": { "ability": "DEX", "dc": 14 }, "area": "20-foot-radius sphere", "range": "80 ft", "onFail": "4d8 piercing", "onSave": "half damage", "notes": "A creature that is Huge or larger has disadvantage on this save." },
+      { "name": "Stunning Roar", "kind": "save", "save": { "ability": "CON", "dc": 15 }, "area": "30-foot cone", "onFail": { "damage": "2d6 thunder", "condition": "stunned (until end of its next turn)" }, "onSave": { "damage": "half", "condition": "none" } },
+      { "name": "Dive Bomb", "kind": "text", "text": "If the mount moves at least 40 feet straight toward a target and then hits with a melee attack on the same turn, the target takes an extra 2d8 bludgeoning damage and must succeed on a DC 14 Strength saving throw or be knocked prone." }
     ]
   },
   {
@@ -1208,31 +797,12 @@
     "baseHP": 93,
     "carryMultiplier": 2,
     "fly": { "standard": 40, "max": 120 },
+    "ground": { "standard": 20, "max": 60 },
     "traits": ["fearsome_and_fearless", "aura_frighten_dc15_120ft", "pounce"],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The Vah'k'rel makes two attacks: one with its bite and one with its claws."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "3d8 + 4 piercing"
-      },
-      {
-        "name": "Claws",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 7,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "3d6 + 4 slashing"
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The Vah'k'rel makes two attacks: one with its bite and one with its claws." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "3d8 + 4 piercing" },
+      { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "3d6 + 4 slashing" }
     ]
   },
   {
@@ -1252,17 +822,10 @@
     "baseHP": 45,
     "carryMultiplier": 2,
     "fly": { "standard": 50, "max": 150 },
+    "ground": { "standard": 25, "max": 75 },
     "traits": ["shyish_focai"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 5,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 2 piercing"
-      }
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 2 piercing" }
     ]
   },
   {
@@ -1282,6 +845,7 @@
     "baseHP": 157,
     "carryMultiplier": 4,
     "fly": { "standard": 40, "max": 120 },
+    "swim": { "standard": 40, "max": 120 },
     "traits": ["unusual_nature"],
     "actions": [
       {
@@ -1296,14 +860,7 @@
       }
     ],
     "bonusActions": [
-      {
-        "name": "Ray of Fear (Recharge 4–6)",
-        "kind": "save",
-        "save": { "ability": "WIS", "dc": 16 },
-        "range": "60 ft",
-        "onFail": "frightened until the start of the scavver’s next turn",
-        "onSave": "no effect"
-      }
+      { "name": "Ray of Fear (Recharge 4–6)", "kind": "save", "save": { "ability": "WIS", "dc": 16 }, "range": "60 ft", "onFail": "frightened until the start of the scavver’s next turn", "onSave": "no effect" }
     ]
   },
   {
@@ -1323,23 +880,11 @@
     "baseHP": 98,
     "carryMultiplier": 2,
     "fly": { "standard": 60, "max": 180 },
+    "ground": { "standard": 30, "max": 90 },
     "traits": [],
     "actions": [
-      {
-        "name": "Multiattack",
-        "kind": "text",
-        "text": "The wyvern makes one Bite attack."
-      },
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "attackType": "melee",
-        "toHit": 6,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d8 + 3 piercing plus 7d6 necrotic",
-        "extra": "DC 14 Constitution save or the target cannot regain hit points until treated with greater restoration or similar magic."
-      }
+      { "name": "Multiattack", "kind": "text", "text": "The wyvern makes one Bite attack." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d8 + 3 piercing plus 7d6 necrotic", "extra": "DC 14 Constitution save or the target cannot regain hit points until treated with greater restoration or similar magic." }
     ]
   },
   {
@@ -1359,27 +904,11 @@
     "baseHP": 168,
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 40, "max": 120 },
     "traits": ["knights_partner"],
     "actions": [
-      {
-        "name": "Bite",
-        "kind": "attack",
-        "type": "melee",
-        "toHit": 6,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 4 piercing"
-      },
-      {
-        "name": "Tail Sting",
-        "kind": "attack",
-        "type": "melee",
-        "toHit": 6,
-        "reach": "10 ft",
-        "target": "one target",
-        "damage": "2d6 + 4 piercing",
-        "extra": "plus 3d6 poison damage"
-      }
+      { "name": "Bite", "kind": "attack", "type": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing" },
+      { "name": "Tail Sting", "kind": "attack", "type": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" }
     ]
   }
 ]
