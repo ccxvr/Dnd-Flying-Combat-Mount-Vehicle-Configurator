@@ -25,7 +25,7 @@
 
   {
     "id": "rocket",
-    "name": "Rocket",
+    "name": "(XS) Rocket",
     "points": 4,
     "size": "XS",
     "weight": 4,
@@ -380,6 +380,7 @@
     "traits": []
   }
 ]
+
 
 
 
