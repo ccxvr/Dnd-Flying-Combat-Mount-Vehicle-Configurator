@@ -72,10 +72,12 @@ function isNoSaddleOnlyMount(mount) {
 
 /**
  * Movement helpers:
- * Supports bases that define:
+ * Supports bases that define movement blocks like:
  *  - fly:    {standard, max}
  *  - ground: {standard, max}
- * Can also support both at once.
+ *  - swim:   {standard, max}
+ *  - burrow: {standard, max}
+ *  - climb:  {standard, max}
  */
 function hasMoveBlock(x) {
   return x && typeof x === "object" && Number.isFinite(+x.standard);
@@ -85,16 +87,17 @@ function getMovementMode(base) {
   // Prefer fly if present (matches existing flying-combat default behavior)
   if (hasMoveBlock(base?.fly)) return "fly";
   if (hasMoveBlock(base?.ground)) return "ground";
+  if (hasMoveBlock(base?.swim)) return "swim";
+  if (hasMoveBlock(base?.burrow)) return "burrow";
+  if (hasMoveBlock(base?.climb)) return "climb";
   return "none";
 }
 
 function getMovementBlock(base, mode) {
   if (!base) return { standard: 0, max: 0 };
-  if (mode === "fly" && hasMoveBlock(base.fly)) {
-    return { standard: +base.fly.standard || 0, max: +base.fly.max || 0 };
-  }
-  if (mode === "ground" && hasMoveBlock(base.ground)) {
-    return { standard: +base.ground.standard || 0, max: +base.ground.max || 0 };
+  const blk = base?.[mode];
+  if (hasMoveBlock(blk)) {
+    return { standard: +blk.standard || 0, max: +blk.max || 0 };
   }
   return { standard: 0, max: 0 };
 }
@@ -438,9 +441,12 @@ function applyModsToBase(base) {
   const b = JSON.parse(JSON.stringify(base || {}));
   b.traits = Array.isArray(b.traits) ? [...b.traits] : [];
 
-  // Preserve movement blocks if present; do NOT force-create fly anymore.
-  if (hasMoveBlock(b.fly)) b.fly = { standard: +b.fly.standard || 0, max: +b.fly.max || 0 };
-  if (hasMoveBlock(b.ground)) b.ground = { standard: +b.ground.standard || 0, max: +b.ground.max || 0 };
+  // Preserve movement blocks if present
+  for (const mode of ["fly", "ground", "swim", "burrow", "climb"]) {
+    if (hasMoveBlock(b[mode])) {
+      b[mode] = { standard: +b[mode].standard || 0, max: +b[mode].max || 0 };
+    }
+  }
 
   // Preserve optional weapon allowlist if present
   if (Array.isArray(b.weaponAllowlist)) b.weaponAllowlist = [...b.weaponAllowlist];
@@ -469,11 +475,28 @@ function applyModsToBase(base) {
       if (Number.isFinite(+fx.flyBonus.max)) b.fly.max = (b.fly.max || 0) + (+fx.flyBonus.max);
     }
 
-    // New: groundBonus (optional, backward compatible with existing mods)
+    // Existing: groundBonus
     if (fx.groundBonus && typeof fx.groundBonus === "object") {
       if (!hasMoveBlock(b.ground)) b.ground = { standard: 0, max: 0 };
       if (Number.isFinite(+fx.groundBonus.standard)) b.ground.standard = (b.ground.standard || 0) + (+fx.groundBonus.standard);
       if (Number.isFinite(+fx.groundBonus.max)) b.ground.max = (b.ground.max || 0) + (+fx.groundBonus.max);
+    }
+
+    // Optional: swimBonus / burrowBonus / climbBonus (safe even if you don’t use them yet)
+    if (fx.swimBonus && typeof fx.swimBonus === "object") {
+      if (!hasMoveBlock(b.swim)) b.swim = { standard: 0, max: 0 };
+      if (Number.isFinite(+fx.swimBonus.standard)) b.swim.standard = (b.swim.standard || 0) + (+fx.swimBonus.standard);
+      if (Number.isFinite(+fx.swimBonus.max)) b.swim.max = (b.swim.max || 0) + (+fx.swimBonus.max);
+    }
+    if (fx.burrowBonus && typeof fx.burrowBonus === "object") {
+      if (!hasMoveBlock(b.burrow)) b.burrow = { standard: 0, max: 0 };
+      if (Number.isFinite(+fx.burrowBonus.standard)) b.burrow.standard = (b.burrow.standard || 0) + (+fx.burrowBonus.standard);
+      if (Number.isFinite(+fx.burrowBonus.max)) b.burrow.max = (b.burrow.max || 0) + (+fx.burrowBonus.max);
+    }
+    if (fx.climbBonus && typeof fx.climbBonus === "object") {
+      if (!hasMoveBlock(b.climb)) b.climb = { standard: 0, max: 0 };
+      if (Number.isFinite(+fx.climbBonus.standard)) b.climb.standard = (b.climb.standard || 0) + (+fx.climbBonus.standard);
+      if (Number.isFinite(+fx.climbBonus.max)) b.climb.max = (b.climb.max || 0) + (+fx.climbBonus.max);
     }
 
     if (fx.set && typeof fx.set === "object") {
@@ -756,9 +779,7 @@ function render() {
   const mode = enc.moveMode;
   const primaryMove = getMovementBlock(derived, mode);
 
-  const flyBlock = hasMoveBlock(derived.fly) ? getMovementBlock(derived, "fly") : null;
-  const groundBlock = hasMoveBlock(derived.ground) ? getMovementBlock(derived, "ground") : null;
-
+  // NEW: show all movement modes if present (fly/swim/ground/burrow/climb)
   const speedLines = [];
   if (mode !== "none") {
     speedLines.push(
@@ -768,12 +789,12 @@ function render() {
     speedLines.push(`<strong>Speed</strong> —`);
   }
 
-  // If it has both, show the non-primary too (nice QoL)
-  if (flyBlock && mode !== "fly") {
-    speedLines.push(`<strong>Fly</strong> ${flyBlock.standard} ft. (max ${flyBlock.max} ft.)`);
-  }
-  if (groundBlock && mode !== "ground") {
-    speedLines.push(`<strong>Ground</strong> ${groundBlock.standard} ft. (max ${groundBlock.max} ft.)`);
+  const extraModes = ["fly", "swim", "ground", "burrow", "climb"].filter(m => m !== mode);
+  for (const m of extraModes) {
+    if (hasMoveBlock(derived[m])) {
+      const blk = getMovementBlock(derived, m);
+      speedLines.push(`<strong>${traitLabel(m)}</strong> ${blk.standard} ft. (max ${blk.max} ft.)`);
+    }
   }
 
   let html = `
@@ -802,7 +823,7 @@ function render() {
     <hr>
   `;
 
-  /* ===== NEW: CREW STATS ON PRINTED SHEET ===== */
+  /* ===== CREW STATS ON PRINTED SHEET ===== */
   const crewGroups = getCrewGroups();
   if (!config.crewStats) config.crewStats = {};
   html += `<strong>Crew</strong><br>`;
@@ -815,7 +836,7 @@ function render() {
     `;
   });
   html += `<hr>`;
-  /* ===== END NEW SECTION ===== */
+  /* ===== END CREW SECTION ===== */
 
   html += renderActionSection("Actions", derived.actions);
   html += renderActionSection("Bonus Actions", derived.bonusActions);
@@ -924,17 +945,18 @@ function buildRoll20Export() {
     });
   }
 
-  // Export movement in a backward-compatible way:
-  // - Keep fly/fly_max fields
-  // - Add ground/ground_max fields
-  // - Add mode + primary standard/max
+  // Export movement for all modes:
   const mode = enc.moveMode;
   const primary = getMovementBlock(base, mode);
-  const fly = hasMoveBlock(base.fly) ? getMovementBlock(base, "fly") : { standard: 0, max: 0 };
-  const ground = hasMoveBlock(base.ground) ? getMovementBlock(base, "ground") : { standard: 0, max: 0 };
 
   // For the primary mode, use enc.maxSpeed (encumbrance-adjusted)
-  const primaryMaxAdjusted = (mode === "fly" || mode === "ground") ? enc.maxSpeed : 0;
+  const primaryMaxAdjusted = (mode !== "none") ? enc.maxSpeed : 0;
+
+  const fly    = hasMoveBlock(base.fly)    ? getMovementBlock(base, "fly")    : { standard: 0, max: 0 };
+  const ground = hasMoveBlock(base.ground) ? getMovementBlock(base, "ground") : { standard: 0, max: 0 };
+  const swim   = hasMoveBlock(base.swim)   ? getMovementBlock(base, "swim")   : { standard: 0, max: 0 };
+  const burrow = hasMoveBlock(base.burrow) ? getMovementBlock(base, "burrow") : { standard: 0, max: 0 };
+  const climb  = hasMoveBlock(base.climb)  ? getMovementBlock(base, "climb")  : { standard: 0, max: 0 };
 
   return {
     schema: "flying-combat-config-v1",
@@ -962,12 +984,21 @@ function buildRoll20Export() {
       standard: primary.standard ?? 0,
       max: primaryMaxAdjusted,
 
-      // Backward-compat + extra support
+      // modes (with *_max). Primary mode gets encumbrance-adjusted max.
       fly: fly.standard ?? 0,
       fly_max: (mode === "fly") ? primaryMaxAdjusted : (fly.max ?? 0),
 
       ground: ground.standard ?? 0,
       ground_max: (mode === "ground") ? primaryMaxAdjusted : (ground.max ?? 0),
+
+      swim: swim.standard ?? 0,
+      swim_max: (mode === "swim") ? primaryMaxAdjusted : (swim.max ?? 0),
+
+      burrow: burrow.standard ?? 0,
+      burrow_max: (mode === "burrow") ? primaryMaxAdjusted : (burrow.max ?? 0),
+
+      climb: climb.standard ?? 0,
+      climb_max: (mode === "climb") ? primaryMaxAdjusted : (climb.max ?? 0),
 
       climb_rate: base.climbRate ?? "—",
       acceleration: base.acceleration ?? "—"
