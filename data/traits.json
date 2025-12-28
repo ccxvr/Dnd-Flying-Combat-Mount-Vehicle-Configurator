@@ -84,6 +84,11 @@
     "name": "Immunity: Poison",
     "desc": "The creature is immune to poison damage."
   },
+    {
+    "id": "immune_fire",
+    "name": "Immunity: Fire",
+    "desc": "The creature is immune to fire damage."
+  },
   {
     "id": "immune_poisoned",
     "name": "Immunity: Poisoned",
@@ -235,6 +240,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
