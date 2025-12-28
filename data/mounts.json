@@ -774,7 +774,7 @@
     "ground": { "standard": 40, "max": 120 },
     "traits": [],
     "actions": [
-      { "name": "Attack", "kind": "attack", "type": "melee", "toHit": 0, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" },
+      { "name": "Attack", "kind": "attack", "attackType": "melee", "toHit": 0, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" },
       { "name": "Flak Burst", "kind": "save", "save": { "ability": "DEX", "dc": 14 }, "area": "20-foot-radius sphere", "range": "80 ft", "onFail": "4d8 piercing", "onSave": "half damage", "notes": "A creature that is Huge or larger has disadvantage on this save." },
       { "name": "Stunning Roar", "kind": "save", "save": { "ability": "CON", "dc": 15 }, "area": "30-foot cone", "onFail": { "damage": "2d6 thunder", "condition": "stunned (until end of its next turn)" }, "onSave": { "damage": "half", "condition": "none" } },
       { "name": "Dive Bomb", "kind": "text", "text": "If the mount moves at least 40 feet straight toward a target and then hits with a melee attack on the same turn, the target takes an extra 2d8 bludgeoning damage and must succeed on a DC 14 Strength saving throw or be knocked prone." }
@@ -908,10 +908,9 @@
     "traits": ["knights_partner"],
     "actions": [
       { "name": "Bite", "kind": "attack", "type": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing" },
-      { "name": "Tail Sting", "kind": "attack", "type": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" }
+      { "name": "Tail Sting", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" }
     ]
   },
-  [
   {
     "id": "hydra",
     "tags": ["hydra"],
@@ -1340,5 +1339,6 @@
     ]
   }
 ]
+
 
 
