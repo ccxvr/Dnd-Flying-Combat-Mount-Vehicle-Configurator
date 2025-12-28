@@ -1131,7 +1131,6 @@
     "fly": { "standard": 0, "max": 0 },
     "ground": { "standard": 30, "max": 90 },
     "swim": { "standard": 40, "max": 120 },
-    "traits": ["amphibious", "head"],
     "actions": [
       {
         "name": "Bite",
@@ -1143,6 +1142,7 @@
         "damage": "2d8 + 5 piercing"
       }
     ]
+    "traits": ["amphibious", "head"]
   },
   {
     "id": "juvenile_kraken",
@@ -1221,7 +1221,7 @@
     "fly": { "standard": 0, "max": 0 },
     "ground": { "standard": 30, "max": 90 },
     "swim": { "standard": 120, "max": 360 },
-    "traits": ["amphibious", "siege_monster", "limb", "no saddle"],
+    "traits": ["amphibious", "siege_monster", "limb", "no_saddle"],
     "actions": [
           {
         "name": "Tentacle",
@@ -1315,7 +1315,7 @@
     "fly": { "standard": 0, "max": 0 },
     "ground": { "standard": 30, "max": 90 },
     "swim": { "standard": 120, "max": 360 },
-    "traits": ["amphibious", "siege_monster", "limb", "no saddle"],
+    "traits": ["amphibious", "siege_monster", "limb", "no_saddle"],
     "actions": [
       {
         "name": "Fling",
@@ -1339,6 +1339,7 @@
     ]
   }
 ]
+
 
 
 
