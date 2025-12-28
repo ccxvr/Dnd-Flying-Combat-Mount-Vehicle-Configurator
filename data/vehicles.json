@@ -254,8 +254,64 @@
       { "id": "shoulder", "label": "Shoulder Mount", "size": "M", "arc": "Front/Back", "crewGroup": "pilot" }
     ],
     "traits": ["damage_treshold_10", "AI"]
+  },
+  {
+    "id": "armored_steam_wagon",
+    "name": "Armored Stram Wagon",
+    "type": "Vehicle",
+    "size": "Huge",
+    "climbRate": "0",
+    "acceleration": "1d6",
+    "points": 280,
+    "strength": 22,
+    "dex": 14,
+    "con": 18,
+    "agility": 4,
+    "baseAC": 20,
+    "baseHP": 200,
+    "ground": { "standard": 60, "max": 180 },
+    "crewGroups": [
+      { "id": "pilot", "label": "Pilot" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "pintle_mount", "label": "Pintle Mount", "size": "S", "arc": "Direct Front", "crewGroup": "pilot" },
+      { "id": "main_turret", "label": "Main Turret", "size": "L", "arc": "Front", "crewGroup": "gunner" },
+      { "id": "coaxial", "label": "Coaxial Gun", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
+    ],
+    "traits": ["damage_treshold_10"]
+  },
+{
+    "id": "final_defender",
+    "name": "The Final Defender",
+    "type": "Vehicle",
+    "size": "Gargantuan",
+    "climbRate": "1/4",
+    "acceleration": "1d4",
+    "points": 820,
+    "strength": 30,
+    "dex": 12,
+    "con": 30,
+    "agility": 2,
+    "baseAC": 22,
+    "baseHP": 580,
+    "ground": { "standard": 30, "max": 90 },
+    "crewGroups": [
+      { "id": "pilot", "label": "Pilot" },
+      { "id": "systems", "label": "Systems" }
+    ],
+    "mountingPoints": [
+      { "id": "right_arm_main", "label": "Right Arm Main Mount", "size": "XL", "arc": "Front", "crewGroup": "pilot" },
+      { "id": "right_arm_aux", "label": "Right Arm Auxillery Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
+      { "id": "left_arm_main", "label": "Left Arm Main Mount", "size": "XL", "arc": "Front", "crewGroup": "pilot" },
+      { "id": "left_arm_aux", "label": "Left Arm Auxillery Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
+      { "id": "right_shoulder", "label": "Right Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "pilot" },
+      { "id": "left_shoulder", "label": "Left Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "pilot" }
+    ],
+    "traits": ["damage_treshold_20", "AI"]
   }
 ]
+
 
 
 
