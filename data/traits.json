@@ -224,12 +224,18 @@
     "name": "No Saddle",
     "desc": "This creature or limb cannot be fitted with a saddle or ridden."
   },
+    {
+    "id": "amphibious",
+    "name": "Amphibiuos",
+    "desc": "This creature can breathe both in air and clean water."
+  },
   {
     "id": "tentacles_6",
     "name": "Six Tentacles",
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
