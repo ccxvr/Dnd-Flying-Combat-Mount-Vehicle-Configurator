@@ -20,7 +20,7 @@
     "id": "standard_large_saddle",
     "name": "Standard Large Saddle",
     "points": 0,
-    "weight": 30,
+    "weight": 80,
     "seats": 1,
     "allowedSizes": ["Large"],
     "crewGroups": [
@@ -37,7 +37,7 @@
     "id": "standard_huge_saddle",
     "name": "Standard Huge Saddle",
     "points": 0,
-    "weight": 80,
+    "weight": 380,
     "seats": 2,
     "allowedSizes": ["Huge"],
     "crewGroups": [
@@ -55,6 +55,30 @@
     ]
   },
 
+  {
+    "id": "standard_Gargantuan_saddle",
+    "name": "Standard Gargantuan Saddle",
+    "points": 0,
+    "weight": 620,
+    "seats": 4,
+    "allowedSizes": ["Huge"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "front_gunner", "label": "Front Gunner" },
+      { "id": "top_gunner", "label": "Top Gunner" },
+      { "id": "back_gunner", "label": "Back Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "fwd_xl_1", "label": "Front Mount 1", "size": "XL", "arc": "Direct Front", "crewGroup": "front_gunner" },
+      { "id": "fwd_m_1", "label": "Front Mount 2", "size": "M", "arc": "Front", "crewGroup": "front_gunner" },
+      { "id": "top_l_1", "label": "Top Mount 1", "size": "L", "arc": "Front/Back", "crewGroup": "top_gunner" },
+      { "id": "top_s_1", "label": "Top Mount 2", "size": "S", "arc": "Front/Back", "crewGroup": "top_gunner" },
+
+      { "id": "bak_l_back", "label": "Back Mount1", "size": "L", "arc": "Back", "crewGroup": "back_gunner" },
+      { "id": "bak_l_back", "label": "Back Mount2", "size": "L", "arc": "Back", "crewGroup": "back_gunner" }
+    ]
+  },
+  
   {
     "id": "standard_wyvern_saddle",
     "name": "Standard Wyvern Saddle",
@@ -338,5 +362,6 @@
     ]
   }
 ]
+
 
 
