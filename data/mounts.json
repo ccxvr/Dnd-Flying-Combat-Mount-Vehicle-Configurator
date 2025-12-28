@@ -406,6 +406,31 @@
       { "name": "Uncanny Dodge", "kind": "text", "text": "The dragonfly halves the damage it takes from an attack that it can see." }
     ]
   },
+    {
+    "id": "giant_nasamite_locust",
+    "tags": ["insect"],
+    "name": "Giant Nasamite Locust",
+    "type": "Beast (Mount)",
+    "size": "Large",
+    "climbRate": "2",
+    "acceleration": "1d8",
+    "points": 60,
+    "strength": 17,
+    "dex": 11,
+    "con": 14,
+    "agility": 1,
+    "baseAC": 14,
+    "baseHP": 45,
+    "carryMultiplier": 2,
+    "fly": { "standard": 40, "max": 120 },
+    "ground": { "standard": 20, "max": 60 },
+    "burrow": { "standard": 10, "max": 30 },
+    "traits": ["tunneler", "drone", "hover", "resist_acid", "resist_fire"],
+    "actions": [
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 slashing plus 1d6 acid" },
+      { "name": "Acid Spray (Recharge 6)", "kind": "save", "save": { "ability": "DEX", "dc": 12 }, "area": "30-foot-long, 5-foot-wide line", "range": "self", "onFail": "4d6 acid", "onSave": "half damage", "notes": "Recharge 6." }
+    ]
+  },
   {
     "id": "giant_owl",
     "tags": ["giant_owl"],
@@ -606,31 +631,6 @@
       { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "1d8 + 3 piercing" },
       { "name": "Claws", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 slashing" },
       { "name": "Sting", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "10 ft", "target": "one target", "damage": "1d10 + 3 piercing", "extra": "plus 2d6 poison damage" }
-    ]
-  },
-  {
-    "id": "nasamite_giant_locust",
-    "tags": ["insect"],
-    "name": "Nasamite Giant Locust",
-    "type": "Beast (Mount)",
-    "size": "Large",
-    "climbRate": "2",
-    "acceleration": "1d8",
-    "points": 60,
-    "strength": 17,
-    "dex": 11,
-    "con": 14,
-    "agility": 1,
-    "baseAC": 14,
-    "baseHP": 45,
-    "carryMultiplier": 2,
-    "fly": { "standard": 40, "max": 120 },
-    "ground": { "standard": 20, "max": 60 },
-    "burrow": { "standard": 10, "max": 30 },
-    "traits": ["tunneler", "drone", "hover", "resist_acid", "resist_fire"],
-    "actions": [
-      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 3 slashing plus 1d6 acid" },
-      { "name": "Acid Spray (Recharge 6)", "kind": "save", "save": { "ability": "DEX", "dc": 12 }, "area": "30-foot-long, 5-foot-wide line", "range": "self", "onFail": "4d6 acid", "onSave": "half damage", "notes": "Recharge 6." }
     ]
   },
   {
@@ -1339,6 +1339,7 @@
     ]
   }
 ]
+
 
 
 
