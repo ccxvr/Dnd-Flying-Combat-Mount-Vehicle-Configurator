@@ -322,6 +322,21 @@
       { "id": "drv_xs_3", "label": "Driver Mount 5", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
       { "id": "drv_xs_4", "label": "Driver Mount 6", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" }
     ]
+  },
+  
+    {
+    "id": "NO_saddle",
+    "name": "NO Saddle",
+    "points": 0,
+    "weight": 0,
+    "seats": 0,
+    "allowedSizes": ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"],
+    "allowedMountIds": [],
+    "crewGroups": [
+    ],
+    "mountingPoints": [
+    ]
   }
 ]
+
 
