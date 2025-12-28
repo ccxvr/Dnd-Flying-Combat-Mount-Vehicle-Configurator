@@ -309,8 +309,34 @@
       { "id": "left_shoulder", "label": "Left Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "pilot" }
     ],
     "traits": ["damage_treshold_20", "AI"]
+  },
+  {
+    "id": "mecha_crab",
+    "name": "Mecha Crab",
+    "type": "Vehicle",
+    "size": "Huge",
+    "climbRate": "1",
+    "acceleration": "2d4",
+    "points": 300,
+    "strength": 20,
+    "dex": 16,
+    "con": 20,
+    "agility": 6,
+    "baseAC": 20,
+    "baseHP": 200,
+    "ground": { "standard": 60, "max": 180 },
+    "crewGroups": [
+      { "id": "pilot", "label": "Pilot" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "pintle_mount", "label": "Pintle Mount", "size": "S", "arc": "Direct Front", "crewGroup": "pilot" },
+      { "id": "main_turret", "label": "Main Turret", "size": "L", "arc": "Front", "crewGroup": "gunner" }
+    ],
+    "traits": ["damage_treshold_10"]
   }
 ]
+
 
 
 
