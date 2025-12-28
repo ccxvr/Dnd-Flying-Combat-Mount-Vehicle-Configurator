@@ -427,3 +427,540 @@ function applyModsToBase(base) {
 
     if (Array.isArray(fx.addTraits)) {
       for (const t of fx.addTraits) if (t && !b.traits.includes(t)) b.traits.push(t);
+    }
+
+    if (fx.statBonuses && typeof fx.statBonuses === "object") {
+      for (const k of Object.keys(fx.statBonuses)) {
+        const delta = +fx.statBonuses[k];
+        if (!Number.isFinite(delta)) continue;
+        b[k] = (Number(b[k]) || 0) + delta;
+      }
+    }
+
+    // Existing: flyBonus
+    if (fx.flyBonus && typeof fx.flyBonus === "object") {
+      if (!hasMoveBlock(b.fly)) b.fly = { standard: 0, max: 0 };
+      if (Number.isFinite(+fx.flyBonus.standard)) b.fly.standard = (b.fly.standard || 0) + (+fx.flyBonus.standard);
+      if (Number.isFinite(+fx.flyBonus.max)) b.fly.max = (b.fly.max || 0) + (+fx.flyBonus.max);
+    }
+
+    // New: groundBonus (optional, backward compatible with existing mods)
+    if (fx.groundBonus && typeof fx.groundBonus === "object") {
+      if (!hasMoveBlock(b.ground)) b.ground = { standard: 0, max: 0 };
+      if (Number.isFinite(+fx.groundBonus.standard)) b.ground.standard = (b.ground.standard || 0) + (+fx.groundBonus.standard);
+      if (Number.isFinite(+fx.groundBonus.max)) b.ground.max = (b.ground.max || 0) + (+fx.groundBonus.max);
+    }
+
+    if (fx.set && typeof fx.set === "object") {
+      for (const k of Object.keys(fx.set)) b[k] = fx.set[k];
+    }
+  }
+
+  return b;
+}
+
+function getDerivedBase() {
+  return applyModsToBase(config.base);
+}
+
+function getDerivedMountingPoints() {
+  let points = [];
+  if (config.vehicle) points = (config.vehicle.mountingPoints || []).map(p => ({ ...p }));
+  else if (config.saddle) points = (config.saddle.mountingPoints || []).map(p => ({ ...p }));
+
+  for (const id of config.mods) {
+    const m = modById(id);
+    if (!m || !isModAllowed(m)) continue;
+    const add = m.effects?.addMountingPoints;
+    if (Array.isArray(add)) {
+      for (const mp of add) {
+        if (!mp || !mp.id) continue;
+        const uniqueId = points.some(p => p.id === mp.id) ? `${mp.id}_${m.id}` : mp.id;
+        points.push({ ...mp, id: uniqueId });
+      }
+    }
+  }
+
+  return points;
+}
+
+/* ---------- WEAPONS ---------- */
+
+function weaponById(id) {
+  return weapons.find(w => w.id === id) || null;
+}
+
+function maxQtyFor(mpSize, weaponSize) {
+  const mpUnits = SIZE_UNITS[mpSize] ?? 0;
+  const wUnits = SIZE_UNITS[weaponSize] ?? 999;
+  if (mpUnits === 0 || wUnits === 0) return 0;
+  return Math.floor(mpUnits / wUnits);
+}
+
+function setupWeapons(mountingPoints) {
+  const ui = document.getElementById("weaponsUI");
+  if (!ui) return;
+  ui.innerHTML = "";
+
+  // Enforce allowlist whenever we rebuild the UI (mods/base changes, etc.)
+  sanitizeIllegalSelections();
+
+  const allow = getWeaponAllowlist();
+
+  mountingPoints.forEach(mp => {
+    if (!config.mounts[mp.id]) config.mounts[mp.id] = { weaponId: "none", qty: 0 };
+    if (config.proficiencies[mp.id] === undefined) config.proficiencies[mp.id] = false;
+
+    const fittingWeapons = weapons
+      .filter(w => maxQtyFor(mp.size, w.size) >= 1)
+      .filter(w => !allow || allow.includes(w.id));
+
+    const weaponOptions = fittingWeapons
+      .map(w => `<option value="${w.id}" ${config.mounts[mp.id].weaponId === w.id ? "selected" : ""}>${w.name} (${w.points || 0} pts)</option>`)
+      .join("");
+
+    const currentWeapon = weaponById(config.mounts[mp.id].weaponId);
+    let qtyOptions = `<option value="0">0</option>`;
+
+    // If current selection is illegal under allowlist, clear it
+    if (currentWeapon && currentWeapon.id !== "none" && !isWeaponAllowed(currentWeapon.id)) {
+      config.mounts[mp.id].weaponId = "none";
+      config.mounts[mp.id].qty = 0;
+    }
+
+    const refreshedWeapon = weaponById(config.mounts[mp.id].weaponId);
+
+    if (refreshedWeapon && refreshedWeapon.id !== "none") {
+      const maxQ = maxQtyFor(mp.size, refreshedWeapon.size);
+      if (config.mounts[mp.id].qty > maxQ) config.mounts[mp.id].qty = maxQ;
+      if (config.mounts[mp.id].qty === 0) config.mounts[mp.id].qty = 1;
+
+      qtyOptions = Array.from({ length: maxQ + 1 }, (_, i) =>
+        `<option value="${i}" ${config.mounts[mp.id].qty === i ? "selected" : ""}>${i}</option>`
+      ).join("");
+    }
+
+    const crewGroups = getCrewGroups();
+    const crewGroupId = mp.crewGroup || crewGroups[0].id;
+    const crewGroupLabel = (crewGroups.find(g => g.id === crewGroupId) || crewGroups[0]).label;
+
+    const restrictionNote = allow
+      ? `<div style="font-size:0.9em; opacity:0.85;"><em>Restricted Loadout:</em> this platform can only equip specific ordnance.</div>`
+      : "";
+
+    ui.innerHTML += `
+      <strong>${mp.label} (${mp.arc})</strong><br>
+      Crew: <em>${crewGroupLabel}</em><br>
+      Weapon:
+      <select onchange="setMountWeapon('${mp.id}', this.value)">
+        <option value="none">— None —</option>
+        ${weaponOptions}
+      </select>
+      Quantity:
+      <select onchange="setMountQty('${mp.id}', this.value)">
+        ${qtyOptions}
+      </select><br>
+      Proficiency:
+      <select onchange="setProf('${mp.id}', this.value)">
+        <option value="no" ${config.proficiencies[mp.id] ? "" : "selected"}>Not Proficient</option>
+        <option value="yes" ${config.proficiencies[mp.id] ? "selected" : ""}>Proficient</option>
+      </select>
+      ${restrictionNote}
+      <br><br>
+    `;
+  });
+}
+
+function setMountWeapon(slot, weaponId) {
+  // Hard block: don’t allow selecting non-allowlisted weapons
+  if (weaponId !== "none" && !isWeaponAllowed(weaponId)) {
+    alert("That weapon cannot be equipped on this platform.");
+    setupWeapons(getDerivedMountingPoints());
+    return;
+  }
+
+  config.mounts[slot] = config.mounts[slot] || { weaponId: "none", qty: 0 };
+  config.mounts[slot].weaponId = weaponId;
+
+  if (weaponId === "none") config.mounts[slot].qty = 0;
+  else config.mounts[slot].qty = Math.max(1, config.mounts[slot].qty || 1);
+
+  setupWeapons(getDerivedMountingPoints());
+  render();
+}
+
+function setMountQty(slot, qty) {
+  config.mounts[slot] = config.mounts[slot] || { weaponId: "none", qty: 0 };
+  config.mounts[slot].qty = +qty;
+  render();
+}
+
+function setProf(slot, value) {
+  config.proficiencies[slot] = (value === "yes");
+  render();
+}
+
+/* ---------- WEIGHT ---------- */
+
+function loadWeight() {
+  let total = 0;
+  if (config.saddle) total += (config.saddle.weight || 0);
+
+  Object.values(config.mounts).forEach(sel => {
+    const w = weaponById(sel.weaponId);
+    if (!w || w.id === "none") return;
+    total += (w.weight || 0) * (sel.qty || 0);
+  });
+
+  return total;
+}
+
+/* ---------- POINT COST ---------- */
+
+function totalPoints() {
+  let total = 0;
+  if (config.base) total += (config.base.points || 0);
+  if (config.saddle) total += (config.saddle.points || 0);
+
+  for (const id of config.mods) {
+    const m = modById(id);
+    if (m) total += (m.points || 0);
+  }
+
+  Object.values(config.mounts).forEach(sel => {
+    const w = weaponById(sel.weaponId);
+    if (!w || w.id === "none") return;
+    total += (w.points || 0) * (sel.qty || 0);
+  });
+
+  return total;
+}
+
+/* ---------- ENCUMBRANCE (single source of truth) ---------- */
+
+function derivedEncumbrance(base) {
+  const payload = loadWeight();
+  const cap = capacity(base);
+
+  let agility = base.agility;
+
+  const mode = getMovementMode(base);
+  const move = getMovementBlock(base, mode);
+  let maxSpeed = move.max ?? 0;
+
+  let enc = "Normal";
+
+  if (payload > cap * 0.5) {
+    enc = "Encumbered";
+    agility = Math.ceil((base.agility || 0) / 2);
+  }
+  if (payload > cap) {
+    enc = "Heavily Encumbered";
+    maxSpeed = Math.max(0, (maxSpeed || 0) - 20);
+  }
+  if (payload > cap * 1.5) enc = "Overloaded";
+
+  return { payload, cap, agility, maxSpeed, enc, moveMode: mode };
+}
+
+/* ---------- ACTION RENDERER ---------- */
+
+function renderNativeAction(a) {
+  if (!a || !a.name) return "";
+
+  if (a.kind === "attack") {
+    let out = `<strong>${a.name}.</strong> `;
+    const label = (a.attackType === "ranged" || a.type === "ranged") ? "Ranged Weapon Attack" : "Melee Weapon Attack";
+    out += `${label}: +${a.toHit} to hit, `;
+    if (a.reach) out += `reach ${a.reach}, `;
+    if (a.range) out += `range ${a.range}, `;
+    out += `${a.target || "one target"}. `;
+    out += `<em>Hit:</em> ${a.damage || "—"}`;
+    if (a.extra) out += ` ${a.extra}`;
+    if (a.notes) out += ` ${a.notes}`;
+    return out + `<br>`;
+  }
+
+  if (a.kind === "save") {
+    let out = `<strong>${a.name}.</strong> `;
+    if (a.range) out += `Range ${a.range}. `;
+    if (a.area) out += `Area ${a.area}. `;
+
+    const abil = a.save?.ability || "—";
+    const dc = a.save?.dc ?? "—";
+    out += `Each target must make a DC ${dc} ${abil} saving throw. `;
+
+    const fmtOutcome = (x, fallback) => {
+      if (!x) return fallback;
+      if (typeof x === "string") return x;
+      let parts = [];
+      if (x.damage) parts.push(x.damage === "half" ? "half damage" : x.damage);
+      if (x.condition) parts.push(x.condition);
+      if (x.effect) parts.push(x.effect);
+      return parts.length ? parts.join(", ") : fallback;
+    };
+
+    out += `<em>Failure:</em> ${fmtOutcome(a.onFail, "—")}. `;
+    out += `<em>Success:</em> ${fmtOutcome(a.onSave, "—")}. `;
+    if (a.notes) out += `${a.notes}`;
+    return out + `<br>`;
+  }
+
+  return `<strong>${a.name}.</strong> ${a.text || ""}<br>`;
+}
+
+function renderActionSection(title, list) {
+  if (!Array.isArray(list) || list.length === 0) return "";
+  let out = `<strong>${title}</strong><br>`;
+  for (const a of list) out += renderNativeAction(a);
+  out += `<br>`;
+  return out;
+}
+
+/* ---------- RENDER (uses derivedEncumbrance) ---------- */
+
+function render() {
+  if (!config.base) return;
+
+  const derived = getDerivedBase();
+  const enc = derivedEncumbrance(derived);
+  const pts = totalPoints();
+
+  const agilityWarning = (enc.enc === "Encumbered") ? "⚠ Agility halved due to load" : null;
+
+  const mode = enc.moveMode;
+  const primaryMove = getMovementBlock(derived, mode);
+
+  const flyBlock = hasMoveBlock(derived.fly) ? getMovementBlock(derived, "fly") : null;
+  const groundBlock = hasMoveBlock(derived.ground) ? getMovementBlock(derived, "ground") : null;
+
+  const speedLines = [];
+  if (mode !== "none") {
+    speedLines.push(
+      `<strong>Speed</strong> ${mode} ${primaryMove.standard ?? 0} ft. (max ${enc.maxSpeed} ft.)`
+    );
+  } else {
+    speedLines.push(`<strong>Speed</strong> —`);
+  }
+
+  // If it has both, show the non-primary too (nice QoL)
+  if (flyBlock && mode !== "fly") {
+    speedLines.push(`<strong>Fly</strong> ${flyBlock.standard} ft. (max ${flyBlock.max} ft.)`);
+  }
+  if (groundBlock && mode !== "ground") {
+    speedLines.push(`<strong>Ground</strong> ${groundBlock.standard} ft. (max ${groundBlock.max} ft.)`);
+  }
+
+  let html = `
+    <h2>${derived.name}</h2>
+    <em>${derived.size} ${derived.type}</em><br>
+    <strong>Point Cost</strong> ${pts} pts
+    <hr>
+
+    <strong>Armor Class</strong> ${derived.baseAC}<br>
+    <strong>Hit Points</strong> ${derived.baseHP}<br>
+    ${speedLines.join("<br>")}<br>
+    <strong>Climb Rate</strong> ${derived.climbRate ?? "—"}<br>
+    <strong>Acceleration</strong> ${derived.acceleration ?? "—"}<br>
+
+    <hr>
+
+    STR ${derived.strength} (${abilityMod(derived.strength)})
+    DEX ${derived.dex} (${abilityMod(derived.dex)})
+    CON ${derived.con} (${abilityMod(derived.con)})
+
+    <hr>
+
+    <strong>Agility</strong> ${enc.agility}
+    ${agilityWarning ? `<br><strong>${agilityWarning}</strong>` : ""}<br>
+    <strong>Encumbrance</strong> ${enc.enc} (${enc.payload} / ${enc.cap} lb)
+    <hr>
+  `;
+
+  html += renderActionSection("Actions", derived.actions);
+  html += renderActionSection("Bonus Actions", derived.bonusActions);
+  html += renderActionSection("Reactions", derived.reactions);
+  html += renderActionSection("Legendary Actions", derived.legendaryActions);
+
+  // Mounted weapons
+  html += `<strong>Mounted Weapons</strong><br>`;
+  const points = getDerivedMountingPoints();
+  const groups = getCrewGroups();
+
+  for (let mp of points) {
+    const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
+    const w = weaponById(sel.weaponId);
+    if (!w || w.id === "none" || !sel.qty) continue;
+
+    const crewGroupId = mp.crewGroup || groups[0].id;
+    const crew = config.crewStats[crewGroupId] || { dexMod: 0, profBonus: 0 };
+    const proficient = !!config.proficiencies[mp.id];
+    const atk = (crew.dexMod || 0) + (proficient ? (crew.profBonus || 0) : 0);
+
+    const traitsText = Array.isArray(w.traits) && w.traits.length
+      ? w.traits.map(traitLabel).join(", ")
+      : "—";
+
+    html += `
+      <strong>${w.name}</strong> ×${sel.qty} (${mp.arc})<br>
+      Attack: +${atk} to hit<br>
+      Hit: ${w.damage}<br>
+      Range: ${w.range || "—"}<br>
+      Traits: ${traitsText}<br>
+      Points: ${(w.points || 0) * sel.qty} pts<br><br>
+    `;
+  }
+
+  // Traits (with descriptions)
+  if (Array.isArray(derived.traits) && derived.traits.length) {
+    html += `<hr><strong>Traits</strong><br>`;
+    derived.traits.forEach(t => {
+      const tr = TRAITS[t];
+      if (tr) html += `<strong>${tr.name}.</strong> ${tr.desc}<br>`;
+      else html += `<strong>${traitLabel(t)}.</strong><br>`;
+    });
+  }
+
+  const statblock = document.getElementById("statblock");
+  if (statblock) statblock.innerHTML = html;
+}
+
+/* ---------- ROLL20 EXPORTER ---------- */
+
+function exportModObjects(modIds) {
+  if (!Array.isArray(modIds)) return [];
+  return modIds
+    .filter(Boolean)
+    .map(id => {
+      const m = modById(id);
+      return { id, name: m?.name || id, desc: m?.desc || "" };
+    });
+}
+
+function exportTraitObjects(traitIds) {
+  if (!Array.isArray(traitIds)) return [];
+  return traitIds
+    .filter(Boolean)
+    .map(id => {
+      const tr = TRAITS?.[id];
+      return { id, name: tr?.name || traitLabel(id), desc: tr?.desc || "" };
+    });
+}
+
+function buildRoll20Export() {
+  const base = getDerivedBase(); // mods applied
+  const enc = derivedEncumbrance(base); // single source of truth for agility/speed
+  const points = getDerivedMountingPoints();
+  const groups = getCrewGroups();
+
+  const mountedWeapons = [];
+  for (const mp of points) {
+    const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
+    if (!sel.qty || sel.weaponId === "none") continue;
+
+    // Fail-safe: don't export illegal selections
+    if (!isWeaponAllowed(sel.weaponId)) continue;
+
+    const w = weaponById(sel.weaponId);
+    if (!w) continue;
+
+    const crewGroupId = mp.crewGroup || groups[0].id;
+    const crew = config.crewStats[crewGroupId] || { dexMod: 0, profBonus: 0 };
+    const proficient = !!config.proficiencies[mp.id];
+    const atk = (crew.dexMod || 0) + (proficient ? (crew.profBonus || 0) : 0);
+
+    mountedWeapons.push({
+      mountPointId: mp.id,
+      mountPointLabel: mp.label,
+      crewGroupId,
+      name: w.name,
+      weaponId: w.id,
+      qty: sel.qty,
+      arc: mp.arc,
+      attackBonus: atk,
+      damage: w.damage,
+      range: w.range || "",
+      traits: Array.isArray(w.traits) ? w.traits : []
+    });
+  }
+
+  // Export movement in a backward-compatible way:
+  // - Keep fly/fly_max fields
+  // - Add ground/ground_max fields
+  // - Add mode + primary standard/max
+  const mode = enc.moveMode;
+  const primary = getMovementBlock(base, mode);
+  const fly = hasMoveBlock(base.fly) ? getMovementBlock(base, "fly") : { standard: 0, max: 0 };
+  const ground = hasMoveBlock(base.ground) ? getMovementBlock(base, "ground") : { standard: 0, max: 0 };
+
+  // For the primary mode, use enc.maxSpeed (encumbrance-adjusted)
+  const primaryMaxAdjusted = (mode === "fly" || mode === "ground") ? enc.maxSpeed : 0;
+
+  return {
+    schema: "flying-combat-config-v1",
+
+    baseId: config.base?.id || "",
+    baseName: base.name,
+    baseType: base.type,
+    baseSize: base.size,
+
+    saddleId: config.saddle?.id || null,
+    modIds: [...config.mods],
+    mods: exportModObjects(config.mods),
+
+    stats: {
+      ac: base.baseAC,
+      hp: base.baseHP,
+      str: base.strength,
+      dex: base.dex,
+      con: base.con,
+      agility: enc.agility
+    },
+
+    movement: {
+      mode,
+      standard: primary.standard ?? 0,
+      max: primaryMaxAdjusted,
+
+      // Backward-compat + extra support
+      fly: fly.standard ?? 0,
+      fly_max: (mode === "fly") ? primaryMaxAdjusted : (fly.max ?? 0),
+
+      ground: ground.standard ?? 0,
+      ground_max: (mode === "ground") ? primaryMaxAdjusted : (ground.max ?? 0),
+
+      climb_rate: base.climbRate ?? "—",
+      acceleration: base.acceleration ?? "—"
+    },
+
+    encumbrance: {
+      carried_weight: enc.payload,
+      capacity: enc.cap,
+      state: enc.enc
+    },
+
+    weaponAllowlist: Array.isArray(base.weaponAllowlist) ? [...base.weaponAllowlist] : null,
+
+    traits: exportTraitObjects(base.traits),
+
+    actions: Array.isArray(base.actions) ? base.actions : [],
+    bonusActions: Array.isArray(base.bonusActions) ? base.bonusActions : [],
+    reactions: Array.isArray(base.reactions) ? base.reactions : [],
+    legendaryActions: Array.isArray(base.legendaryActions) ? base.legendaryActions : [],
+
+    mountedWeapons,
+
+    crewStats: JSON.parse(JSON.stringify(config.crewStats || {})),
+    proficiencies: JSON.parse(JSON.stringify(config.proficiencies || {}))
+  };
+}
+
+async function exportRoll20JSON() {
+  const payload = buildRoll20Export();
+  await navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
+  alert("Roll20 export JSON copied to clipboard!");
+}
+
+/* ---------- START ---------- */
+
+loadData();
