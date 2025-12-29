@@ -24,7 +24,7 @@
       { "id": "wing_right", "label": "Right Forward Mount", "size": "S", "arc": "Front", "crewGroup": "driver" },
       { "id": "turret", "label": "Turret Mount", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
     ],
-    "traits": ["hover","drone", "damage_treshold_5"]
+    "traits": ["hover","drone", "damage_threshold_5"]
   },
     {
     "id": "dwarven_sky_fortress",
@@ -63,7 +63,7 @@
       { "id": "m_aft_port", "label": "Aft-Port Emplacement", "size": "M", "arc": "Back/Port", "crewGroup": "aft_port_gunner" },
       { "id": "m_aft_starboard", "label": "Aft-Starboard Emplacement", "size": "M", "arc": "Back/Starboard", "crewGroup": "aft_starboard_gunner" }
     ],
-    "traits": ["damage_treshold_15"]
+    "traits": ["damage_threshold_15"]
   },
 {
   "id": "elven_skyship",
@@ -89,7 +89,7 @@
     { "id": "xl_fore", "label": "Fore Heavy Mount", "size": "XL", "arc": "Front", "crewGroup": "fore_gunner" },
     { "id": "xl_aft", "label": "Aft Heavy Mount", "size": "XL", "arc": "Back", "crewGroup": "aft_gunner" }
   ],
-  "traits": ["damage_treshold_5"]
+  "traits": ["damage_threshold_5"]
 },
 {
   "id": "goblin_gyrorocket",
@@ -197,7 +197,7 @@
       { "id": "l_dorsal", "label": "Dorsal Flak Grid", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" },
       { "id": "l_ventral", "label": "Ventral Flak Grid", "size": "L", "arc": "Front/Back", "crewGroup": "ventral_gunner" }
     ],
-    "traits": ["carrier", "damage_treshold_10"]
+    "traits": ["carrier", "damage_threshold_10"]
   },
    {
     "id": "imperial_sky_frigate",
@@ -227,7 +227,7 @@
       { "id": "starboard", "label": "Starboard Broadside", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
       { "id": "top", "label": "Flak Mount", "size": "M", "arc": "Front/Back", "crewGroup": "top_gunner" }
     ],
-    "traits": ["long_range_fire_control", "damage_treshold_10"]
+    "traits": ["long_range_fire_control", "damage_threshold_10"]
   },   
   {
     "id": "walker_mech",
@@ -266,7 +266,7 @@
       { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
       { "id": "shoulder", "label": "Shoulder Mount", "size": "M", "arc": "Front/Back", "crewGroup": "pilot" }
     ],
-    "traits": ["damage_treshold_10", "AI"]
+    "traits": ["damage_threshold_10", "AI"]
   },
   {
     "id": "armored_steam_wagon",
@@ -292,7 +292,7 @@
       { "id": "main_turret", "label": "Main Turret", "size": "L", "arc": "Front", "crewGroup": "gunner" },
       { "id": "coaxial", "label": "Coaxial Gun", "size": "M", "arc": "Front/Back", "crewGroup": "gunner" }
     ],
-    "traits": ["damage_treshold_10"]
+    "traits": ["damage_threshold_10"]
   },
 {
     "id": "final_defender",
@@ -333,7 +333,7 @@
       { "id": "right_shoulder", "label": "Right Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "pilot" },
       { "id": "left_shoulder", "label": "Left Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "pilot" }
     ],
-    "traits": ["damage_treshold_20", "AI"]
+    "traits": ["damage_threshold_20", "AI"]
   },
   {
     "id": "mecha_crab",
@@ -373,7 +373,7 @@
       { "id": "pintle_mount", "label": "Pintle Mount", "size": "S", "arc": "Direct Front", "crewGroup": "pilot" },
       { "id": "main_turret", "label": "Main Turret", "size": "L", "arc": "Front", "crewGroup": "gunner" }
     ],
-    "traits": ["damage_treshold_10", "submarine"]
+    "traits": ["damage_threshold_10", "submarine"]
   },
 {
   "id": "goblin_tin_can",
@@ -412,7 +412,7 @@
     { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "pilot" },
     { "id": "shoulder_rack", "label": "Shoulder Rack", "size": "L", "arc": "Front/Back", "crewGroup": "gunner" }
   ],
-  "traits": ["damage_treshold_5"]
+  "traits": ["damage_threshold_5"]
 },
 {
   "id": "elven_star_armor",
@@ -448,7 +448,7 @@
   "mountingPoints": [
     { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" }
   ],
-  "traits": ["damage_treshold_10", "immune_fire"]
+  "traits": ["damage_threshold_10", "immune_fire"]
 },
 {
   "id": "imperial_sea_carrier",
@@ -483,7 +483,7 @@
 
     { "id": "m_dorsal", "label": "Topside Flak Mount", "size": "M", "arc": "Front/Back", "crewGroup": "dorsal_gunner" }
   ],
-  "traits": ["carrier", "damage_treshold_10"]
+  "traits": ["carrier", "damage_threshold_10"]
 },
 {
   "id": "imperial_ship_of_the_line",
@@ -526,7 +526,7 @@
 
     { "id": "l_aft", "label": "Stern Chaser", "size": "L", "arc": "Back", "crewGroup": "aft_gunner" }
   ],
-  "traits": ["long_range_fire_control", "damage_treshold_15"]
+  "traits": ["long_range_fire_control", "damage_threshold_15"]
 }
 ,
 {
@@ -555,7 +555,7 @@
     { "id": "2_fore", "label": "Fore Battery 2", "size": "L", "arc": "Front", "crewGroup": "fore_gunner" },
     { "id": "2_aft", "label": "Aft Battery 2", "size": "L", "arc": "Back", "crewGroup": "aft_gunner" }
   ],
-  "traits": ["damage_treshold_5"]
+  "traits": ["damage_threshold_5"]
 }
 ,
 {
@@ -592,9 +592,10 @@
     { "id": "3_starboard", "label": "Starboard Auxiliary Battery 2", "size": "M", "arc": "Starboard", "crewGroup": "starboard_aux2_gunner" },
     { "id": "l_top", "label": "Topside Flak Mount", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" }
   ],
-  "traits": ["carrier", "damage_treshold_10"]
+  "traits": ["carrier", "damage_threshold_10"]
 }
 ]
+
 
 
 
