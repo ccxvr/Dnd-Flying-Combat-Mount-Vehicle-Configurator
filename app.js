@@ -1014,7 +1014,15 @@ function buildRoll20Export() {
 
     traits: exportTraitObjects(base.traits),
 
-    actions: Array.isArray(base.actions) ? base.actions : [],
+    actions: (() => {
+      const list = Array.isArray(base.actions) ? [...base.actions] : [];
+      const acc = (base.acceleration ?? '').toString().trim();
+      if (acc) {
+        // Export acceleration as a rollable Roll20 action (kept as a statline in the web renderer)
+        list.push({ name: 'Acceleration', kind: 'text', text: `Acceleration: [[${acc}]]` });
+      }
+      return list;
+    })(),
     bonusActions: Array.isArray(base.bonusActions) ? base.bonusActions : [],
     reactions: Array.isArray(base.reactions) ? base.reactions : [],
     legendaryActions: Array.isArray(base.legendaryActions) ? base.legendaryActions : [],
