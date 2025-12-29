@@ -6,7 +6,7 @@
     "size": "S",
     "weight": 10,
     "damage": "8d6 force",
-    "range": "120 ft",
+    "range": "240 ft",
     "ability": "dex",
     "traits": ["consumable", "seeking_16"]
   },
@@ -18,7 +18,7 @@
     "size": "M",
     "weight": 20,
     "damage": "10d12 force",
-    "range": "120 ft",
+    "range": "360 ft",
     "ability": "dex",
     "traits": ["consumable", "seeking_13"]
   },
@@ -30,7 +30,7 @@
     "size": "XS",
     "weight": 4,
     "damage": "3d12 force",
-    "range": "120 ft",
+    "range": "200 ft",
     "ability": "dex",
     "traits": ["consumable", "imprecise"]
   },
@@ -370,6 +370,18 @@
     "ability": "dex",
     "traits": ["ammunition", "reload_10", "multishot_5"]
   },
+
+    {
+    "id": "quick_reload",
+    "name": "Quick Reload",
+    "points": 20,
+    "size": "XS",
+    "weight": 10,
+    "damage": "0",
+    "range": "Self",
+    "ability": "dex",
+    "traits": ["consumable"]
+  },
   
   {
     "id": "none",
@@ -380,6 +392,7 @@
     "traits": []
   }
 ]
+
 
 
 
