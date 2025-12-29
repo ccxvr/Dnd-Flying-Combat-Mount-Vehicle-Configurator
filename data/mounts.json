@@ -679,6 +679,29 @@
       { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 4, "reach": "5 ft", "target": "one target", "damage": "1d8 + 2 piercing" }
     ]
   },
+    {
+    "id": "quetzalcostlus",
+    "tags": ["quetzalcoatlus", "dinosaur"],
+    "name": "Quetzalcoatlus",
+    "type": "Beast (Mount)",
+    "size": "Huge",
+    "climbRate": "1/4",
+    "acceleration": "1d4",
+    "points": 150,
+    "strength": 15,
+    "dex": 13,
+    "con": 13,
+    "agility": 3,
+    "baseAC": 13,
+    "baseHP": 130,
+    "carryMultiplier": 4,
+    "fly": { "standard": 80, "max": 240 },
+    "ground": { "standard": 10, "max": 30 },
+    "traits": ["flyby"],
+    "actions": [
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 4, "reach": "10 ft", "target": "one target", "damage": "3d6 + 2 piercing" }
+    ]
+  },
   {
     "id": "rattle_wyvern",
     "tags": ["wyvern"],
@@ -1337,8 +1360,105 @@
         "extra": "The target is grappled (escape DC 20) and restrained until the grapple ends."
       }
     ]
+  },
+      {
+    "id": "allosaurus",
+    "tags": ["allosaurus", "dinosaur"],
+    "name": "Allosaurus",
+    "type": "Beast (Mount)",
+    "size": "Large",
+    "climbRate": "0",
+    "acceleration": "1d6",
+    "points": 50,
+    "strength": 19,
+    "dex": 13,
+    "con": 17,
+    "agility": 3,
+    "baseAC": 13,
+    "baseHP": 51,
+    "carryMultiplier": 2,
+    "fly": { "standard": 0, "max": 0 },
+    "ground": { "standard": 60, "max": 180 },
+    "traits": ["pounce"],
+    "actions": [
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d10 + 4 piercing" },
+      { "name": "Claw", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d8 + 4 slashing" }
+    ]
+  },
+        {
+    "id": "triceratops",
+    "tags": ["triceratops", "dinosaur"],
+    "name": "Triceratops",
+    "type": "Beast (Mount)",
+    "size": "Huge",
+    "climbRate": "0",
+    "acceleration": "1d6",
+    "points": 80,
+    "strength": 22,
+    "dex": 9,
+    "con": 17,
+    "agility": 1,
+    "baseAC": 13,
+    "baseHP": 95,
+    "carryMultiplier": 4,
+    "fly": { "standard": 0, "max": 0 },
+    "ground": { "standard": 50, "max": 150 },
+    "traits": ["charge"],
+    "actions": [
+      { "name": "Gore", "kind": "attack", "attackType": "melee", "toHit": 9, "reach": "5 ft", "target": "one target", "damage": "4d8 + 6 piercing" },
+      { "name": "Stomp", "kind": "attack", "attackType": "melee", "toHit": 9, "reach": "5 ft", "target": "one target", "damage": "3d10 + 6 bludgeoning", "extra": "when the Triceratops moves trough a large or smaller creature it can make one stomp attack as a free action" }
+    ]
+  },
+        {
+    "id": "tyrannosaurus",
+    "tags": ["tyrannosaurus", "dinosaur"],
+    "name": "Tyrannosaurs",
+    "type": "Beast (Mount)",
+    "size": "Huge",
+    "climbRate": "0",
+    "acceleration": "1d6",
+    "points": 150,
+    "strength": 25,
+    "dex": 10,
+    "con": 19,
+    "agility": 1,
+    "baseAC": 13,
+    "baseHP": 136,
+    "carryMultiplier": 4,
+    "fly": { "standard": 0, "max": 0 },
+    "ground": { "standard": 50, "max": 150 },
+    "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The tyrannosaurus makes two attacks: one with its bite and one with its tail. It can't make both attacks against the same target." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "10 ft", "target": "one target", "damage": "4d12 + 7 piercing", "extra": " If the target is a Medium or smaller creature, it is grappled (escape DC 17). Until this grapple ends, the target is restrained, and the tyrannosaurus can't bite another target." },
+      { "name": "Tail", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "10 ft", "target": "one target", "damage": "3d8 + 7 bludgeoning" }
+    ]
+  },
+        {
+    "id": "raptor",
+    "tags": ["raptor", "dinosaur"],
+    "name": "Raptor",
+    "type": "Beast (Mount)",
+    "size": "Medium",
+    "climbRate": "1/2",
+    "acceleration": "2d6",
+    "points": 20,
+    "strength": 16,
+    "dex": 15,
+    "con": 14,
+    "agility": 5,
+    "baseAC": 13,
+    "baseHP": 25,
+    "carryMultiplier": 1,
+    "fly": { "standard": 0, "max": 0 },
+    "ground": { "standard": 60, "max": 180 },
+    "traits": ["pounce"],
+    "actions": [
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 4, "reach": "5 ft", "target": "one target", "damage": "1d10 + 3 piercing" },
+      { "name": "Claw", "kind": "attack", "attackType": "melee", "toHit": 4, "reach": "5 ft", "target": "one target", "damage": "1d8 + 3 slashing" }
+    ]
   }
 ]
+
 
 
 
