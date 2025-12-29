@@ -377,9 +377,19 @@
     "points": 20,
     "size": "XS",
     "weight": 10,
-    "damage": "0",
     "range": "Self",
-    "ability": "dex",
+    "extra": "consume it to reload a single weapon with the reload_X property."
+    "traits": ["consumable"]
+  },
+
+      {
+    "id": "arcane_battery",
+    "name": "Arcane Battery",
+    "points": 10,
+    "size": "XS",
+    "weight": 10,
+    "range": "Self",
+    "extra": "consume it to recharge one charge to a single weapon with the charges_X property."
     "traits": ["consumable"]
   },
   
@@ -392,6 +402,7 @@
     "traits": []
   }
 ]
+
 
 
 
