@@ -269,6 +269,194 @@
     "traits": ["damage_threshold_10", "AI"]
   },
   {
+    "id": "54M_m_construct",
+    "name": "54M Paladin Class",
+    "type": "Vehicle",
+    "size": "Medium",
+    "climbRate": "1",
+    "acceleration": "2d6",
+    "points": 60,
+    "strength": 16,
+    "dex": 15,
+    "con": 18,
+    "agility": 5,
+    "baseAC": 20,
+    "baseHP": 60,
+    "ground": { "standard": 50, "max": 150 },
+        "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The construct makes two Armblade attacks."},
+      { "name": "Rocket Jump", "kind": "text", "text": "The construct jumps up to 60ft."},
+      {
+        "name": "Armblade",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 7,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "1d8 + 3 slashing damage"
+      }
+    ],
+    "crewGroups": [
+      { "id": "systems", "label": "Systems" }
+    ],
+    "mountingPoints": [
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "S", "arc": "Front", "crewGroup": "system" },
+      { "id": "shoulder", "label": "Shoulder Mount", "size": "XS", "arc": "Front/Back", "crewGroup": "system" }
+    ],
+    "traits": ["shielded", "AI"]
+  },
+  {
+    "id": "54M_l_construct",
+    "name": "54M Eisen Class",
+    "type": "Vehicle",
+    "size": "Large",
+    "climbRate": "1/2",
+    "acceleration": "1d8",
+    "points": 200,
+    "strength": 18,
+    "dex": 14,
+    "con": 18,
+    "agility": 4,
+    "baseAC": 18,
+    "baseHP": 180,
+    "ground": { "standard": 50, "max": 150 },
+        "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The construct makes two Punch attacks."},
+      { "name": "Rocket Jump", "kind": "text", "text": "The construct jumps up to 60ft."},
+      {
+        "name": "Punch",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 8,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "1d10 + 4 bludgeoning damage"
+      }
+    ],
+    "crewGroups": [
+      { "id": "systems", "label": "Systems" }
+    ],
+    "mountingPoints": [
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" },
+      { "id": "shoulder", "label": "Shoulder Mount", "size": "S", "arc": "Front/Back", "crewGroup": "system" }
+    ],
+    "traits": ["damage_threshold_5", "AI"]
+  },
+  {
+    "id": "54M_lq_construct",
+    "name": "54M Ritter Class",
+    "type": "Vehicle",
+    "size": "Large",
+    "climbRate": "0",
+    "acceleration": "2d6",
+    "points": 190,
+    "strength": 18,
+    "dex": 16,
+    "con": 18,
+    "agility": 6,
+    "baseAC": 18,
+    "baseHP": 150,
+    "ground": { "standard": 70, "max": 210 },
+        "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The construct makes two Hoves attacks."},
+      { "name": "Rocket Jump", "kind": "text", "text": "The construct jumps up to 60ft."},
+      {
+        "name": "Hoves",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 8,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "2d8 + 4 bludgeoning damage"
+      }
+    ],
+    "crewGroups": [
+      { "id": "systems", "label": "Systems" }
+    ],
+    "mountingPoints": [
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" }
+    ],
+    "traits": ["damage_threshold_5", "charge", "AI"]
+  },
+  {
+    "id": "54M_h_construct",
+    "name": "54M Jager Class",
+    "type": "Vehicle",
+    "size": "Huge",
+    "climbRate": "1/2",
+    "acceleration": "1d6",
+    "points": 300,
+    "strength": 22,
+    "dex": 14,
+    "con": 18,
+    "agility": 4,
+    "baseAC": 18,
+    "baseHP": 280,
+    "ground": { "standard": 40, "max": 120 },
+        "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The construct makes two Punch attacks."},
+      { "name": "Rocket Jump", "kind": "text", "text": "The construct jumps up to 60ft."},
+      {
+        "name": "Punch",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 9,
+        "reach": "10 ft",
+        "target": "one target",
+        "damage": "2d8 + 5 bludgeoning damage"
+      }
+    ],
+    "crewGroups": [
+      { "id": "systems", "label": "Systems" }
+    ],
+    "mountingPoints": [
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system" },
+      { "id": "shoulder", "label": "Shoulder Mount", "size": "M", "arc": "Front/Back", "crewGroup": "system" }
+    ],
+    "traits": ["damage_threshold_10", "AI"]
+  },
+  {
+    "id": "54M_g_construct",
+    "name": "54M Ragnarok Class",
+    "type": "Vehicle",
+    "size": "Gargantuan",
+    "climbRate": "0",
+    "acceleration": "1d4",
+    "points": 600,
+    "strength": 28,
+    "dex": 10,
+    "con": 20,
+    "agility": 1,
+    "baseAC": 20,
+    "baseHP": 580,
+    "ground": { "standard": 30, "max": 90 },
+        "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The construct makes two Punch attacks."},
+      {
+        "name": "Punch",
+        "kind": "attack",
+        "attackType": "melee",
+        "toHit": 11,
+        "reach": "10 ft",
+        "target": "one target",
+        "damage": "4d12 + 9 bludgeoning damage"
+      }
+    ],
+    "crewGroups": [
+      { "id": "systems", "label": "Systems" }
+    ],
+    "mountingPoints": [
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "XL", "arc": "Front", "crewGroup": "system" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "XL", "arc": "Front", "crewGroup": "system" },
+      { "id": "shoulder", "label": "Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "system" }
+    ],
+    "traits": ["damage_threshold_15", "AI"]
+  },
+  {
     "id": "armored_steam_wagon",
     "name": "Armored Steam Wagon",
     "type": "Vehicle",
@@ -648,6 +836,7 @@
       ]
  }
 ]
+
 
 
 
