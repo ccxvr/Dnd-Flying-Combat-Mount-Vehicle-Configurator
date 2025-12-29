@@ -692,6 +692,63 @@
     ]
   },
 
+    {
+    "id": "dino_medium_saddle",
+    "name": "Dinosaur Medium Saddle",
+    "points": 10,
+    "weight": 20,
+    "seats": 1,
+    "notes": "Seats 1 (Small character only).",
+    "allowedSizes": ["Medium"],
+    "allowedMountIds": ["dinosaur"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_1", "label": "Driver Mount 1", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_2", "label": "Driver Mount 2", "size": "XS", "arc": "Front", "crewGroup": "driver" }
+    ]
+  },
+
+    {
+    "id": "dino_large_saddle",
+    "name": "Dinosaur Large Saddle",
+    "points": 20,
+    "weight": 90,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["dinosaur"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_1", "label": "Driver Mount 1", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_2", "label": "Driver Mount 2", "size": "XS", "arc": "Front", "crewGroup": "driver" },
+      { "id": "drv_s_fb", "label": "Driver Utility Mount", "size": "S", "arc": "Front/Back", "crewGroup": "driver" }
+    ]
+  },
+
+    {
+    "id": "dino_huge_saddle",
+    "name": "Dinosaur Huge Saddle",
+    "points": 40,
+    "weight": 400,
+    "seats": 2,
+    "allowedSizes": ["Huge"],
+    "allowedMountIds": ["dinosaur"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_l_1", "label": "Driver Mount 1", "size": "L", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_s_2", "label": "Driver Mount 2", "size": "S", "arc": "Front", "crewGroup": "driver" },
+
+      { "id": "gun_s_1", "label": "Gunner 360 Mount", "size": "S", "arc": "Front/Back", "crewGroup": "gunner" },
+      { "id": "gun_m_back", "label": "Gunner Mount", "size": "M", "arc": "Back", "crewGroup": "gunner" }
+    ]
+  },
+  
       {
     "id": "no_saddle",
     "name": "NO Saddle",
@@ -706,6 +763,7 @@
     ]
   }
 ]
+
 
 
 
