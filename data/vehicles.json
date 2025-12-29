@@ -327,9 +327,9 @@
     ],
     "mountingPoints": [
       { "id": "right_arm_main", "label": "Right Arm Main Mount", "size": "XL", "arc": "Front", "crewGroup": "pilot" },
-      { "id": "right_arm_aux", "label": "Right Arm Auxillery Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
+      { "id": "right_arm_aux", "label": "Right Arm Auxiliary Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
       { "id": "left_arm_main", "label": "Left Arm Main Mount", "size": "XL", "arc": "Front", "crewGroup": "pilot" },
-      { "id": "left_arm_aux", "label": "Left Arm Auxillery Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
+      { "id": "left_arm_aux", "label": "Left Arm Auxiliary Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
       { "id": "right_shoulder", "label": "Right Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "pilot" },
       { "id": "left_shoulder", "label": "Left Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "pilot" }
     ],
@@ -648,6 +648,7 @@
       ]
  }
 ]
+
 
 
 
