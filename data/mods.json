@@ -19,6 +19,25 @@
       "statBonuses": { "baseAC": 1, "baseHP": 25 }
     }
   },
+    {
+    "id": "wyvern_barding_kit",
+    "name": "Wyvern Barding Kit",
+    "points": 40,
+    "desc": "Designed specifically for wyverns; grants Tough Skin.",
+    "requires": { "baseType": ["Mount"], "tags": ["wyvern"] },
+    "effects": {
+      "addTraits": ["tough_skin"]
+    },
+      {
+    "id": "extra_armor",
+    "name": "Wyvern Barding Kit",
+    "points": 100,
+    "desc": "Extra armor for large or larger mounts; grants damage threshold 5, and reduces agility by 1.",
+    "requires": { "baseType": ["Mount"], "size": ["Large", "Huge"], "agility" ["2", "3", "4", "5", "6", "7", "8", "9", "10"] },
+    "effects": {
+      "addTraits": ["damage_threshold_5"],
+      "statBonuses": { "agility": -1 }
+    }
   {
     "id": "extra_weapon_hardpoint_XS_front",
     "name": "Extra Weapon Hardpoint XS Front",
@@ -198,15 +217,6 @@
         { "id": "mod_hardpoint_M_directback", "label": "Mod Hardpoint M direct back", "arc": "Direct Back", "size": "M" }
       ]
     }
-  },
-  {
-    "id": "wyvern_barding_kit",
-    "name": "Wyvern Barding Kit",
-    "points": 40,
-    "desc": "Designed specifically for wyverns; grants Tough Skin.",
-    "requires": { "baseType": ["Mount"], "tags": ["wyvern"] },
-    "effects": {
-      "addTraits": ["tough_skin"]
-    }
   }
+}
 ]
