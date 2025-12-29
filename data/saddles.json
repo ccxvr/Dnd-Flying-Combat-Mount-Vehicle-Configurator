@@ -183,13 +183,13 @@
   },
 
   {
-    "id": "nasamite_giant_locust_saddle",
-    "name": "Nasamite Giant Locust Saddle",
+    "id": "giant_nasamite_locust_saddle",
+    "name": "Giant Nasamite Locust Saddle",
     "points": 0,
     "weight": 60,
     "seats": 2,
     "allowedSizes": ["Large"],
-    "allowedMountIds": ["nasamite_giant_locust"],
+    "allowedMountIds": ["giant_nasamite_locust"],
     "crewGroups": [
       { "id": "driver", "label": "Driver" },
       { "id": "gunner", "label": "Gunner" }
@@ -318,7 +318,7 @@
     "weight": 100,
     "seats": 1,
     "allowedSizes": ["Large"],
-    "allowedMountIds": ["large_scavver"],
+    "allowedMountIds": ["brown_scavver", "night_scavver"],
     "crewGroups": [
       { "id": "driver", "label": "Driver" }
     ],
@@ -700,7 +700,7 @@
     "seats": 1,
     "notes": "Seats 1 (Small character only).",
     "allowedSizes": ["Medium"],
-    "allowedMountIds": ["dinosaur"],
+    "allowedMountTags": ["dinosaur"],
     "crewGroups": [
       { "id": "driver", "label": "Driver" }
     ],
@@ -717,7 +717,7 @@
     "weight": 90,
     "seats": 1,
     "allowedSizes": ["Large"],
-    "allowedMountIds": ["dinosaur"],
+    "allowedMountTags": ["dinosaur"],
     "crewGroups": [
       { "id": "driver", "label": "Driver" }
     ],
@@ -735,7 +735,7 @@
     "weight": 400,
     "seats": 2,
     "allowedSizes": ["Huge"],
-    "allowedMountIds": ["dinosaur"],
+    "allowedMountTags": ["dinosaur"],
     "crewGroups": [
       { "id": "driver", "label": "Driver" },
       { "id": "gunner", "label": "Gunner" }
@@ -763,6 +763,7 @@
     ]
   }
 ]
+
 
 
 
