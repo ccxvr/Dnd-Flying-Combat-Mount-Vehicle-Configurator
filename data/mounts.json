@@ -1126,7 +1126,7 @@
     "fly": { "standard": 0, "max": 0 },
     "ground": { "standard": 30, "max": 90 },
     "swim": { "standard": 40, "max": 120 },
-    "traits": ["amphibious", "multiple_heads_5", "wakeful"],
+    "traits": ["amphibious", "multiple_heads_5", "wakeful", "shielded"],
     "actions": [
       {
         "name": "Shell Defense",
@@ -1508,6 +1508,7 @@
     ]
   }
 ]
+
 
 
 
