@@ -23,6 +23,26 @@
     "traits": ["consumable", "seeking_13"]
   },
 
+    {
+    "id": "large_torpedo",
+    "name": "(L) Torpedo",
+    "points": 25,
+    "size": "L",
+    "weight": 60,
+    "extra": "consume it to spawn a Torpedo vehicle."
+    "traits": ["consumable", "spawn"]
+  },
+
+      {
+    "id": "extralarge_torpedo",
+    "name": "(XL) Leviathan Torpedo",
+    "points": 50,
+    "size": "XL",
+    "weight": 120,
+    "extra": "consume it to spawn a Leviathan Torpedo vehicle."
+    "traits": ["consumable", "spawn"]
+  },
+
   {
     "id": "rocket",
     "name": "(XS) Rocket",
@@ -402,6 +422,7 @@
     "traits": []
   }
 ]
+
 
 
 
