@@ -34,6 +34,16 @@
     "name": "Damage Threshold 15",
     "desc": "If the vehicle takes 15 or less damage, it takes 0 damage instead."
   },
+          {
+    "id": "damage_threshold_20",
+    "name": "Damage Threshold 20",
+    "desc": "If the vehicle takes 20 or less damage, it takes 0 damage instead."
+  },
+          {
+    "id": "long_range_fire_control",
+    "name": "Long Range Fire Control",
+    "desc": "This vehicle has a +2 bonus to hit when firing with mounted weapons at long range."
+  },
         {
     "id": "kamikaze",
     "name": "Kamikaze",
@@ -255,6 +265,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
