@@ -27,7 +27,8 @@
     "requires": { "baseType": ["Mount"], "tags": ["wyvern"] },
     "effects": {
       "addTraits": ["tough_skin"]
-    },
+    }
+  },
       {
     "id": "extra_armor",
     "name": "Wyvern Barding Kit",
