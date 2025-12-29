@@ -65,8 +65,8 @@
     "desc": "This vehicle is equipped with facilities to rearm spent consumable weapons when other mounts or vehicles land on it."
   },
     {
-    "id": "shyish_focai",
-    "name": "Shyish Focai",
+    "id": "shyish_focus",
+    "name": "Shyish Focus",
     "desc": "Whenever a necromancy spell is cast while within 10ft of the vargeist, roll 1d10 on a 10, the spell is automatically upcast by one level."
   },
   {
@@ -275,6 +275,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
