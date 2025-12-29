@@ -593,8 +593,36 @@
     { "id": "l_top", "label": "Topside Flak Mount", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" }
   ],
   "traits": ["carrier", "damage_threshold_10"]
-}
+},
+   {
+  "id": "torpedo",
+  "name": "Torpedo",
+  "type": "Vehicle",
+  "size": "Medium",
+  "climbRate": "0",
+  "acceleration": "1d8",
+  "points": 0,
+  "strength": 5,
+  "dex": 14,
+  "con": 10,
+  "agility": 4,
+  "baseAC": 15,
+  "baseHP": 10,
+  "fly": { "standard": 0, "max": 0 },
+  "swim": { "standard": 60, "max": 180 },
+  "traits": ["torpedo", "no_saddle"],
+  "actions": [
+      {
+        "name": "Ram",
+        "kind": "save",
+        "DC": 14,
+        "reach": "5 ft",
+        "target": "one target",
+        "damage": "2d6 + 3 bludgeoning damage"
+      }
+},  
 ]
+
 
 
 
