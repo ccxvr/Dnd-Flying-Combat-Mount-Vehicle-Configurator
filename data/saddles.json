@@ -272,20 +272,20 @@
     ],
     "mountingPoints": [
       { "id": "port_bow_m", "label": "Port Bow (M)", "size": "M", "arc": "Front", "crewGroup": "port_bow" },
-      { "id": "port_bow_s1", "label": "Port Bow (S1)", "size": "S", "arc": "Side", "crewGroup": "port_bow" },
-      { "id": "port_bow_s2", "label": "Port Bow (S2)", "size": "S", "arc": "Side", "crewGroup": "port_bow" },
+      { "id": "port_bow_s1", "label": "Port Bow (S1)", "size": "S", "arc": "Port", "crewGroup": "port_bow" },
+      { "id": "port_bow_s2", "label": "Port Bow (S2)", "size": "S", "arc": "Port", "crewGroup": "port_bow" },
 
       { "id": "star_bow_m", "label": "Starboard Bow (M)", "size": "M", "arc": "Front", "crewGroup": "star_bow" },
-      { "id": "star_bow_s1", "label": "Starboard Bow (S1)", "size": "S", "arc": "Side", "crewGroup": "star_bow" },
-      { "id": "star_bow_s2", "label": "Starboard Bow (S2)", "size": "S", "arc": "Side", "crewGroup": "star_bow" },
+      { "id": "star_bow_s1", "label": "Starboard Bow (S1)", "size": "S", "arc": "Starboard", "crewGroup": "star_bow" },
+      { "id": "star_bow_s2", "label": "Starboard Bow (S2)", "size": "S", "arc": "Starboard", "crewGroup": "star_bow" },
 
       { "id": "port_stern_m", "label": "Port Stern (M)", "size": "M", "arc": "Back", "crewGroup": "port_stern" },
-      { "id": "port_stern_s1", "label": "Port Stern (S1)", "size": "S", "arc": "Side", "crewGroup": "port_stern" },
-      { "id": "port_stern_s2", "label": "Port Stern (S2)", "size": "S", "arc": "Side", "crewGroup": "port_stern" },
+      { "id": "port_stern_s1", "label": "Port Stern (S1)", "size": "S", "arc": "Port", "crewGroup": "port_stern" },
+      { "id": "port_stern_s2", "label": "Port Stern (S2)", "size": "S", "arc": "Port", "crewGroup": "port_stern" },
 
       { "id": "star_stern_m", "label": "Starboard Stern (M)", "size": "M", "arc": "Back", "crewGroup": "star_stern" },
-      { "id": "star_stern_s1", "label": "Starboard Stern (S1)", "size": "S", "arc": "Side", "crewGroup": "star_stern" },
-      { "id": "star_stern_s2", "label": "Starboard Stern (S2)", "size": "S", "arc": "Side", "crewGroup": "star_stern" },
+      { "id": "star_stern_s1", "label": "Starboard Stern (S1)", "size": "S", "arc": "Starboard", "crewGroup": "star_stern" },
+      { "id": "star_stern_s2", "label": "Starboard Stern (S2)", "size": "S", "arc": "Starboard", "crewGroup": "star_stern" },
 
       { "id": "mid_l_front_1", "label": "Middle Heavy Front 1 (L)", "size": "L", "arc": "Direct Front", "crewGroup": "mid_gunner" },
       { "id": "mid_l_front_2", "label": "Middle Heavy Front 2 (L)", "size": "L", "arc": "Direct Front", "crewGroup": "mid_gunner" },
@@ -504,8 +504,8 @@
     ],
     "mountingPoints": [
       { "id": "drv_m_front", "label": "Driver Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
-      { "id": "lft_s_side", "label": "Left Mount (S)", "size": "S", "arc": "Side", "crewGroup": "left_gunner" },
-      { "id": "rgt_s_side", "label": "Right Mount (S)", "size": "S", "arc": "Side", "crewGroup": "right_gunner" },
+      { "id": "lft_s_side", "label": "Left Mount (S)", "size": "S", "arc": "Port", "crewGroup": "left_gunner" },
+      { "id": "rgt_s_side", "label": "Right Mount (S)", "size": "S", "arc": "Starboard", "crewGroup": "right_gunner" },
       { "id": "drv_xs_back", "label": "Rear Utility (XS)", "size": "XS", "arc": "Back", "crewGroup": "driver" }
     ]
   },
@@ -545,8 +545,8 @@
     ],
     "mountingPoints": [
       { "id": "drv_m_front", "label": "Driver Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
-      { "id": "port_s_side", "label": "Port Mount (S)", "size": "S", "arc": "Side", "crewGroup": "port_gunner" },
-      { "id": "star_s_side", "label": "Starboard Mount (S)", "size": "S", "arc": "Side", "crewGroup": "star_gunner" },
+      { "id": "port_s_side", "label": "Port Mount (S)", "size": "S", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "star_s_side", "label": "Starboard Mount (S)", "size": "S", "arc": "Starboard", "crewGroup": "star_gunner" },
       { "id": "drv_xs_back", "label": "Rear Utility (XS)", "size": "XS", "arc": "Back", "crewGroup": "driver" }
     ]
   },
@@ -569,8 +569,8 @@
     "mountingPoints": [
       { "id": "pilot_m_front", "label": "Pilot Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "pilot" },
       { "id": "front_xl_front", "label": "Front Heavy (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "front_gunner" },
-      { "id": "port_l_side", "label": "Port Heavy (L)", "size": "L", "arc": "Side", "crewGroup": "port_gunner" },
-      { "id": "star_l_side", "label": "Starboard Heavy (L)", "size": "L", "arc": "Side", "crewGroup": "star_gunner" },
+      { "id": "port_l_side", "label": "Port Heavy (L)", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "star_l_side", "label": "Starboard Heavy (L)", "size": "L", "arc": "Starboard", "crewGroup": "star_gunner" },
       { "id": "rear_l_back", "label": "Rear Heavy (L)", "size": "L", "arc": "Direct Back", "crewGroup": "rear_gunner" }
     ]
   },
@@ -617,8 +617,8 @@
       { "id": "pilot_m_front", "label": "Pilot Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "pilot" },
 
       { "id": "front_xl_front", "label": "Front Siege Mount (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "front_gunner" },
-      { "id": "port_l_side", "label": "Port Heavy (L)", "size": "L", "arc": "Side", "crewGroup": "port_gunner" },
-      { "id": "star_l_side", "label": "Starboard Heavy (L)", "size": "L", "arc": "Side", "crewGroup": "star_gunner" },
+      { "id": "port_l_side", "label": "Port Heavy (L)", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "star_l_side", "label": "Starboard Heavy (L)", "size": "L", "arc": "Starboard", "crewGroup": "star_gunner" },
 
       { "id": "top_l_fb", "label": "Top Heavy (L)", "size": "L", "arc": "Front/Back", "crewGroup": "top_gunner" },
       { "id": "rear_xl_back", "label": "Rear Siege Mount (XL)", "size": "XL", "arc": "Direct Back", "crewGroup": "rear_gunner" }
@@ -763,6 +763,7 @@
     ]
   }
 ]
+
 
 
 
