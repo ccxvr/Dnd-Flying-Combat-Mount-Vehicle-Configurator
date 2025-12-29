@@ -5,6 +5,11 @@
     "desc": "While carrying a trained rider, this mount has advantage on checks to avoid stalls or forced maneuvers."
   },
     {
+    "id": "torpedo",
+    "name": "Torpedo",
+    "desc": "Cannot carry a rider or mount weapons, can only be spawned by a weapon or ability during combat and not chosen during deployment."
+  },
+    {
     "id": "submarine",
     "name": "Submarine",
     "desc": "This vehicle provides clean air for its occupants when closed and sealed, whether underwater or in a hostile environment."
@@ -265,6 +270,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
