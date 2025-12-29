@@ -1406,7 +1406,7 @@
     "traits": ["charge"],
     "actions": [
       { "name": "Gore", "kind": "attack", "attackType": "melee", "toHit": 9, "reach": "5 ft", "target": "one target", "damage": "4d8 + 6 piercing" },
-      { "name": "Stomp", "kind": "attack", "attackType": "melee", "toHit": 9, "reach": "5 ft", "target": "one target", "damage": "3d10 + 6 bludgeoning", "extra": "when the Triceratops moves trough a large or smaller creature it can make one stomp attack as a free action" }
+      { "name": "Stomp", "kind": "attack", "attackType": "melee", "toHit": 9, "reach": "5 ft", "target": "one target", "damage": "3d10 + 6 bludgeoning", "extra": "when the Triceratops moves through a large or smaller creature it can make one stomp attack as a free action" }
     ]
   },
         {
@@ -1508,6 +1508,7 @@
     ]
   }
 ]
+
 
 
 
