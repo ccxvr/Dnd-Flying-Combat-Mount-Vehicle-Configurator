@@ -680,7 +680,7 @@
     ]
   },
     {
-    "id": "quetzalcostlus",
+    "id": "quetzalcoatlus",
     "tags": ["quetzalcoatlus", "dinosaur"],
     "name": "Quetzalcoatlus",
     "type": "Beast (Mount)",
@@ -930,7 +930,7 @@
     "ground": { "standard": 40, "max": 120 },
     "traits": ["knights_partner"],
     "actions": [
-      { "name": "Bite", "kind": "attack", "type": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing" },
+      { "name": "Bite", "kind": "attack", "attacktype": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing" },
       { "name": "Tail Sting", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" }
     ]
   },
@@ -1508,6 +1508,7 @@
     ]
   }
 ]
+
 
 
 
