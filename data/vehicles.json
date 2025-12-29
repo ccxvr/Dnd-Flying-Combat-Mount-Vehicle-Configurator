@@ -254,7 +254,7 @@
         "toHit": 9,
         "reach": "10 ft",
         "target": "one target",
-        "damage": "2d8 + 5 blugeoning damage"
+        "damage": "2d8 + 5 bludgeoning damage"
       }
     ],
     "crewGroups": [
@@ -361,7 +361,7 @@
         "toHit": 8,
         "reach": "15 ft",
         "target": "one target",
-        "damage": "2d8 + 5 blugeoning damage",
+        "damage": "2d8 + 5 bludgeoning damage",
         "extra": "The target must succeed on a DC 18 Str saving throw or be Grappled by the Mecha Crab."
       }
     ],
@@ -400,7 +400,7 @@
         "toHit": 9,
         "reach": "10 ft",
         "target": "one target",
-        "damage": "2d6 + 3 blugeoning damage"
+        "damage": "2d6 + 3 bludgeoning damage"
       }
     ],
   "crewGroups": [
@@ -595,6 +595,7 @@
   "traits": ["carrier", "damage_threshold_10"]
 }
 ]
+
 
 
 
