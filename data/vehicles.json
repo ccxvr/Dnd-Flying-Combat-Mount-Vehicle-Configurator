@@ -613,15 +613,44 @@
   "traits": ["torpedo", "no_saddle"],
   "actions": [
       {
-        "name": "Ram",
+        "name": "Topedo",
         "kind": "save",
-        "DC": 14,
-        "reach": "5 ft",
-        "target": "one target",
-        "damage": "2d6 + 3 bludgeoning damage"
+        "save": { "ability": "DEX", "dc": 15 },
+        "area": "20ft sphere",
+        "onFail": "12d12 force Damage",
+        "onSave": "Half Damage"
       }
-},  
+   },
+       {
+  "id": "leviathantorpedo",
+  "name": "Leviathan Torpedo",
+  "type": "Vehicle",
+  "size": "Large",
+  "climbRate": "0",
+  "acceleration": "1d6",
+  "points": 0,
+  "strength": 5,
+  "dex": 12,
+  "con": 10,
+  "agility": 2,
+  "baseAC": 15,
+  "baseHP": 20,
+  "fly": { "standard": 0, "max": 0 },
+  "swim": { "standard": 40, "max": 120 },
+  "traits": ["torpedo", "no_saddle"],
+  "actions": [
+      {
+        "name": "Leviathan Topedo",
+        "kind": "save",
+        "save": { "ability": "DEX", "dc": 15 },
+        "area": "20ft sphere",
+        "onFail": "16d12 force Damage",
+        "onSave": "Half Damage",
+        "extra": "Double damage to huge or larger creatures, structures, or vehicles."
+      }
+}
 ]
+
 
 
 
