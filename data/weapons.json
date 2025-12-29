@@ -308,7 +308,7 @@
   },
 
   {
-    "id": "Heavy_crossbow",
+    "id": "heavy_crossbow",
     "name": "(S) Heavy Crossbow",
     "points": 15,
     "size": "S",
@@ -422,6 +422,7 @@
     "traits": []
   }
 ]
+
 
 
 
