@@ -34,7 +34,7 @@
     "name": "extra_armor",
     "points": 100,
     "desc": "Extra armor for large or larger mounts; grants damage threshold 5, and reduces agility by 1.",
-    "requires": { "baseType": ["Mount"], "size": ["Large", "Huge"], "agility": [2, 3, 4, 5, 6, 7, 8, 9, 10] },
+    "requires": { "baseType": ["Mount"], "size": ["Large", "Huge", "Gargantuan"], "agility": [2, 3, 4, 5, 6, 7, 8, 9, 10] },
     "effects": {
       "addTraits": ["damage_threshold_5"],
       "statBonuses": { "agility": -1 }
