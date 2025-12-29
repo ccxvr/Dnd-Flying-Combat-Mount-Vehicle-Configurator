@@ -167,7 +167,12 @@
   {
     "id": "pounce",
     "name": "Pounce",
-    "desc": "If the Vah’k’rel moves at least 20 feet straight toward a creature and hits it with a claw attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked prone. If the target is prone, the Vah’k’rel can make one claw attack against it as a bonus action."
+    "desc": "If the mount moves at least 20 feet straight toward a creature and hits it with a claw attack on the same turn, the target must succeed on a DC 15 Strength saving throw or be knocked prone. If the target is prone, the mount can make one claw attack against it as a free action."
+  },
+    {
+    "id": "charge",
+    "name": "Charge",
+    "desc": "If the mount moves at least 20 feet straight toward a creature and hits it with an attack on the same turn, the target takes an extra die of damage from the attack, also, the target must succeed on a DC 15 Strength saving throw or be knocked prone."
   },
   {
     "id": "resist_acid",
@@ -245,6 +250,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
