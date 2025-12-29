@@ -259,7 +259,7 @@
     ],
     "crewGroups": [
       { "id": "pilot", "label": "Pilot" },
-      { "id": "systems", "label": "Systems" }
+      { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
       { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
@@ -297,7 +297,7 @@
       }
     ],
     "crewGroups": [
-      { "id": "systems", "label": "Systems" }
+      { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
       { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" },
@@ -335,7 +335,7 @@
       }
     ],
     "crewGroups": [
-      { "id": "systems", "label": "Systems" }
+      { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
       { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" },
@@ -373,7 +373,7 @@
       }
     ],
     "crewGroups": [
-      { "id": "systems", "label": "Systems" }
+      { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
       { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system" },
@@ -410,7 +410,7 @@
       }
     ],
     "crewGroups": [
-      { "id": "systems", "label": "Systems" }
+      { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
       { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system" },
@@ -447,7 +447,7 @@
       }
     ],
     "crewGroups": [
-      { "id": "systems", "label": "Systems" }
+      { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
       { "id": "right_arm", "label": "Right Arm Mount", "size": "XL", "arc": "Front", "crewGroup": "system" },
@@ -511,7 +511,7 @@
     ],
     "crewGroups": [
       { "id": "pilot", "label": "Pilot" },
-      { "id": "systems", "label": "Systems" }
+      { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
       { "id": "right_arm_main", "label": "Right Arm Main Mount", "size": "XL", "arc": "Front", "crewGroup": "pilot" },
@@ -836,6 +836,7 @@
       ]
  }
 ]
+
 
 
 
