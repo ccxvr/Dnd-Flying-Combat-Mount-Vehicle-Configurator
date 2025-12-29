@@ -1433,6 +1433,56 @@
       { "name": "Tail", "kind": "attack", "attackType": "melee", "toHit": 10, "reach": "10 ft", "target": "one target", "damage": "3d8 + 7 bludgeoning" }
     ]
   },
+          {
+    "id": "mossosaurus",
+    "tags": ["mossosaurus", "dinosaur"],
+    "name": "Mossosaurus",
+    "type": "Beast (Mount)",
+    "size": "Huge",
+    "climbRate": "0",
+    "acceleration": "1d4",
+    "points": 140,
+    "strength": 22,
+    "dex": 10,
+    "con": 20,
+    "agility": 1,
+    "baseAC": 13,
+    "baseHP": 146,
+    "carryMultiplier": 4,
+    "fly": { "standard": 0, "max": 0 },
+    "ground": { "standard": 20, "max": 60 },
+    "swim": { "standard": 50, "max": 150 },
+    "traits": ["amphibious"],
+    "actions": [
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 9, "reach": "10 ft", "target": "one target", "damage": "4d12 + 6 piercing", "extra": " If the target is a Medium or smaller creature, it is grappled (escape DC 17). Until this grapple ends, the target is restrained, and the tyrannosaurus can't bite another target." }
+    ]
+  },
+          {
+    "id": "spinosaurus",
+    "tags": ["spinosaurus", "dinosaur"],
+    "name": "Spinosaurs",
+    "type": "Beast (Mount)",
+    "size": "Huge",
+    "climbRate": "0",
+    "acceleration": "1d6",
+    "points": 140,
+    "strength": 22,
+    "dex": 12,
+    "con": 18,
+    "agility": 2,
+    "baseAC": 13,
+    "baseHP": 106,
+    "carryMultiplier": 4,
+    "fly": { "standard": 0, "max": 0 },
+    "ground": { "standard": 40, "max": 120 },
+    "swim": { "standard": 30, "max": 90 },
+    "traits": ["hold_breath_1h"],
+    "actions": [
+      { "name": "Multiattack", "kind": "text", "text": "The spinosaurus makes two attacks: one with its bite and one with its claw." },
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 9, "reach": "10 ft", "target": "one target", "damage": "4d12 + 6 piercing" },
+      { "name": "Claw", "kind": "attack", "attackType": "melee", "toHit": 9, "reach": "10 ft", "target": "one target", "damage": "3d8 + 6 slashing" }
+    ]
+  },
         {
     "id": "raptor",
     "tags": ["raptor", "dinosaur"],
@@ -1458,6 +1508,7 @@
     ]
   }
 ]
+
 
 
 
