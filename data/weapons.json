@@ -29,7 +29,7 @@
     "points": 25,
     "size": "L",
     "weight": 60,
-    "extra": "consume it to spawn a Torpedo vehicle."
+    "extra": "consume it to spawn a Torpedo vehicle.",
     "traits": ["consumable"]
   },
 
@@ -39,7 +39,7 @@
     "points": 50,
     "size": "XL",
     "weight": 120,
-    "extra": "consume it to spawn a Leviathan Torpedo vehicle."
+    "extra": "consume it to spawn a Leviathan Torpedo vehicle.",
     "traits": ["consumable"]
   },
 
@@ -398,7 +398,7 @@
     "size": "XS",
     "weight": 10,
     "range": "Self",
-    "extra": "consume it to reload a single weapon with the reload_X property."
+    "extra": "consume it to reload a single weapon with the reload_X property.",
     "traits": ["consumable"]
   },
 
@@ -409,7 +409,7 @@
     "size": "XS",
     "weight": 10,
     "range": "Self",
-    "extra": "consume it to recharge one charge to a single weapon with the charges_X property."
+    "extra": "consume it to recharge one charge to a single weapon with the charges_X property.",
     "traits": ["consumable"]
   },
   
@@ -422,6 +422,7 @@
     "traits": []
   }
 ]
+
 
 
 
