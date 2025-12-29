@@ -612,14 +612,13 @@
   "swim": { "standard": 60, "max": 180 },
   "traits": ["torpedo", "no_saddle"],
   "actions": [
-      {
-        "name": "Topedo",
+      {"name": "Topedo",
         "kind": "save",
         "save": { "ability": "DEX", "dc": 15 },
         "area": "20ft sphere",
         "onFail": "12d12 force Damage",
-        "onSave": "Half Damage"
-      }
+        "onSave": "Half Damage"}
+             ]
    },
        {
   "id": "leviathantorpedo",
@@ -649,6 +648,7 @@
       ]
  }
 ]
+
 
 
 
