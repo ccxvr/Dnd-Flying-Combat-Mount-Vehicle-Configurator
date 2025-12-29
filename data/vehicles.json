@@ -595,7 +595,7 @@
   "traits": ["carrier", "damage_threshold_10"]
 },
    {
-  "id": "torpedo",
+  "id": "l_torpedo",
   "name": "Torpedo",
   "type": "Vehicle",
   "size": "Medium",
@@ -621,7 +621,7 @@
              ]
    },
        {
-  "id": "leviathantorpedo",
+  "id": "leviathan_torpedo",
   "name": "Leviathan Torpedo",
   "type": "Vehicle",
   "size": "Large",
@@ -648,6 +648,7 @@
       ]
  }
 ]
+
 
 
 
