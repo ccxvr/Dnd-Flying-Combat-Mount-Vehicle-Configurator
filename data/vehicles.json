@@ -270,7 +270,7 @@
   },
   {
     "id": "armored_steam_wagon",
-    "name": "Armored Stram Wagon",
+    "name": "Armored Steam Wagon",
     "type": "Vehicle",
     "size": "Huge",
     "climbRate": "0",
@@ -595,6 +595,7 @@
   "traits": ["carrier", "damage_threshold_10"]
 }
 ]
+
 
 
 
