@@ -612,7 +612,7 @@
   "swim": { "standard": 60, "max": 180 },
   "traits": ["torpedo", "no_saddle"],
   "actions": [
-      {"name": "Topedo",
+      {"name": "Torpedo",
         "kind": "save",
         "save": { "ability": "DEX", "dc": 15 },
         "area": "20ft sphere",
@@ -638,7 +638,7 @@
   "swim": { "standard": 40, "max": 120 },
   "traits": ["torpedo", "no_saddle"],
   "actions": [
-      {"name": "Leviathan Topedo",
+      {"name": "Leviathan Torpedo",
         "kind": "save",
         "save": { "ability": "DEX", "dc": 15 },
         "area": "20ft sphere",
@@ -648,6 +648,7 @@
       ]
  }
 ]
+
 
 
 
