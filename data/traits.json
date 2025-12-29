@@ -114,6 +114,11 @@
     "name": "Hold Breath",
     "desc": "The creature can hold its breath for 90 minutes."
   },
+    {
+    "id": "hold_breath_1h",
+    "name": "Hold Breath",
+    "desc": "The creature can hold its breath for 60 minutes."
+  },
   {
     "id": "keen_hearing",
     "name": "Keen Hearing",
@@ -235,7 +240,7 @@
     "desc": "This creature part is a limb of a larger creature and cannot be ridden or saddled, acts and can be targeted separately; it can never move more than 60ft from its body, but it can move freely within that area, without following the movement rules and gaining altitude without losing speed. It dies if the body is slain."
   },
   {
-    "id": "no saddle",
+    "id": "no_saddle",
     "name": "No Saddle",
     "desc": "This creature or limb cannot be fitted with a saddle or ridden."
   },
@@ -250,6 +255,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
