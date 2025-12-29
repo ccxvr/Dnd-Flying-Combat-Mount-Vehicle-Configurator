@@ -9,6 +9,11 @@
     "name": "Torpedo",
     "desc": "Cannot carry a rider or mount weapons, can only be spawned by a weapon or ability during combat and not chosen during deployment."
   },
+      {
+    "id": "shielded",
+    "name": "Shielded",
+    "desc": "This Mount or Vehicle is always considered as holding a shield for the purpose of rules (The AC bonus is already calculated in the stats)."
+  },
     {
     "id": "submarine",
     "name": "Submarine",
@@ -270,6 +275,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
