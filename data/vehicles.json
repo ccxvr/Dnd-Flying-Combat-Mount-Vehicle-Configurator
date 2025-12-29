@@ -360,10 +360,10 @@
     "baseHP": 150,
     "ground": { "standard": 70, "max": 210 },
         "actions": [
-      { "name": "Multiattack", "kind": "text", "text": "The construct makes two Hoves attacks."},
+      { "name": "Multiattack", "kind": "text", "text": "The construct makes two Hooves attacks."},
       { "name": "Rocket Jump", "kind": "text", "text": "The construct jumps up to 60ft."},
       {
-        "name": "Hoves",
+        "name": "Hooves",
         "kind": "attack",
         "attackType": "melee",
         "toHit": 8,
@@ -836,6 +836,7 @@
       ]
  }
 ]
+
 
 
 
