@@ -846,7 +846,7 @@
     "carryMultiplier": 2,
     "fly": { "standard": 50, "max": 150 },
     "ground": { "standard": 25, "max": 75 },
-    "traits": ["shyish_focai"],
+    "traits": ["shyish_focus"],
     "actions": [
       { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 5, "reach": "5 ft", "target": "one target", "damage": "2d6 + 2 piercing" }
     ]
@@ -1508,6 +1508,7 @@
     ]
   }
 ]
+
 
 
 
