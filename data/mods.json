@@ -4,7 +4,7 @@
     "name": "Lightweight Frame",
     "points": 30,
     "desc": "Reinforced light materials improve handling but reduce durability.",
-    "requires": { "baseType": ["Mount","Vehicle"] },
+    "requires": { "baseType": ["Mount", "Vehicle"] },
     "effects": {
       "statBonuses": { "agility": 1, "baseAC": -1 }
     }
@@ -38,13 +38,14 @@
     "effects": {
       "addTraits": ["damage_threshold_5"],
       "statBonuses": { "agility": -1 }
-    },
+    }
+  },
   {
     "id": "extra_weapon_hardpoint_XS_front",
     "name": "Extra Weapon Hardpoint XS Front",
     "points": 20,
     "desc": "Adds one XS hardpoint with a front arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_XS_front", "label": "Mod Hardpoint XS front", "arc": "Front", "size": "XS" }
@@ -56,7 +57,7 @@
     "name": "Extra Weapon Hardpoint XS Back",
     "points": 20,
     "desc": "Adds one XS hardpoint with a back arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_XS_back", "label": "Mod Hardpoint XS back", "arc": "Back", "size": "XS" }
@@ -68,7 +69,7 @@
     "name": "Extra Weapon Hardpoint XS Front/Back",
     "points": 30,
     "desc": "Adds one XS hardpoint with a front/back arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_XS_frontback", "label": "Mod Hardpoint XS front/back", "arc": "Front/Back", "size": "XS" }
@@ -80,7 +81,7 @@
     "name": "Extra Weapon Hardpoint XS Direct Front",
     "points": 10,
     "desc": "Adds one XS hardpoint with a direct front arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_XS_directfront", "label": "Mod Hardpoint XS direct front", "arc": "Direct Front", "size": "XS" }
@@ -92,7 +93,7 @@
     "name": "Extra Weapon Hardpoint XS Direct Back",
     "points": 10,
     "desc": "Adds one XS hardpoint with a direct back arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_XS_directback", "label": "Mod Hardpoint XS direct back", "arc": "Direct Back", "size": "XS" }
@@ -104,7 +105,7 @@
     "name": "Extra Weapon Hardpoint S Front",
     "points": 30,
     "desc": "Adds one S hardpoint with a front arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_S_front", "label": "Mod Hardpoint S front", "arc": "Front", "size": "S" }
@@ -116,7 +117,7 @@
     "name": "Extra Weapon Hardpoint S Back",
     "points": 30,
     "desc": "Adds one S hardpoint with a back arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_S_back", "label": "Mod Hardpoint S back", "arc": "Back", "size": "S" }
@@ -128,7 +129,7 @@
     "name": "Extra Weapon Hardpoint S Front/Back",
     "points": 50,
     "desc": "Adds one S hardpoint with a front/back arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_S_frontback", "label": "Mod Hardpoint S front/back", "arc": "Front/Back", "size": "S" }
@@ -140,7 +141,7 @@
     "name": "Extra Weapon Hardpoint S Direct Front",
     "points": 20,
     "desc": "Adds one S hardpoint with a direct front arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_S_directfront", "label": "Mod Hardpoint S direct front", "arc": "Direct Front", "size": "S" }
@@ -152,7 +153,7 @@
     "name": "Extra Weapon Hardpoint S Direct Back",
     "points": 20,
     "desc": "Adds one S hardpoint with a direct back arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_S_directback", "label": "Mod Hardpoint S direct back", "arc": "Direct Back", "size": "S" }
@@ -164,7 +165,7 @@
     "name": "Extra Weapon Hardpoint M Front",
     "points": 60,
     "desc": "Adds one M hardpoint with a front arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_M_front", "label": "Mod Hardpoint M front", "arc": "Front", "size": "M" }
@@ -176,7 +177,7 @@
     "name": "Extra Weapon Hardpoint M Back",
     "points": 60,
     "desc": "Adds one M hardpoint with a back arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_M_back", "label": "Mod Hardpoint M back", "arc": "Back", "size": "M" }
@@ -188,7 +189,7 @@
     "name": "Extra Weapon Hardpoint M Front/Back",
     "points": 80,
     "desc": "Adds one M hardpoint with a front/back arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_M_frontback", "label": "Mod Hardpoint M front/back", "arc": "Front/Back", "size": "M" }
@@ -200,7 +201,7 @@
     "name": "Extra Weapon Hardpoint M Direct Front",
     "points": 40,
     "desc": "Adds one M hardpoint with a direct front arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_M_directfront", "label": "Mod Hardpoint M direct front", "arc": "Direct Front", "size": "M" }
@@ -212,7 +213,7 @@
     "name": "Extra Weapon Hardpoint M Direct Back",
     "points": 40,
     "desc": "Adds one M hardpoint with a direct back arc.",
-    "requires": { "baseType": ["Vehicle","Mount"] },
+    "requires": { "baseType": ["Vehicle", "Mount"] },
     "effects": {
       "addMountingPoints": [
         { "id": "mod_hardpoint_M_directback", "label": "Mod Hardpoint M direct back", "arc": "Direct Back", "size": "M" }
