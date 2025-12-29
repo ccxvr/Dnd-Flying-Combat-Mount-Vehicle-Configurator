@@ -639,17 +639,17 @@
   "swim": { "standard": 40, "max": 120 },
   "traits": ["torpedo", "no_saddle"],
   "actions": [
-      {
-        "name": "Leviathan Topedo",
+      {"name": "Leviathan Topedo",
         "kind": "save",
         "save": { "ability": "DEX", "dc": 15 },
         "area": "20ft sphere",
         "onFail": "16d12 force Damage",
         "onSave": "Half Damage",
-        "extra": "Double damage to huge or larger creatures, structures, or vehicles."
-      }
-}
+        "extra": "Double damage to huge or larger creatures, structures, or vehicles."}
+      ]
+ }
 ]
+
 
 
 
