@@ -545,6 +545,46 @@ function maxQtyFor(mpSize, weaponSize) {
   return Math.floor(mpUnits / wUnits);
 }
 
+
+// Weapon kind support (ranged vs melee mounted weapons)
+// - Weapons are considered "melee" if attackType/type === "melee" OR they define a "reach" field.
+// - Mounting points can restrict what they accept via mp.weaponType:
+//     "ranged" (default), "melee", or "both".
+// - Melee mounted weapons DO NOT use the size-division quantity rule; they are always max 1 per mount (if they fit).
+
+function weaponKind(w) {
+  if (!w) return "ranged";
+  const at = String(w.attackType || w.type || "").toLowerCase();
+  if (at === "melee") return "melee";
+  if (w.reach) return "melee";
+  return "ranged";
+}
+
+function mountWeaponTypes(mp) {
+  const t = mp && mp.weaponType !== undefined ? mp.weaponType : "ranged";
+  if (Array.isArray(t)) return t.map(x => String(x).toLowerCase());
+  const s = String(t).toLowerCase();
+  return s === "both" ? ["melee", "ranged"] : [s];
+}
+
+function isWeaponCompatible(mp, w) {
+  const mpTypes = mountWeaponTypes(mp);
+  const wk = weaponKind(w);
+  return mpTypes.includes(wk);
+}
+
+function maxQtyForMount(mp, w) {
+  // Melee mounted weapons: max 1 per mount, as long as they fit (size <= mount size)
+  if (weaponKind(w) === "melee") {
+    const mpUnits = SIZE_UNITS[mp.size] ?? 0;
+    const wUnits = SIZE_UNITS[w.size] ?? 999;
+    return (mpUnits >= wUnits) ? 1 : 0;
+  }
+  // Ranged (legacy behavior): can subdivide by size
+  return maxQtyFor(mp.size, w.size);
+}
+
+
 function setupWeapons(mountingPoints) {
   const ui = document.getElementById("weaponsUI");
   if (!ui) return;
@@ -560,7 +600,8 @@ function setupWeapons(mountingPoints) {
     if (config.proficiencies[mp.id] === undefined) config.proficiencies[mp.id] = false;
 
     const fittingWeapons = weapons
-      .filter(w => maxQtyFor(mp.size, w.size) >= 1)
+      .filter(w => maxQtyForMount(mp, w) >= 1)
+      .filter(w => isWeaponCompatible(mp, w))
       .filter(w => !allow || allow.includes(w.id));
 
     const weaponOptions = fittingWeapons
@@ -579,7 +620,7 @@ function setupWeapons(mountingPoints) {
     const refreshedWeapon = weaponById(config.mounts[mp.id].weaponId);
 
     if (refreshedWeapon && refreshedWeapon.id !== "none") {
-      const maxQ = maxQtyFor(mp.size, refreshedWeapon.size);
+      const maxQ = maxQtyForMount(mp, refreshedWeapon);
       if (config.mounts[mp.id].qty > maxQ) config.mounts[mp.id].qty = maxQ;
       if (config.mounts[mp.id].qty === 0) config.mounts[mp.id].qty = 1;
 
@@ -856,7 +897,13 @@ function render() {
     const crewGroupId = mp.crewGroup || groups[0].id;
     const crew = config.crewStats[crewGroupId] || { dexMod: 0, profBonus: 0 };
     const proficient = !!config.proficiencies[mp.id];
-    const atk = (crew.dexMod || 0) + (proficient ? (crew.profBonus || 0) : 0);
+
+    // Ranged mounted weapons use crew DEX; melee mounted weapons use the platform STR (natural-attack convention).
+    const wk = weaponKind(w);
+    const ability = (wk === "melee") ? "str" : "dex";
+    const abilityBonus = (wk === "melee") ? abilityMod(derived.strength) : (crew.dexMod || 0);
+
+    const atk = abilityBonus + (proficient ? (crew.profBonus || 0) : 0);
 
     const traitsText = Array.isArray(w.traits) && w.traits.length
       ? w.traits.map(traitLabel).join(", ")
@@ -866,7 +913,7 @@ function render() {
       <strong>${w.name}</strong> ×${sel.qty} (${mp.arc})<br>
       Attack: +${atk} to hit<br>
       Hit: ${w.damage}<br>
-      Range: ${w.range || "—"}<br>
+      ${wk === "melee" ? ("Reach: " + (w.reach || "5 ft")) : ("Range: " + (w.range || "—"))}<br>
       Traits: ${traitsText}<br>
       Points: ${(w.points || 0) * sel.qty} pts<br><br>
     `;
@@ -938,9 +985,17 @@ function buildRoll20Export() {
       weaponId: w.id,
       qty: sel.qty,
       arc: mp.arc,
+
+      attackType: wk,          // "ranged" or "melee"
+      ability,                 // "dex" or "str"
       attackBonus: atk,
+
       damage: w.damage,
-      range: w.range || "",
+      range: (wk === "ranged") ? (w.range || "") : "",
+      reach: (wk === "melee") ? (w.reach || "5 ft") : "",
+
+      target: w.target || "one target",
+      extra: w.extra || "",
       traits: Array.isArray(w.traits) ? w.traits : []
     });
   }
