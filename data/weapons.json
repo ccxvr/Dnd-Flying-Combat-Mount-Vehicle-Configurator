@@ -542,6 +542,224 @@
       "siege"
     ]
   },
+    {
+    "id": "mounted_sword_xs",
+    "name": "(XS) Mounted Sword",
+    "points": 20,
+    "size": "XS",
+    "weight": 4,
+    "damage": "1d6 slashing",
+    "reach": "5 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+  {
+    "id": "mounted_sword_s",
+    "name": "(S) Mounted Sword",
+    "points": 35,
+    "size": "S",
+    "weight": 8,
+    "damage": "2d6 slashing",
+    "reach": "10 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+  {
+    "id": "mounted_sword_m",
+    "name": "(M) Mounted Sword",
+    "points": 60,
+    "size": "M",
+    "weight": 60,
+    "damage": "4d6 slashing",
+    "reach": "15 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+  {
+    "id": "mounted_sword_l",
+    "name": "(L) Mounted Sword",
+    "points": 95,
+    "size": "L",
+    "weight": 95,
+    "damage": "8d6 slashing",
+    "reach": "20 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+  {
+    "id": "mounted_sword_xl",
+    "name": "(XL) Mounted Sword",
+    "points": 140,
+    "size": "XL",
+    "weight": 240,
+    "damage": "8d12 slashing",
+    "reach": "30 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+
+  {
+    "id": "mounted_lance_s",
+    "name": "(S) Mounted Lance",
+    "points": 45,
+    "size": "S",
+    "weight": 100,
+    "damage": "2d6 piercing",
+    "reach": "10 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": ["charge"]
+  },
+  {
+    "id": "mounted_lance_m",
+    "name": "(M) Mounted Lance",
+    "points": 70,
+    "size": "M",
+    "weight": 240,
+    "damage": "4d6 piercing",
+    "reach": "20 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": ["charge"]
+  },
+  {
+    "id": "mounted_lance_l",
+    "name": "(L) Mounted Lance",
+    "points": 105,
+    "size": "L",
+    "weight": 480,
+    "damage": "8d6 piercing",
+    "reach": "30 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": ["charge"]
+  },
+  {
+    "id": "mounted_lance_xl",
+    "name": "(XL) Mounted Lance",
+    "points": 160,
+    "size": "XL",
+    "weight": 900,
+    "damage": "8d12 piercing",
+    "reach": "40 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": ["charge"]
+  },
+
+  {
+    "id": "mounted_axe_xs",
+    "name": "(XS) Mounted Axe",
+    "points": 25,
+    "size": "XS",
+    "weight": 10,
+    "damage": "1d8 slashing",
+    "reach": "5 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+  {
+    "id": "mounted_axe_s",
+    "name": "(S) Mounted Axe",
+    "points": 45,
+    "size": "S",
+    "weight": 20,
+    "damage": "2d8 slashing",
+    "reach": "10 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+  {
+    "id": "mounted_axe_m",
+    "name": "(M) Mounted Axe",
+    "points": 75,
+    "size": "M",
+    "weight": 40,
+    "damage": "4d8 slashing",
+    "reach": "15 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+  {
+    "id": "mounted_axe_l",
+    "name": "(L) Mounted Axe",
+    "points": 120,
+    "size": "L",
+    "weight": 180,
+    "damage": "8d8 slashing",
+    "reach": "20 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+  {
+    "id": "mounted_axe_xl",
+    "name": "(XL) Mounted Axe",
+    "points": 180,
+    "size": "XL",
+    "weight": 700,
+    "damage": "10d12 slashing",
+    "reach": "30 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": []
+  },
+  {
+    "id": "mounted_polearm_s",
+    "name": "(S) Mounted Polearm",
+    "points": 50,
+    "size": "S",
+    "weight": 20,
+    "damage": "1d10 bludgeoning, slashing or piercing",
+    "reach": "10 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": ["sentinel"]
+  },
+  {
+    "id": "mounted_polearm_m",
+    "name": "(M) Mounted Polearm",
+    "points": 80,
+    "size": "M",
+    "weight": 180,
+    "damage": "2d10 bludgeoning, slashing or piercing",
+    "reach": "20 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": ["sentinel"]
+  },
+  {
+    "id": "mounted_polearm_l",
+    "name": "(L) Mounted Polearm",
+    "points": 125,
+    "size": "L",
+    "weight": 460,
+    "damage": "4d10 bludgeoning, slashing or piercing",
+    "reach": "30 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": ["sentinel"]
+  },
+  {
+    "id": "mounted_polearm_xl",
+    "name": "(XL) Mounted Polearm",
+    "points": 190,
+    "size": "XL",
+    "weight": 1100,
+    "damage": "10d10 bludgeoning, slashing or piercing",
+    "reach": "40 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": ["sentinel"]
+  }
   {
     "id": "none",
     "name": "\u2014 None \u2014",
@@ -551,4 +769,5 @@
     "traits": []
   }
 ]
+
 
