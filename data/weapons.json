@@ -8,9 +8,11 @@
     "damage": "8d6 force",
     "range": "240 ft",
     "ability": "dex",
-    "traits": ["consumable", "seeking_16"]
+    "traits": [
+      "consumable",
+      "seeking_16"
+    ]
   },
-
   {
     "id": "medium_missile",
     "name": "(M) Medium Missile",
@@ -20,29 +22,33 @@
     "damage": "10d12 force",
     "range": "360 ft",
     "ability": "dex",
-    "traits": ["consumable", "seeking_13"]
+    "traits": [
+      "consumable",
+      "seeking_13"
+    ]
   },
-
-    {
+  {
     "id": "large_torpedo",
     "name": "(L) Torpedo",
     "points": 25,
     "size": "L",
     "weight": 60,
     "extra": "consume it to spawn a Torpedo vehicle.",
-    "traits": ["consumable"]
+    "traits": [
+      "consumable"
+    ]
   },
-
-      {
+  {
     "id": "extralarge_torpedo",
     "name": "(XL) Leviathan Torpedo",
     "points": 50,
     "size": "XL",
     "weight": 120,
     "extra": "consume it to spawn a Leviathan Torpedo vehicle.",
-    "traits": ["consumable"]
+    "traits": [
+      "consumable"
+    ]
   },
-
   {
     "id": "rocket",
     "name": "(XS) Rocket",
@@ -52,9 +58,11 @@
     "damage": "3d12 force",
     "range": "200 ft",
     "ability": "dex",
-    "traits": ["consumable", "imprecise"]
+    "traits": [
+      "consumable",
+      "imprecise"
+    ]
   },
-
   {
     "id": "bomb_s",
     "name": "(S) Small Bomb",
@@ -62,11 +70,13 @@
     "size": "S",
     "weight": 20,
     "damage": "6d6 force",
-    "range": "Special (speed / 10 × height)",
+    "range": "Special (speed / 10 \u00d7 height)",
     "ability": "dex",
-    "traits": ["consumable", "siege"]
+    "traits": [
+      "consumable",
+      "siege"
+    ]
   },
-
   {
     "id": "bomb_m",
     "name": "(M) Medium Bomb",
@@ -74,11 +84,13 @@
     "size": "M",
     "weight": 50,
     "damage": "10d6 force",
-    "range": "Special (speed / 10 × height)",
+    "range": "Special (speed / 10 \u00d7 height)",
     "ability": "dex",
-    "traits": ["consumable", "siege"]
+    "traits": [
+      "consumable",
+      "siege"
+    ]
   },
-
   {
     "id": "bomb_l",
     "name": "(L) Large Bomb",
@@ -86,11 +98,13 @@
     "size": "L",
     "weight": 200,
     "damage": "22d6 force",
-    "range": "Special (speed / 10 × height)",
+    "range": "Special (speed / 10 \u00d7 height)",
     "ability": "dex",
-    "traits": ["consumable", "siege"]
+    "traits": [
+      "consumable",
+      "siege"
+    ]
   },
-
   {
     "id": "revolving_carbine",
     "name": "(S) Revolving Carbine",
@@ -100,9 +114,11 @@
     "damage": "4d6 piercing",
     "range": "120 / 200 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_6"]
+    "traits": [
+      "ammunition",
+      "reload_6"
+    ]
   },
-
   {
     "id": "splinter_repeater",
     "name": "(S) Splinter Repeater",
@@ -112,9 +128,11 @@
     "damage": "5d4 piercing",
     "range": "60 / 120 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_10"]
+    "traits": [
+      "ammunition",
+      "reload_10"
+    ]
   },
-
   {
     "id": "arc_caster",
     "name": "(M) Arc Caster",
@@ -124,9 +142,10 @@
     "damage": "8d8 lightning",
     "range": "100 ft line",
     "ability": "dex",
-    "traits": ["charges_2"]
+    "traits": [
+      "charges_2"
+    ]
   },
-
   {
     "id": "bug_zapper",
     "name": "(S) Bug Zapper",
@@ -136,9 +155,12 @@
     "damage": "1d4 lightning",
     "range": "40 / 80 ft",
     "ability": "dex",
-    "traits": ["charges_8", "multishot_4", "anti_arthropod"]
+    "traits": [
+      "charges_8",
+      "multishot_4",
+      "anti_arthropod"
+    ]
   },
-
   {
     "id": "arcane_blaster",
     "name": "(M) Arcane Blaster",
@@ -148,10 +170,12 @@
     "damage": "1d10 force",
     "range": "60 / 120 ft",
     "ability": "dex",
-    "traits": ["charges_4", "multishot_3"]
+    "traits": [
+      "charges_4",
+      "multishot_3"
+    ]
   },
-
-    {
+  {
     "id": "ray_caster",
     "name": "(M) Ray Caster",
     "points": 50,
@@ -160,10 +184,12 @@
     "damage": "2d6 radiant",
     "range": "80 / 160 ft",
     "ability": "dex",
-    "traits": ["charges_4", "multishot_3"]
+    "traits": [
+      "charges_4",
+      "multishot_3"
+    ]
   },
-
-      {
+  {
     "id": "flamethrower",
     "name": "(M) Flamethrower",
     "points": 80,
@@ -172,10 +198,11 @@
     "damage": "8d6 fire",
     "range": "60 ft cone",
     "ability": "dex",
-    "traits": ["charges_4"]
+    "traits": [
+      "charges_4"
+    ]
   },
-
-        {
+  {
     "id": "antimaterial_rifle",
     "name": "(M) Antimaterial Rifle",
     "points": 100,
@@ -184,9 +211,10 @@
     "damage": "6d6 Necrotic",
     "range": "200 / 400 ft",
     "ability": "dex",
-    "traits": ["charges_2"]
+    "traits": [
+      "charges_2"
+    ]
   },
-
   {
     "id": "culverin_2lb",
     "name": "(M) Culverin (2 lb)",
@@ -196,9 +224,11 @@
     "damage": "3d12 bludgeoning",
     "range": "240 / 480 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1"]
+    "traits": [
+      "ammunition",
+      "reload_1"
+    ]
   },
-
   {
     "id": "rifled_culverin_2lb",
     "name": "(M) Rifled Culverin (2 lb)",
@@ -208,9 +238,12 @@
     "damage": "3d12 bludgeoning",
     "range": "240 / 480 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1", "rifled"]
+    "traits": [
+      "ammunition",
+      "reload_1",
+      "rifled"
+    ]
   },
-
   {
     "id": "scorpio",
     "name": "(L) Scorpio",
@@ -220,9 +253,11 @@
     "damage": "3d10 bludgeoning",
     "range": "100 / 200 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1"]
+    "traits": [
+      "ammunition",
+      "reload_1"
+    ]
   },
-
   {
     "id": "cannon_6lb",
     "name": "(L) Cannon (6 lb)",
@@ -232,9 +267,11 @@
     "damage": "2d20 bludgeoning",
     "range": "120 / 240 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1"]
+    "traits": [
+      "ammunition",
+      "reload_1"
+    ]
   },
-
   {
     "id": "rifled_cannon_6lb",
     "name": "(L) Rifled Cannon (6 lb)",
@@ -244,9 +281,12 @@
     "damage": "2d20 bludgeoning",
     "range": "120 / 240 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1", "rifled"]
+    "traits": [
+      "ammunition",
+      "reload_1",
+      "rifled"
+    ]
   },
-
   {
     "id": "flak_cannon",
     "name": "(L) Flak Cannon",
@@ -256,9 +296,12 @@
     "damage": "4d8 piercing (Dex save half)",
     "range": "80 / 140 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1", "area"]
+    "traits": [
+      "ammunition",
+      "reload_1",
+      "area"
+    ]
   },
-
   {
     "id": "ballista",
     "name": "(XL) Ballista",
@@ -268,9 +311,12 @@
     "damage": "4d10 piercing",
     "range": "120 / 480 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1", "big_game_hunter"]
+    "traits": [
+      "ammunition",
+      "reload_1",
+      "big_game_hunter"
+    ]
   },
-
   {
     "id": "mangonel",
     "name": "(XL) Mangonel",
@@ -280,9 +326,12 @@
     "damage": "5d10 bludgeoning",
     "range": "200 / 800 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1", "siege"]
+    "traits": [
+      "ammunition",
+      "reload_1",
+      "siege"
+    ]
   },
-
   {
     "id": "bombard",
     "name": "(XL) Bombard",
@@ -292,9 +341,13 @@
     "damage": "5d20 force",
     "range": "480 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1", "imprecise", "siege"]
+    "traits": [
+      "ammunition",
+      "reload_1",
+      "imprecise",
+      "siege"
+    ]
   },
-
   {
     "id": "light_crossbow",
     "name": "(XS) Light Crossbow",
@@ -304,9 +357,11 @@
     "damage": "1d8 piercing",
     "range": "80 / 320 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1"]
+    "traits": [
+      "ammunition",
+      "reload_1"
+    ]
   },
-
   {
     "id": "heavy_crossbow",
     "name": "(S) Heavy Crossbow",
@@ -316,10 +371,12 @@
     "damage": "1d10 piercing",
     "range": "100 / 400 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1"]
+    "traits": [
+      "ammunition",
+      "reload_1"
+    ]
   },
-  
-    {
+  {
     "id": "repeater_crossbow",
     "name": "(XS) Repeater Crossbow",
     "points": 15,
@@ -328,10 +385,12 @@
     "damage": "1d6 piercing",
     "range": "80 / 320 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_5"]
+    "traits": [
+      "ammunition",
+      "reload_5"
+    ]
   },
-  
-    {
+  {
     "id": "rifle",
     "name": "(S) Rifle",
     "points": 20,
@@ -340,10 +399,12 @@
     "damage": "2d10 piercing",
     "range": "80 / 240 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1"]
+    "traits": [
+      "ammunition",
+      "reload_1"
+    ]
   },
-  
-    {
+  {
     "id": "auto_rifle",
     "name": "(S) Autorifle",
     "points": 20,
@@ -352,9 +413,12 @@
     "damage": "2d6 piercing",
     "range": "80 / 160 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_10", "multishot_2"]
+    "traits": [
+      "ammunition",
+      "reload_10",
+      "multishot_2"
+    ]
   },
-
   {
     "id": "pistol",
     "name": "(XS) Pistol",
@@ -364,9 +428,11 @@
     "damage": "1d10 piercing",
     "range": "40 / 80 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_1"]
+    "traits": [
+      "ammunition",
+      "reload_1"
+    ]
   },
-
   {
     "id": "thermal_lance",
     "name": "(M) Thermal Lance",
@@ -376,9 +442,10 @@
     "damage": "4d10 fire",
     "range": "10 / 20 ft",
     "ability": "dex",
-    "traits": ["charges_5"]
+    "traits": [
+      "charges_5"
+    ]
   },
-
   {
     "id": "rotating_volley_gun",
     "name": "(M) Rotating Volley Gun",
@@ -388,10 +455,13 @@
     "damage": "1d6 piercing",
     "range": "60 / 120 ft",
     "ability": "dex",
-    "traits": ["ammunition", "reload_10", "multishot_5"]
+    "traits": [
+      "ammunition",
+      "reload_10",
+      "multishot_5"
+    ]
   },
-
-    {
+  {
     "id": "quick_reload",
     "name": "Quick Reload",
     "points": 20,
@@ -399,10 +469,11 @@
     "weight": 10,
     "range": "Self",
     "extra": "consume it to reload a single weapon with the reload_X property.",
-    "traits": ["consumable"]
+    "traits": [
+      "consumable"
+    ]
   },
-
-      {
+  {
     "id": "arcane_battery",
     "name": "Arcane Battery",
     "points": 10,
@@ -410,28 +481,87 @@
     "weight": 10,
     "range": "Self",
     "extra": "consume it to recharge one charge to a single weapon with the charges_X property.",
-    "traits": ["consumable"]
+    "traits": [
+      "consumable"
+    ]
   },
-  
+  {
+    "id": "boarding_pike",
+    "name": "(XS) Boarding Pike",
+    "points": 8,
+    "size": "XS",
+    "weight": 6,
+    "damage": "1d8 piercing",
+    "reach": "10 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": [
+      "reach"
+    ]
+  },
+  {
+    "id": "cleaving_blade",
+    "name": "(S) Cleaving Blade",
+    "points": 15,
+    "size": "S",
+    "weight": 25,
+    "damage": "2d6 slashing",
+    "reach": "5 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": [
+      "heavy"
+    ]
+  },
+  {
+    "id": "crushing_maul",
+    "name": "(M) Crushing Maul",
+    "points": 35,
+    "size": "M",
+    "weight": 120,
+    "damage": "4d6 bludgeoning",
+    "reach": "10 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": [
+      "siege"
+    ]
+  },
+  {
+    "id": "siege_drill",
+    "name": "(L) Siege Drill",
+    "points": 70,
+    "size": "L",
+    "weight": 380,
+    "damage": "6d6 piercing",
+    "reach": "5 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": [
+      "siege",
+      "armor_piercing"
+    ]
+  },
+  {
+    "id": "titan_hammer",
+    "name": "(XL) Titan Hammer",
+    "points": 110,
+    "size": "XL",
+    "weight": 900,
+    "damage": "10d6 bludgeoning",
+    "reach": "10 ft",
+    "attackType": "melee",
+    "ability": "str",
+    "traits": [
+      "siege"
+    ]
+  },
   {
     "id": "none",
-    "name": "— None —",
+    "name": "\u2014 None \u2014",
     "points": 0,
     "size": "XS",
     "weight": 0,
     "traits": []
   }
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
