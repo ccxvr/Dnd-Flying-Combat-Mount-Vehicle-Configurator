@@ -262,8 +262,8 @@
       { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
-      { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
-      { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot", "weaponType": "both" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot", "weaponType": "both" },
       { "id": "shoulder", "label": "Shoulder Mount", "size": "M", "arc": "Front/Back", "crewGroup": "pilot" }
     ],
     "traits": ["damage_threshold_10", "AI"]
@@ -284,24 +284,24 @@
     "baseHP": 60,
     "ground": { "standard": 50, "max": 150 },
         "actions": [
-      { "name": "Multiattack", "kind": "text", "text": "The construct makes two Armblade attacks."},
+      { "name": "Multiattack", "kind": "text", "text": "The construct makes two Punch attacks."},
       { "name": "Rocket Jump", "kind": "text", "text": "The construct jumps up to 60ft."},
       {
-        "name": "Armblade",
+        "name": "Punch",
         "kind": "attack",
         "attackType": "melee",
         "toHit": 7,
         "reach": "5 ft",
         "target": "one target",
-        "damage": "1d8 + 3 slashing damage"
+        "damage": "2d4 + 3 Bludgeoning damage"
       }
     ],
     "crewGroups": [
       { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
-      { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" },
-      { "id": "left_arm", "label": "Left Arm Mount", "size": "S", "arc": "Front", "crewGroup": "system" },
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system", "weaponType": "both" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "S", "arc": "Front", "crewGroup": "system", "weaponType": "both" },
       { "id": "shoulder", "label": "Shoulder Mount", "size": "XS", "arc": "Front/Back", "crewGroup": "system" }
     ],
     "traits": ["shielded", "AI"]
@@ -338,8 +338,8 @@
       { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
-      { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" },
-      { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" },
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system", "weaponType": "both" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system", "weaponType": "both" },
       { "id": "shoulder", "label": "Shoulder Mount", "size": "S", "arc": "Front/Back", "crewGroup": "system" }
     ],
     "traits": ["damage_threshold_5", "AI"]
@@ -376,8 +376,8 @@
       { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
-      { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system" },
-      { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system" }
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system", "weaponType": "both" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "system", "weaponType": "both" }
     ],
     "traits": ["damage_threshold_5", "charge", "AI"]
   },
@@ -413,8 +413,8 @@
       { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
-      { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system" },
-      { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system" },
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system", "weaponType": "both" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "system", "weaponType": "both" },
       { "id": "shoulder", "label": "Shoulder Mount", "size": "M", "arc": "Front/Back", "crewGroup": "system" }
     ],
     "traits": ["damage_threshold_10", "AI"]
@@ -450,8 +450,8 @@
       { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
-      { "id": "right_arm", "label": "Right Arm Mount", "size": "XL", "arc": "Front", "crewGroup": "system" },
-      { "id": "left_arm", "label": "Left Arm Mount", "size": "XL", "arc": "Front", "crewGroup": "system" },
+      { "id": "right_arm", "label": "Right Arm Mount", "size": "XL", "arc": "Front", "crewGroup": "system", "weaponType": "both" },
+      { "id": "left_arm", "label": "Left Arm Mount", "size": "XL", "arc": "Front", "crewGroup": "system", "weaponType": "both" },
       { "id": "shoulder", "label": "Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "system" }
     ],
     "traits": ["damage_threshold_15", "AI"]
@@ -498,15 +498,15 @@
     "baseHP": 580,
     "ground": { "standard": 30, "max": 90 },
     "actions": [
-      { "name": "Multiattack", "kind": "text", "text": "The Final Defender makes two Plasma Sword attacks." },
+      { "name": "Multiattack", "kind": "text", "text": "The Final Defender makes two Punch attacks." },
       {
-        "name": "Plasma Sword",
+        "name": "Punch",
         "kind": "attack",
         "attackType": "melee",
         "toHit": 12,
         "reach": "30 ft",
         "target": "one target",
-        "damage": "4d12 + 10 Slashing damage plus 4d6 Fire damage"
+        "damage": "4d12 + 10 bludgeoning damage"
       }
     ],
     "crewGroups": [
@@ -514,9 +514,9 @@
       { "id": "system", "label": "system" }
     ],
     "mountingPoints": [
-      { "id": "right_arm_main", "label": "Right Arm Main Mount", "size": "XL", "arc": "Front", "crewGroup": "pilot" },
+      { "id": "right_arm_main", "label": "Right Arm Main Mount", "size": "XL", "arc": "Front", "crewGroup": "pilot", "weaponType": "both" },
       { "id": "right_arm_aux", "label": "Right Arm Auxiliary Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
-      { "id": "left_arm_main", "label": "Left Arm Main Mount", "size": "XL", "arc": "Front", "crewGroup": "pilot" },
+      { "id": "left_arm_main", "label": "Left Arm Main Mount", "size": "XL", "arc": "Front", "crewGroup": "pilot", "weaponType": "both" },
       { "id": "left_arm_aux", "label": "Left Arm Auxiliary Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" },
       { "id": "right_shoulder", "label": "Right Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "pilot" },
       { "id": "left_shoulder", "label": "Left Shoulder Mount", "size": "L", "arc": "Front/Back", "crewGroup": "pilot" }
@@ -596,9 +596,9 @@
     { "id": "gunner", "label": "Gunner" }
   ],
   "mountingPoints": [
-    { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "pilot" },
-    { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "pilot" },
-    { "id": "shoulder_rack", "label": "Shoulder Rack", "size": "L", "arc": "Front/Back", "crewGroup": "gunner" }
+    { "id": "right_arm", "label": "Right Arm Mount", "size": "M", "arc": "Front", "crewGroup": "pilot", "weaponType": "both" },
+    { "id": "left_arm", "label": "Left Arm Mount", "size": "M", "arc": "Front", "crewGroup": "pilot", "weaponType": "both" },
+    { "id": "shoulder_rack", "label": "Shoulder Rack", "size": "L", "arc": "Front/Back", "crewGroup": "gunner", "weaponAllowlist": ["small_missile", "medium_missile", "rocket"] }
   ],
   "traits": ["damage_threshold_5"]
 },
@@ -634,7 +634,7 @@
     { "id": "pilot", "label": "Pilot" }
   ],
   "mountingPoints": [
-    { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot" }
+    { "id": "left_arm", "label": "Left Arm Mount", "size": "L", "arc": "Front", "crewGroup": "pilot", "weaponType": "both" }
   ],
   "traits": ["damage_threshold_10", "immune_fire"]
 },
@@ -836,6 +836,7 @@
       ]
  }
 ]
+
 
 
 
