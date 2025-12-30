@@ -144,6 +144,7 @@
     "ability": "dex",
     "traits": [
       "charges_2"
+      "area"
     ]
   },
   {
@@ -212,7 +213,8 @@
     "range": "200 / 400 ft",
     "ability": "dex",
     "traits": [
-      "charges_2"
+      "charges_2",
+      "big_game_hunter"
     ]
   },
   {
@@ -294,12 +296,11 @@
     "size": "L",
     "weight": 420,
     "damage": "4d8 piercing (Dex save half)",
-    "range": "80 / 140 ft",
+    "range": "80 / 140 ft, 20ft sphere",
     "ability": "dex",
     "traits": [
       "ammunition",
       "reload_1",
-      "area"
     ]
   },
   {
@@ -373,7 +374,8 @@
     "ability": "dex",
     "traits": [
       "ammunition",
-      "reload_1"
+      "reload_1",
+      "big_game_hunter"
     ]
   },
   {
@@ -526,7 +528,7 @@
     "attackType": "melee",
     "ability": "str",
     "traits": [
-      "reach"
+      "sentinel"
     ]
   },
   {
@@ -822,6 +824,7 @@
     "traits": []
   }
 ]
+
 
 
 
