@@ -442,10 +442,11 @@
     "size": "M",
     "weight": 140,
     "damage": "4d10 fire",
-    "range": "10 / 20 ft",
+    "range": "30ft cone",
     "ability": "dex",
     "traits": [
-      "charges_5"
+      "charges_5",
+      "area"
     ]
   },
   {
@@ -490,7 +491,8 @@
     "ability": "dex",
     "traits": [
       "ammunition",
-      "reload_1"
+      "reload_1",
+      "big_game_hunter"
     ]
   },
   {
@@ -824,6 +826,7 @@
     "traits": []
   }
 ]
+
 
 
 
