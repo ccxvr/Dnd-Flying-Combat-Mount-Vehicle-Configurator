@@ -102,31 +102,57 @@ function getMovementBlock(base, mode) {
   return { standard: 0, max: 0 };
 }
 
+/* ---------- WEAPON RESTRICTIONS (BASE + MOUNTPOINT) ---------- */
+
 /**
- * Weapon restrictions:
  * If the derived base (vehicle/mount) has `weaponAllowlist: ["id1","id2",...]`,
- * only those weapon ids may be selected on any mounting point.
+ * only those weapon ids may be selected on any mounting point (unless a mountpoint has its own allowlist).
+ *
+ * If a mounting point has `weaponAllowlist: [...]`, that list OVERRIDES the base list for that point.
  */
-function getWeaponAllowlist() {
+function getBaseWeaponAllowlist() {
   const derived = getDerivedBase?.() || config.base || {};
   const list = derived.weaponAllowlist;
   return Array.isArray(list) && list.length ? list : null;
 }
 
-function isWeaponAllowed(weaponId) {
-  const allow = getWeaponAllowlist();
+function getMountpointWeaponAllowlist(mp) {
+  const list = mp?.weaponAllowlist;
+  return Array.isArray(list) && list.length ? list : null;
+}
+
+/**
+ * Returns the effective allowlist for a specific mounting point:
+ * 1) mp.weaponAllowlist (if present)
+ * 2) base.weaponAllowlist (if present)
+ * 3) null (no restriction)
+ */
+function getEffectiveWeaponAllowlist(mp) {
+  return getMountpointWeaponAllowlist(mp) || getBaseWeaponAllowlist();
+}
+
+function isWeaponAllowedOnMountpoint(weaponId, mp) {
+  const allow = getEffectiveWeaponAllowlist(mp);
   if (!allow) return true;
   return allow.includes(weaponId);
 }
 
-function sanitizeIllegalSelections() {
-  const allow = getWeaponAllowlist();
-  if (!allow) return;
+/**
+ * Clears any illegal selections whenever we rebuild the UI (mods/base changes, etc.)
+ * Uses the CURRENT derived mounting points so per-mountpoint allowlists are respected.
+ */
+function sanitizeIllegalSelections(mountingPoints) {
+  const points = Array.isArray(mountingPoints) ? mountingPoints : [];
+  const mpById = Object.fromEntries(points.map(p => [p.id, p]));
 
   for (const slot of Object.keys(config.mounts || {})) {
     const sel = config.mounts[slot];
     if (!sel) continue;
-    if (sel.weaponId && sel.weaponId !== "none" && !allow.includes(sel.weaponId)) {
+
+    const mp = mpById[slot] || null;
+    const wid = sel.weaponId;
+
+    if (wid && wid !== "none" && !isWeaponAllowedOnMountpoint(wid, mp)) {
       sel.weaponId = "none";
       sel.qty = 0;
       config.proficiencies[slot] = false;
@@ -482,7 +508,7 @@ function applyModsToBase(base) {
       if (Number.isFinite(+fx.groundBonus.max)) b.ground.max = (b.ground.max || 0) + (+fx.groundBonus.max);
     }
 
-    // Optional: swimBonus / burrowBonus / climbBonus (safe even if you don’t use them yet)
+    // Optional: swimBonus / burrowBonus / climbBonus
     if (fx.swimBonus && typeof fx.swimBonus === "object") {
       if (!hasMoveBlock(b.swim)) b.swim = { standard: 0, max: 0 };
       if (Number.isFinite(+fx.swimBonus.standard)) b.swim.standard = (b.swim.standard || 0) + (+fx.swimBonus.standard);
@@ -545,7 +571,6 @@ function maxQtyFor(mpSize, weaponSize) {
   return Math.floor(mpUnits / wUnits);
 }
 
-
 // Weapon kind support (ranged vs melee mounted weapons)
 // - Weapons are considered "melee" if attackType/type === "melee" OR they define a "reach" field.
 // - Mounting points can restrict what they accept via mp.weaponType:
@@ -584,41 +609,42 @@ function maxQtyForMount(mp, w) {
   return maxQtyFor(mp.size, w.size);
 }
 
-
 function setupWeapons(mountingPoints) {
   const ui = document.getElementById("weaponsUI");
   if (!ui) return;
   ui.innerHTML = "";
 
-  // Enforce allowlist whenever we rebuild the UI (mods/base changes, etc.)
-  sanitizeIllegalSelections();
+  // Enforce allowlists whenever we rebuild the UI (mods/base changes, etc.)
+  sanitizeIllegalSelections(mountingPoints);
 
-  const allow = getWeaponAllowlist();
+  const baseAllow = getBaseWeaponAllowlist();
 
   mountingPoints.forEach(mp => {
     if (!config.mounts[mp.id]) config.mounts[mp.id] = { weaponId: "none", qty: 0 };
     if (config.proficiencies[mp.id] === undefined) config.proficiencies[mp.id] = false;
 
+    const effAllow = getEffectiveWeaponAllowlist(mp);
+
     const fittingWeapons = weapons
       .filter(w => maxQtyForMount(mp, w) >= 1)
       .filter(w => isWeaponCompatible(mp, w))
-      .filter(w => !allow || allow.includes(w.id));
+      .filter(w => !effAllow || effAllow.includes(w.id));
 
     const weaponOptions = fittingWeapons
       .map(w => `<option value="${w.id}" ${config.mounts[mp.id].weaponId === w.id ? "selected" : ""}>${w.name} (${w.points || 0} pts)</option>`)
       .join("");
 
+    // If current selection is illegal under effective allowlist, clear it
     const currentWeapon = weaponById(config.mounts[mp.id].weaponId);
-    let qtyOptions = `<option value="0">0</option>`;
-
-    // If current selection is illegal under allowlist, clear it
-    if (currentWeapon && currentWeapon.id !== "none" && !isWeaponAllowed(currentWeapon.id)) {
+    if (currentWeapon && currentWeapon.id !== "none" && !isWeaponAllowedOnMountpoint(currentWeapon.id, mp)) {
       config.mounts[mp.id].weaponId = "none";
       config.mounts[mp.id].qty = 0;
+      config.proficiencies[mp.id] = false;
     }
 
     const refreshedWeapon = weaponById(config.mounts[mp.id].weaponId);
 
+    let qtyOptions = `<option value="0">0</option>`;
     if (refreshedWeapon && refreshedWeapon.id !== "none") {
       const maxQ = maxQtyForMount(mp, refreshedWeapon);
       if (config.mounts[mp.id].qty > maxQ) config.mounts[mp.id].qty = maxQ;
@@ -633,8 +659,12 @@ function setupWeapons(mountingPoints) {
     const crewGroupId = mp.crewGroup || crewGroups[0].id;
     const crewGroupLabel = (crewGroups.find(g => g.id === crewGroupId) || crewGroups[0]).label;
 
-    const restrictionNote = allow
-      ? `<div style="font-size:0.9em; opacity:0.85;"><em>Restricted Loadout:</em> this platform can only equip specific ordnance.</div>`
+    const restrictionNote = effAllow
+      ? `<div style="font-size:0.9em; opacity:0.85;"><em>Restricted Loadout:</em> this mounting point can only equip specific weapons/ordnance.</div>`
+      : "";
+
+    const baseRestrictionNote = (!effAllow && baseAllow)
+      ? `<div style="font-size:0.9em; opacity:0.85;"><em>Restricted Loadout:</em> this platform can only equip specific weapons/ordnance.</div>`
       : "";
 
     ui.innerHTML += `
@@ -654,17 +684,20 @@ function setupWeapons(mountingPoints) {
         <option value="no" ${config.proficiencies[mp.id] ? "" : "selected"}>Not Proficient</option>
         <option value="yes" ${config.proficiencies[mp.id] ? "selected" : ""}>Proficient</option>
       </select>
-      ${restrictionNote}
+      ${restrictionNote || baseRestrictionNote}
       <br><br>
     `;
   });
 }
 
 function setMountWeapon(slot, weaponId) {
-  // Hard block: don’t allow selecting non-allowlisted weapons
-  if (weaponId !== "none" && !isWeaponAllowed(weaponId)) {
-    alert("That weapon cannot be equipped on this platform.");
-    setupWeapons(getDerivedMountingPoints());
+  const points = getDerivedMountingPoints();
+  const mp = points.find(p => p.id === slot) || null;
+
+  // Hard block: don’t allow selecting non-allowlisted weapons for THIS mountpoint
+  if (weaponId !== "none" && !isWeaponAllowedOnMountpoint(weaponId, mp)) {
+    alert("That weapon cannot be equipped on this mounting point.");
+    setupWeapons(points);
     return;
   }
 
@@ -674,7 +707,7 @@ function setMountWeapon(slot, weaponId) {
   if (weaponId === "none") config.mounts[slot].qty = 0;
   else config.mounts[slot].qty = Math.max(1, config.mounts[slot].qty || 1);
 
-  setupWeapons(getDerivedMountingPoints());
+  setupWeapons(points);
   render();
 }
 
@@ -749,352 +782,4 @@ function derivedEncumbrance(base) {
   }
   if (payload > cap * 1.5) enc = "Overloaded";
 
-  return { payload, cap, agility, maxSpeed, enc, moveMode: mode };
-}
-
-/* ---------- ACTION RENDERER ---------- */
-
-function renderNativeAction(a) {
-  if (!a || !a.name) return "";
-
-  if (a.kind === "attack") {
-    let out = `<strong>${a.name}.</strong> `;
-    const label = (a.attackType === "ranged" || a.type === "ranged") ? "Ranged Weapon Attack" : "Melee Weapon Attack";
-    out += `${label}: +${a.toHit} to hit, `;
-    if (a.reach) out += `reach ${a.reach}, `;
-    if (a.range) out += `range ${a.range}, `;
-    out += `${a.target || "one target"}. `;
-    out += `<em>Hit:</em> ${a.damage || "—"}`;
-    if (a.extra) out += ` ${a.extra}`;
-    if (a.notes) out += ` ${a.notes}`;
-    return out + `<br>`;
-  }
-
-  if (a.kind === "save") {
-    let out = `<strong>${a.name}.</strong> `;
-    if (a.range) out += `Range ${a.range}. `;
-    if (a.area) out += `Area ${a.area}. `;
-
-    const abil = a.save?.ability || "—";
-    const dc = a.save?.dc ?? "—";
-    out += `Each target must make a DC ${dc} ${abil} saving throw. `;
-
-    const fmtOutcome = (x, fallback) => {
-      if (!x) return fallback;
-      if (typeof x === "string") return x;
-      let parts = [];
-      if (x.damage) parts.push(x.damage === "half" ? "half damage" : x.damage);
-      if (x.condition) parts.push(x.condition);
-      if (x.effect) parts.push(x.effect);
-      return parts.length ? parts.join(", ") : fallback;
-    };
-
-    out += `<em>Failure:</em> ${fmtOutcome(a.onFail, "—")}. `;
-    out += `<em>Success:</em> ${fmtOutcome(a.onSave, "—")}. `;
-    if (a.notes) out += `${a.notes}`;
-    return out + `<br>`;
-  }
-
-  return `<strong>${a.name}.</strong> ${a.text || ""}<br>`;
-}
-
-function renderActionSection(title, list) {
-  if (!Array.isArray(list) || list.length === 0) return "";
-  let out = `<strong>${title}</strong><br>`;
-  for (const a of list) out += renderNativeAction(a);
-  out += `<br>`;
-  return out;
-}
-
-/* ---------- RENDER (uses derivedEncumbrance) ---------- */
-
-function render() {
-  if (!config.base) return;
-
-  const derived = getDerivedBase();
-  const enc = derivedEncumbrance(derived);
-  const pts = totalPoints();
-
-  const agilityWarning = (enc.enc === "Encumbered") ? "⚠ Agility halved due to load" : null;
-
-  const mode = enc.moveMode;
-  const primaryMove = getMovementBlock(derived, mode);
-
-  // NEW: show all movement modes if present (fly/swim/ground/burrow/climb)
-  const speedLines = [];
-  if (mode !== "none") {
-    speedLines.push(
-      `<strong>Speed</strong> ${mode} ${primaryMove.standard ?? 0} ft. (max ${enc.maxSpeed} ft.)`
-    );
-  } else {
-    speedLines.push(`<strong>Speed</strong> —`);
-  }
-
-  const extraModes = ["fly", "swim", "ground", "burrow", "climb"].filter(m => m !== mode);
-  for (const m of extraModes) {
-    if (hasMoveBlock(derived[m])) {
-      const blk = getMovementBlock(derived, m);
-      speedLines.push(`<strong>${traitLabel(m)}</strong> ${blk.standard} ft. (max ${blk.max} ft.)`);
-    }
-  }
-
-  let html = `
-    <h2>${derived.name}</h2>
-    <em>${derived.size} ${derived.type}</em><br>
-    <strong>Point Cost</strong> ${pts} pts
-    <hr>
-
-    <strong>Armor Class</strong> ${derived.baseAC}<br>
-    <strong>Hit Points</strong> ${derived.baseHP}<br>
-    ${speedLines.join("<br>")}<br>
-    <strong>Climb Rate</strong> ${derived.climbRate ?? "—"}<br>
-    <strong>Acceleration</strong> ${derived.acceleration ?? "—"}<br>
-
-    <hr>
-
-    STR ${derived.strength} (${abilityMod(derived.strength)})
-    DEX ${derived.dex} (${abilityMod(derived.dex)})
-    CON ${derived.con} (${abilityMod(derived.con)})
-
-    <hr>
-
-    <strong>Agility</strong> ${enc.agility}
-    ${agilityWarning ? `<br><strong>${agilityWarning}</strong>` : ""}<br>
-    <strong>Encumbrance</strong> ${enc.enc} (${enc.payload} / ${enc.cap} lb)
-    <hr>
-  `;
-
-  /* ===== CREW STATS ON PRINTED SHEET ===== */
-  const crewGroups = getCrewGroups();
-  if (!config.crewStats) config.crewStats = {};
-  html += `<strong>Crew</strong><br>`;
-  crewGroups.forEach(g => {
-    const crew = config.crewStats[g.id] || { dexMod: 0, profBonus: 0 };
-    const dexMod = Number.isFinite(+crew.dexMod) ? +crew.dexMod : 0;
-    const pb = Number.isFinite(+crew.profBonus) ? +crew.profBonus : 0;
-    html += `
-      <strong>${g.label}</strong>: DEX mod ${dexMod >= 0 ? "+" : ""}${dexMod}, PB ${pb >= 0 ? "+" : ""}${pb}<br>
-    `;
-  });
-  html += `<hr>`;
-  /* ===== END CREW SECTION ===== */
-
-  html += renderActionSection("Actions", derived.actions);
-  html += renderActionSection("Bonus Actions", derived.bonusActions);
-  html += renderActionSection("Reactions", derived.reactions);
-  html += renderActionSection("Legendary Actions", derived.legendaryActions);
-
-  // Mounted weapons
-  html += `<strong>Mounted Weapons</strong><br>`;
-  const points = getDerivedMountingPoints();
-  const groups = getCrewGroups();
-
-  for (let mp of points) {
-    const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
-    const w = weaponById(sel.weaponId);
-    if (!w || w.id === "none" || !sel.qty) continue;
-
-    const crewGroupId = mp.crewGroup || groups[0].id;
-    const crew = config.crewStats[crewGroupId] || { dexMod: 0, profBonus: 0 };
-    const proficient = !!config.proficiencies[mp.id];
-
-    // Ranged mounted weapons use crew DEX; melee mounted weapons use the platform STR (natural-attack convention).
-    const wk = weaponKind(w);
-    const ability = (wk === "melee") ? "str" : "dex";
-    const abilityBonus = (wk === "melee") ? abilityMod(derived.strength) : (crew.dexMod || 0);
-
-    const atk = abilityBonus + (proficient ? (crew.profBonus || 0) : 0);
-
-    const traitsText = Array.isArray(w.traits) && w.traits.length
-      ? w.traits.map(traitLabel).join(", ")
-      : "—";
-
-    html += `
-      <strong>${w.name}</strong> ×${sel.qty} (${mp.arc})<br>
-      Attack: +${atk} to hit<br>
-      Hit: ${w.damage}<br>
-      ${wk === "melee" ? ("Reach: " + (w.reach || "5 ft")) : ("Range: " + (w.range || "—"))}<br>
-      Traits: ${traitsText}<br>
-      Points: ${(w.points || 0) * sel.qty} pts<br><br>
-    `;
-  }
-
-  // Traits (with descriptions)
-  if (Array.isArray(derived.traits) && derived.traits.length) {
-    html += `<hr><strong>Traits</strong><br>`;
-    derived.traits.forEach(t => {
-      const tr = TRAITS[t];
-      if (tr) html += `<strong>${tr.name}.</strong> ${tr.desc}<br>`;
-      else html += `<strong>${traitLabel(t)}.</strong><br>`;
-    });
-  }
-
-  const statblock = document.getElementById("statblock");
-  if (statblock) statblock.innerHTML = html;
-}
-
-/* ---------- ROLL20 EXPORTER ---------- */
-
-function exportModObjects(modIds) {
-  if (!Array.isArray(modIds)) return [];
-  return modIds
-    .filter(Boolean)
-    .map(id => {
-      const m = modById(id);
-      return { id, name: m?.name || id, desc: m?.desc || "" };
-    });
-}
-
-function exportTraitObjects(traitIds) {
-  if (!Array.isArray(traitIds)) return [];
-  return traitIds
-    .filter(Boolean)
-    .map(id => {
-      const tr = TRAITS?.[id];
-      return { id, name: tr?.name || traitLabel(id), desc: tr?.desc || "" };
-    });
-}
-
-function buildRoll20Export() {
-  const base = getDerivedBase(); // mods applied
-  const enc = derivedEncumbrance(base); // single source of truth for agility/speed
-  const points = getDerivedMountingPoints();
-  const groups = getCrewGroups();
-
-  const mountedWeapons = [];
-  for (const mp of points) {
-    const sel = config.mounts[mp.id] || { weaponId: "none", qty: 0 };
-    if (!sel.qty || sel.weaponId === "none") continue;
-
-    // Fail-safe: don't export illegal selections
-    if (!isWeaponAllowed(sel.weaponId)) continue;
-
-    const w = weaponById(sel.weaponId);
-    if (!w) continue;
-
-    const crewGroupId = mp.crewGroup || groups[0].id;
-    const crew = config.crewStats[crewGroupId] || { dexMod: 0, profBonus: 0 };
-    const proficient = !!config.proficiencies[mp.id];
-    const atk = (crew.dexMod || 0) + (proficient ? (crew.profBonus || 0) : 0);
-
-    mountedWeapons.push({
-      mountPointId: mp.id,
-      mountPointLabel: mp.label,
-      crewGroupId,
-      name: w.name,
-      weaponId: w.id,
-      qty: sel.qty,
-      arc: mp.arc,
-
-      attackType: wk,          // "ranged" or "melee"
-      ability,                 // "dex" or "str"
-      attackBonus: atk,
-
-      damage: w.damage,
-      range: (wk === "ranged") ? (w.range || "") : "",
-      reach: (wk === "melee") ? (w.reach || "5 ft") : "",
-
-      target: w.target || "one target",
-      extra: w.extra || "",
-      traits: Array.isArray(w.traits) ? w.traits : []
-    });
-  }
-
-  // Export movement for all modes:
-  const mode = enc.moveMode;
-  const primary = getMovementBlock(base, mode);
-
-  // For the primary mode, use enc.maxSpeed (encumbrance-adjusted)
-  const primaryMaxAdjusted = (mode !== "none") ? enc.maxSpeed : 0;
-
-  const fly    = hasMoveBlock(base.fly)    ? getMovementBlock(base, "fly")    : { standard: 0, max: 0 };
-  const ground = hasMoveBlock(base.ground) ? getMovementBlock(base, "ground") : { standard: 0, max: 0 };
-  const swim   = hasMoveBlock(base.swim)   ? getMovementBlock(base, "swim")   : { standard: 0, max: 0 };
-  const burrow = hasMoveBlock(base.burrow) ? getMovementBlock(base, "burrow") : { standard: 0, max: 0 };
-  const climb  = hasMoveBlock(base.climb)  ? getMovementBlock(base, "climb")  : { standard: 0, max: 0 };
-
-  return {
-    schema: "flying-combat-config-v1",
-
-    baseId: config.base?.id || "",
-    baseName: base.name,
-    baseType: base.type,
-    baseSize: base.size,
-
-    saddleId: config.saddle?.id || null,
-    modIds: [...config.mods],
-    mods: exportModObjects(config.mods),
-
-    stats: {
-      ac: base.baseAC,
-      hp: base.baseHP,
-      str: base.strength,
-      dex: base.dex,
-      con: base.con,
-      agility: enc.agility
-    },
-
-    movement: {
-      mode,
-      standard: primary.standard ?? 0,
-      max: primaryMaxAdjusted,
-
-      // modes (with *_max). Primary mode gets encumbrance-adjusted max.
-      fly: fly.standard ?? 0,
-      fly_max: (mode === "fly") ? primaryMaxAdjusted : (fly.max ?? 0),
-
-      ground: ground.standard ?? 0,
-      ground_max: (mode === "ground") ? primaryMaxAdjusted : (ground.max ?? 0),
-
-      swim: swim.standard ?? 0,
-      swim_max: (mode === "swim") ? primaryMaxAdjusted : (swim.max ?? 0),
-
-      burrow: burrow.standard ?? 0,
-      burrow_max: (mode === "burrow") ? primaryMaxAdjusted : (burrow.max ?? 0),
-
-      climb: climb.standard ?? 0,
-      climb_max: (mode === "climb") ? primaryMaxAdjusted : (climb.max ?? 0),
-
-      climb_rate: base.climbRate ?? "—",
-      acceleration: base.acceleration ?? "—"
-    },
-
-    encumbrance: {
-      carried_weight: enc.payload,
-      capacity: enc.cap,
-      state: enc.enc
-    },
-
-    weaponAllowlist: Array.isArray(base.weaponAllowlist) ? [...base.weaponAllowlist] : null,
-
-    traits: exportTraitObjects(base.traits),
-
-    actions: (() => {
-      const list = Array.isArray(base.actions) ? [...base.actions] : [];
-      const acc = (base.acceleration ?? '').toString().trim();
-      if (acc) {
-        // Export acceleration as a rollable Roll20 action (kept as a statline in the web renderer)
-        list.push({ name: 'Acceleration', kind: 'text', text: `Acceleration: [[${acc}]]` });
-      }
-      return list;
-    })(),
-    bonusActions: Array.isArray(base.bonusActions) ? base.bonusActions : [],
-    reactions: Array.isArray(base.reactions) ? base.reactions : [],
-    legendaryActions: Array.isArray(base.legendaryActions) ? base.legendaryActions : [],
-
-    mountedWeapons,
-
-    crewStats: JSON.parse(JSON.stringify(config.crewStats || {})),
-    proficiencies: JSON.parse(JSON.stringify(config.proficiencies || {}))
-  };
-}
-
-async function exportRoll20JSON() {
-  const payload = buildRoll20Export();
-  await navigator.clipboard.writeText(JSON.stringify(payload, null, 2));
-  alert("Roll20 export JSON copied to clipboard!");
-}
-
-/* ---------- START ---------- */
-
-loadData();
+  return { payload, cap, agility, maxSpe
