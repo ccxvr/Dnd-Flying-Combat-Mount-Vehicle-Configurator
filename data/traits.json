@@ -10,6 +10,11 @@
     "desc": "Cannot carry a rider or mount weapons, can only be spawned by a weapon or ability during combat and not chosen during deployment."
   },
       {
+    "id": "top_plating",
+    "name": "Top Plating",
+    "desc": "This vehicle or mount is more resistant to attacks from above when attacked from a higher altitude; it gains a +2 bonus to its AC."
+  },
+      {
     "id": "shielded",
     "name": "Shielded",
     "desc": "This Mount or Vehicle is always considered as holding a shield for the purpose of rules (The AC bonus is already calculated in the stats)."
@@ -275,6 +280,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
