@@ -1409,6 +1409,30 @@
       { "name": "Stomp", "kind": "attack", "attackType": "melee", "toHit": 9, "reach": "5 ft", "target": "one target", "damage": "3d10 + 6 bludgeoning", "extra": "when the Triceratops moves through a large or smaller creature it can make one stomp attack as a free action" }
     ]
   },
+  {
+    "id": "stegosandros",
+    "tags": ["stegosandros", "dinosaur"],
+    "name": "Stegosandros",
+    "type": "Beast (Mount)",
+    "size": "Huge",
+    "climbRate": "0",
+    "acceleration": "1d4",
+    "points": 80,
+    "strength": 20,
+    "dex": 12,
+    "con": 20,
+    "agility": 2,
+    "baseAC": 15,
+    "baseHP": 104,
+    "carryMultiplier": 4,
+    "fly": { "standard": 0, "max": 0 },
+    "ground": { "standard": 40, "max": 120 },
+    "traits": ["top_plating"],
+    "actions": [
+      { "name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "5 ft", "target": "one target", "damage": "4d6 + 5 piercing" },
+      { "name": "Stomp", "kind": "attack", "attackType": "melee", "toHit": 8, "reach": "5 ft", "target": "one target", "damage": "3d10 + 5 bludgeoning", "extra": "when the Stegosandros moves through a large or smaller creature it can make one stomp attack as a free action" }
+    ]
+  },
         {
     "id": "tyrannosaurus",
     "tags": ["tyrannosaurus", "dinosaur"],
@@ -1508,6 +1532,7 @@
     ]
   }
 ]
+
 
 
 
