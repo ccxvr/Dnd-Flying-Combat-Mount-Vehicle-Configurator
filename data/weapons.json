@@ -461,6 +461,36 @@
       "multishot_5"
     ]
   },
+    {
+    "id": "grappeling_gun",
+    "name": "(M) Grappeling Gun",
+    "points": 90,
+    "size": "M",
+    "weight": 100,
+    "damage": "1d6 piercing",
+    "extra": "If the target is Large or smaller: move the target 10ft towards you, the target is grappled by you, escape DC 15, for each subsequent turn if the target is still grappled, you can choose to move another 10ft towards you.",
+    "range": "30ft",
+    "ability": "dex",
+    "traits": [
+      "ammunition",
+      "reload_1"
+    ]
+  },
+      {
+    "id": "Harpoon_gun",
+    "name": "(L) Harpoon Gun",
+    "points": 190,
+    "size": "L",
+    "weight": 200,
+    "damage": "1d12 piercing",
+    "extra": "If the target is large or larger, Move target 10ft towards you, the target is grappled by you, escape DC 15, for each subsequent turn if the target is still grappled, you can choose to move another 10ft towards you.",
+    "range": "60ft",
+    "ability": "dex",
+    "traits": [
+      "ammunition",
+      "reload_1"
+    ]
+  },
   {
     "id": "quick_reload",
     "name": "Quick Reload",
@@ -759,7 +789,7 @@
     "attackType": "melee",
     "ability": "str",
     "traits": ["sentinel"]
-  }
+  },
   {
     "id": "none",
     "name": "\u2014 None \u2014",
@@ -769,5 +799,6 @@
     "traits": []
   }
 ]
+
 
 
