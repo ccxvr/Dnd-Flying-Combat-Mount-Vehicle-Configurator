@@ -15,7 +15,7 @@
     "desc": "The mount and the rider take half damage from Fiends, and have advantage on saving trows from effects caused by Fiends."
   },
       {
-    "id": "resist_lighting",
+    "id": "resist_lightning",
     "name": "Lighting Resistance",
     "desc": "This mount or vehicle is resistant to lighting damage."
   },
@@ -315,6 +315,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
