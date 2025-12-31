@@ -99,6 +99,91 @@
     ]
   },
 
+    {
+    "id": "stormwing_1seat_large_saddle",
+    "name": "Stotmwing Single Seat Saddle",
+    "points": 30,
+    "weight": 80,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["stormwing"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m", "label": "Driver Main Mount", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_l", "label": "Driver Paylod Mount", "size": "L", "arc": "Direct Front", "crewGroup": "driver", "weaponAllowlist": ["small_missile", "medium_missile", "rocket", "bomb_s", "bomb_m", "bomb_l", "large_torpedo"]}
+    ]
+  },
+
+      {
+    "id": "stormwing_2seat_large_saddle",
+    "name": "Stotmwing Double Seat Saddle",
+    "points": 130,
+    "weight": 150,
+    "seats": 2,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["stormwing"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" 
+    ],
+    "mountingPoints": [
+      { "id": "drv_s", "label": "Driver Main Mount", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_l", "label": "Driver Payload Mount", "size": "L", "arc": "Direct Front", "crewGroup": "driver", "weaponAllowlist": ["small_missile", "medium_missile", "rocket", "bomb_s", "bomb_m", "bomb_l", "large_torpedo"]},
+      { "id": "gun_s_back", "label": "Rear Gun", "size": "S", "arc": "Back", "crewGroup": "gunner" }
+    ]
+  },
+
+  {
+    "id": "great_stormwing_saddle",
+    "name": "Great Stormwing Saddle",
+    "points": 50,
+    "weight": 400,
+    "seats": 2,
+    "allowedSizes": ["Huge"],
+    "allowedMountIds": ["great_stormwing"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m", "label": "Driver Main Mount", "size": "M", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xl", "label": "Driver Payload Mount", "size": "XL", "arc": "Direct Front", "crewGroup": "driver", "weaponAllowlist": ["small_missile", "medium_missile", "rocket", "bomb_s", "bomb_m", "bomb_l", "large_torpedo", "extralarge_torpedo"]},
+
+
+      { "id": "gun_m_back", "label": "Gunner Mount", "size": "M", "arc": "Back", "crewGroup": "gunner" },
+    ]
+  },
+
+      {
+    "id": "roc_bomber_saddle",
+    "name": "Roc Strategic Bomber Saddle",
+    "points": 100,
+    "weight": 620,
+    "seats": 4,
+    "allowedSizes": ["Gargantuan"],
+    "allowedMountIds": ["roc"],
+    "crewGroups": [
+      { "id": "pilot", "label": "Pilot" },
+      { "id": "bomber", "label": "Bomber" },
+      { "id": "top_gunner", "label": "Top Gunner" },
+      { "id": "rear_gunner", "label": "Rear Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "pilot_m_front", "label": "Pilot Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "pilot" },
+
+      { "id": "front_xl_front1", "label": "Front Payload Mount 1 (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "bomber", "weaponAllowlist": ["small_missile", "medium_missile", "rocket", "bomb_s", "bomb_m", "bomb_l", "large_torpedo", "extralarge_torpedo"] },
+      { "id": "front_xl_front2", "label": "Front Payload Mount 2 (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "bomber", "weaponAllowlist": ["small_missile", "medium_missile", "rocket", "bomb_s", "bomb_m", "bomb_l", "large_torpedo", "extralarge_torpedo"] },
+
+      { "id": "top_m_fb", "label": "Top Main Mount (M)", "size": "M", "arc": "Front/Back", "crewGroup": "top_gunner" },
+      { "id": "top_s_fb", "label": "Top Mount (S)", "size": "S", "arc": "Front/Back", "crewGroup": "top_gunner" },
+
+      { "id": "rear_m_back_1", "label": "Rear Mount 1 (M)", "size": "M", "arc": "Back", "crewGroup": "rear_gunner" },
+      { "id": "rear_m_back_2", "label": "Rear Mount 2 (M)", "size": "M", "arc": "Back", "crewGroup": "rear_gunner" }
+    ]
+  },
+
   {
     "id": "flat_head_wyvern_saddle",
     "name": "Flat-Head Wyvern Saddle",
@@ -852,6 +937,7 @@
     ]
   }
 ]
+
 
 
 
