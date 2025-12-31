@@ -1001,7 +1001,35 @@
     "traits": ["charge", "hover", "protection_from_fiends"],
     "actions": [ { "name": "Hooves", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d4 + 4 bludgeoning plus 3d6 radiant damage" }]
   },
-  
+
+  {
+    "id": "unicorn",
+    "tags": ["horse"],
+    "name": "Unicorn",
+    "type": "Celestial (Ground Mount)",
+    "size": "Large",
+    "climbRate": "0",
+    "acceleration": "2d6",
+    "points": 6,
+    "strength": 18,
+    "dex": 14,
+    "con": 15,
+    "agility": 4,
+    "baseAC": 12,
+    "baseHP": 97,
+    "carryMultiplier": 2,
+    "fly": { "standard": 0, "max": 0 },
+    "ground": { "standard": 50, "max": 150 },
+    "traits": ["charge", "resist_magic"],
+    "actions": [ {"name": "Multiattack", "kind": "text", "text": "The unicorn makes one Hooves attack and one Radiant Horn attack."},
+    {"name": "Spellcasting", "kind": "text", "text": "The unicorn casts one of the following spells, requiring no spell components and using Charisma as the spellcasting ability (spell save DC 14): At Will: Detect Evil and Good, Druidcraft, 1/Day Each: Calm Emotions, Dispel Evil and Good, Entangle, Pass without Trace, Word of Recall"},
+    { "name": "Hooves", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "2d4 + 4 bludgeoning damage" },
+    { "name": "Radiant Horn", "kind": "attack", "attackType": "melee", "toHit": 7, "reach": "5 ft", "target": "one target", "damage": "1d10 + 4 radiant damage" }],
+    "bonusActions":[{"name": "Unicorn’s Blessing (3/Day)", "kind": "text", "text": "The unicorn touches another creature with its horn and casts Cure Wounds or Lesser Restoration on that creature, using the same spellcasting ability as Spellcasting"}],
+    "legendaryActions": [{"name": "Charging Horn", "kind": "text", "text": "The unicorn moves up to half its Speed without provoking Opportunity Attacks, and it makes one Radiant Horn attack"},
+    {"name": "Shimmering Shield", "kind": "text", "text": "The unicorn targets itself or one creature it can see within 60 feet of itself. The target gains 10 (3d6) Temporary Hit Points, and its AC increases by 2 until the end of the unicorn’s next turn. The unicorn can’t take this action again until the start of its next turn."}]  
+  },
+
   {
     "id": "hydra",
     "tags": ["hydra"],
@@ -1694,6 +1722,7 @@
     ]
   }
 ]
+
 
 
 
