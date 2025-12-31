@@ -904,8 +904,8 @@
     "mountingPoints": [
       { "id": "drv_m_1", "label": "Driver Mount 1", "size": "M", "arc": "Front", "crewGroup": "driver" },
 
-      { "id": "gun_m_back", "label": "Rear Gunner Mount", "size": "M", "arc": "Back", "crewGroup": "gunner" },
-      { "id": "gun_L_top", "label": "Main Turrett", "size": "L", "arc": "Front/Back", "crewGroup": "gunner" }
+      { "id": "gun_m_back", "label": "Rear Gunner Mount", "size": "M", "arc": "Back", "crewGroup": "rear_gunner" },
+      { "id": "gun_L_top", "label": "Main Turrett", "size": "L", "arc": "Front/Back", "crewGroup": "top_gunner" }
     ]
   },
 
@@ -937,6 +937,7 @@
     ]
   }
 ]
+
 
 
 
