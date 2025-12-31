@@ -778,32 +778,6 @@
     ]
   },
   {
-    "id": "test_do_not_use",
-    "tags": [],
-    "name": "Test Do Not Use",
-    "type": "Test (Mount)",
-    "size": "Large",
-    "climbRate": "1/2",
-    "acceleration": "2d6",
-    "points": 12,
-    "strength": 20,
-    "dex": 20,
-    "con": 20,
-    "agility": 9,
-    "baseAC": 20,
-    "baseHP": 200,
-    "carryMultiplier": 2,
-    "fly": { "standard": 80, "max": 240 },
-    "ground": { "standard": 40, "max": 120 },
-    "traits": [],
-    "actions": [
-      { "name": "Attack", "kind": "attack", "attackType": "melee", "toHit": 0, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" },
-      { "name": "Flak Burst", "kind": "save", "save": { "ability": "DEX", "dc": 14 }, "area": "20-foot-radius sphere", "range": "80 ft", "onFail": "4d8 piercing", "onSave": "half damage", "notes": "A creature that is Huge or larger has disadvantage on this save." },
-      { "name": "Stunning Roar", "kind": "save", "save": { "ability": "CON", "dc": 15 }, "area": "30-foot cone", "onFail": { "damage": "2d6 thunder", "condition": "stunned (until end of its next turn)" }, "onSave": { "damage": "half", "condition": "none" } },
-      { "name": "Dive Bomb", "kind": "text", "text": "If the mount moves at least 40 feet straight toward a target and then hits with a melee attack on the same turn, the target takes an extra 2d8 bludgeoning damage and must succeed on a DC 14 Strength saving throw or be knocked prone." }
-    ]
-  },
-  {
     "id": "vahkrel",
     "tags": ["demon", "fiend"],
     "name": "Vah'k'rel",
@@ -1722,6 +1696,7 @@
     ]
   }
 ]
+
 
 
 
