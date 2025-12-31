@@ -24,11 +24,6 @@
     "name": "Magic resistance",
     "desc": "The mount or vehicle has Advantage on saving throws against spells and other magical effects."
   },
-      {
-    "id": "immune_fire",
-    "name": "Fire Immunity",
-    "desc": "This mount or vehicle is immune to fire damage."
-  },
         {
     "id": "confer_resist_fire",
     "name": "Confer Fire Resistance",
@@ -315,6 +310,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
