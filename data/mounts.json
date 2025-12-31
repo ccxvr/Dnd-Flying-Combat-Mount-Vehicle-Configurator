@@ -1010,7 +1010,7 @@
     "size": "Large",
     "climbRate": "0",
     "acceleration": "2d6",
-    "points": 6,
+    "points": 330,
     "strength": 18,
     "dex": 14,
     "con": 15,
@@ -1722,6 +1722,7 @@
     ]
   }
 ]
+
 
 
 
