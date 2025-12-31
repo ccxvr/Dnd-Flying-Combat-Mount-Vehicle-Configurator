@@ -11,8 +11,8 @@
       { "id": "driver", "label": "Driver" }
     ],
     "mountingPoints": [
-      { "id": "drv_s_1", "label": "Driver Mount 1", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
-      { "id": "drv_s_2", "label": "Driver Mount 2", "size": "S", "arc": "Direct Front", "crewGroup": "driver" }
+      { "id": "drv_xs_1", "label": "Driver Mount 1", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_2", "label": "Driver Mount 2", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" }
     ]
   },
 
@@ -823,6 +823,20 @@
       { "id": "gun_L_top", "label": "Main Turrett", "size": "L", "arc": "Front/Back", "crewGroup": "gunner" }
     ]
   },
+
+  {
+    "id": "horse_saddle",
+    "name": "Horse Saddle",
+    "points": -60,
+    "weight": 20,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountTags": ["horse"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": []
+  },
   
       {
     "id": "no_saddle",
@@ -838,6 +852,7 @@
     ]
   }
 ]
+
 
 
 
