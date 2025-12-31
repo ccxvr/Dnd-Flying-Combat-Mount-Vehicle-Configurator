@@ -1578,7 +1578,7 @@
     "fly": { "standard": 0, "max": 0 },
     "ground": { "standard": 30, "max": 90 },
     "swim": { "standard": 60, "max": 180 },
-    "traits": ["amphibious", "shielded", "unusual_nature", "blessing_of_the_sea"],
+    "traits": ["amphibious", "shielded", "unusual_nature", "blessing_of_the_sea", "legendary_resistance_3day"],
     "actions": [
       {"name": "Multiattack", "kind": "text", "text": "The dragon turtle makes one Bite or Tail attack and two Claw attacks."},
       {"name": "Bite", "kind": "attack", "attackType": "melee", "toHit": 16, "reach": "15 ft", "target": "one target", "damage": "3d12 + 9 piercing plus 2d12 Fire damage", "extra": "Being underwater doesn’t grant Resistance to this Fire damage." },
@@ -1598,6 +1598,7 @@
     ]
   }
 ]
+
 
 
 
