@@ -5,6 +5,11 @@
     "desc": "While carrying a trained rider, this mount has advantage on checks to avoid stalls or forced maneuvers."
   },
     {
+    "id": "blessing_of_the_sea",
+    "name": "Blessing of the Sea",
+    "desc": "If the dragon turtle would be reduced to 0 hit points, its current hit point total instead resets to 350 hit points, and it recharges its Steam Breath. Additionally, the dragon turtle can now use the options in the (Mythic Actions) section for 1 hour."
+  },
+    {
     "id": "torpedo",
     "name": "Torpedo",
     "desc": "Cannot carry a rider or mount weapons, can only be spawned by a weapon or ability during combat and not chosen during deployment."
@@ -280,6 +285,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
