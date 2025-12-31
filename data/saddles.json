@@ -777,6 +777,27 @@
       { "id": "rear_xl_back", "label": "Rear Siege Mount (XL)", "size": "XL", "arc": "Direct Back", "crewGroup": "rear_gunner" }
     ]
   },
+
+    {
+    "id": "dragon_turtle_howdah",
+    "name": "Dragon Turtle Howdah",
+    "points": 70,
+    "weight": 500,
+    "seats": 3,
+    "allowedSizes": ["Huge"],
+    "allowedMountIds": ["juvenile_dragon_turtle"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" },
+      { "id": "top_gunner", "label": "Top Gunner" },
+      { "id": "rear_gunner", "label": "Rear Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_m_1", "label": "Driver Mount 1", "size": "M", "arc": "Front", "crewGroup": "driver" },
+
+      { "id": "gun_m_back", "label": "Rear Gunner Mount", "size": "M", "arc": "Back", "crewGroup": "gunner" },
+      { "id": "gun_L_top", "label": "Main Turrett", "size": "L", "arc": "Front/Back", "crewGroup": "gunner" }
+    ]
+  },
   
       {
     "id": "no_saddle",
@@ -792,6 +813,7 @@
     ]
   }
 ]
+
 
 
 
