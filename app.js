@@ -56,6 +56,53 @@ function traitLabel(traitId) {
     .replace(/\b\w/g, c => c.toUpperCase());
 }
 
+/* ---------- SEARCHABLE DROPDOWNS ---------- */
+
+function _norm(s) {
+  return String(s || "").toLowerCase().trim();
+}
+
+/**
+ * Filters <option> nodes in a <select> by their displayed text.
+ * - Keeps placeholder-like options (value === "" or "none") visible.
+ * - Always keeps the currently selected option visible.
+ */
+function filterSelectOptions(selectEl, query) {
+  if (!selectEl) return;
+  const q = _norm(query);
+  const selectedValue = selectEl.value;
+
+  Array.from(selectEl.options || []).forEach(opt => {
+    const val = String(opt.value || "");
+    const keep = (val === "" || val === "none" || val === selectedValue);
+    if (keep) {
+      opt.hidden = false;
+      return;
+    }
+    if (!q) {
+      opt.hidden = false;
+      return;
+    }
+    opt.hidden = !_norm(opt.textContent).includes(q);
+  });
+}
+
+function attachSelectSearch(inputEl, selectEl) {
+  if (!inputEl || !selectEl) return;
+  if (inputEl.dataset.boundTo === selectEl.id) return; // avoid double-binding
+  inputEl.dataset.boundTo = selectEl.id;
+
+  inputEl.addEventListener("input", () => filterSelectOptions(selectEl, inputEl.value));
+  // Apply immediately (useful when re-populating selects)
+  filterSelectOptions(selectEl, inputEl.value);
+}
+
+// Weapons are generated dynamically, so we use a helper keyed by mountpoint slot.
+function filterWeaponOptions(slot, query) {
+  const sel = document.querySelector(`#weaponsUI select[data-slot="${CSS.escape(slot)}"]`);
+  filterSelectOptions(sel, query);
+}
+
 /**
  * Some mounts (e.g. tentacles/limbs) must use the special NO_saddle only.
  * We treat any mount with:
@@ -223,6 +270,9 @@ function init() {
     select.innerHTML += `<option value="${b.id}">${b.name} (${b.type})</option>`;
   });
 
+  // Search box for the base dropdown
+  attachSelectSearch(document.getElementById("baseSearch"), select);
+
   select.onchange = () => selectBase(select.value);
   selectBase(allBases[0].id);
   render();
@@ -294,6 +344,9 @@ function setupMount() {
   validSaddles.forEach(s => {
     saddleSelect.innerHTML += `<option value="${s.id}">${s.name}</option>`;
   });
+
+  // Search box for the saddle dropdown
+  attachSelectSearch(document.getElementById("saddleSearch"), saddleSelect);
 
   saddleSelect.onchange = () => {
     selectSaddle(saddleSelect.value);
@@ -414,6 +467,9 @@ function setupModsUI() {
       modsSelect.innerHTML += `<option value="${m.id}">${m.name} (${m.points || 0} pts)</option>`;
     });
   }
+
+  // Search box for the mods dropdown
+  attachSelectSearch(document.getElementById("modsSearch"), modsSelect);
 
   renderModsList();
   setupWeapons(getDerivedMountingPoints());
@@ -670,8 +726,10 @@ function setupWeapons(mountingPoints) {
     ui.innerHTML += `
       <strong>${mp.label} (${mp.arc})</strong><br>
       Crew: <em>${crewGroupLabel}</em><br>
-      Weapon:
-      <select onchange="setMountWeapon('${mp.id}', this.value)">
+      Weapon:<br>
+      <input type="text" placeholder="Search weapons..." style="width:260px; margin-bottom:6px;"
+        oninput="filterWeaponOptions('${mp.id}', this.value)">
+      <select data-slot="${mp.id}" onchange="setMountWeapon('${mp.id}', this.value)">
         <option value="none">— None —</option>
         ${weaponOptions}
       </select>
