@@ -318,7 +318,7 @@
     "weight": 100,
     "seats": 1,
     "allowedSizes": ["Large"],
-    "allowedMountIds": ["brown_scavver", "night_scavver"],
+    "allowedMountIds": ["brown_scavver"],
     "crewGroups": [
       { "id": "driver", "label": "Driver" }
     ],
@@ -332,6 +332,31 @@
     ]
   },
 
+  {
+    "id": "huge_scavver_saddle",
+    "name": "Huge Scavver Saddle",
+    "points": 0,
+    "weight": 300,
+    "seats": 1,
+    "allowedSizes": ["Large"],
+    "allowedMountIds": ["night_scavver", "void_scavver"],
+    "crewGroups": [
+      { "id": "driver", "label": "Driver" }
+    ],
+    "mountingPoints": [
+      { "id": "drv_xs_1", "label": "Driver Mount 1", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_2", "label": "Driver Mount 2", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_3", "label": "Driver Mount 3", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_4", "label": "Driver Mount 4", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_5", "label": "Driver Mount 5", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_6", "label": "Driver Mount 6", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_7", "label": "Driver Mount 7", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_8", "label": "Driver Mount 8", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_9", "label": "Driver Mount 9", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" },
+      { "id": "drv_xs_10", "label": "Driver Mount 10", "size": "XS", "arc": "Direct Front", "crewGroup": "driver" }
+    ]
+  },
+  
   {
     "id": "vahkrel_saddle",
     "name": "Vah’k’rel Saddle",
@@ -813,6 +838,7 @@
     ]
   }
 ]
+
 
 
 
