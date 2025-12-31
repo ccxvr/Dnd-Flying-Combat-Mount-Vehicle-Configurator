@@ -748,6 +748,35 @@
       { "id": "gun_m_back", "label": "Gunner Mount", "size": "M", "arc": "Back", "crewGroup": "gunner" }
     ]
   },
+
+  {
+    "id": "dragon_turtle__fortress_howdah",
+    "name": "Dragon Turtle Fortress Howdah",
+    "points": 160,
+    "weight": 2500,
+    "seats": 6,
+    "allowedSizes": ["Gargantuan"],
+    "allowedMountIds": ["dragon_turtle", "ancient_dragon_turtle"],
+    "crewGroups": [
+      { "id": "pilot", "label": "Pilot" },
+      { "id": "front_gunner", "label": "Front Gunner" },
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "star_gunner", "label": "Starboard Gunner" },
+      { "id": "top_gunner", "label": "Top Gunner" },
+      { "id": "rear_gunner", "label": "Rear Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "pilot_m_front", "label": "Pilot Mount (M)", "size": "M", "arc": "Direct Front", "crewGroup": "pilot" },
+
+      { "id": "front_xl_front1", "label": "Front Siege Mount 1 (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "front_gunner" },
+      { "id": "front_xl_front2", "label": "Front Siege Mount 2 (XL)", "size": "XL", "arc": "Direct Front", "crewGroup": "front_gunner" },
+      { "id": "port_m_side", "label": "Port Heavy (M)", "size": "M", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "star_m_side", "label": "Starboard Heavy (M)", "size": "M", "arc": "Starboard", "crewGroup": "star_gunner" },
+
+      { "id": "top_l_fb", "label": "Top Heavy (L)", "size": "L", "arc": "Front/Back", "crewGroup": "top_gunner" },
+      { "id": "rear_xl_back", "label": "Rear Siege Mount (XL)", "size": "XL", "arc": "Direct Back", "crewGroup": "rear_gunner" }
+    ]
+  },
   
       {
     "id": "no_saddle",
@@ -763,6 +792,7 @@
     ]
   }
 ]
+
 
 
 
