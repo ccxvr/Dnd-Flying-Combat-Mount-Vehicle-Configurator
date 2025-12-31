@@ -34,7 +34,7 @@
     "name": "Medium Horse Barding",
     "points": 30,
     "desc": "Chainmail barding for a Horse.",
-    "requires": { "baseType": ["Mount"], "tags": ["Horse"] },
+    "requires": { "baseType": ["Mount"], "tags": ["horse"] },
     "effects": {
       "statBonuses": { "baseAC": 2 }
     }
@@ -44,7 +44,7 @@
     "name": "Heavy Horse Barding",
     "points": 40,
     "desc": "Designed specifically for horses; grants Tough Skin.",
-    "requires": { "baseType": ["Mount"], "tags": ["Horse"] },
+    "requires": { "baseType": ["Mount"], "tags": ["horse"] },
     "effects": {
       "addTraits": ["tough_skin"]
     }
