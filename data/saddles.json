@@ -126,7 +126,7 @@
     "allowedMountIds": ["stormwing"],
     "crewGroups": [
       { "id": "driver", "label": "Driver" },
-      { "id": "gunner", "label": "Gunner" 
+      { "id": "gunner", "label": "Gunner" }
     ],
     "mountingPoints": [
       { "id": "drv_s", "label": "Driver Main Mount", "size": "S", "arc": "Direct Front", "crewGroup": "driver" },
@@ -937,6 +937,7 @@
     ]
   }
 ]
+
 
 
 
