@@ -934,6 +934,74 @@
       { "name": "Tail Sting", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "10 ft", "target": "one target", "damage": "2d6 + 4 piercing", "extra": "plus 3d6 poison damage" }
     ]
   },
+
+{
+    "id": "horse",
+    "tags": ["horse"],
+    "name": "War Horse",
+    "type": "Beast (Ground Mount)",
+    "size": "Large",
+    "climbRate": "0",
+    "acceleration": "2d6",
+    "points": 6,
+    "strength": 18,
+    "dex": 12,
+    "con": 13,
+    "agility": 2,
+    "baseAC": 11,
+    "baseHP": 19,
+    "carryMultiplier": 2,
+    "fly": { "standard": 0, "max": 0 },
+    "ground": { "standard": 60, "max": 180 },
+    "traits": ["charge"],
+    "actions": [ { "name": "Hooves", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d4 + 4 bludgeoning damage" }]
+  },
+
+  {
+    "id": "nightmare",
+    "tags": ["horse"],
+    "name": "Nightmare",
+    "type": "Fiend (Mount)",
+    "size": "Large",
+    "climbRate": "1",
+    "acceleration": "2d6",
+    "points": 110,
+    "strength": 18,
+    "dex": 15,
+    "con": 16,
+    "agility": 5,
+    "baseAC": 13,
+    "baseHP": 68,
+    "carryMultiplier": 2,
+    "fly": { "standard": 90, "max": 270 },
+    "ground": { "standard": 60, "max": 180 },
+    "traits": ["charge", "hover", "immune_fire", "confer_resist_fire", "illumination"],
+    "actions": [ { "name": "Hooves", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d4 + 4 bludgeoning plus 3d6 fire damage" },
+    {"name": "Ethereal Stride", "kind": "text", "text": "The nightmare and up to three willing creatures within 5 feet of it teleport to the Ethereal Plane from the Material Plane or vice versa."}]
+  },
+
+  {
+    "id": "pegasus",
+    "tags": ["horse"],
+    "name": "Pegasus",
+    "type": "Celestial (Mount)",
+    "size": "Large",
+    "climbRate": "1",
+    "acceleration": "2d6",
+    "points": 55,
+    "strength": 18,
+    "dex": 15,
+    "con": 16,
+    "agility": 5,
+    "baseAC": 12,
+    "baseHP": 59,
+    "carryMultiplier": 2,
+    "fly": { "standard": 90, "max": 270 },
+    "ground": { "standard": 60, "max": 180 },
+    "traits": ["charge", "hover", "protection_from_fiends"],
+    "actions": [ { "name": "Hooves", "kind": "attack", "attackType": "melee", "toHit": 6, "reach": "5 ft", "target": "one target", "damage": "2d4 + 4 bludgeoning plus 3d6 radiant damage" }]
+  },
+  
   {
     "id": "hydra",
     "tags": ["hydra"],
@@ -1626,6 +1694,7 @@
     ]
   }
 ]
+
 
 
 
