@@ -19,6 +19,33 @@
     "name": "Lighting Resistance",
     "desc": "This mount or vehicle is resistant to lighting damage."
   },
+  {
+    "id": "blessed_harmonics_90ft",
+    "name": "Blessed Harmonics (90 ft)",
+    "desc": "Mount-only aura. Allies within a 90-foot sphere gain +1 Agility. This cannot increase a creature’s Agility above its normal maximum, and it stacks only once (multiple Blessed Harmonics do not stack)."
+  },
+  {
+    "id": "confounding_harmonics_90ft",
+    "name": "Confounding Harmonics (90 ft)",
+    "desc": "Mount-only aura. Enemies within a 90-foot sphere suffer -1 Agility (minimum 1). This stacks only once (multiple Confounding Harmonics do not stack)."
+  },
+  {
+    "id": "blessed_harmonics_120ft",
+    "name": "Blessed Harmonics (120 ft)",
+    "desc": "Mount-only aura. Allies within a 120-foot sphere gain +1 Agility. This cannot increase a creature’s Agility above its normal maximum, and it stacks only once (multiple Blessed Harmonics do not stack)."
+  },
+  {
+    "id": "confounding_harmonics_120ft",
+    "name": "Confounding Harmonics (120 ft)",
+    "desc": "Mount-only aura. Enemies within a 120-foot sphere suffer -1 Agility (minimum 1). This stacks only once (multiple Confounding Harmonics do not stack)."
+  },
+
+  {
+    "id": "living_hull_plating_regen",
+    "name": "Living Hull Plating",
+    "desc": "Regeneration per turn (during battle): Medium +1 (max 20 per battle), Large +5 (max 50 per battle), Huge +10 (max 100 per battle), Gargantuan +20 (max 140 per battle). Track HP restored by this trait each battle; it cannot exceed the cap for the creature’s size."
+  },
+  
       {
     "id": "resist_magic",
     "name": "Magic resistance",
@@ -310,6 +337,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
