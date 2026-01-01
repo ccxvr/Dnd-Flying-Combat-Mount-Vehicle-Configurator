@@ -74,7 +74,8 @@
     "ability": "dex",
     "traits": [
       "consumable",
-      "siege"
+      "siege",
+      "works_underwater"
     ]
   },
   {
@@ -88,7 +89,8 @@
     "ability": "dex",
     "traits": [
       "consumable",
-      "siege"
+      "siege",
+       "works_underwater"
     ]
   },
   {
@@ -103,6 +105,7 @@
     "traits": [
       "consumable",
       "siege"
+       "works_underwater",
     ]
   },
   {
@@ -130,7 +133,8 @@
     "ability": "dex",
     "traits": [
       "ammunition",
-      "reload_10"
+      "reload_10",
+       "works_underwater"
     ]
   },
   {
@@ -315,7 +319,8 @@
     "traits": [
       "ammunition",
       "reload_1",
-      "big_game_hunter"
+      "big_game_hunter",
+       "works_underwater"
     ]
   },
   {
@@ -360,7 +365,8 @@
     "ability": "dex",
     "traits": [
       "ammunition",
-      "reload_1"
+      "reload_1",
+       "works_underwater"
     ]
   },
   {
@@ -375,7 +381,8 @@
     "traits": [
       "ammunition",
       "reload_1",
-      "big_game_hunter"
+      "big_game_hunter",
+       "works_underwater"
     ]
   },
   {
@@ -389,7 +396,8 @@
     "ability": "dex",
     "traits": [
       "ammunition",
-      "reload_5"
+      "reload_5",
+       "works_underwater"
     ]
   },
   {
@@ -446,7 +454,8 @@
     "ability": "dex",
     "traits": [
       "charges_5",
-      "area"
+      "area",
+       "works_underwater"
     ]
   },
   {
@@ -492,9 +501,28 @@
     "traits": [
       "ammunition",
       "reload_1",
-      "big_game_hunter"
+      "big_game_hunter",
+       "works_underwater"
     ]
   },
+      {
+    "id": "volley_harpoon_gun",
+    "name": "(L) Volley Harpoon Gun",
+    "points": 170,
+    "size": "L",
+    "weight": 200,
+    "damage": "1d12 piercing",
+    "range": "40/80 ft",
+    "ability": "dex",
+    "traits": [
+      "ammunition",
+      "reload_3",
+      "multishot_3",
+      "big_game_hunter",
+       "works_underwater"
+    ]
+  },
+  
   {
     "id": "quick_reload",
     "name": "Quick Reload",
@@ -826,7 +854,7 @@
     "damage": "1d6 piercing",
     "range": "120 / 360 ft",
     "ability": "dex",
-    "traits": ["resonant", "sea_charge_3"],
+    "traits": ["resonant", "sea_charge_3",  "works_underwater"],
     "extra": "Resonant: deal +1 extra damage die per 10ft of speed delta between you and the target."
   },
   {
@@ -838,7 +866,7 @@
     "damage": "1d8 piercing",
     "range": "180 / 540 ft",
     "ability": "dex",
-    "traits": ["resonant", "sea_charge_2"],
+    "traits": ["resonant", "sea_charge_2",  "works_underwater"],
     "extra": "Resonant: deal +1 extra damage die per 10ft of speed delta between you and the target."
   },
   {
@@ -850,7 +878,7 @@
     "damage": "1d12 piercing",
     "range": "240 / 720 ft",
     "ability": "dex",
-    "traits": ["resonant", "sea_charge_1"],
+    "traits": ["resonant", "sea_charge_1",  "works_underwater"],
     "extra": "Resonant: deal +1 extra damage die per 10ft of speed delta between you and the target."
   },
 
@@ -863,7 +891,7 @@
     "damage": "2d8 psychic",
     "range": "30 / 90 ft",
     "ability": "dex",
-    "traits": ["ignore_damage_threshold"],
+    "traits": ["ignore_damage_threshold",  "works_underwater"],
     "extra": "Ignores damage threshold."
   },
   {
@@ -875,7 +903,7 @@
     "damage": "3d10 psychic",
     "range": "50 / 150 ft",
     "ability": "dex",
-    "traits": ["ignore_damage_threshold"],
+    "traits": ["ignore_damage_threshold",  "works_underwater"],
     "extra": "Ignores damage threshold."
   },
 
@@ -888,6 +916,7 @@
     "traits": []
   }
 ]
+
 
 
 
