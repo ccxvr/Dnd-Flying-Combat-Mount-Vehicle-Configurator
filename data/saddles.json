@@ -152,7 +152,7 @@
       { "id": "drv_xl", "label": "Driver Payload Mount", "size": "XL", "arc": "Direct Front", "crewGroup": "driver", "weaponAllowlist": ["small_missile", "medium_missile", "rocket", "bomb_s", "bomb_m", "bomb_l", "large_torpedo", "extralarge_torpedo"]},
 
 
-      { "id": "gun_m_back", "label": "Gunner Mount", "size": "M", "arc": "Back", "crewGroup": "gunner" },
+      { "id": "gun_m_back", "label": "Gunner Mount", "size": "M", "arc": "Back", "crewGroup": "gunner" }
     ]
   },
 
@@ -937,6 +937,7 @@
     ]
   }
 ]
+
 
 
 
