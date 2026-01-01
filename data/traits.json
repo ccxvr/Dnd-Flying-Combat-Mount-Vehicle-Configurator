@@ -5,6 +5,11 @@
     "desc": "While carrying a trained rider, this mount has advantage on checks to avoid stalls or forced maneuvers."
   },
     {
+    "id": "feather_fall",
+    "name": "Feather Fall",
+    "desc": "Can cast the Feather Fall spell targeting self only as a reaction."
+  },
+    {
     "id": "blessing_of_the_sea",
     "name": "Blessing of the Sea",
     "desc": "If the dragon turtle would be reduced to 0 hit points, its current hit point total instead resets to 350 hit points, and it recharges its Steam Breath. Additionally, the dragon turtle can now use the options in the (Mythic Actions) section for 1 hour."
@@ -12,7 +17,7 @@
     {
     "id": "protection_from_fiends",
     "name": "Protection From Fiends",
-    "desc": "The mount and the rider take half damage from Fiends, and have advantage on saving trows from effects caused by Fiends."
+    "desc": "The mount and the rider take half damage from Fiends, and have advantage on saving throws from effects caused by Fiends."
   },
       {
     "id": "resist_lightning",
@@ -337,6 +342,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
