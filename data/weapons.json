@@ -104,7 +104,7 @@
     "ability": "dex",
     "traits": [
       "consumable",
-      "siege"
+      "siege",
        "works_underwater",
     ]
   },
@@ -680,7 +680,7 @@
     "id": "mounted_plasma_sword_xl",
     "name": "(XL) Plasma Sword",
     "points": 175,
-    "size": "L",
+    "size": "XL",
     "weight": 255,
     "damage": "6d12 slashing plus 4d6 fire damage",
     "reach": "30 ft",
@@ -916,6 +916,7 @@
     "traits": []
   }
 ]
+
 
 
 
