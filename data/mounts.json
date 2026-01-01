@@ -17,7 +17,8 @@
     "carryMultiplier": 2,
     "fly": { "standard": 80, "max": 240 },
     "ground": { "standard": 40, "max": 120 },
-    "traits": ["immune_poisoned", "resist_acid", "resist_poison"],
+    "swim": { "standard": 30, "max": 90 },
+    "traits": ["immune_poisoned", "resist_acid", "resist_poison","hold_breath_1h", "aura_frighten_dc15_120ft"],
     "actions": [
       { "name": "Multiattack", "kind": "text", "text": "The wyvern makes two Bite attacks." },
       {
@@ -1775,6 +1776,7 @@
     ]
   }
 ]
+
 
 
 
