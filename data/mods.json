@@ -61,6 +61,88 @@
     }
   },
   {
+    "id": "harmonics_blessed_huge",
+    "name": "Blessed Harmonics (Huge)",
+    "points": 120,
+    "desc": "Mount only. Allies within a 90ft sphere gain +1 Agility.",
+    "requires": { "baseType": ["Mount"], "size": ["Huge"] },
+    "effects": { "addTraits": ["blessed_harmonics_90ft"] }
+  },
+  {
+    "id": "harmonics_confounding_huge",
+    "name": "Confounding Harmonics (Huge)",
+    "points": 120,
+    "desc": "Mount only. Enemies within a 90ft sphere suffer -1 Agility (minimum 1).",
+    "requires": { "baseType": ["Mount"], "size": ["Huge"] },
+    "effects": { "addTraits": ["confounding_harmonics_90ft"] }
+  },
+  {
+    "id": "harmonics_blessed_gargantuan",
+    "name": "Blessed Harmonics (Gargantuan)",
+    "points": 170,
+    "desc": "Mount only. Allies within a 120ft sphere gain +1 Agility.",
+    "requires": { "baseType": ["Mount"], "size": ["Gargantuan"] },
+    "effects": { "addTraits": ["blessed_harmonics_120ft"] }
+  },
+  {
+    "id": "harmonics_confounding_gargantuan",
+    "name": "Confounding Harmonics (Gargantuan)",
+    "points": 170,
+    "desc": "Mount only. Enemies within a 120ft sphere suffer -1 Agility (minimum 1).",
+    "requires": { "baseType": ["Mount"], "size": ["Gargantuan"] },
+    "effects": { "addTraits": ["confounding_harmonics_120ft"] }
+  },
+
+  {
+    "id": "living_hull_plating_m",
+    "name": "Living Hull Plating (Medium)",
+    "points": 100,
+    "desc": "Living plating regenerates HP each turn: Medium +1 (max 20/battle).",
+    "requires": { "baseType": ["Mount"], "size": ["Medium"] },
+    "effects": { "addTraits": ["living_hull_plating_regen"] }
+  },
+  {
+    "id": "living_hull_plating_l",
+    "name": "Living Hull Plating (Large)",
+    "points": 160,
+    "desc": "Living plating regenerates HP each turn: Large +5 (max 50/battle).",
+    "requires": { "baseType": ["Mount"], "size": ["Large"] },
+    "effects": { "addTraits": ["living_hull_plating_regen"] }
+  },
+  {
+    "id": "living_hull_plating_h",
+    "name": "Living Hull Plating (Huge)",
+    "points": 200,
+    "desc": "Living plating regenerates HP each turn: Huge +10 (max 100/battle).",
+    "requires": { "baseType": ["Mount"], "size": ["Huge"] },
+    "effects": { "addTraits": ["living_hull_plating_regen"] }
+  },
+  {
+    "id": "living_hull_plating_g",
+    "name": "Living Hull Plating (Gargantuan)",
+    "points": 260,
+    "desc": "Living plating regenerates HP each turn: Gargantuan +20 (max 140/battle).",
+    "requires": { "baseType": ["Mount"], "size": ["Gargantuan"] },
+    "effects": { "addTraits": ["living_hull_plating_regen"] }
+  },
+
+  {
+    "id": "thalassic_air_bladders",
+    "name": "Thalassic Air Bladders",
+    "points": 35,
+    "desc": "The mount and its rider/occupants gain Hold Breath (1 hour).",
+    "requires": { "baseType": ["Mount"] },
+    "effects": { "addTraits": ["hold_breath_1h"] }
+  },
+  {
+    "id": "amphibious_gillweave",
+    "name": "Amphibious Gillweave",
+    "points": 50,
+    "desc": "The mount and its rider/occupants gain Amphibious.",
+    "requires": { "baseType": ["Mount"] },
+    "effects": { "addTraits": ["amphibious"] }
+  },
+  {
     "id": "extra_weapon_hardpoint_XS_front",
     "name": "Extra Weapon Hardpoint XS Front",
     "points": 20,
