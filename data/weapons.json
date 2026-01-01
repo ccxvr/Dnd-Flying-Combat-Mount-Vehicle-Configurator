@@ -877,8 +877,7 @@
     "ability": "dex",
     "traits": ["ignore_damage_threshold"],
     "extra": "Ignores damage threshold."
-  }
-]
+  },
 
   {
     "id": "none",
@@ -889,6 +888,7 @@
     "traits": []
   }
 ]
+
 
 
 
