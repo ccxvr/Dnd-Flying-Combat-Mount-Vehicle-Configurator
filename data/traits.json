@@ -64,7 +64,7 @@
     {
     "id": "torpedo",
     "name": "Torpedo",
-    "desc": "Cannot carry a rider or mount weapons, can only be spawned by a weapon or ability during combat and not chosen during deployment."
+    "desc": "Cannot carry a rider or mount weapons, can only be spawned by a weapon or ability during combat and not chosen during deployment, explodes after 3 turns."
   },
       {
     "id": "top_plating",
@@ -337,6 +337,7 @@
     "desc": "The creature has six tentacles.  When the creature enters the battlefield, position 6 (creature name) Tentacles within 30ft of it."
   }
 ]
+
 
 
 
