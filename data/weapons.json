@@ -818,6 +818,69 @@
     "traits": ["sentinel"]
   },
   {
+    "id": "thalassite_resonant_needle_s",
+    "name": "(S) Thalassite Resonant Needle",
+    "points": 35,
+    "size": "S",
+    "weight": 60,
+    "damage": "1d6 piercing",
+    "range": "120 / 360 ft",
+    "ability": "dex",
+    "traits": ["resonant", "sea_charge_3"],
+    "extra": "Resonant: deal +1 extra damage die per 10ft of speed delta between you and the target."
+  },
+  {
+    "id": "thalassite_resonant_spike_m",
+    "name": "(M) Thalassite Resonant Spike",
+    "points": 60,
+    "size": "M",
+    "weight": 170,
+    "damage": "1d8 piercing",
+    "range": "180 / 540 ft",
+    "ability": "dex",
+    "traits": ["resonant", "sea_charge_2"],
+    "extra": "Resonant: deal +1 extra damage die per 10ft of speed delta between you and the target."
+  },
+  {
+    "id": "thalassite_resonant_harpoon_l",
+    "name": "(L) Thalassite Resonant Harpoon",
+    "points": 95,
+    "size": "L",
+    "weight": 420,
+    "damage": "1d12 piercing",
+    "range": "240 / 720 ft",
+    "ability": "dex",
+    "traits": ["resonant", "sea_charge_1"],
+    "extra": "Resonant: deal +1 extra damage die per 10ft of speed delta between you and the target."
+  },
+
+  {
+    "id": "thalassite_pressure_disruptor_m",
+    "name": "(M) Thalassite Pressure Disruptor",
+    "points": 95,
+    "size": "M",
+    "weight": 200,
+    "damage": "2d8 psychic",
+    "range": "30 / 90 ft",
+    "ability": "dex",
+    "traits": ["ignore_damage_threshold"],
+    "extra": "Ignores damage threshold."
+  },
+  {
+    "id": "thalassite_pressure_lance_l",
+    "name": "(L) Thalassite Pressure Lance",
+    "points": 140,
+    "size": "L",
+    "weight": 480,
+    "damage": "3d10 psychic",
+    "range": "50 / 150 ft",
+    "ability": "dex",
+    "traits": ["ignore_damage_threshold"],
+    "extra": "Ignores damage threshold."
+  }
+]
+
+  {
     "id": "none",
     "name": "\u2014 None \u2014",
     "points": 0,
@@ -826,6 +889,7 @@
     "traits": []
   }
 ]
+
 
 
 
