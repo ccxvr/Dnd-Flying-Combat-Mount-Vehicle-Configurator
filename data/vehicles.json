@@ -782,6 +782,271 @@
   ],
   "traits": ["carrier", "damage_threshold_10"]
 },
+  {
+    "id": "aiolia_stormcutter",
+    "name": "Aiolian Stormcutter",
+    "type": "Vehicle",
+    "size": "Huge",
+    "climbRate": "0",
+    "acceleration": "1d6",
+    "points": 240,
+    "strength": 18,
+    "dex": 14,
+    "con": 16,
+    "agility": 4,
+    "baseAC": 15,
+    "baseHP": 320,
+    "swim": { "standard": 65, "max": 195 },
+    "crewGroups": [
+      { "id": "helm", "label": "Helm" },
+      { "id": "bow_gunner", "label": "Bow Gunner" },
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "starboard_gunner", "label": "Starboard Gunner" },
+      { "id": "aft_gunner", "label": "Aft Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "bow_l", "label": "Bow Mount", "size": "L", "arc": "Front", "crewGroup": "bow_gunner" },
+      { "id": "port_m", "label": "Port Mount", "size": "M", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "starboard_m", "label": "Starboard Mount", "size": "M", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+      { "id": "aft_l", "label": "Stern Mount", "size": "L", "arc": "Back", "crewGroup": "aft_gunner" }
+    ],
+    "traits": ["damage_threshold_5"]
+  },
+
+  {
+    "id": "aiolia_netbreaker",
+    "name": "Aiolian Netbreaker",
+    "type": "Vehicle",
+    "size": "Huge",
+    "climbRate": "0",
+    "acceleration": "1d6",
+    "points": 260,
+    "strength": 20,
+    "dex": 14,
+    "con": 18,
+    "agility": 4,
+    "baseAC": 16,
+    "baseHP": 360,
+    "swim": { "standard": 55, "max": 165 },
+    "crewGroups": [
+      { "id": "helm", "label": "Helm" },
+      { "id": "fore_gunner", "label": "Fore Gunner" },
+      { "id": "aft_gunner", "label": "Aft Gunner" },
+      { "id": "top_gunner", "label": "Top Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "fore_l", "label": "Fore Mount", "size": "L", "arc": "Front", "crewGroup": "fore_gunner" },
+      { "id": "aft_l", "label": "Aft Mount", "size": "L", "arc": "Back", "crewGroup": "aft_gunner" },
+      { "id": "top_m", "label": "Topside Flak Mount", "size": "M", "arc": "Front/Back", "crewGroup": "top_gunner" }
+    ],
+    "traits": ["damage_threshold_10"]
+  },
+
+  {
+    "id": "aiolia_chainbreaker",
+    "name": "The Chainbreaker",
+    "type": "Vehicle",
+    "size": "Gargantuan",
+    "climbRate": "0",
+    "acceleration": "1d4",
+    "points": 760,
+    "strength": 28,
+    "dex": 8,
+    "con": 24,
+    "agility": 1,
+    "baseAC": 17,
+    "baseHP": 880,
+    "swim": { "standard": 35, "max": 105 },
+    "crewGroups": [
+      { "id": "helm", "label": "Helm Crew" },
+      { "id": "fore_gunner", "label": "Fore Gunner" },
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "starboard_gunner", "label": "Starboard Gunner" },
+      { "id": "dorsal_gunner", "label": "Topside Gunner" },
+      { "id": "aft_gunner", "label": "Aft Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "xl_fore", "label": "Forward Heavy Mount", "size": "XL", "arc": "Direct Front", "crewGroup": "fore_gunner" },
+      { "id": "l_port_1", "label": "Port Battery I", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "l_port_2", "label": "Port Battery II", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "l_starboard_1", "label": "Starboard Battery I", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+      { "id": "l_starboard_2", "label": "Starboard Battery II", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+      { "id": "m_dorsal", "label": "Topside Flak Mount", "size": "M", "arc": "Front/Back", "crewGroup": "dorsal_gunner" },
+      { "id": "l_aft", "label": "Stern Chaser", "size": "L", "arc": "Back", "crewGroup": "aft_gunner" }
+    ],
+    "traits": ["carrier", "damage_threshold_10"]
+  },
+
+  {
+    "id": "iron_hadur",
+    "name": "Iron Dominion Hadur Patrol Boat",
+    "type": "Vehicle",
+    "size": "Large",
+    "climbRate": "0",
+    "acceleration": "1d8",
+    "points": 140,
+    "strength": 16,
+    "dex": 16,
+    "con": 14,
+    "agility": 6,
+    "baseAC": 16,
+    "baseHP": 160,
+    "swim": { "standard": 70, "max": 210 },
+    "crewGroups": [
+      { "id": "helm", "label": "Helm" },
+      { "id": "gunner", "label": "Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "bow_m", "label": "Bow Mount", "size": "M", "arc": "Front", "crewGroup": "gunner" },
+      { "id": "aft_m", "label": "Stern Mount", "size": "M", "arc": "Back", "crewGroup": "gunner" }
+    ],
+    "traits": ["damage_threshold_5"]
+  },
+
+  {
+    "id": "iron_tiephs",
+    "name": "Iron Dominion Tiepsh Destroyer",
+    "type": "Vehicle",
+    "size": "Huge",
+    "climbRate": "0",
+    "acceleration": "1d4",
+    "points": 340,
+    "strength": 24,
+    "dex": 10,
+    "con": 20,
+    "agility": 1,
+    "baseAC": 18,
+    "baseHP": 420,
+    "swim": { "standard": 35, "max": 105 },
+    "crewGroups": [
+      { "id": "helm", "label": "Helm" },
+      { "id": "fore_gunner", "label": "Torpedo Operator" },
+      { "id": "top_gunner", "label": "Top Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "xl_fore", "label": "Forward Siege Mount", "size": "XL", "arc": "Direct Front", "crewGroup": "fore_gunner", "weaponAllowlist": ["large_torpedo", "extralarge_torpedo"]  },
+      { "id": "l_top", "label": "Topside Flak Mount", "size": "L", "arc": "Front/Back", "crewGroup": "top_gunner" }
+    ],
+    "traits": ["damage_threshold_15"]
+  },
+
+  {
+    "id": "iron_brigid",
+    "name": "Iron Dominion Brigid Carrier",
+    "type": "Vehicle",
+    "size": "Gargantuan",
+    "climbRate": "0",
+    "acceleration": "1d4",
+    "points": 820,
+    "strength": 28,
+    "dex": 8,
+    "con": 24,
+    "agility": 1,
+    "baseAC": 18,
+    "baseHP": 900,
+    "swim": { "standard": 30, "max": 90 },
+    "crewGroups": [
+      { "id": "helm", "label": "Helm Crew" },
+      { "id": "fore_gunner", "label": "Fore Gunner" },
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "starboard_gunner", "label": "Starboard Gunner" },
+      { "id": "dorsal_gunner", "label": "Topside Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "xl_fore", "label": "Forward Heavy Battery", "size": "XL", "arc": "Direct Front", "crewGroup": "fore_gunner" },
+      { "id": "l_port_1", "label": "Port Battery I", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "l_port_2", "label": "Port Battery II", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "l_starboard_1", "label": "Starboard Battery I", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+      { "id": "l_starboard_2", "label": "Starboard Battery II", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+      { "id": "l_dorsal", "label": "Dorsal Flak Grid", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" }
+    ],
+    "traits": ["carrier", "damage_threshold_15"]
+  },
+
+  {
+    "id": "iron_vulcan",
+    "name": "Iron Dominion Vulcan Sky Barge",
+    "type": "Vehicle",
+    "size": "Gargantuan",
+    "climbRate": "1/2",
+    "acceleration": "1d4",
+    "points": 860,
+    "strength": 30,
+    "dex": 8,
+    "con": 22,
+    "agility": 1,
+    "baseAC": 17,
+    "baseHP": 820,
+    "fly": { "standard": 35, "max": 105 },
+    "crewGroups": [
+      { "id": "driver", "label": "Helm Crew" },
+      { "id": "fore_gunner", "label": "Fore Gunner" },
+      { "id": "aft_gunner", "label": "Aft Gunner" },
+      { "id": "port_gunner", "label": "Port Gunner" },
+      { "id": "starboard_gunner", "label": "Starboard Gunner" },
+      { "id": "dorsal_gunner", "label": "Dorsal Gunner" },
+      { "id": "ventral_gunner", "label": "Ventral Gunner" }
+    ],
+    "mountingPoints": [
+      { "id": "xl_fore", "label": "Forward Heavy Battery", "size": "XL", "arc": "Front", "crewGroup": "fore_gunner" },
+      { "id": "xl_aft", "label": "Aft Heavy Battery", "size": "XL", "arc": "Back", "crewGroup": "aft_gunner" },
+      { "id": "l_port", "label": "Port Battery", "size": "L", "arc": "Port", "crewGroup": "port_gunner" },
+      { "id": "l_starboard", "label": "Starboard Battery", "size": "L", "arc": "Starboard", "crewGroup": "starboard_gunner" },
+      { "id": "l_dorsal", "label": "Dorsal Flak Grid", "size": "L", "arc": "Front/Back", "crewGroup": "dorsal_gunner" },
+      { "id": "l_ventral", "label": "Ventral Flak Grid", "size": "L", "arc": "Front/Back", "crewGroup": "ventral_gunner" }
+    ],
+    "traits": ["hover", "carrier", "damage_threshold_10"]
+  },
+
+  {
+    "id": "iron_Ptah",
+    "name": "Iron Dominion Ptah Interceptor",
+    "type": "Vehicle",
+    "size": "Medium",
+    "climbRate": "1",
+    "acceleration": "1d8",
+    "points": 95,
+    "strength": 12,
+    "dex": 18,
+    "con": 14,
+    "agility": 8,
+    "baseAC": 18,
+    "baseHP": 55,
+    "fly": { "standard": 90, "max": 270 },
+    "crewGroups": [
+      { "id": "system", "label": "System" }
+    ],
+    "mountingPoints": [
+      { "id": "left_m", "label": "Left Mount", "size": "M", "arc": "Front", "crewGroup": "system" },
+      { "id": "right_m", "label": "Right Mount", "size": "M", "arc": "Front", "crewGroup": "system" }
+    ],
+    "traits": ["damage_threshold_5", "AI"]
+  },
+
+  {
+    "id": "iron_ogun",
+    "name": "Iron Dominion Ogun Gunship",
+    "type": "Vehicle",
+    "size": "Large",
+    "climbRate": "1",
+    "acceleration": "1d6",
+    "points": 220,
+    "strength": 16,
+    "dex": 16,
+    "con": 18,
+    "agility": 6,
+    "baseAC": 18,
+    "baseHP": 170,
+    "fly": { "standard": 70, "max": 210 },
+    "crewGroups": [
+      { "id": "system", "label": "System" }
+    ],
+    "mountingPoints": [
+      { "id": "bow_l", "label": "Primary Mount", "size": "L", "arc": "Front", "crewGroup": "system" },
+      { "id": "side_m", "label": "Stabilizer Mount", "size": "M", "arc": "Front/Back", "crewGroup": "system" }
+    ],
+    "traits": ["hover", "damage_threshold_10", "AI"]
+  },
    {
   "id": "l_torpedo",
   "name": "Torpedo",
@@ -836,38 +1101,3 @@
       ]
  }
 ]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
