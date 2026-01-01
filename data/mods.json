@@ -142,6 +142,24 @@
     "requires": { "baseType": ["Mount"] },
     "effects": { "addTraits": ["amphibious"] }
   },
+    {
+    "id": "parachutes",
+    "name": "Parachutes",
+    "points": 25,
+    "desc": "Rider and passengers can cast the feather fall spell on themself as a reaction.",
+    "requires": { "baseType": ["Mount", "Vehicle"] },
+    "effects": {"addTraits": ["feather_fall"]
+    }
+  },
+      {
+    "id": "oxigen_tank",
+    "name": "Oxigen Tank",
+    "points": 15,
+    "desc": "Rider and passengers gain the trait hold breath 1h.",
+    "requires": { "baseType": ["Mount", "Vehicle"] },
+    "effects": { "addTraits": ["hold_breath_1h"]
+    }
+  },
   {
     "id": "extra_weapon_hardpoint_XS_front",
     "name": "Extra Weapon Hardpoint XS Front",
